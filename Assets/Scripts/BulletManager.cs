@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class BulletManager : MonoBehaviour
 {
-    private Dictionary<BulletType, Queue<Bullet>> bulletsDict;
+    private Dictionary<string, Queue<Bullet>> bulletsDict;
     private readonly string path = "prefabs/BulletTypes/";
 
     private void Awake()
     {
-        bulletsDict = new Dictionary<BulletType, Queue<Bullet>>();
+        ///// How it is going to work
+        ///// Instead of keeping track of BulletType, we are going to put into a single folder all sub-script
+        ///// defining a bullet type and Resources.LoadAll inside the dependency in order to retrieve their string name onStart\
+        ///// and fill the dictionnary
+        bulletsDict = new Dictionary<string, Queue<Bullet>>();
     }
 
     private void Update()

@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class Bullet : MonoBehaviour
+public abstract class Bullet : MonoBehaviour, IFactory
 {
     [Header("Components")]
-    private SpriteRenderer ren;
-    private Sprite img;
+    public SpriteRenderer ren;
+    public Sprite img;
 
-    private Vector2 pos;
+    [Header("Bullet Values")]
+    public Vector2 pos;
+    public float rad;
+
+    //// BulletType are going to define their own Shoot function
+    public abstract void Shoot();
 
     //// Bullets should be checking for the distance between it and the target
-    private bool DistanceCheck(Vector2 pos, Vector2 target, float rad)
+    public bool DistanceCheck(Vector2 pos, Vector2 target, float rad)
     {
         return Vector2.Distance(pos, target) <= rad;
     }
