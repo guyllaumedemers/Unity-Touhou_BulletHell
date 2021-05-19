@@ -11,7 +11,13 @@ public abstract class Bullet : MonoBehaviour, IFactory
 
     [Header("Bullet Values")]
     public Vector2 pos;
+    public float speed;
     public float rad;
+
+    public virtual void UpdateBulletPosition()
+    {
+        transform.position += new Vector3(pos.x, pos.y, 0) * speed * Time.deltaTime;
+    }
 
     //// BulletType are going to define their own Shoot function
     public abstract void Shoot();

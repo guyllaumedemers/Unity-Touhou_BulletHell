@@ -18,7 +18,17 @@ public class BulletManager : MonoBehaviour
 
     private void Update()
     {
+        ///// BulletManager is going Update Bullets every cycle
+        UpdateBullets(bulletsDict);
+    }
 
+    private void UpdateBullets(Dictionary<string, Queue<Bullet>> bulletsDict)
+    {
+        ///// How to we add batching to this?
+        foreach (var value in bulletsDict.Keys.SelectMany(key => bulletsDict[key]))
+        {
+            value.UpdateBulletPosition();
+        }
     }
 
     //// Instanciate Generic Type
