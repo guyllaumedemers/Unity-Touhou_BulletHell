@@ -25,7 +25,7 @@ public class FactoryManager : FactoryAbs
         ////// The Player is going to ask to the FactoryManager if he can have a Bullet
         ////// FactoryManager will be looking at the Object Pool => do you have the bullet of type
         ////// Object Pool will return OR not
-        ////// if not FactoryManager will Instanciate
+        ////// if not FactoryManager will Instanciate => dont forget to set the value of the ID in a way that it alternate at each instanciation
         return null;
     }
 }

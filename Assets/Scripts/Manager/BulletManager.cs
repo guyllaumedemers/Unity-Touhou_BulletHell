@@ -6,6 +6,7 @@ public class BulletManager : MonoBehaviour
 {
     private Dictionary<string, Queue<Bullet>> bulletsDict;
     private readonly string path = "prefabs/BulletTypes/";
+    public bool BATCHING_STATE { get; private set; }
 
     private void Awake()
     {
@@ -14,6 +15,7 @@ public class BulletManager : MonoBehaviour
         ///// defining a bullet type and Resources.LoadAll inside the dependency in order to retrieve their string name onStart\
         ///// and fill the dictionnary
         bulletsDict = new Dictionary<string, Queue<Bullet>>();
+        BATCHING_STATE = false;
     }
 
     private void Update()
@@ -24,8 +26,8 @@ public class BulletManager : MonoBehaviour
 
     private void UpdateBullets(Dictionary<string, Queue<Bullet>> bulletsDict)
     {
-        ///// How to we add batching to this?
-        foreach (var value in bulletsDict.Keys.SelectMany(key => bulletsDict[key]))
+        BATCHING_STATE = !BATCHING_STATE;
+        foreach (var value in bulletsDict.Keys.SelectMany(key => bulletsDict[key]).Where(value => value.ID && BATCHING_STATE))
         {
             value.UpdateBulletPosition();
         }

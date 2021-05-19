@@ -14,6 +14,8 @@ public abstract class Bullet : MonoBehaviour, IFactory
     public float speed;
     public float rad;
 
+    public bool ID { get; private set; }
+
     public virtual void UpdateBulletPosition()
     {
         transform.position += new Vector3(pos.x, pos.y, 0) * speed * Time.deltaTime;
