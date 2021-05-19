@@ -26,6 +26,10 @@ public class BulletManager : MonoBehaviour
 
     private void UpdateBullets(Dictionary<string, Queue<Bullet>> bulletsDict)
     {
+        ///// Problem with the way I handle batching
+        ///// I update the first bullet, third bullet, fifth bullet, etc...
+        ///// than I update the opposite bullet
+        ///// What I think will happen is some kind of stutter visual effect
         BATCHING_STATE = !BATCHING_STATE;
         foreach (var value in bulletsDict.Keys.SelectMany(key => bulletsDict[key]).Where(value => value.ID && BATCHING_STATE))
         {
