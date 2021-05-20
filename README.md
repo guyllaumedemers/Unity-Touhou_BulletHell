@@ -2,13 +2,16 @@
 
 ## Bullet Hell Game
 
-* Meachanic and Features
+* Mechanic and Features
+
+  * Input System
+
+* Design Pattern
 
   * Abstract Factory Pattern
-  * Batching
   * Object Pooling
-  * Input System
+  * Batching
 
 ## NOTES
 
-PERSONNAL PROJECT
+THE OBJECTIVE OF THIS PROJECT IS TO WORK ON DESIGN PATTERN LIKE THE  ABSTRACT FACTORY PATTERN, OBJECT POOLING, BATCHING, ETC...
