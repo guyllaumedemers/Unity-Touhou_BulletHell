@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -37,5 +34,5 @@ public class FactoryManager : FactoryAbs
 
     public void ResourcesLoading() => bullets = Utilities.FindResources<GameObject>("Input Path");
 
-    public GameObject GetPrefab(string type) => bullets.Where(go => go.name == type).FirstOrDefault();
+    public GameObject GetPrefab(string type) => bullets.FirstOrDefault(go => go.name.Equals(type));
 }
