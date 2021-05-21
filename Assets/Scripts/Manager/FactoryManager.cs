@@ -32,7 +32,7 @@ public class FactoryManager : FactoryAbs
         return newBullet as IFactory;
     }
 
-    public void ResourcesLoading() => bullets = Utilities.FindResources<GameObject>("Input Path");
+    public void ResourcesLoading() => bullets = Utilities.FindResources<GameObject>(Globals.prefabs);
 
     public GameObject GetPrefab(string type) => bullets.FirstOrDefault(go => go.name.Equals(type));
 }

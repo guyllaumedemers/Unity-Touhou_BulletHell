@@ -32,6 +32,16 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 movement = inputs.Player.Move.ReadValue<Vector2>();
         transform.position += new Vector3(movement.x, movement.y, 0) * speed * Time.deltaTime;
+        transform.position = Wrap(transform.position);
+    }
+
+    private Vector2 Wrap(Vector2 pos)
+    {
+        var cam = Camera.main;
+        var viewport = cam.WorldToViewportPoint(transform.position);
+        if (viewport.x < 0 || viewport.x > 1) pos.x = -pos.x;
+        if (viewport.y < 0 || viewport.y > 1) pos.y = -pos.y;
+        return pos;
     }
 
     /**********************ENABLE**************************/

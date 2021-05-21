@@ -3,17 +3,15 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
 {
-    [Header("Components")]
-    public SpriteRenderer ren;
-    public Sprite img;
-
     [Header("Bullet Values")]
-    public Vector2 pos;
-    public float speed;
-    public float rad;
+    private Vector2 pos;
+    private float speed;
+    [Header("Collision Detection Values")]
+    private float rad;
 
     public bool ID { get; private set; }
 
+    //// Bullet Update position will be different depending on the pattern => Boss, Mobs, etc...
     public virtual void UpdateBulletPosition()
     {
         transform.position += new Vector3(pos.x, pos.y, 0) * speed * Time.deltaTime;
