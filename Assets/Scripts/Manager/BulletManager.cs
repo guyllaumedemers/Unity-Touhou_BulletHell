@@ -41,16 +41,4 @@ public class BulletManager : SingletonMono<BulletManager>
             value.UpdateBulletPosition();
         }
     }
-
-    //// Instanciate Generic Type
-    public T InstanciateType<T>(GameObject prefab, Vector2 pos) where T : class
-    {
-        return Instantiate(prefab, pos, Quaternion.identity, transform).GetComponent<T>();
-    }
-
-    /***********************Loading Resources*********************************/
-    public T[] FindResources<T>(string path) where T : class
-    {
-        return Resources.LoadAll(path, typeof(T)).Cast<T>().ToArray();
-    }
 }

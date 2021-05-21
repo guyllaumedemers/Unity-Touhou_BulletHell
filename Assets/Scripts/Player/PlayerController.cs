@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private void Shoot()
     {
         //// Instanciate Bullets
-        IFactory bullet = FactoryManager.Instance.FactoryMethod<Bullet>("Insert Type");
+        IFactory bullet = FactoryManager.Instance.FactoryMethod<Bullet>("Insert Type", transform, transform.position);
         bullet.Shoot();
         Debug.Log("Fire");
     }
