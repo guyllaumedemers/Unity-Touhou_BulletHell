@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public abstract class Bullet : MonoBehaviour, IFactory
+public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
 {
     [Header("Components")]
     public SpriteRenderer ren;
@@ -28,5 +28,29 @@ public abstract class Bullet : MonoBehaviour, IFactory
     public bool DistanceCheck(Vector2 pos, Vector2 target, float rad)
     {
         return Vector2.Distance(pos, target) <= rad;
+    }
+
+    private void OnBecameInvisible()
+    {
+        Pool();
+    }
+
+    public void Pool()
+    {
+        ObjectPool.Bullets[this.ToString()].Enqueue(this);
+        BulletManager.Instance.BulletsDict[this.ToString()].Dequeue();
+        gameObject.SetActive(false);
+    }
+
+    public void Depool()
+    {
+        IFactory bullet = ObjectPool.Bullets[this.ToString()].Dequeue();
+        BulletManager.Instance.BulletsDict[this.ToString()].Enqueue(bullet as Bullet);
+        gameObject.SetActive(true);
+    }
+
+    public void ResetBullet(Vector2 pos)
+    {
+
     }
 }

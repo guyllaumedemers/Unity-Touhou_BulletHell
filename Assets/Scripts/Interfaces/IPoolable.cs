@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IPoolable
 {
     public abstract void Pool();
-    public abstract IFactory Depool(string productType);
+    public abstract void Depool();
 }

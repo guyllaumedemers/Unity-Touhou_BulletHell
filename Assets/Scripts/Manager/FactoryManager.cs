@@ -11,7 +11,7 @@ public class FactoryManager : FactoryAbs
     {
         get
         {
-            if(instance == null)
+            if (instance == null)
             {
                 instance = new FactoryManager();
             }
@@ -22,10 +22,12 @@ public class FactoryManager : FactoryAbs
 
     public override IFactory FactoryMethod<T>(string type)
     {
-        ////// The Player is going to ask to the FactoryManager if he can have a Bullet
-        ////// FactoryManager will be looking at the Object Pool => do you have the bullet of type
-        ////// Object Pool will return OR not
-        ////// if not FactoryManager will Instanciate => dont forget to set the value of the ID in a way that it alternate at each instanciation
-        return null;
+        if (ObjectPool.Bullets[type].Count > 0)
+        {
+            IFactory bullet = ObjectPool.Bullets[type].Dequeue();
+            return bullet;
+        }
+        T newBullet = BulletManager.Instance.InstanciateType<T>(null, new Vector2());
+        return newBullet as IFactory;
     }
 }
