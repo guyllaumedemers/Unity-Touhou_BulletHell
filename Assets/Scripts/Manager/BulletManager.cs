@@ -5,7 +5,6 @@ public class BulletManager : SingletonMono<BulletManager>
 {
     public Dictionary<string, Queue<Bullet>> BulletsDict { get; private set; }
     private BulletManager() { }
-    private readonly string path = "prefabs/BulletTypes/";
     public bool BATCHING_STATE { get; private set; }
 
     private void Awake()
