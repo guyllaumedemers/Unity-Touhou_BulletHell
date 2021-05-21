@@ -1,8 +1,13 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     PlayerInputActions inputs;
+    Queue<string> bulletType;
+    string activeBullet;
     public float Hitbox { get; private set; }
     const float speed = 5.0f;
 
@@ -11,10 +16,14 @@ public class PlayerController : MonoBehaviour
         inputs = new PlayerInputActions();                  // Instanciate a new PlayerInputActions
         inputs.Player.Fire.started += ctx => Shoot();       // Register to UnityEvent
         Hitbox = 2.0f;                                      // Property for the hitbox radius
+                                                            // Initialize Queue with prefabs name for player bullet types
+        GameObject[] goTypes = FactoryManager.Instance.FactoryBullets.Where(x => x.GetComponent<PlayerBullet>() != null).ToArray();
+        foreach (var obj in goTypes) bulletType.Enqueue(obj.name);
     }
 
     private void Update()
     {
+        if (Keyboard.current.tabKey.wasPressedThisFrame) SwapBulletType();
         Movement();
     }
 
@@ -22,10 +31,15 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-        //// Instanciate Bullets
-        IFactory bullet = FactoryManager.Instance.FactoryMethod<Bullet>("Insert Type", transform, transform.position);
+        IFactory bullet = FactoryManager.Instance.FactoryMethod<Bullet>(activeBullet, transform, transform.position);
         bullet.Shoot();
         Debug.Log("Fire");
+    }
+
+    private void SwapBulletType()
+    {
+        activeBullet = bulletType.Dequeue();
+        bulletType.Enqueue(activeBullet);
     }
 
     private void Movement()

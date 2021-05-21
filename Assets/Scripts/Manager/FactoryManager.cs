@@ -21,6 +21,8 @@ public class FactoryManager : FactoryAbs
 
     GameObject[] bullets;
 
+    public GameObject[] FactoryBullets { get; }
+
     public override IFactory FactoryMethod<T>(string type, Transform parent, Vector2 pos)
     {
         if (ObjectPool.Bullets[type].Count > 0)
@@ -33,6 +35,8 @@ public class FactoryManager : FactoryAbs
     }
 
     public void ResourcesLoading() => bullets = Utilities.FindResources<GameObject>(Globals.prefabs);
+
+    ///// A good safety catch would be to set the sprite via code when retriving the name of the gameobject
 
     public GameObject GetPrefab(string type) => bullets.FirstOrDefault(go => go.name.Equals(type));
 }
