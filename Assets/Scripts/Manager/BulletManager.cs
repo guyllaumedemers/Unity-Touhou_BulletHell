@@ -12,12 +12,9 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
 
     private void UpdateBullets(Dictionary<string, Queue<Bullet>> bulletsDict)
     {
-        foreach (var b in bulletsDict.Keys)
+        foreach (var t in bulletsDict.Keys.SelectMany(b => bulletsDict[b]))
         {
-            foreach (var t in bulletsDict[b])
-            {
-                t.UpdateBulletPosition();
-            }
+            t.UpdateBulletPosition();
         }
     }
 
