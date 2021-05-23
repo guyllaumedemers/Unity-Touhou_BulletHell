@@ -5,13 +5,18 @@ public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
 {
     [Header("Bullet Values")]
     private Vector2 pos;
-    private float speed;
-    [Header("Collision Detection Values")]
-    private float rad;
+    private const float rad = 2;
+    private const float speed = 5;
+    // Batching ID
+    public int ID { get; private set; }
 
-    public bool ID { get; private set; }
+    private void Awake()
+    {
+        InitializeMethod();
+    }
 
     //// Bullet Update position will be different depending on the pattern => Boss, Mobs, etc...
+    //// Dont forget to think about the direction in which they travel
     public virtual void UpdateBulletPosition()
     {
         transform.position += new Vector3(pos.x, pos.y, 0) * speed * Time.deltaTime;
@@ -21,7 +26,7 @@ public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
     public abstract void Shoot();
 
     //// Bullets should be checking for the distance between it and the target
-    public bool DistanceCheck(Vector2 pos, Vector2 target, float rad)
+    public bool DistanceCheck(Vector2 pos, Vector2 target)
     {
         return Vector2.Distance(pos, target) <= rad;
     }
@@ -45,8 +50,10 @@ public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
         gameObject.SetActive(true);
     }
 
-    public void ResetBullet(Vector2 pos)
+    public void ResetBullet(Vector2 newPos)
     {
-
+        pos = newPos;
     }
+
+    private void InitializeMethod() => pos = new Vector2();
 }

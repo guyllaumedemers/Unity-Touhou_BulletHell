@@ -3,37 +3,22 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : SingletonMono<PlayerController>, IFlow
 {
     PlayerInputActions inputs;
     Queue<string> bulletType;
-    string activeBullet;
+    private PlayerController() { }
+    private const float speed = 5.0f;
+    private string activeBullet;
     public float Hitbox { get; private set; }
-    const float speed = 5.0f;
-
-    private void Awake()
-    {
-        inputs = new PlayerInputActions();                  // Instanciate a new PlayerInputActions
-        inputs.Player.Fire.started += ctx => Shoot();       // Register to UnityEvent
-        Hitbox = 2.0f;                                      // Property for the hitbox radius
-                                                            // Initialize Queue with prefabs name for player bullet types
-        GameObject[] goTypes = FactoryManager.Instance.FactoryBullets.Where(x => x.GetComponent<PlayerBullet>() != null).ToArray();
-        foreach (var obj in goTypes) bulletType.Enqueue(obj.name);
-    }
-
-    private void Update()
-    {
-        if (Keyboard.current.tabKey.wasPressedThisFrame) SwapBulletType();
-        Movement();
-    }
 
     /**********************ACTIONS**************************/
 
     private void Shoot()
     {
         IFactory bullet = FactoryManager.Instance.FactoryMethod<Bullet>(activeBullet, transform, transform.position);
+        (bullet as Bullet).ResetBullet(transform.position);
         bullet.Shoot();
-        Debug.Log("Fire");
     }
 
     private void SwapBulletType()
@@ -68,5 +53,26 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         inputs.Disable();
+    }
+
+    public void PreIntilizationMethod()
+    {
+        inputs = new PlayerInputActions();                  // Instanciate a new PlayerInputActions
+        inputs.Player.Fire.started += ctx => Shoot();       // Register to UnityEvent
+        Hitbox = 2.0f;                                      // Property for the hitbox radius
+        bulletType = new Queue<string>();
+    }
+
+    public void InitializationMethod()
+    {
+        GameObject[] goTypes = FactoryManager.Instance.FactoryBullets.Where(x => x.GetComponent<PlayerBullet>()).ToArray();
+        foreach (var obj in goTypes) bulletType.Enqueue(obj.name);
+        SwapBulletType();                                   // initialize the active bullet type string
+    }
+
+    public void UpdateMethod()
+    {
+        if (Keyboard.current.tabKey.wasPressedThisFrame) SwapBulletType();
+        Movement();
     }
 }
