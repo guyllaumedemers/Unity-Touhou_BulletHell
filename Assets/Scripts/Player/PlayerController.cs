@@ -45,15 +45,9 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
 
     /**********************ENABLE**************************/
 
-    private void OnEnable()
-    {
-        inputs.Enable();
-    }
+    private void OnEnable() => inputs.Enable();
 
-    private void OnDisable()
-    {
-        inputs.Disable();
-    }
+    private void OnDisable() => inputs.Disable();
 
     public void PreIntilizationMethod()
     {
@@ -68,6 +62,8 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
         GameObject[] goTypes = FactoryManager.Instance.FactoryBullets.Where(x => x.GetComponent<PlayerBullet>()).ToArray();
         foreach (var obj in goTypes) bulletType.Enqueue(obj.name);
         SwapBulletType();                                   // initialize the active bullet type string
+                                                            // active bullet getting assigned => tested => working
+        //Debug.Log(string.Format("Active bullet {0}", activeBullet));      
     }
 
     public void UpdateMethod()

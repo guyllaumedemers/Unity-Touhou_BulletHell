@@ -48,15 +48,15 @@ public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
 
     public void Pool()
     {
-        ObjectPool.Bullets[this.ToString()].Enqueue(this);
-        BulletManager.Instance.BulletsDict[this.ToString()].Dequeue();
+        ObjectPool.Bullets[this.name].Enqueue(this);
+        BulletManager.Instance.BulletsDict[this.name].Dequeue();
         gameObject.SetActive(false);
     }
 
     public void Depool()
     {
-        IFactory bullet = ObjectPool.Bullets[this.ToString()].Dequeue();
-        BulletManager.Instance.BulletsDict[this.ToString()].Enqueue(bullet as Bullet);
+        IFactory bullet = ObjectPool.Bullets[this.name].Dequeue();
+        BulletManager.Instance.BulletsDict[this.name].Enqueue(bullet as Bullet);
         gameObject.SetActive(true);
     }
 
