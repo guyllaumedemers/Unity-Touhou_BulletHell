@@ -40,7 +40,8 @@ public class FactoryManager : FactoryAbs, IFlow
 
     public void PreIntilizationMethod()
     {
-        ResourcesLoading();
+        ResourcesLoading();                                                 // Resources are tested and correct go.name output
+        //foreach (GameObject go in FactoryBullets) Debug.Log(go.name);
     }
 
     public void InitializationMethod()

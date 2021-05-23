@@ -13,7 +13,7 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
     private void UpdateBullets(Dictionary<string, Queue<Bullet>> bulletsDict)
     {
         if (currentID >= maxID) ResetID();
-        ///// Still have to manage a way to avoid erros when removing bullets so the loop doesnt break
+        ///// Still have to manage a way to avoid errors when removing bullets so the loop doesnt break
         foreach (var bullet in bulletsDict.Keys.SelectMany(key => bulletsDict[key].Where(b => b.ID >= currentID && b.ID <= currentID + deltaID)))
         {
             bullet.UpdateBulletPosition();
