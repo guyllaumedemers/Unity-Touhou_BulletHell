@@ -1,42 +1,48 @@
 using System.Collections.Generic;
 using System.Linq;
 
-public class BulletManager : SingletonMono<BulletManager>
+public class BulletManager : SingletonMono<BulletManager>, IFlow
 {
     public Dictionary<string, Queue<Bullet>> BulletsDict { get; private set; }
     private BulletManager() { }
-    public bool BATCHING_STATE { get; private set; }
 
-    private void Awake()
+    private int currentID;
+    private const int deltaID = 10;
+    private const int maxID = 50;
+
+    private void UpdateBullets(Dictionary<string, Queue<Bullet>> bulletsDict)
+    {
+        if (currentID >= maxID) ResetID();
+        ///// Still have to manage a way to avoid errors when removing bullets so the loop doesnt break
+        foreach (var bullet in bulletsDict.Keys.SelectMany(key => bulletsDict[key].Where(b => b.ID >= currentID && b.ID <= currentID + deltaID)))
+        {
+            bullet.UpdateBulletPosition();
+        }
+        currentID += deltaID;
+    }
+
+    private void ResetID() => currentID = 0;
+
+    /**********************FLOW****************************/
+
+    public void PreIntilizationMethod()
     {
         ///// How it is going to work
         ///// Instead of keeping track of BulletType, we are going to put into a single folder all sub-script
         ///// defining a bullet type and Resources.LoadAll inside the dependency in order to retrieve their string name onStart\
         ///// and fill the dictionnary
         BulletsDict = new Dictionary<string, Queue<Bullet>>();
-        BATCHING_STATE = false;
+        currentID = 0;
     }
 
-    private void Update()
+    public void InitializationMethod()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void UpdateMethod()
     {
         ///// BulletManager is going Update Bullets every cycle
         UpdateBullets(BulletsDict);
-    }
-
-    private void UpdateBullets(Dictionary<string, Queue<Bullet>> bulletsDict)
-    {
-        ///// Problem with the way I handle batching
-        ///// I update the first bullet, third bullet, fifth bullet, etc...
-        ///// than I update the opposite bullet
-        ///// What I think will happen is some kind of stutter visual effect
-        ///// 
-        ///// Problem with the way I update is that I am going to pool value and go to the next index
-        ///// At the same time I will be removing from it causing issues with the looping
-        ///// it will either break the loop OR skip a bullet
-        BATCHING_STATE = !BATCHING_STATE;
-        foreach (var value in bulletsDict.Keys.SelectMany(key => bulletsDict[key]).Where(value => value.ID && BATCHING_STATE))
-        {
-            value.UpdateBulletPosition();
-        }
     }
 }
