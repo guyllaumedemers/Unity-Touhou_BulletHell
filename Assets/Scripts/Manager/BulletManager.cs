@@ -50,9 +50,5 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
         throw new System.NotImplementedException();
     }
 
-    public void UpdateMethod()
-    {
-        ///// BulletManager is going Update Bullets every cycle
-        UpdateBullets(BulletsDict);
-    }
+    public void UpdateMethod() => UpdateBullets(BulletsDict);
 }

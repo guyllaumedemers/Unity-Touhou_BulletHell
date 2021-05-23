@@ -41,10 +41,7 @@ public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
         return Vector2.Distance(pos, target) <= rad;
     }
 
-    private void OnBecameInvisible()
-    {
-        Pool();
-    }
+    private void OnBecameInvisible() => Pool();
 
     public void Pool()
     {
@@ -53,15 +50,9 @@ public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
         gameObject.SetActive(false);
     }
 
-    public void Depool()
-    {
-        gameObject.SetActive(true);
-    }
+    public void Depool() => gameObject.SetActive(true);
 
-    public void ResetBullet(Vector2 newPos)
-    {
-        pos = newPos;
-    }
+    public void ResetBullet(Vector2 newPos) => pos = newPos;
 
     private void InitializeMethod() => pos = new Vector2();
 }
