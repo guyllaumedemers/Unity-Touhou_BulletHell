@@ -23,6 +23,8 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
 
     private void ResetID() => currentID = 0;
 
+    /**********************FLOW****************************/
+
     public void PreIntilizationMethod()
     {
         ///// How it is going to work

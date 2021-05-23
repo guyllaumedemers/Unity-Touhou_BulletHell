@@ -7,6 +7,7 @@ public class EntryPoint : MonoBehaviour
     private void Awake()
     {
         FactoryManager.Instance.PreIntilizationMethod();
+        ObjectPool.PreInitializeMethod();
         PlayerController.Instance.PreIntilizationMethod();
         BulletManager.Instance.PreIntilizationMethod();
     }
