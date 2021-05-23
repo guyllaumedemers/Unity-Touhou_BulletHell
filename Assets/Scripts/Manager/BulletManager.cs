@@ -21,6 +21,16 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
         currentID += deltaID;
     }
 
+    public void Add(string type, IFactory bullet)
+    {
+        if (BulletsDict.ContainsKey(type)) BulletsDict[type].Enqueue(bullet as Bullet);
+        else
+        {
+            BulletsDict.Add(type, new Queue<Bullet>());
+            BulletsDict[type].Enqueue(bullet as Bullet);
+        }
+    }
+
     private void ResetID() => currentID = 0;
 
     /**********************FLOW****************************/
