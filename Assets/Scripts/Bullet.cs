@@ -29,7 +29,7 @@ public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
     //// Dont forget to think about the direction in which they travel
     public virtual void UpdateBulletPosition()
     {
-        transform.position += new Vector3(pos.x, pos.y, 0) * speed * Time.deltaTime;
+        transform.position += new Vector3(pos.x, pos.y * speed, 0) * Time.deltaTime;
     }
 
     //// BulletType are going to define their own Shoot function

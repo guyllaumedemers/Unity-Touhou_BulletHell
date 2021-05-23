@@ -12,13 +12,13 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
 
     private void UpdateBullets(Dictionary<string, Queue<Bullet>> bulletsDict)
     {
-        if (currentID >= maxID) ResetID();
-        ///// Still have to manage a way to avoid errors when removing bullets so the loop doesnt break
-        foreach (var bullet in bulletsDict.Keys.SelectMany(key => bulletsDict[key].Where(b => b.ID >= currentID && b.ID <= currentID + deltaID)))
+        foreach (var b in bulletsDict.Keys)
         {
-            bullet.UpdateBulletPosition();
+            foreach (var t in bulletsDict[b])
+            {
+                t.UpdateBulletPosition();
+            }
         }
-        currentID += deltaID;
     }
 
     public void Add(string type, IFactory bullet)
@@ -37,10 +37,6 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
 
     public void PreIntilizationMethod()
     {
-        ///// How it is going to work
-        ///// Instead of keeping track of BulletType, we are going to put into a single folder all sub-script
-        ///// defining a bullet type and Resources.LoadAll inside the dependency in order to retrieve their string name onStart\
-        ///// and fill the dictionnary
         BulletsDict = new Dictionary<string, Queue<Bullet>>();
         currentID = 0;
     }

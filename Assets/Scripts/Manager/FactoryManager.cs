@@ -23,13 +23,17 @@ public class FactoryManager : FactoryAbs, IFlow
 
     public override IFactory FactoryMethod<T>(string type, Transform parent, Vector2 pos)
     {
+        IFactory bullet;
         if (ObjectPool.Bullets.ContainsKey(type) && ObjectPool.Bullets[type].Count > 0)
         {
-            IFactory bullet = ObjectPool.Bullets[type].Dequeue();
-            return bullet;
+            bullet = ObjectPool.Bullets[type].Dequeue();
+            (bullet as Bullet).Depool();
+            goto SKIP;
         }
-        T newBullet = Utilities.InstanciateType<T>(GetPrefab(type), parent, pos);
-        return newBullet as IFactory;
+        bullet = Utilities.InstanciateType<T>(GetPrefab(type), parent, pos) as IFactory;
+    SKIP:
+        BulletManager.Instance.Add(type, bullet);
+        return bullet;
     }
 
     public void ResourcesLoading() => FactoryBullets = Utilities.FindResources<GameObject>(Globals.prefabs);

@@ -18,7 +18,6 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
     {
         IFactory bullet = FactoryManager.Instance.FactoryMethod<Bullet>(activeBullet, null, transform.position);
         (bullet as Bullet).ResetBullet(transform.position);
-        BulletManager.Instance.Add(activeBullet, bullet);
         bullet.Shoot();
     }
 
