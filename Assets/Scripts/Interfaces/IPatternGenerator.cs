@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IDie
+public interface IPatternGenerator
 {
-    public abstract void Die();
+    public abstract void Play();
 }
