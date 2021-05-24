@@ -4,9 +4,8 @@ using UnityEngine;
 public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
 {
     [Header("Bullet Values")]
-    private Vector2 pos;
-    private const float rad = 2;
     private const float speed = 5;
+    private const float rad = 2;
     // Batching ID
     public int ID { get; private set; }
 
@@ -14,7 +13,7 @@ public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
     //// Dont forget to think about the direction in which they travel
     public virtual void UpdateBulletPosition()
     {
-        //// try to shoot forward
+        transform.position += Vector3.up * speed * Time.deltaTime;
     }
 
     //// BulletType are going to define their own Shoot function
@@ -37,7 +36,5 @@ public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
 
     public void Depool() => gameObject.SetActive(true);
 
-    public void ResetBullet(Vector2 newPos) => pos = newPos;
-
-    private void InitializeMethod() => pos = new Vector2();
+    public void ResetBullet(Vector2 newPos) => transform.position = newPos;
 }
