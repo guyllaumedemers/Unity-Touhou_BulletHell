@@ -32,6 +32,7 @@ public class FactoryManager : FactoryAbs, IFlow
         }
         bullet = Utilities.InstanciateType<T>(GetPrefab(type), parent, pos) as IFactory;
     SKIP:
+        (bullet as Bullet).ResetBullet(pos);
         BulletManager.Instance.Add(type, bullet);
         return bullet;
     }

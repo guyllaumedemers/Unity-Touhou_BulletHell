@@ -6,15 +6,15 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
     public Dictionary<string, Queue<Bullet>> BulletsDict { get; private set; }
     private BulletManager() { }
 
-    private int currentID;
-    private const int deltaID = 10;
-    private const int maxID = 50;
-
     private void UpdateBullets(Dictionary<string, Queue<Bullet>> bulletsDict)
     {
-        foreach (var t in bulletsDict.Keys.SelectMany(b => bulletsDict[b]))
+        foreach (var key in bulletsDict.Keys)
         {
-            t.UpdateBulletPosition();
+            Bullet[] bulletArr = bulletsDict[key].ToArray();
+            for (int i = bulletsDict[key].Count - 1; i >= 0; i--)
+            {
+                bulletArr[i].UpdateBulletPosition();
+            }
         }
     }
 
@@ -28,14 +28,11 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
         }
     }
 
-    private void ResetID() => currentID = 0;
-
     /**********************FLOW****************************/
 
     public void PreIntilizationMethod()
     {
         BulletsDict = new Dictionary<string, Queue<Bullet>>();
-        currentID = 0;
     }
 
     public void InitializationMethod()
