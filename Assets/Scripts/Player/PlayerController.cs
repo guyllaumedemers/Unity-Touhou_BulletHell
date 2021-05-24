@@ -1,7 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class PlayerController : SingletonMono<PlayerController>, IFlow
 {
@@ -10,6 +12,8 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
     private PlayerController() { }
     private const float speed = 5.0f;
     private string activeBullet;
+    private const float rof = 15.0f;
+    private Coroutine fireCoroutine;
     public float Hitbox { get; private set; }
 
     /**********************ACTIONS**************************/
@@ -18,6 +22,20 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
     {
         IFactory bullet = FactoryManager.Instance.FactoryMethod<Bullet>(activeBullet, null, transform.position);
         bullet.Shoot();
+    }
+
+    private IEnumerator RapidFire()
+    {
+        float last = Time.time;
+        while (true)
+        {
+            if (Time.time - last > 1 / rof)
+            {
+                Shoot();
+                last = Time.time;
+            }
+            yield return null;
+        }
     }
 
     private void SwapBulletType()
@@ -52,9 +70,10 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
 
     public void PreIntilizationMethod()
     {
-        inputs = new PlayerInputActions();                  // Instanciate a new PlayerInputActions
-        inputs.Player.Fire.started += ctx => Shoot();       // Register to UnityEvent
-        Hitbox = 2.0f;                                      // Property for the hitbox radius
+        inputs = new PlayerInputActions();                      // Instanciate a new PlayerInputActions
+        inputs.Player.Fire.started += ctx => StartFiring();     // Register the rapid fire for a mouse press
+        inputs.Player.Fire.canceled += ctx => StopFiring();     // Stop the coroutine from firing
+        Hitbox = 2.0f;                                          // Property for the hitbox radius
         bulletType = new Queue<string>();
     }
 
@@ -62,12 +81,19 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
     {
         GameObject[] goTypes = FactoryManager.Instance.FactoryBullets.Where(x => x.GetComponent<PlayerBullet>()).ToArray();
         foreach (var obj in goTypes) bulletType.Enqueue(obj.name);
-        SwapBulletType();                                   // initialize the active bullet type string    
+        SwapBulletType();                                       // initialize the active bullet type string    
     }
 
     public void UpdateMethod()
     {
         if (Keyboard.current.tabKey.wasPressedThisFrame) SwapBulletType();
         Movement();
+    }
+
+    private void StartFiring() => fireCoroutine = StartCoroutine(RapidFire());
+
+    private void StopFiring()
+    {
+        if (fireCoroutine != null) StopCoroutine(fireCoroutine);
     }
 }
