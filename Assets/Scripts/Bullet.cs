@@ -11,7 +11,8 @@ public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
     //// Dont forget to think about the direction in which they travel
     public virtual void UpdateBulletPosition()
     {
-        transform.position += Vector3.up * speed * Time.deltaTime;
+        // Temp
+        transform.position += (Vector3)Utilities.CalculateXY(90) * speed * Time.deltaTime;
     }
 
     //// BulletType are going to define their own Shoot function
@@ -29,7 +30,8 @@ public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
     {
         string[] keys = gameObject.name.Split('(');
         ObjectPool.LastUpdate[keys[0]] = Time.time;
-        ObjectPool.Bullets[keys[0]].Enqueue(BulletManager.Instance.CurrentBullet as Bullet);
+        ObjectPool.Bullets[keys[0]].Enqueue(BulletManager.Instance.BulletsDict[keys[0]].Dequeue());
+        //ObjectPool.Bullets[keys[0]].Enqueue(BulletManager.Instance.CurrentBullet as Bullet);
         gameObject.SetActive(false);
     }
 
