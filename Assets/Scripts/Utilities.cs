@@ -13,4 +13,8 @@ public static class Utilities
     {
         return Resources.LoadAll(path, typeof(T)).Cast<T>().ToArray();
     }
+
+    // Create a namespace for this MathTrig
+    // leave a note in the namespace => Mathf takes radian to convert => we already manage the conversion from degrees into radian which is  : (PI/180) * angle;
+    public static Vector2 CalculateXY(float angle) => new Vector2(Mathf.Cos((Mathf.PI / 180) * angle), Mathf.Sin((Mathf.PI / 180) * angle));
 }

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IPatternGenerator
 {
-    public abstract void Play<T>(string type, Transform parent, Vector2 pos) where T : class;
+    public abstract void UpdateBulletPattern(Transform transform, float speed, float dir);
 }
