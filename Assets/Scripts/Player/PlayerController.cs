@@ -24,6 +24,13 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
         bullet.Shoot();
     }
 
+    private void StartFiring() => fireCoroutine = StartCoroutine(RapidFire());
+
+    private void StopFiring()
+    {
+        if (fireCoroutine != null) StopCoroutine(fireCoroutine);
+    }
+
     private IEnumerator RapidFire()
     {
         float last = Time.time;
@@ -88,12 +95,5 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
     {
         if (Keyboard.current.tabKey.wasPressedThisFrame) SwapBulletType();
         Movement();
-    }
-
-    private void StartFiring() => fireCoroutine = StartCoroutine(RapidFire());
-
-    private void StopFiring()
-    {
-        if (fireCoroutine != null) StopCoroutine(fireCoroutine);
     }
 }

@@ -43,6 +43,8 @@ public class FactoryManager : FactoryAbs, IFlow
 
     public GameObject GetPrefab(string type) => FactoryBullets.FirstOrDefault(go => go.name.Equals(type));
 
+    /**********************FLOW****************************/
+
     public void PreIntilizationMethod()
     {
         ResourcesLoading();

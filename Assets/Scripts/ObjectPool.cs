@@ -1,17 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public static class ObjectPool
 {
+    private const float purge = 4.0f;
+
+    private const int minObject = 10;
+
     public static Dictionary<string, Queue<Bullet>> Bullets { get; private set; }
 
-    public static void PreInitializeMethod() => Bullets = new Dictionary<string, Queue<Bullet>>();
+    public static Dictionary<string, float> LastUpdate { get; set; }
+
+    public static void PreInitializeMethod()
+    {
+        Bullets = new Dictionary<string, Queue<Bullet>>();
+        LastUpdate = new Dictionary<string, float>();
+    }
 
     public static void Fill()
     {
         foreach (var go in FactoryManager.Instance.FactoryBullets) Bullets.Add(go.name, new Queue<Bullet>());
+        foreach (var go in FactoryManager.Instance.FactoryBullets) LastUpdate.Add(go.name, Time.time);
     }
 
-    public static void Trim() { } //// Run a Timer on each time of bullets in the dictionnary. If the count doesnt change after period of time. Chunk in half
+    public static IEnumerator Trim()
+    {
+        while (true)
+        {
+            foreach (var key in Bullets.Keys.Where(key => Time.time - LastUpdate[key] > purge))
+            {
+                int count = Bullets[key].Count / 2;
+                while (count < Bullets[key].Count && minObject <= Bullets[key].Count)
+                {
+                    IFactory bullet = Bullets[key].Dequeue();
+                    GameObject.Destroy((bullet as Bullet).gameObject);
+                }
+            }
+            yield return new WaitForSeconds(purge);
+        }
+    }
 }

@@ -17,6 +17,7 @@ public class EntryPoint : SingletonMono<EntryPoint>
 
     private void Start()
     {
+        StartCoroutine(ObjectPool.Trim());
         PlayerController.Instance.InitializationMethod();
     }
 
