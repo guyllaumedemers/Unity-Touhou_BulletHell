@@ -30,6 +30,7 @@ public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
     public void Pool()
     {
         string[] keys = gameObject.name.Split('(');
+        ObjectPool.LastUpdate[keys[0]] = Time.time;
         ObjectPool.Bullets[keys[0]].Enqueue(BulletManager.Instance.BulletsDict[keys[0]].Dequeue());
         gameObject.SetActive(false);
     }

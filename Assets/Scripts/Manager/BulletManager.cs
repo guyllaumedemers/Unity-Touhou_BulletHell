@@ -8,7 +8,7 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
 
     private void UpdateBullets(Dictionary<string, Queue<Bullet>> bulletsDict)
     {
-        foreach (var b in BulletsDict.Keys.SelectMany(key => bulletsDict[key]))
+        foreach (var b in bulletsDict.Keys.SelectMany(key => bulletsDict[key]))
         {
             b.UpdateBulletPosition();
         }
