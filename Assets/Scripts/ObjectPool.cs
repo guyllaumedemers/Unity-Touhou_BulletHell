@@ -25,16 +25,16 @@ public static class ObjectPool
     {
         while (true)
         {
-            foreach (var key in Bullets.Keys.Where(key => Time.time - LastUpdate[key] > Globals.purge))
+            foreach (var key in Bullets.Keys.Where(key => Time.time - LastUpdate[key] > Globals.timeInterval))
             {
                 int count = Bullets[key].Count / 2;
-                while (count < Bullets[key].Count && Globals.minObject <= Bullets[key].Count)
+                while (count < Bullets[key].Count && Globals.minBullets <= Bullets[key].Count)
                 {
                     IFactory bullet = Bullets[key].Dequeue();
                     GameObject.Destroy((bullet as Bullet).gameObject);
                 }
             }
-            yield return new WaitForSeconds(Globals.purge);
+            yield return new WaitForSeconds(Globals.timeInterval);
         }
     }
 }

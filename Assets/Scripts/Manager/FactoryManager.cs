@@ -45,18 +45,9 @@ public class FactoryManager : FactoryAbs, IFlow
 
     /**********************FLOW****************************/
 
-    public void PreIntilizationMethod()
-    {
-        ResourcesLoading();
-    }
+    public void PreIntilizationMethod() => ResourcesLoading();
 
-    public void InitializationMethod()
-    {
-        throw new System.NotImplementedException();
-    }
+    public void InitializationMethod() { }
 
-    public void UpdateMethod()
-    {
-        throw new System.NotImplementedException();
-    }
+    public void UpdateMethod() { }
 }

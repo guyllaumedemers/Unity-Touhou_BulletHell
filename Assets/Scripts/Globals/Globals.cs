@@ -8,7 +8,7 @@ public static class Globals
     ///// Bullet Type class name loading
     public static int bulletID = 0;
     ///// Object Pooling Management - Interval of Trim function call
-    public static float purge = 4.0f;
+    public static float timeInterval = 4.0f;
     ///// Object Pooling Management - Min Object in Pool per Type
-    public static int minObject = 10;
+    public static int minBullets = 10;
 }

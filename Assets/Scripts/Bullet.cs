@@ -6,8 +6,6 @@ public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
     [Header("Bullet Values")]
     private const float speed = 5;
     private const float rad = 2;
-    // Batching ID
-    public int ID { get; private set; }
 
     //// Bullet Update position will be different depending on the pattern => Boss, Mobs, etc...
     //// Dont forget to think about the direction in which they travel
@@ -31,7 +29,7 @@ public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
     {
         string[] keys = gameObject.name.Split('(');
         ObjectPool.LastUpdate[keys[0]] = Time.time;
-        ObjectPool.Bullets[keys[0]].Enqueue(BulletManager.Instance.BulletsDict[keys[0]].Dequeue());
+        ObjectPool.Bullets[keys[0]].Enqueue(BulletManager.Instance.CurrentBullet as Bullet);
         gameObject.SetActive(false);
     }
 
