@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public class BulletManager : SingletonMono<BulletManager>, IFlow
 {
@@ -9,11 +10,11 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
 
     private void UpdateBullets(Dictionary<string, Queue<Bullet>> bulletsDict)
     {
-        //foreach (var b in bulletsDict.Keys.SelectMany(key => bulletsDict[key]))       // Update every bullet for every type
-        //{
-        //    b.UpdateBulletPosition();
-        //}
-        foreach (var key in bulletsDict.Keys) BatchUpdate(bulletsDict, key, 0);
+        foreach (var b in bulletsDict.Keys.SelectMany(key => bulletsDict[key]))       // Update every bullet for every type
+        {
+            b.UpdateBulletPosition();
+        }
+        //foreach (var key in bulletsDict.Keys) BatchUpdate(bulletsDict, key, 0);
     }
 
     public void Add(string type, IFactory bullet)
