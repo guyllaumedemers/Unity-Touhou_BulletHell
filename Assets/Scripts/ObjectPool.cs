@@ -5,10 +5,6 @@ using System.Linq;
 
 public static class ObjectPool
 {
-    private const float purge = 4.0f;
-
-    private const int minObject = 10;
-
     public static Dictionary<string, Queue<Bullet>> Bullets { get; private set; }
 
     public static Dictionary<string, float> LastUpdate { get; set; }
@@ -29,16 +25,16 @@ public static class ObjectPool
     {
         while (true)
         {
-            foreach (var key in Bullets.Keys.Where(key => Time.time - LastUpdate[key] > purge))
+            foreach (var key in Bullets.Keys.Where(key => Time.time - LastUpdate[key] > Globals.purge))
             {
                 int count = Bullets[key].Count / 2;
-                while (count < Bullets[key].Count && minObject <= Bullets[key].Count)
+                while (count < Bullets[key].Count && Globals.minObject <= Bullets[key].Count)
                 {
                     IFactory bullet = Bullets[key].Dequeue();
                     GameObject.Destroy((bullet as Bullet).gameObject);
                 }
             }
-            yield return new WaitForSeconds(purge);
+            yield return new WaitForSeconds(Globals.purge);
         }
     }
 }
