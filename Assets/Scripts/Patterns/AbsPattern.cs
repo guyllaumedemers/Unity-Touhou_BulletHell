@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class AbsPattern : IPatternGenerator
@@ -7,6 +5,8 @@ public abstract class AbsPattern : IPatternGenerator
     [Header("Pattern Shaper Values")]
     public int nbArr;                   // This parameter sets the amount of total bullet-spawning arrays.
     public int nbPerArr;                // This parameter sets the amount of bullets within each array.
+    public float xOffset;
+    public float yOffset;
     // Spread
     public float spreadArr;             // This parameter sets the spread between individual bullet arrays. (in degrees)
     public float spreadInArr;           // This parameter sets the spread within the bullet arrays, more specifically, it sets the spread between the first
@@ -18,14 +18,27 @@ public abstract class AbsPattern : IPatternGenerator
     public bool invertSpin;             // Invert Spin is technically a boolean, 1 = The spin rate will invert once the spin rate hits the Max Spin Rate. 0 = Nothing happens.
     public float rof;                   // This parameter sets the rate at which bullets are fired.
 
-    public abstract void UpdateBulletPattern(Transform transform, float speed, float dir);
+    public IFactory[,] bullets;
 
-    //public IEnumerator Shoot(string type, Transform parent, Vector2 pos)
-    //{
-    //    while (BulletManager.Instance.BulletsDict[type].Count < (nbPerArr * nbArr))
-    //    {
-    //        FactoryManager.Instance.FactoryMethod<Bullet>(type, parent, pos);
-    //        yield return new WaitForSeconds(1 / rof);
-    //    }
-    //}
+    public IFactory Create(string type, Transform transform, Vector2 pos)
+    {
+        return FactoryManager.Instance.FactoryMethod<Bullet>(type, transform, pos);
+    }
+
+    // Fill the Bullet array with the same position for all instances 
+    // so the bullets all start at the center of the transform position
+    public virtual IFactory[,] Fill(string type, Transform transform, Vector2 pos, int indexI, int indexJ)
+    {
+        if (indexI >= nbArr)
+            return bullets;
+        if (indexJ >= nbPerArr)
+        {
+            indexJ = 0;
+            ++indexI;
+        }
+        bullets[indexI, indexJ] = Create(type, transform, pos);
+        return Fill(type, transform, pos, indexI, ++indexJ);
+    }
+
+    public abstract void UpdateBulletPattern();
 }

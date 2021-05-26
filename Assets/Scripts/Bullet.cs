@@ -6,17 +6,18 @@ public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
     [Header("Bullet Values")]
     private const float speed = 5;
     private const float rad = 2;
+    private float angle;
 
     //// Bullet Update position will be different depending on the pattern => Boss, Mobs, etc...
     //// Dont forget to think about the direction in which they travel
     public virtual void UpdateBulletPosition()
     {
         // Temp
-        transform.position += (Vector3)Utilities.CalculateXY(90) * speed * Time.deltaTime;
+        transform.position += (Vector3)Utilities.CalculateXY(angle) * speed * Time.deltaTime;
     }
 
-    //// BulletType are going to define their own Shoot function
-    public abstract void Shoot();
+    //// Shoot a Bullet at the Angle => Dont forget to take into consideration the spin if it needs to rotate
+    public void Shoot(float angle) => this.angle = angle;
 
     //// Bullets should be checking for the distance between it and the target
     public bool DistanceCheck(Vector2 pos, Vector2 target)
