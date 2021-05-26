@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class Star : Bullet
 {
-    public override void Shoot()
-    {
-        throw new System.NotImplementedException();
-    }
+
 }

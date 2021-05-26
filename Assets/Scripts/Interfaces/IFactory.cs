@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IFactory
 {
-    /// This is an interface for creating the objects.
-    public abstract void Shoot();
+    /// This is an interface for retrieving the Object and the methods it implements
+    public abstract void Shoot(float angle);
 }
