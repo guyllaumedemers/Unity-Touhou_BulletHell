@@ -23,11 +23,6 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
     {
         pattern = new MissilePattern(transform, null);
         pattern.UpdateBulletPattern();
-        // Instanciation at a single point
-        //IFactory bullet = FactoryManager.Instance.FactoryMethod<Bullet>(activeBullet, null, transform.position);
-        //bullet.Shoot(90);
-        // What if we have a special ability that allow us to fire from the bubble that rotate around us
-        // we would have to keep a reference of their position in order to set the instanciation position and loop over the number if bubble
     }
 
     private void StartFiring() => fireCoroutine = StartCoroutine(RapidFire());
