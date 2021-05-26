@@ -29,12 +29,11 @@ public abstract class AbsPattern : IPatternGenerator
     // so the bullets all start at the center of the transform position
     public virtual IFactory[,] Fill(string type, Transform transform, Vector2 pos, int indexI, int indexJ)
     {
-        if (indexI >= nbArr)
-            return bullets;
-        if (indexJ >= nbPerArr)
+        if (indexI >= nbArr - 1) return bullets;
+        if (indexJ > nbPerArr - 1)
         {
-            indexJ = 0;
             ++indexI;
+            indexJ = 0;
         }
         bullets[indexI, indexJ] = Create(type, transform, pos);
         return Fill(type, transform, pos, indexI, ++indexJ);

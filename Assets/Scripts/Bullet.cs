@@ -12,7 +12,6 @@ public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
     //// Dont forget to think about the direction in which they travel
     public virtual void UpdateBulletPosition()
     {
-        // Temp
         transform.position += (Vector3)Utilities.CalculateXY(angle) * speed * Time.deltaTime;
     }
 
