@@ -16,6 +16,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
     public float Hitbox { get; private set; }
 
     private IPatternGenerator pattern;
+    private string[] playerBullets = { "Missile", "Card" };         // Find a cleaner way to filter Player Bullets
 
     /**********************ACTIONS**************************/
 
@@ -87,8 +88,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
 
     public void InitializationMethod()
     {
-        GameObject[] goTypes = FactoryManager.Instance.FactoryBullets.Where(x => x.GetComponent<PlayerBullet>()).ToArray();
-        foreach (var obj in goTypes) bulletType.Enqueue(obj.name);
+        foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => playerBullets.Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
         SwapBulletType();                                       // initialize the active bullet type string    
     }
 

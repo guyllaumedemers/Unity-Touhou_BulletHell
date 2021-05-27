@@ -19,7 +19,7 @@ public class MissilePattern : AbsPattern
         this.invertSpin = false;
         this.rof = 15.0f;
         // Initialize all bullets from the pattern which are then added to the bulletManager so he can update all bullets
-        this.bullets = new PlayerBullet[nbArr, nbPerArr];
+        this.bullets = new Bullet[nbArr, nbPerArr];
         this.bullets = Fill("Missile", parent, transform.position, 0, 0);
     }
 
