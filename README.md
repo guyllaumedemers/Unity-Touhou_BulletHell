@@ -5,6 +5,7 @@
 * Mechanic and Features
 
   * Input System
+  * Pattern Generation (WIP)
 
 * Design Pattern
 
