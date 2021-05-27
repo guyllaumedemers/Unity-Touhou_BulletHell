@@ -20,14 +20,14 @@ public abstract class AbsPattern : IPatternGenerator
 
     public IFactory[,] bullets;
 
-    public IFactory Create(string type, Transform transform, Vector2 pos)
+    public IFactory Create(string type, Transform parent, Vector2 pos)
     {
-        return FactoryManager.Instance.FactoryMethod<Bullet>(type, transform, pos);
+        return FactoryManager.Instance.FactoryMethod<Bullet>(type, parent, pos);
     }
 
     // Fill the Bullet array with the same position for all instances 
     // so the bullets all start at the center of the transform position
-    public virtual IFactory[,] Fill(string type, Transform transform, Vector2 pos, int indexI, int indexJ)
+    public virtual IFactory[,] Fill(string type, Transform parent, Vector2 pos, int indexI, int indexJ)
     {
         if (indexI >= nbArr - 1) return bullets;
         if (indexJ > nbPerArr - 1)
@@ -35,9 +35,9 @@ public abstract class AbsPattern : IPatternGenerator
             ++indexI;
             indexJ = 0;
         }
-        bullets[indexI, indexJ] = Create(type, transform, pos);
-        return Fill(type, transform, pos, indexI, ++indexJ);
+        bullets[indexI, indexJ] = Create(type, parent, pos);
+        return Fill(type, parent, pos, indexI, ++indexJ);
     }
 
-    public abstract void UpdateBulletPattern();
+    public abstract void UpdateBulletPattern(int indexI, int indexJ);
 }
