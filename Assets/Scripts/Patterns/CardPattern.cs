@@ -7,13 +7,13 @@ public class CardPattern : AbsPattern
     public CardPattern(Transform transform, Transform parent)
     {
         // Set values for this pattern => subject to change
-        this.nbArr = 2;
+        this.nbArr = 3;
         this.nbPerArr = 1;
         this.xOffset = 0.5f;
         this.yOffset = 1.0f;
-        this.spreadArr = 0.0f;
+        this.spreadArr = 45.0f;
         this.spreadInArr = 2.0f;
-        this.startAngle = 90.0f;
+        this.startAngle = 0.0f;
         this.spinRate = 0.0f;
         this.spinMod = 0.0f;
         this.invertSpin = false;
@@ -30,7 +30,7 @@ public class CardPattern : AbsPattern
             ++indexI;
             indexJ = 0;
         }
-        bullets[indexI, indexJ].Shoot(startAngle);
+        bullets[indexI, indexJ].Shoot((startAngle > spreadArr * nbArr - 1) ? startAngle = spreadArr : startAngle += spreadArr);
         UpdateBulletPattern(indexI, ++indexJ);
     }
 }
