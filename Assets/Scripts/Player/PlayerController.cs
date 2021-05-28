@@ -54,10 +54,10 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
     }
 
     // Not Scalable => Find better way to do this
-    private IPatternGenerator SwapPattern(Transform transform, Transform parent, string pattern)
+    private IPatternGenerator SwapPattern(string pattern)
     {
-        if (pattern.Equals("Missile")) return new MissilePattern(transform, parent);
-        if (pattern.Equals("Card")) return new CardPattern(transform, parent);
+        if (pattern.Equals("Missile")) return new MissilePattern();
+        if (pattern.Equals("Card")) return new CardPattern();
         return null;
     }
 
@@ -98,7 +98,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
     {
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => playerBullets.Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
         SwapBulletType();                                       // initialize the active bullet type string    
-        pattern = SwapPattern(transform, null, activeBullet);   // initialize the pattern with the active bullet type
+        pattern = SwapPattern(activeBullet);   // initialize the pattern with the active bullet type
     }
 
     public void UpdateMethod()
@@ -106,7 +106,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
         if (Keyboard.current.tabKey.wasPressedThisFrame)
         {
             SwapBulletType();
-            pattern = SwapPattern(transform, null, activeBullet);
+            pattern = SwapPattern(activeBullet);
         }
         Movement();
     }
