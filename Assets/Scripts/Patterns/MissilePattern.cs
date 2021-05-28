@@ -6,13 +6,11 @@ public class MissilePattern : AbsPattern
 {
     public MissilePattern()
     {
-        // Set values for this pattern => subject to change
         this.nbArr = 2;
         this.nbPerArr = 1;
         this.xOffset = 0.5f;
         this.startAngle = 90.0f;
         this.rof = 15.0f;
-        // Initialize all bullets from the pattern which are then added to the bulletManager so he can update all bullets
         this.bullets = new Bullet[nbArr, nbPerArr];
     }
 

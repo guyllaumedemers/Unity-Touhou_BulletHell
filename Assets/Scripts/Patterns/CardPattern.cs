@@ -6,13 +6,11 @@ public class CardPattern : AbsPattern
 {
     public CardPattern()
     {
-        // Set values for this pattern => subject to change
         this.nbArr = 3;
         this.nbPerArr = 1;
         this.startAngle = default;
         this.spreadArr = 45.0f;
         this.rof = 15.0f;
-        // Initialize all bullets from the pattern which are then added to the bulletManager so he can update all bullets
         this.bullets = new Bullet[nbArr, nbPerArr];
     }
 
