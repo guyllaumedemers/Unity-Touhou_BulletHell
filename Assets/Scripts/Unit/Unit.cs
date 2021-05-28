@@ -7,21 +7,35 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public float health;
     public float speed;
     public IPatternGenerator pattern;
+    public string activeBullet;
+    public Coroutine fireCoroutine;
 
     /**********************ACTIONS**************************/
 
     public void UpdateUnit()
     {
-        // Update the unit position
+        // Update unit position following trajectory
     }
 
     public IEnumerator Play()
     {
         while (true)
         {
-            yield return new WaitForSeconds(1/ (pattern as AbsPattern).rof);
+            pattern.Fill(activeBullet, null, transform.position, 0, 0);
+            yield return new WaitForSeconds(1 / (pattern as AbsPattern).rof);
         }
     }
 
+    public void StartFiring() => fireCoroutine = StartCoroutine(Play());
+
+    public void StopFiring()
+    {
+        if (fireCoroutine != null) StopCoroutine(fireCoroutine);
+    }
+
     public void TakeDamage(int dmg) => health -= dmg;
+
+    /**********************DISABLE**************************/
+
+    public void OnBecameInvisible() => StopFiring();
 }
