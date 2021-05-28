@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class MissilePattern : AbsPattern
 {
-    public MissilePattern(Transform transform, Transform parent)
+    public MissilePattern()
     {
         // Set values for this pattern => subject to change
         this.nbArr = 2;
         this.nbPerArr = 1;
         this.xOffset = 0.5f;
-        this.yOffset = 1.0f;
-        this.spreadArr = 0.0f;
-        this.spreadInArr = 2.0f;
         this.startAngle = 90.0f;
-        this.spinRate = 0.0f;
-        this.spinMod = 0.0f;
-        this.invertSpin = false;
         this.rof = 15.0f;
         // Initialize all bullets from the pattern which are then added to the bulletManager so he can update all bullets
         this.bullets = new Bullet[nbArr, nbPerArr];
