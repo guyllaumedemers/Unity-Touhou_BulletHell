@@ -11,7 +11,6 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
     private PlayerController() { }
     private const float speed = 5.0f;
     private string activeBullet;
-    private const float rof = 15.0f;
     private Coroutine fireCoroutine;
     public float Hitbox { get; private set; }
 
@@ -40,7 +39,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
         float last = Time.time;
         while (true)
         {
-            if (Time.time - last > 1 / rof)
+            if (Time.time - last > 1 / (pattern as AbsPattern).rof)
             {
                 Shoot();
                 last = Time.time;
