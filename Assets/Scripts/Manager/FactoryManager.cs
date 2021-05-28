@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class FactoryManager : FactoryAbs, IFlow
+public class FactoryManager : IFactoryAbs, IFlow
 {
     #region singleton
     private static FactoryManager instance;
@@ -21,16 +21,16 @@ public class FactoryManager : FactoryAbs, IFlow
 
     public GameObject[] FactoryBullets { get; private set; }
 
-    public override IFactory FactoryMethod<T>(string type, Transform parent, Vector2 pos)
+    public IProduct FactoryMethod<T>(string type, Transform parent, Vector2 pos) where T : class
     {
-        IFactory bullet;
+        IProduct bullet;
         if (ObjectPool.Bullets.ContainsKey(type) && ObjectPool.Bullets[type].Count > 0)
         {
             bullet = ObjectPool.Bullets[type].Dequeue();
             (bullet as Bullet).Depool();
             goto SKIP;
         }
-        bullet = Utilities.InstanciateType<T>(GetPrefab(type), parent, pos) as IFactory;
+        bullet = Utilities.InstanciateType<T>(GetPrefab(type), parent, pos) as IProduct;
     SKIP:
         (bullet as Bullet).ResetBullet(pos);
         BulletManager.Instance.Add(type, bullet);

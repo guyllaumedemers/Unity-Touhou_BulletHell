@@ -30,7 +30,7 @@ public static class ObjectPool
                 int count = Bullets[key].Count / 2;
                 while (count < Bullets[key].Count && Globals.minBullets <= Bullets[key].Count)
                 {
-                    IFactory bullet = Bullets[key].Dequeue();
+                    IProduct bullet = Bullets[key].Dequeue();
                     GameObject.Destroy((bullet as Bullet).gameObject);
                 }
             }
