@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public abstract class Bullet : MonoBehaviour, IFactory, IPoolable
+public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
 {
     [Header("Bullet Values")]
     private const float speed = 5;

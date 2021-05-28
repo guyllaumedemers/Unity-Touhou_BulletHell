@@ -6,7 +6,7 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
 {
     public Dictionary<string, Queue<Bullet>> BulletsDict { get; private set; }
     private BulletManager() { }
-    public IFactory CurrentBullet { get; private set; }
+    public IProduct CurrentBullet { get; private set; }
 
     private void UpdateBullets(Dictionary<string, Queue<Bullet>> bulletsDict)
     {
@@ -17,7 +17,7 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
         //foreach (var key in bulletsDict.Keys) BatchUpdate(bulletsDict, key, 0);
     }
 
-    public void Add(string type, IFactory bullet)
+    public void Add(string type, IProduct bullet)
     {
         if (BulletsDict.ContainsKey(type)) BulletsDict[type].Enqueue(bullet as Bullet);
         else
@@ -32,7 +32,7 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
         if (bulletsDict[key].Count == 0 || cpt >= Globals.minBullets)
             return;
         {
-            IFactory bullet = bulletsDict[key].Dequeue();
+            IProduct bullet = bulletsDict[key].Dequeue();
             CurrentBullet = bullet;                         // Store current bullet depooled so that if the position is outside the viewport
                                                             // and pool is called we can ref this bullet
             (bullet as Bullet).UpdateBulletPosition();

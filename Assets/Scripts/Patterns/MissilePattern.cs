@@ -16,7 +16,7 @@ public class MissilePattern : AbsPattern
 
     // Fill the Bullet array with different position instances of each array
     // so the bullets all start at the center of the transform position of each array
-    public override IFactory[,] Fill(string type, Transform transform, Vector2 pos, int indexI, int indexJ)
+    public override IProduct[,] Fill(string type, Transform transform, Vector2 pos, int indexI, int indexJ)
     {
         if (indexI >= nbArr - 1) return bullets;
         if (indexJ > nbPerArr - 1)
