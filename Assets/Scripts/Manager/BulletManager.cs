@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletManager : SingletonMono<BulletManager>, IFlow
 {
-    public Dictionary<string, HashSet<Bullet>> BulletsDict { get; private set; }
+    public Dictionary<string, HashSet<Bullet>> BulletsDict { get; private set; }        // Hashset are unordered => how would I approach a BatchUpdate System
     private BulletManager() { }
 
     private void UpdateBullets(Dictionary<string, HashSet<Bullet>> bulletsDict)
