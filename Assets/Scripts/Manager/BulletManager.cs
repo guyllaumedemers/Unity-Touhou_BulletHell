@@ -7,11 +7,16 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
     public Dictionary<string, HashSet<Bullet>> BulletsDict { get; private set; }        // Hashset are unordered => how would I approach a BatchUpdate System
     private BulletManager() { }
 
-    private void UpdateBullets(Dictionary<string, HashSet<Bullet>> bulletsDict)
+    public float Last { get; private set; }
+
+    private void UpdateBullets(Dictionary<string, HashSet<Bullet>> bulletsDict) => BatchUpdate(bulletsDict);
+
+    private void BatchUpdate(Dictionary<string, HashSet<Bullet>> bulletsDict)
     {
-        foreach (var b in bulletsDict.Keys.SelectMany(key => bulletsDict[key]))
+        if (Time.time - Last > Globals.fps)
         {
-            b.UpdateBulletPosition();
+            foreach (var b in bulletsDict.Keys.SelectMany(key => bulletsDict[key])) b.UpdateBulletPosition();
+            Last = Time.time;
         }
     }
 
@@ -33,7 +38,11 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
 
     /**********************FLOW****************************/
 
-    public void PreIntilizationMethod() => BulletsDict = new Dictionary<string, HashSet<Bullet>>();
+    public void PreIntilizationMethod()
+    {
+        BulletsDict = new Dictionary<string, HashSet<Bullet>>();
+        Last = default;
+    }
 
     public void InitializationMethod() { }
 

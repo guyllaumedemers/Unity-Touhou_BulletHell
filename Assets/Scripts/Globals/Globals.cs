@@ -5,8 +5,8 @@ public static class Globals
     public const string prefabs = "prefabs/";
     ///// Bullet Type class name loading
     public const string bulletTypes = "Assets/Scripts/BulletTypes/";
-    ///// Bullet Type class name loading
-    public static int bulletID = 0;
+    ///// FPS management
+    public static float fps = 1/60;
     ///// Object Pooling Management - Interval of Trim function call
     public static float timeInterval = 4.0f;
     ///// Object Pooling Management - Min Object in Pool per Type
