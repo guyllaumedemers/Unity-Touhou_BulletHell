@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BulletManager : SingletonMono<BulletManager>, IFlow
 {
-    public Dictionary<string, Queue<Bullet>> BulletsDict { get; private set; }
+    public Dictionary<string, HashSet<Bullet>> BulletsDict { get; private set; }
     private BulletManager() { }
 
-    private void UpdateBullets(Dictionary<string, Queue<Bullet>> bulletsDict)
+    private void UpdateBullets(Dictionary<string, HashSet<Bullet>> bulletsDict)
     {
         foreach (var b in bulletsDict.Keys.SelectMany(key => bulletsDict[key]))
         {
@@ -17,17 +17,23 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
 
     public void Add(string type, IProduct bullet)
     {
-        if (BulletsDict.ContainsKey(type)) BulletsDict[type].Enqueue(bullet as Bullet);
+        if (BulletsDict.ContainsKey(type)) BulletsDict[type].Add(bullet as Bullet);
         else
         {
-            BulletsDict.Add(type, new Queue<Bullet>());
-            BulletsDict[type].Enqueue(bullet as Bullet);
+            BulletsDict.Add(type, new HashSet<Bullet>());
+            BulletsDict[type].Add(bullet as Bullet);
         }
+    }
+
+    public IProduct Find(string type, IProduct find)
+    {
+        BulletsDict[type].Remove(find as Bullet);
+        return find;
     }
 
     /**********************FLOW****************************/
 
-    public void PreIntilizationMethod() => BulletsDict = new Dictionary<string, Queue<Bullet>>();
+    public void PreIntilizationMethod() => BulletsDict = new Dictionary<string, HashSet<Bullet>>();
 
     public void InitializationMethod() { }
 
