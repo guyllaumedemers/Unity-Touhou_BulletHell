@@ -9,15 +9,15 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
     PlayerInputActions inputs;
     Queue<string> bulletType;
     private PlayerController() { }
+    Coroutine fireCoroutine;
+    // PlayerController values
     private const float speed = 5.0f;
     private string activeBullet;
-    private Coroutine fireCoroutine;
     public float Hitbox { get; private set; }
-
     private IPatternGenerator pattern;
-    private enum PatternEnum { Missile, Card }
+    private ISwap bulletSwap;
 
-    private string[] EnumToString() => System.Enum.GetNames(typeof(PatternEnum));
+    private string[] EnumToString() => System.Enum.GetNames(typeof(PatternEnumPlayer));
 
     /**********************ACTIONS**************************/
 
@@ -47,19 +47,6 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
             yield return null;
         }
     }
-
-    private void SwapBulletType()
-    {
-        activeBullet = bulletType.Dequeue();
-        bulletType.Enqueue(activeBullet);
-    }
-
-    private IPatternGenerator SwapPattern(PatternEnum pattern) => pattern switch
-    {
-        PatternEnum.Missile => new MissilePattern(),
-        PatternEnum.Card => new CardPattern(),
-        _ => default,
-    };
 
     private void Movement()
     {
@@ -92,21 +79,22 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
         inputs.Player.Fire.canceled += ctx => StopFiring();     // Stop the coroutine from firing
         Hitbox = 2.0f;                                          // Property for the hitbox radius
         bulletType = new Queue<string>();
+        bulletSwap = new SwapPatternBehaviour();
     }
 
     public void InitializationMethod()
     {
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => EnumToString().Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
-        SwapBulletType();                                                                                       // initialize the active bullet type string    
-        pattern = SwapPattern((PatternEnum)System.Enum.Parse(typeof(PatternEnum), activeBullet));               // initialize the pattern with the active bullet type
+        bulletSwap.SwapBulletType(bulletType, activeBullet);                                                                        // initialize the active bullet type string    
+        pattern = bulletSwap.SwapPattern((PatternEnum)System.Enum.Parse(typeof(PatternEnum), activeBullet));                        // initialize the pattern with the active bullet type
     }
 
     public void UpdateMethod()
     {
         if (Keyboard.current.tabKey.wasPressedThisFrame)
         {
-            SwapBulletType();
-            pattern = SwapPattern((PatternEnum)System.Enum.Parse(typeof(PatternEnum), activeBullet));
+            bulletSwap.SwapBulletType(bulletType, activeBullet);
+            pattern = bulletSwap.SwapPattern((PatternEnum)System.Enum.Parse(typeof(PatternEnum), activeBullet));
         }
         Movement();
     }
