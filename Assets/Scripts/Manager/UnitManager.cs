@@ -9,6 +9,8 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
     private UnitManager() { }
     private IResourcesLoading resources;
 
+    /**********************ACTIONS**************************/
+
     ///// Unit creation is not handle inside the Factory Pattern
     ///// Factory Pattern is only going to handle bullet instanciation as there wont be that many units on screen
     public Unit Create<T>(string type, Vector2 pos) where T : class
