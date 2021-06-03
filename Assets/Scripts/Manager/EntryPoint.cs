@@ -26,5 +26,6 @@ public class EntryPoint : SingletonMono<EntryPoint>
     {
         PlayerController.Instance.UpdateMethod();
         BulletManager.Instance.UpdateMethod();
+        UnitManager.Instance.UpdateMethod();
     }
 }
