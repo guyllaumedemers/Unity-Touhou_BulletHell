@@ -7,7 +7,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
 {
     public IPatternGenerator pattern;
     public IMoveable moveable;
-    public ISwap bulletSwap;
+    public ISwappable bullets;
     public Coroutine fireCoroutine;
     // Unit values
     public float health;
@@ -20,11 +20,12 @@ public abstract class Unit : MonoBehaviour, IDamageable
 
     /**********************ACTIONS**************************/
 
-    public void PreInitializeUnit()
+    public Unit PreInitializeUnit()
     {
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => EnumToString().Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
-        bulletSwap.SwapBulletType(bulletType, activeBullet);                                                                 // initialize the active bullet type string    
-        pattern = bulletSwap.SwapPattern((PatternEnum)System.Enum.Parse(typeof(PatternEnum), activeBullet));                 // initialize the pattern with the active bullet type
+        bullets.SwapBulletType(bulletType, activeBullet);                                                                 // initialize the active bullet type string    
+        pattern = bullets.SwapPattern((PatternEnum)System.Enum.Parse(typeof(PatternEnum), activeBullet));                 // initialize the pattern with the active bullet type
+        return this;
     }
 
     public void UpdateUnit() => transform.position = moveable.Move(transform.position, angle, speed);
