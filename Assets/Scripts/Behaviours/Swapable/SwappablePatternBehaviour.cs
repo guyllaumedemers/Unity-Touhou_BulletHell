@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwapPatternBehaviour : ISwap
+public class SwappablePatternBehaviour : ISwappable
 {
     public void SwapBulletType(Queue<string> bulletType, string activeBullet)
     {

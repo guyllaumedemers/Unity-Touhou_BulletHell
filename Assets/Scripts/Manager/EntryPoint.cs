@@ -13,6 +13,7 @@ public class EntryPoint : SingletonMono<EntryPoint>
         ObjectPool.Fill();
         PlayerController.Instance.PreIntilizationMethod();
         BulletManager.Instance.PreIntilizationMethod();
+        UnitManager.Instance.PreIntilizationMethod();
     }
 
     private void Start()
