@@ -30,7 +30,7 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
         }
     }
 
-    public IProduct Find(string type, IProduct find)
+    public IProduct RemoveFind(string type, IProduct find)
     {
         BulletsDict[type].Remove(find as Bullet);
         return find;
