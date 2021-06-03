@@ -28,7 +28,7 @@ public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
     {
         string[] keys = gameObject.name.Split('(');
         ObjectPool.LastUpdate[keys[0]] = Time.time;
-        ObjectPool.Bullets[keys[0]].Enqueue(BulletManager.Instance.Find(keys[0], this) as Bullet);
+        ObjectPool.Bullets[keys[0]].Enqueue(BulletManager.Instance.RemoveFind(keys[0], this) as Bullet);
         gameObject.SetActive(false);
     }
 
