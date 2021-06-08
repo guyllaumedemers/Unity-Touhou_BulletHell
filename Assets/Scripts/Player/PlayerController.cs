@@ -6,18 +6,20 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : SingletonMono<PlayerController>, IFlow
 {
+    private IPatternGenerator pattern;
+    private readonly IEnumFiltering enumFiltering = new EnumFilteringBehaviour();
+    private readonly ISwappable bullets = new SwappablePatternBehaviour();
+    Coroutine fireCoroutine;
+    // Player values
+    private string activeBullet;
+    private const float speed = 5.0f;
     PlayerInputActions inputs;
     Queue<string> bulletType;
     private PlayerController() { }
-    Coroutine fireCoroutine;
-    // PlayerController values
-    private const float speed = 5.0f;
-    private string activeBullet;
-    public float Hitbox { get; private set; }
-    private IPatternGenerator pattern;
-    private readonly ISwappable bullets = new SwappablePatternBehaviour();
 
-    private string[] EnumToString() => System.Enum.GetNames(typeof(PatternEnumPlayer));
+    /****************FILTERING BULLETS ENUM******************/
+
+    private readonly PatternEnum patternFilter = PatternEnum.Missile | PatternEnum.Card;
 
     /**********************ACTIONS**************************/
 
@@ -77,13 +79,12 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
         inputs = new PlayerInputActions();                      // Instanciate a new PlayerInputActions
         inputs.Player.Fire.started += ctx => StartFiring();     // Register the rapid fire for a mouse press
         inputs.Player.Fire.canceled += ctx => StopFiring();     // Stop the coroutine from firing
-        Hitbox = 2.0f;                                          // Property for the hitbox radius
         bulletType = new Queue<string>();
     }
 
     public void InitializationMethod()
     {
-        foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => EnumToString().Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
+        foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => enumFiltering.EnumToString(patternFilter).Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
         activeBullet = bullets.SwapBulletType(bulletType);                                                              // initialize the active bullet type string    
         pattern = bullets.SwapPattern((PatternEnum)System.Enum.Parse(typeof(PatternEnum), activeBullet));               // initialize the pattern with the active bullet type
     }
