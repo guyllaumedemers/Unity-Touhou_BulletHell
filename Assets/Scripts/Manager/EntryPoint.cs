@@ -10,10 +10,10 @@ public class EntryPoint : SingletonMono<EntryPoint>
     {
         FactoryManager.Instance.PreIntilizationMethod();
         ObjectPool.PreInitializeMethod();
-        ObjectPool.Fill();
         PlayerController.Instance.PreIntilizationMethod();
         BulletManager.Instance.PreIntilizationMethod();
         UnitManager.Instance.PreIntilizationMethod();
+        WaypointSystem.Instance.PreIntilizationMethod();
     }
 
     private void Start()

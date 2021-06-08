@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IResourcesLoading
 {
-    public abstract void ResourcesLoading(GameObject[] arr, string path);
     public abstract GameObject GetPrefab(GameObject[] arr, string type);
+    public abstract GameObject[] ResourcesLoading(string path);
 }

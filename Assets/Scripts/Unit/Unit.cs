@@ -23,8 +23,8 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public Unit PreInitializeUnit()
     {
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => EnumToString().Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
-        bullets.SwapBulletType(bulletType, activeBullet);                                                                 // initialize the active bullet type string    
-        pattern = bullets.SwapPattern((PatternEnum)System.Enum.Parse(typeof(PatternEnum), activeBullet));                 // initialize the pattern with the active bullet type
+        activeBullet = bullets.SwapBulletType(bulletType);                                                                  // initialize the active bullet type string    
+        pattern = bullets.SwapPattern((PatternEnum)System.Enum.Parse(typeof(PatternEnum), activeBullet));                   // initialize the pattern with the active bullet type
         return this;
     }
 

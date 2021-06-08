@@ -3,6 +3,6 @@ using System.Collections.Generic;
 
 public interface ISwappable
 {
-    public abstract void SwapBulletType(Queue<string> bulletType, string activeBullet);
+    public abstract string SwapBulletType(Queue<string> bulletType);
     public abstract IPatternGenerator SwapPattern(PatternEnum pattern);
 }
