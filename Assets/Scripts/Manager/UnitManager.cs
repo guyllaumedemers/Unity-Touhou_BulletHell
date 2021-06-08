@@ -7,7 +7,7 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
     public Dictionary<string, HashSet<Unit>> UnitsDict { get; private set; }
     public GameObject[] Units { get; private set; }
     private UnitManager() { }
-    private IResourcesLoading resources;
+    private readonly IResourcesLoading resources = new ResourcesLoadingBehaviour();
 
     /**********************ACTIONS**************************/
 
@@ -24,7 +24,7 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
     {
         foreach (var unit in unitsDict.Keys.SelectMany(key => unitsDict[key])) unit.UpdateUnit();
     }
-    
+
     private void Add(string type, Unit unit)
     {
         if (UnitsDict.ContainsKey(type)) UnitsDict[type].Add(unit);
@@ -40,8 +40,7 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
     public void PreIntilizationMethod()
     {
         UnitsDict = new Dictionary<string, HashSet<Unit>>();
-        resources = new ResourcesLoadingBehaviour();
-        resources.ResourcesLoading(Units, Globals.unitsPrefabs);
+        Units = resources.ResourcesLoading(Globals.unitsPrefabs);
     }
 
     public void InitializationMethod() { }

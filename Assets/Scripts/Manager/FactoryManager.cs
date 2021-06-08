@@ -19,7 +19,7 @@ public class FactoryManager : IFactoryAbs, IFlow
     }
     #endregion
     public GameObject[] FactoryBullets { get; private set; }
-    private IResourcesLoading resources;
+    private readonly IResourcesLoading resources = new ResourcesLoadingBehaviour();
 
     public IProduct FactoryMethod<T>(string type, Transform parent, Vector2 pos) where T : class
     {
@@ -39,11 +39,7 @@ public class FactoryManager : IFactoryAbs, IFlow
 
     /**********************FLOW****************************/
 
-    public void PreIntilizationMethod()
-    {
-        resources = new ResourcesLoadingBehaviour();
-        resources.ResourcesLoading(FactoryBullets, Globals.bulletsPrefabs);
-    }
+    public void PreIntilizationMethod() => FactoryBullets = resources.ResourcesLoading(Globals.bulletsPrefabs);
 
     public void InitializationMethod() { }
 

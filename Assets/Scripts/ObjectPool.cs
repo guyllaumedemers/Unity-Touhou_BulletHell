@@ -13,9 +13,10 @@ public static class ObjectPool
     {
         Bullets = new Dictionary<string, Queue<Bullet>>();
         LastUpdate = new Dictionary<string, float>();
+        Fill();
     }
 
-    public static void Fill()
+    private static void Fill()
     {
         foreach (var go in FactoryManager.Instance.FactoryBullets) Bullets.Add(go.name, new Queue<Bullet>());
         foreach (var go in FactoryManager.Instance.FactoryBullets) LastUpdate.Add(go.name, Time.time);

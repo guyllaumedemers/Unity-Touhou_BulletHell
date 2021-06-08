@@ -12,4 +12,6 @@ public static class Globals
     public static float timeInterval = 4.0f;
     ///// Object Pooling Management - Min Object in Pool per Type
     public static int minBullets = 10;
+    ///// Tag
+    public static string waypoint = "Waypoint";
 }

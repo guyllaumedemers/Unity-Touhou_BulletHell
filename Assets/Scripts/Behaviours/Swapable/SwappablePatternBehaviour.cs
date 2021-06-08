@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class SwappablePatternBehaviour : ISwappable
 {
-    public void SwapBulletType(Queue<string> bulletType, string activeBullet)
+    //// Only depend on preference as I could have done : bulletType.Peek for return instead of returning the one Dequeue
+    public string SwapBulletType(Queue<string> bulletType)
     {
-        activeBullet = bulletType.Dequeue();
-        bulletType.Enqueue(activeBullet);
+        string bulletTypeRemoved = bulletType.Dequeue();
+        bulletType.Enqueue(bulletTypeRemoved);
+        return bulletTypeRemoved;
     }
 
     public IPatternGenerator SwapPattern(PatternEnum pattern) => pattern switch                     // Single switch expression that handle all Pattern instanciation
