@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IEnumFiltering
 {
-    public abstract PatternEnum[] Filter(PatternEnum flags);
-    public abstract string[] EnumToString(PatternEnum flags);
+    public abstract BulletTypeEnum[] Filter(BulletTypeEnum flags);
+    public abstract string[] EnumToString(BulletTypeEnum flags);
 }

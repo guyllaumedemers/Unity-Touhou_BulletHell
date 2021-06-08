@@ -22,7 +22,7 @@ public class CardPattern : AbsPattern
             ++indexI;
             indexJ = 0;
         }
-        bullets[indexI, indexJ].Shoot((startAngle > spreadArr * nbArr - 1) ? startAngle = spreadArr : startAngle += spreadArr);
+        bullets[indexI, indexJ].SetAngle((startAngle > spreadArr * nbArr - 1) ? startAngle = spreadArr : startAngle += spreadArr);
         UpdateBulletPattern(indexI, ++indexJ);
     }
 }

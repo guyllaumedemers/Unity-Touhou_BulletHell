@@ -39,7 +39,7 @@ public class MissilePattern : AbsPattern
             ++indexI;
             indexJ = 0;
         }
-        bullets[indexI, indexJ].Shoot(startAngle);
+        bullets[indexI, indexJ].SetAngle(startAngle);
         UpdateBulletPattern(indexI, ++indexJ);
     }
 }

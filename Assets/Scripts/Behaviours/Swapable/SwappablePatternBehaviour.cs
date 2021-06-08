@@ -12,12 +12,12 @@ public class SwappablePatternBehaviour : ISwappable
         return bulletTypeRemoved;
     }
 
-    public IPatternGenerator SwapPattern(PatternEnum pattern) => pattern switch                     // Single switch expression that handle all Pattern instanciation
+    public IPatternGenerator SwapPattern(BulletTypeEnum pattern) => pattern switch                     // Single switch expression that handle all Pattern instanciation
     {                                                                                               // Patterns are filtered inside the class calling it thru custom enum
-        PatternEnum.Missile => new MissilePattern(),
-        PatternEnum.Card => new CardPattern(),
-        PatternEnum.Circle => new PulsePattern(),
-        PatternEnum.Star => default,                                                                // need to create pattern for the star bullet type
+        BulletTypeEnum.Missile => new MissilePattern(),
+        BulletTypeEnum.Card => new CardPattern(),
+        BulletTypeEnum.Circle => new PulsePattern(),
+        BulletTypeEnum.Star => default,                                                                // need to create pattern for the star bullet type
         _ => default,
     };
 }
