@@ -84,7 +84,6 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
     public void InitializationMethod()
     {
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => EnumToString().Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
-        foreach (string s in bulletType) Debug.Log(s);
         activeBullet = bullets.SwapBulletType(bulletType);                                                              // initialize the active bullet type string    
         pattern = bullets.SwapPattern((PatternEnum)System.Enum.Parse(typeof(PatternEnum), activeBullet));               // initialize the pattern with the active bullet type
     }
