@@ -1,7 +1,7 @@
 using System;
 
 [Flags]
-public enum PatternEnum
+public enum BulletTypeEnum
 {
     None = 0,
     Missile = 1,

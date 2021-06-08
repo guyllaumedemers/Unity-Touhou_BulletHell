@@ -20,7 +20,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
 
     /****************FILTERING BULLETS ENUM******************/
 
-    public PatternEnum patternFilter = PatternEnum.Circle | PatternEnum.Star;
+    public BulletTypeEnum patternFilter = BulletTypeEnum.Circle | BulletTypeEnum.Star;
 
     /**********************ACTIONS**************************/
 
@@ -28,7 +28,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
     {
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => enumFiltering.EnumToString(patternFilter).Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
         activeBullet = bullets.SwapBulletType(bulletType);                                                                  // initialize the active bullet type string    
-        pattern = bullets.SwapPattern((PatternEnum)System.Enum.Parse(typeof(PatternEnum), activeBullet));                   // initialize the pattern with the active bullet type
+        pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));                   // initialize the pattern with the active bullet type
         return this;
     }
 

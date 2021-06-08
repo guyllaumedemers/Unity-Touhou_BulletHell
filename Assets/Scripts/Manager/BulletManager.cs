@@ -6,8 +6,9 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
 {
     public Dictionary<string, HashSet<Bullet>> BulletsDict { get; private set; }        // Hashset are unordered => how would I approach a BatchUpdate System
     private BulletManager() { }
-
     public float Last { get; private set; }
+
+    /**********************ACTIONS**************************/
 
     private void UpdateBullets(Dictionary<string, HashSet<Bullet>> bulletsDict) => BatchUpdate(bulletsDict);
 
