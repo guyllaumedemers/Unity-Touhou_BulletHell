@@ -1,25 +1,11 @@
+using System;
 
-public enum PatternEnumPlayer
-{
-    Missile,
-    Card
-}
-
-public enum PatternEnumEnemyUnit
-{
-    Missile
-}
-
-public enum PatternEnumBossUnit
-{
-    Circle,
-    Star
-}
-
+[Flags]
 public enum PatternEnum
 {
-    Missile,
-    Card,
-    Circle,
-    Star
-}
+    None = 0,
+    Missile = 1,
+    Card = 2,
+    Circle = 4,
+    Star = 8
+};

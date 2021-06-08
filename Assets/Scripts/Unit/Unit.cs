@@ -7,7 +7,8 @@ public abstract class Unit : MonoBehaviour, IDamageable
 {
     public IPatternGenerator pattern;
     public IMoveable moveable;
-    public ISwappable bullets;
+    public readonly IEnumFiltering enumFiltering = new EnumFilteringBehaviour();
+    public readonly ISwappable bullets = new SwappablePatternBehaviour();
     public Coroutine fireCoroutine;
     // Unit values
     public float health;
@@ -16,13 +17,16 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public string activeBullet;
     public Queue<string> bulletType;
 
-    public virtual string[] EnumToString() => System.Enum.GetNames(typeof(PatternEnumEnemyUnit));
+
+    /****************FILTERING BULLETS ENUM******************/
+
+    public PatternEnum patternFilter = PatternEnum.Circle | PatternEnum.Star;
 
     /**********************ACTIONS**************************/
 
     public Unit PreInitializeUnit()
     {
-        foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => EnumToString().Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
+        foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => enumFiltering.EnumToString(patternFilter).Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
         activeBullet = bullets.SwapBulletType(bulletType);                                                                  // initialize the active bullet type string    
         pattern = bullets.SwapPattern((PatternEnum)System.Enum.Parse(typeof(PatternEnum), activeBullet));                   // initialize the pattern with the active bullet type
         return this;

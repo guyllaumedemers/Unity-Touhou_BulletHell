@@ -35,7 +35,7 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
     {
         for (int i = 0; i < waypoints.Length; i++)
         {
-            GameObject go = new GameObject($"{Globals.waypoint}");
+            GameObject go = new GameObject(System.String.Format("{0} {1}", Globals.waypoint, i + 1));
             go.tag = Globals.waypoint;
             go.AddComponent<Waypoint>().SetPosition(positions[level][i]);
         }
