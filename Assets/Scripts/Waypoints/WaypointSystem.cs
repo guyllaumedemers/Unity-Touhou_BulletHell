@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using System.Linq;
 using Unity.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
 {
