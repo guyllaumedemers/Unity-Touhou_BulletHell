@@ -6,8 +6,7 @@
 
   * Input System
   * Pattern Generation (WIP)
-  * Collision System (WIP)
-  * R-tree (might be needed)
+  * Collision System (WIP => might have to implement R-tree to handle collision smoothly)
 
 * Design Pattern
 
