@@ -6,6 +6,7 @@
 
   * Input System
   * Pattern Generation (WIP)
+  * Collision System (WIP)
 
 * Design Pattern
 
