@@ -4,11 +4,12 @@ using UnityEngine;
 public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
 {
     IMoveable moveable = new MoveableBulletBehaviour();
-    public IgnoreLayerEnum ignoredLayer;
+    public IgnoreLayerEnum ignoredLayer { get; private set; }
     // bullet values
-    private const float speed = 5;
-    public float angle;
-    public float rad;
+    protected const float speed = 5;
+    protected float angle;
+    public float rad { get; private set; }
+    public float dmg { get; private set; }
 
     /**********************ACTIONS**************************/
 

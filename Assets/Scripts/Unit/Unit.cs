@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class Unit : MonoBehaviour, IDamageable
 {
     public IPatternGenerator pattern;
-    public IMoveable moveable;
+    public IMoveable moveable = new MoveableBossBehaviour(); // Temp => Have to make a generic behaviour for units and Boss => Testing purpose Only
     public readonly IEnumFiltering enumFiltering = new EnumFilteringBehaviour();
     public readonly ISwappable bullets = new SwappablePatternBehaviour();
     public Coroutine fireCoroutine;
@@ -17,18 +17,15 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public string activeBullet;
     public Queue<string> bulletType;
 
-
-    /****************FILTERING BULLETS ENUM******************/
-
-    public BulletTypeEnum patternFilter = BulletTypeEnum.Circle | BulletTypeEnum.Star;
-
     /**********************ACTIONS**************************/
 
-    public Unit PreInitializeUnit()
+    // Bullet Type is now pass as arguments so i can parametrize the instanciation of an unit type directly in the function call instead of having values all around and overwriting
+    public Unit PreInitializeUnit(BulletTypeEnum bulletT)
     {
-        foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => enumFiltering.EnumToString(patternFilter).Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
-        activeBullet = bullets.SwapBulletType(bulletType);                                                                  // initialize the active bullet type string    
-        pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));                   // initialize the pattern with the active bullet type
+        bulletType = new Queue<string>();
+        foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => enumFiltering.EnumToString(bulletT).Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
+        activeBullet = bullets.SwapBulletType(bulletType);                                                                      // initialize the active bullet type string    
+        pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));                 // initialize the pattern with the active bullet type
         return this;
     }
 
@@ -50,7 +47,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
         if (fireCoroutine != null) StopCoroutine(fireCoroutine);
     }
 
-    public void TakeDamage(int dmg) => health -= dmg;
+    public void TakeDamage(float dmg) => health -= dmg;
 
     /**********************DISABLE**************************/
 

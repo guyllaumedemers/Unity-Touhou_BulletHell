@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : SingletonMono<PlayerController>, IFlow
+public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamageable
 {
     private IPatternGenerator pattern;
     private readonly IEnumFiltering enumFiltering = new EnumFilteringBehaviour();
@@ -68,6 +68,8 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
         return pos;
     }
 
+    public void TakeDamage(float dmg) => this.health -= dmg;
+
     /**********************ENABLE**************************/
 
     private void OnEnable() => inputs.Enable();
@@ -82,6 +84,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
         inputs.Player.Fire.started += ctx => StartFiring();     // Register the rapid fire for a mouse press
         inputs.Player.Fire.canceled += ctx => StopFiring();     // Stop the coroutine from firing
         bulletType = new Queue<string>();
+        health = 10.0f;
         speed = 5.0f;
     }
 
@@ -89,7 +92,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow
     {
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => enumFiltering.EnumToString(patternFilter).Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
         activeBullet = bullets.SwapBulletType(bulletType);                                                              // initialize the active bullet type string    
-        pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));               // initialize the pattern with the active bullet type
+        pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));         // initialize the pattern with the active bullet type
     }
 
     public void UpdateMethod()

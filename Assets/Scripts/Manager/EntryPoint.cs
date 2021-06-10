@@ -14,12 +14,14 @@ public class EntryPoint : SingletonMono<EntryPoint>
         BulletManager.Instance.PreIntilizationMethod();
         UnitManager.Instance.PreIntilizationMethod();
         WaypointSystem.Instance.PreIntilizationMethod();
+        CollisionSystem.Instance.PreIntilizationMethod();
     }
 
     private void Start()
     {
         StartCoroutine(ObjectPool.Trim());
         PlayerController.Instance.InitializationMethod();
+        UnitManager.Instance.InitializationMethod();
     }
 
     private void Update()
@@ -27,5 +29,6 @@ public class EntryPoint : SingletonMono<EntryPoint>
         PlayerController.Instance.UpdateMethod();
         BulletManager.Instance.UpdateMethod();
         UnitManager.Instance.UpdateMethod();
+        CollisionSystem.Instance.UpdateMethod();
     }
 }

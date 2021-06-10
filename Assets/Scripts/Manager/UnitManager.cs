@@ -13,11 +13,11 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
 
     ///// Unit creation is not handle inside the Factory Pattern
     ///// Factory Pattern is only going to handle bullet instanciation as there wont be that many units on screen
-    public Unit Create<T>(string type, Vector2 pos) where T : class
+    public Unit Create<T>(string type, Vector2 pos, BulletTypeEnum bulletT) where T : class
     {
         Unit instance = Utilities.InstanciateType<T>(resources.GetPrefab(Units, type), null, pos) as Unit;
         Add(type, instance);
-        return instance.PreInitializeUnit();
+        return instance.PreInitializeUnit(bulletT);
     }
 
     private void UpdateUnits(Dictionary<string, HashSet<Unit>> unitsDict)
@@ -43,7 +43,7 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
         Units = resources.ResourcesLoading(Globals.unitsPrefabs);
     }
 
-    public void InitializationMethod() { }
+    public void InitializationMethod() => Create<Boss>("Boss", Vector3.zero, BulletTypeEnum.Circle | BulletTypeEnum.Star);
 
     public void UpdateMethod() => UpdateUnits(UnitsDict);
 }
