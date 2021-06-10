@@ -20,7 +20,6 @@ public class EntryPoint : SingletonMono<EntryPoint>
     private void Start()
     {
         StartCoroutine(ObjectPool.Trim());
-        StartCoroutine(CollisionSystem.Instance.EmptyBulletColliderQueue());
         PlayerController.Instance.InitializationMethod();
         UnitManager.Instance.InitializationMethod();
     }
@@ -28,8 +27,8 @@ public class EntryPoint : SingletonMono<EntryPoint>
     private void Update()
     {
         PlayerController.Instance.UpdateMethod();
-        BulletManager.Instance.UpdateMethod();
-        UnitManager.Instance.UpdateMethod();
         CollisionSystem.Instance.UpdateMethod();
+        UnitManager.Instance.UpdateMethod();
+        BulletManager.Instance.UpdateMethod();
     }
 }

@@ -13,55 +13,30 @@ public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
      */
     public float Last { get; private set; }
 
-    public Queue<Bullet> bulletsHit { get; private set; }
+    public HashSet<Bullet> bulletsHit { get; private set; }     // hashset to avoid adding duplicate when doing the distance check
 
     /**********************ACTIONS*************************/
 
     public bool DistanceCheck(Vector2 pos, Vector2 target, float rad) => Vector2.Distance(pos, target) <= rad;
 
-    //// When the bullet hit the target, it creates an off-sync with the update of the array => spacing the bullets
-    private void UpdateCollisionSystem(Dictionary<string, HashSet<Bullet>> bulletsDict, Dictionary<string, HashSet<Unit>> unitsDict, PlayerController player)
+    //// O(N^2)
+    private void UpdateCollisionSystem(Dictionary<string, HashSet<Bullet>> bulletsDict, Dictionary<string, HashSet<Unit>> unitsDict)
     {
-        foreach (var b in bulletsDict.Keys.SelectMany(key => bulletsDict[key]))
+        foreach (var b in bulletsDict.Keys.SelectMany(key => bulletsDict[key]).Where(x => x.ignoredLayer == IgnoreLayerEnum.Player))
         {
-            if (b.ignoredLayer == IgnoreLayerEnum.Player)
+            if (bulletsHit.Contains(b)) continue;
+            foreach (var u in unitsDict.Keys.SelectMany(key => unitsDict[key]).Where(x => DistanceCheck(b.transform.position, x.transform.position, x.rad)))
             {
-                foreach (var u in unitsDict.Keys.SelectMany(key => unitsDict[key]).Where(u => DistanceCheck(b.transform.position, u.transform.position, u.rad)))
-                {
-                    u.TakeDamage(b.dmg);
-                    bulletsHit.Enqueue(b);
-                }
-            }
-            else
-            {
-                if (DistanceCheck(b.transform.position, player.transform.position, player.rad))
-                {
-                    player.TakeDamage(b.dmg);
-                    bulletsHit.Enqueue(b);
-                }
+                u.TakeDamage(b.dmg);
+                bulletsHit.Add(b);
             }
         }
-    }
 
-
-    private void BatchUpdate(Dictionary<string, HashSet<Bullet>> bulletsDict, Dictionary<string, HashSet<Unit>> unitsDict, PlayerController player)
-    {
-        if (Time.time - Last > Globals.fps)
+        while (bulletsHit.Count > 0)                                // might affect the main thread
         {
-            UpdateCollisionSystem(bulletsDict, unitsDict, player);
-            Last = Time.time;
-        }
-    }
-
-    public IEnumerator EmptyBulletColliderQueue()
-    {
-        while (true)
-        {
-            if (bulletsHit.Count > 0)
-            {
-                bulletsHit.Dequeue().Pool();
-            }
-            yield return null;
+            IProduct bullet = bulletsHit.First();
+            bulletsHit.Remove(bullet as Bullet);
+            (bullet as Bullet).Pool();
         }
     }
 
@@ -70,11 +45,11 @@ public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
     public void PreIntilizationMethod()
     {
         Last = default;
-        bulletsHit = new Queue<Bullet>();
+        bulletsHit = new HashSet<Bullet>();
     }
 
     public void InitializationMethod() { }
 
-    //// Think of a way to avoir coupling ==> BulletManager ==> UnitManager ==> PlayerController
-    public void UpdateMethod() => BatchUpdate(BulletManager.Instance.BulletsDict, UnitManager.Instance.UnitsDict, PlayerController.Instance);
+    //// Think of a way to avoid coupling ==> BulletManager ==> UnitManager ==> PlayerController
+    public void UpdateMethod() => UpdateCollisionSystem(BulletManager.Instance.BulletsDict, UnitManager.Instance.UnitsDict);
 }
