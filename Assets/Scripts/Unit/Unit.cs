@@ -11,6 +11,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public readonly ISwappable bullets = new SwappablePatternBehaviour();
     public Coroutine fireCoroutine;
     // Unit values
+    public float rad { get; private set; }
     public float health;
     public float speed;
     public float angle;
@@ -23,6 +24,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public Unit PreInitializeUnit(BulletTypeEnum bulletT)
     {
         bulletType = new Queue<string>();
+        rad = Globals.hitbox;
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => enumFiltering.EnumToString(bulletT).Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
         activeBullet = bullets.SwapBulletType(bulletType);                                                                      // initialize the active bullet type string    
         pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));                 // initialize the pattern with the active bullet type
