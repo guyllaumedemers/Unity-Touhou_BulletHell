@@ -29,10 +29,10 @@ public static class ObjectPool
             foreach (var key in Bullets.Keys.Where(key => Time.time - LastUpdate[key] > Globals.timeInterval))
             {
                 int count = Bullets[key].Count / 2;
-                while (count < Bullets[key].Count && Globals.minBullets <= Bullets[key].Count)
+                while (count >= Globals.minBullets)
                 {
-                    IProduct bullet = Bullets[key].Dequeue();
-                    GameObject.Destroy((bullet as Bullet).gameObject);
+                    GameObject.Destroy(Bullets[key].Dequeue().gameObject);
+                    count--;
                 }
             }
             yield return new WaitForSeconds(Globals.timeInterval);
