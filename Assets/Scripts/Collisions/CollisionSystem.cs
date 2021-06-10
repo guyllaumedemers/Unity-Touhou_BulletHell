@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,14 +13,15 @@ public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
      */
     public float Last { get; private set; }
 
+    public Queue<Bullet> bulletsHit { get; private set; }
+
     /**********************ACTIONS*************************/
 
-    //// Bullets should be checking for the distance between it and the target
     public bool DistanceCheck(Vector2 pos, Vector2 target, float rad) => Vector2.Distance(pos, target) <= rad;
 
+    //// When the bullet hit the target, it creates an off-sync with the update of the array => spacing the bullets
     private void UpdateCollisionSystem(Dictionary<string, HashSet<Bullet>> bulletsDict, Dictionary<string, HashSet<Unit>> unitsDict, PlayerController player)
     {
-        Queue<Bullet> bullets = new Queue<Bullet>();
         foreach (var b in bulletsDict.Keys.SelectMany(key => bulletsDict[key]))
         {
             if (b.ignoredLayer == IgnoreLayerEnum.Player)
@@ -27,7 +29,7 @@ public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
                 foreach (var u in unitsDict.Keys.SelectMany(key => unitsDict[key]).Where(u => DistanceCheck(b.transform.position, u.transform.position, u.rad)))
                 {
                     u.TakeDamage(b.dmg);
-                    bullets.Enqueue(b);
+                    bulletsHit.Enqueue(b);
                 }
             }
             else
@@ -35,14 +37,13 @@ public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
                 if (DistanceCheck(b.transform.position, player.transform.position, player.rad))
                 {
                     player.TakeDamage(b.dmg);
-                    bullets.Enqueue(b);
+                    bulletsHit.Enqueue(b);
                 }
             }
         }
-        while (bullets.Count > 0) bullets.Dequeue().Pool();
     }
 
-    //// Test if you can batch update the collision update or if it creates weird behaviour like bullet hit not getting register when skipping frames
+
     private void BatchUpdate(Dictionary<string, HashSet<Bullet>> bulletsDict, Dictionary<string, HashSet<Unit>> unitsDict, PlayerController player)
     {
         if (Time.time - Last > Globals.fps)
@@ -52,9 +53,25 @@ public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
         }
     }
 
+    public IEnumerator EmptyBulletColliderQueue()
+    {
+        while (true)
+        {
+            if (bulletsHit.Count > 0)
+            {
+                bulletsHit.Dequeue().Pool();
+            }
+            yield return null;
+        }
+    }
+
     /**********************FLOW****************************/
 
-    public void PreIntilizationMethod() => Last = default;
+    public void PreIntilizationMethod()
+    {
+        Last = default;
+        bulletsHit = new Queue<Bullet>();
+    }
 
     public void InitializationMethod() { }
 

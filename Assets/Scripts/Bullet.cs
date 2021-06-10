@@ -10,6 +10,8 @@ public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
     protected float angle;
     public float dmg { get; private set; }
 
+    private bool isRunning = true;
+
     /**********************ACTIONS**************************/
 
     //// Bullet Update position will be different depending on the pattern => Boss, Mobs, etc...
@@ -22,7 +24,12 @@ public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
 
     public void ResetTransformPos(Vector2 newPos) => transform.position = newPos;
 
-    private void OnBecameInvisible() => Pool();
+    private void OnBecameInvisible()
+    {
+        if (isRunning) Pool();
+    }
+
+    private void OnApplicationQuit() => isRunning = false;
 
 
     /**********************POOL****************************/
