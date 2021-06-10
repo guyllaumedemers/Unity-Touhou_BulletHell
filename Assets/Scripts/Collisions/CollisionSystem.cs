@@ -24,16 +24,15 @@ public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
         {
             if (b.ignoredLayer == IgnoreLayerEnum.Player)
             {
-                foreach (var u in unitsDict.Keys.SelectMany(key => unitsDict[key]).Where(u => DistanceCheck(b.transform.position, u.transform.position, b.rad)))
+                foreach (var u in unitsDict.Keys.SelectMany(key => unitsDict[key]).Where(u => DistanceCheck(b.transform.position, u.transform.position, u.rad)))
                 {
-                    Debug.Log("Enemy hit");
                     u.TakeDamage(b.dmg);
                     bullets.Enqueue(b);
                 }
             }
             else
             {
-                if (DistanceCheck(b.transform.position, player.transform.position, b.rad))
+                if (DistanceCheck(b.transform.position, player.transform.position, player.rad))
                 {
                     player.TakeDamage(b.dmg);
                     bullets.Enqueue(b);

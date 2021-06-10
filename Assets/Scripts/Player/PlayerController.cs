@@ -11,6 +11,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
     private readonly ISwappable bullets = new SwappablePatternBehaviour();
     Coroutine fireCoroutine;
     // Player values
+    public float rad { get; private set; }
     private float health;
     private float speed;
     private string activeBullet;
@@ -86,6 +87,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
         bulletType = new Queue<string>();
         health = 10.0f;
         speed = 5.0f;
+        rad = Globals.hitbox;
     }
 
     public void InitializationMethod()

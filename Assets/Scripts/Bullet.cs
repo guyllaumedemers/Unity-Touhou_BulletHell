@@ -8,12 +8,9 @@ public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
     // bullet values
     protected const float speed = 5;
     protected float angle;
-    public float rad { get; private set; }
     public float dmg { get; private set; }
 
     /**********************ACTIONS**************************/
-
-    private void Awake() => SetRadian(2.0f);
 
     //// Bullet Update position will be different depending on the pattern => Boss, Mobs, etc...
     //// Dont forget to think about the direction in which they travel
@@ -22,8 +19,6 @@ public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
     public void SetIgnoredLayer(IgnoreLayerEnum layer) => ignoredLayer = layer;
 
     public void SetAngle(float angle) => this.angle = angle;
-
-    public void SetRadian(float rad) => this.rad = rad;
 
     public void ResetTransformPos(Vector2 newPos) => transform.position = newPos;
 

@@ -14,4 +14,6 @@ public static class Globals
     public static int minBullets = 10;
     ///// Tag
     public static string waypoint = "Waypoint";
+    ///// Hitbox value
+    public static float hitbox = 0.5f;
 }
