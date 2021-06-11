@@ -19,7 +19,7 @@ public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
 
     public bool DistanceCheck(Vector2 pos, Vector2 target, float rad) => Vector2.Distance(pos, target) <= rad;
 
-    //// O(N^2)
+    //// O(N^2) => R-tree might be the better solution for the lookup
     private void UpdateCollisionSystem(Dictionary<string, HashSet<Bullet>> bulletsDict, Dictionary<string, HashSet<Unit>> unitsDict)
     {
         foreach (var b in bulletsDict.Keys.SelectMany(key => bulletsDict[key]).Where(x => x.ignoredLayer == IgnoreLayerEnum.Player))
