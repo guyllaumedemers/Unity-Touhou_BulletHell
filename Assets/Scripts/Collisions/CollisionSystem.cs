@@ -5,12 +5,6 @@ using UnityEngine;
 
 public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
 {
-    /*  What I am trying to achieve is :
-     *      
-     *      I want to be able to do a distance check between a unit AND a bullet that has a flag set to the layer to ignore
-     *      
-     *  
-     */
     private Queue<IProduct> products = new Queue<IProduct>();
 
     /**********************ACTIONS*************************/

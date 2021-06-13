@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class BulletManager : SingletonMono<BulletManager>, IFlow
 {
-    public Dictionary<string, HashSet<Bullet>> BulletsDict { get; private set; }        // Hashset are unordered => how would I approach a BatchUpdate System
+    public Dictionary<string, HashSet<Bullet>> BulletsDict { get; private set; }
     private BulletManager() { }
     public float Last { get; private set; }
     public GameObject bulletParent;
+    private Queue<IProduct> products = new Queue<IProduct>();
 
     /**********************ACTIONS**************************/
 
-    private void UpdateBullets(Dictionary<string, HashSet<Bullet>> bulletsDict)
-    {
-        foreach (var b in bulletsDict.Keys.SelectMany(key => bulletsDict[key])) b.UpdateBulletPosition();
-    }
+    private void UpdateBullets(Dictionary<string, HashSet<Bullet>> bulletsDict) => BatchUpdate(bulletsDict);
 
-    private void BatchUpdate(Dictionary<string, HashSet<Bullet>> bulletsDict)       // dont forget to put back the batch update
+    private void BatchUpdate(Dictionary<string, HashSet<Bullet>> bulletsDict)
     {
         if (Time.time - Last > Globals.fps)
         {
-            foreach (var b in bulletsDict.Keys.SelectMany(key => bulletsDict[key])) b.UpdateBulletPosition();
+            foreach (var b in bulletsDict.Keys.SelectMany(key => bulletsDict[key]))
+            {
+                if (!Utilities.InsideCameraBounds(Camera.main, b.transform.position)) products.Enqueue(b);
+                else b.UpdateBulletPosition();
+            }
+            while (products.Count > 0) (products.Dequeue() as Bullet).Pool();
             Last = Time.time;
         }
     }

@@ -24,4 +24,12 @@ public static class Utilities
         parent.SetActive(status);
         return parent;
     }
+
+    public static bool InsideCameraBounds(Camera cam, Vector3 pos)
+    {
+        var viewport = cam.WorldToViewportPoint(pos);
+        if (viewport.x < 0 || viewport.x > 1) return false;
+        if (viewport.y < 0 || viewport.y > 1) return false;
+        return true;
+    }
 }
