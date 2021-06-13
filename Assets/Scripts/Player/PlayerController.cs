@@ -27,7 +27,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
 
     private void Shoot()
     {
-        pattern.Fill(activeBullet, null, transform.position, 0, 0);
+        pattern.Fill(activeBullet, BulletManager.Instance.bulletParent.transform, transform.position, 0, 0);
         pattern.UpdateBulletPattern(default, default);
         foreach (IProduct b in (pattern as AbsPattern).bullets.Cast<IProduct>()) b.SetIgnoredLayer(IgnoreLayerEnum.Player);
     }

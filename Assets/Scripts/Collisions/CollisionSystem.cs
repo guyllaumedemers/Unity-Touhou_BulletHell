@@ -11,9 +11,6 @@ public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
      *      
      *  
      */
-    public float Last { get; private set; }
-
-    public HashSet<Bullet> bulletsHit { get; private set; }     // hashset to avoid adding duplicate when doing the distance check
 
     /**********************ACTIONS*************************/
 
@@ -22,34 +19,14 @@ public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
     //// O(N^2) => R-tree might be the better solution for the lookup
     private void UpdateCollisionSystem(Dictionary<string, HashSet<Bullet>> bulletsDict, Dictionary<string, HashSet<Unit>> unitsDict)
     {
-        foreach (var b in bulletsDict.Keys.SelectMany(key => bulletsDict[key]).Where(x => x.ignoredLayer == IgnoreLayerEnum.Player))
-        {
-            if (bulletsHit.Contains(b)) continue;
-            foreach (var u in unitsDict.Keys.SelectMany(key => unitsDict[key]).Where(x => DistanceCheck(b.transform.position, x.transform.position, x.rad)))
-            {
-                u.TakeDamage(b.dmg);
-                bulletsHit.Add(b);
-            }
-        }
 
-        while (bulletsHit.Count > 0)                                // might affect the main thread
-        {
-            IProduct bullet = bulletsHit.First();
-            bulletsHit.Remove(bullet as Bullet);
-            (bullet as Bullet).Pool();
-        }
     }
 
     /**********************FLOW****************************/
 
-    public void PreIntilizationMethod()
-    {
-        Last = default;
-        bulletsHit = new HashSet<Bullet>();
-    }
+    public void PreIntilizationMethod() { }
 
     public void InitializationMethod() { }
 
-    //// Think of a way to avoid coupling ==> BulletManager ==> UnitManager ==> PlayerController
     public void UpdateMethod() => UpdateCollisionSystem(BulletManager.Instance.BulletsDict, UnitManager.Instance.UnitsDict);
 }

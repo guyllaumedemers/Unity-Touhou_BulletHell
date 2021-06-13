@@ -27,12 +27,11 @@ public class FactoryManager : IFactoryAbs, IFlow
         if (ObjectPool.Bullets.ContainsKey(type) && ObjectPool.Bullets[type].Count > 0)
         {
             bullet = ObjectPool.Bullets[type].Dequeue();
-            (bullet as Bullet).Depool();
+            (bullet as Bullet).ResetBullet(pos);
             goto SKIP;
         }
         bullet = Utilities.InstanciateType<T>(resources.GetPrefab(FactoryBullets, type), parent, pos) as IProduct;
     SKIP:
-        (bullet as Bullet).ResetTransformPos(pos);
         BulletManager.Instance.Add(type, bullet);
         return bullet;
     }

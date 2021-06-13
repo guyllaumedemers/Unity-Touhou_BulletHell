@@ -9,10 +9,13 @@ public static class ObjectPool
 
     public static Dictionary<string, float> LastUpdate { get; set; }
 
+    public static GameObject pool;
+
     public static void PreInitializeMethod()
     {
         Bullets = new Dictionary<string, Queue<Bullet>>();
         LastUpdate = new Dictionary<string, float>();
+        pool = Utilities.InstanciateObjectParent("Pool", false);
         Fill();
     }
 
