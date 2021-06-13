@@ -7,6 +7,7 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
     public Dictionary<string, HashSet<Bullet>> BulletsDict { get; private set; }        // Hashset are unordered => how would I approach a BatchUpdate System
     private BulletManager() { }
     public float Last { get; private set; }
+    public GameObject bulletParent;
 
     /**********************ACTIONS**************************/
 
@@ -43,6 +44,7 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
     {
         BulletsDict = new Dictionary<string, HashSet<Bullet>>();
         Last = default;
+        bulletParent = Utilities.InstanciateObjectParent("Active Bullets", true);
     }
 
     public void InitializationMethod() { }

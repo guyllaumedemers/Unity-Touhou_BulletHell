@@ -23,7 +23,11 @@ public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
 
     public void SetAngle(float angle) => this.angle = angle;
 
-    public void ResetTransformPos(Vector2 newPos) => transform.position = newPos;
+    public void ResetBullet(Vector2 newPos)
+    {
+        transform.SetParent(BulletManager.Instance.bulletParent.transform);
+        transform.position = newPos;
+    }
 
     private void OnBecameInvisible()
     {
@@ -40,8 +44,9 @@ public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
         string[] keys = gameObject.name.Split('(');
         ObjectPool.LastUpdate[keys[0]] = Time.time;
         ObjectPool.Bullets[keys[0]].Enqueue(BulletManager.Instance.RemoveFind(keys[0], this) as Bullet);
-        gameObject.SetActive(false);
+        gameObject.transform.SetParent(ObjectPool.pool.transform);
     }
 
-    public void Depool() => gameObject.SetActive(true);
+    // not very usefull => factory manager already dequeue the bullet from the pool
+    public void Depool() { }
 }
