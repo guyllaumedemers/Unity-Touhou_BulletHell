@@ -11,9 +11,12 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
 
     /**********************ACTIONS**************************/
 
-    private void UpdateBullets(Dictionary<string, HashSet<Bullet>> bulletsDict) => BatchUpdate(bulletsDict);
+    private void UpdateBullets(Dictionary<string, HashSet<Bullet>> bulletsDict)
+    {
+        foreach (var b in bulletsDict.Keys.SelectMany(key => bulletsDict[key])) b.UpdateBulletPosition();
+    }
 
-    private void BatchUpdate(Dictionary<string, HashSet<Bullet>> bulletsDict)
+    private void BatchUpdate(Dictionary<string, HashSet<Bullet>> bulletsDict)       // dont forget to put back the batch update
     {
         if (Time.time - Last > Globals.fps)
         {

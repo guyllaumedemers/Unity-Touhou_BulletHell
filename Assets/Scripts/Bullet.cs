@@ -29,13 +29,13 @@ public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
         transform.position = newPos;
     }
 
+    // This is the reason why my bullets are skipping => OnBecameInvisible calls Pool() even on new bullets
     private void OnBecameInvisible()
     {
-        if (isRunning) Pool();
+        //if (isRunning) Pool();
     }
 
     private void OnApplicationQuit() => isRunning = false;
-
 
     /**********************POOL****************************/
 
@@ -47,6 +47,5 @@ public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
         gameObject.transform.SetParent(ObjectPool.pool.transform);
     }
 
-    // not very usefull => factory manager already dequeue the bullet from the pool
     public void Depool() { }
 }
