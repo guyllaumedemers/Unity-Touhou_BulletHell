@@ -11,8 +11,6 @@ public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
     protected float angle;
     public float dmg { get; private set; }
 
-    private bool isRunning = true;
-
     /**********************ACTIONS**************************/
 
     //// Bullet Update position will be different depending on the pattern => Boss, Mobs, etc...
@@ -28,14 +26,6 @@ public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
         transform.SetParent(BulletManager.Instance.bulletParent.transform);
         transform.position = newPos;
     }
-
-    // This is the reason why my bullets are skipping => OnBecameInvisible calls Pool() even on new bullets
-    private void OnBecameInvisible()
-    {
-        //if (isRunning) Pool();
-    }
-
-    private void OnApplicationQuit() => isRunning = false;
 
     /**********************POOL****************************/
 
