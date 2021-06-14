@@ -1,3 +1,4 @@
+using UnityEngine;
 
 public class EntryPoint : SingletonMono<EntryPoint>
 {
@@ -9,8 +10,8 @@ public class EntryPoint : SingletonMono<EntryPoint>
         ObjectPool.PreInitializeMethod();
         PlayerController.Instance.PreIntilizationMethod();
         BulletManager.Instance.PreIntilizationMethod();
-        UnitManager.Instance.PreIntilizationMethod();
         WaypointSystem.Instance.PreIntilizationMethod();
+        UnitManager.Instance.PreIntilizationMethod();
         CollisionSystem.Instance.PreIntilizationMethod();
     }
 

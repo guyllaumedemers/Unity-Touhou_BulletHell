@@ -15,7 +15,7 @@ public static class ObjectPool
     {
         Bullets = new Dictionary<string, Queue<Bullet>>();
         LastUpdate = new Dictionary<string, float>();
-        pool = Utilities.InstanciateObjectParent("Pool", false);
+        pool = Utilities.InstanciateObjectParent(Globals.poolParent, false);
         Fill();
     }
 

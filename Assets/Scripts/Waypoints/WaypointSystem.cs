@@ -13,10 +13,9 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
     {
         {0, new Vector2[]
             {
+                new Vector2(-2,4),      // left side
                 new Vector2(0,0),
-                new Vector2(0,1),
-                new Vector2(1,0),
-                new Vector2(1,1)
+                new Vector2(2,4),
             }
         }
     };
@@ -25,20 +24,21 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
 
     private Waypoint[] InitializeNewWaypointsForLevel(Dictionary<int, Vector2[]> positions, int level, Transform parent)
     {
-        Waypoints = new Waypoint[positions[level].Length];
-        Create(positions, level, Waypoints, parent);
-        return Waypoints;
+        return Create(positions, level, parent);
     }
 
-    private void Create(Dictionary<int, Vector2[]> positions, int level, Waypoint[] waypoints, Transform parent)
+    private Waypoint[] Create(Dictionary<int, Vector2[]> positions, int level, Transform parent)
     {
-        for (int i = 0; i < waypoints.Length; i++)
+        List<Waypoint> points = new List<Waypoint>();
+        for (int i = 0; i < positions[level].Length; i++)
         {
             GameObject go = Utilities.InstanciateObjectParent(System.String.Format("{0} {1}", Globals.waypoint, i + 1), true);
             go.tag = Globals.waypoint;
             go.transform.SetParent(parent);
             go.AddComponent<Waypoint>().SetPosition(positions[level][i]);
+            points.Add(go.GetComponent<Waypoint>());
         }
+        return points.ToArray();
     }
 
     //// Allows to clear current waypoints collection before switching levels
@@ -48,8 +48,8 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
 
     public void PreIntilizationMethod()
     {
-        waypointParent = Utilities.InstanciateObjectParent("Waypoints", true);
-        InitializeNewWaypointsForLevel(positions, 0, waypointParent.transform);
+        waypointParent = Utilities.InstanciateObjectParent(Globals.waypointParent, true);
+        Waypoints = InitializeNewWaypointsForLevel(positions, 0, waypointParent.transform);
     }
 
     public void InitializationMethod() { }
