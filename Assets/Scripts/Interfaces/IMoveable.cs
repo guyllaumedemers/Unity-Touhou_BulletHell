@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface IMoveable
 {
-    public abstract Vector3 Move(Vector3 pos, float angle, float speed);
+    public abstract Vector3 Move(float angle, float speed, float t, params Vector3[] pos);
 
     /* Units are going to move from outside the screen to a specific location on the screen => lerping to it 
      * Points are going to be specific to the level phase we are currently in

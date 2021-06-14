@@ -7,7 +7,7 @@ public static class Globals
     ///// Bullet Type class name loading
     public const string bulletTypes = "Assets/Scripts/BulletTypes/";
     ///// FPS management
-    public static float fps = 1/60;
+    public static float fps = 1 / 60;
     ///// Object Pooling Management - Interval of Trim function call
     public static float timeInterval = 2.0f;
     ///// Object Pooling Management - Min Object in Pool per Type
@@ -16,4 +16,8 @@ public static class Globals
     public static string waypoint = "Waypoint";
     ///// Hitbox value
     public static float hitbox = 0.5f;
+    ///// Gameobject Initialization naming
+    public static string bulletParent = "Active Bullets";
+    public static string poolParent = "Pool";
+    public static string waypointParent = "Waypoints";
 }

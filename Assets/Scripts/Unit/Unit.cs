@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class Unit : MonoBehaviour, IDamageable
 {
     public IPatternGenerator pattern;
-    public IMoveable moveable = new MoveableBossBehaviour(); // Temp => Have to make a generic behaviour for units and Boss => Testing purpose Only
+    public IMoveable moveable = new MoveableUnitBehaviour();
     public readonly IEnumFiltering enumFiltering = new EnumFilteringBehaviour();
     public readonly ISwappable bullets = new SwappablePatternBehaviour();
     public Coroutine fireCoroutine;
@@ -17,6 +17,8 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public float angle;
     public string activeBullet;
     public Queue<string> bulletType;
+    private float bezierCurveT;
+    private Vector3[] controlPoints;
 
     /**********************ACTIONS**************************/
 
@@ -24,6 +26,15 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public Unit PreInitializeUnit(BulletTypeEnum bulletT)
     {
         bulletType = new Queue<string>();
+        controlPoints = new Vector3[3];
+        for (int i = 0; i < controlPoints.Length; i++)                                       // Temp solution
+        {
+            // some units are using the waypoints that are left while others use the right
+            // how can I assign which waypoint needs to be used
+            controlPoints[i] = WaypointSystem.Instance.Waypoints[i].Pos;
+        }
+        bezierCurveT = 0.0f;
+        speed = 5.0f;
         rad = Globals.hitbox;
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => enumFiltering.EnumToString(bulletT).Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
         activeBullet = bullets.SwapBulletType(bulletType);                                                                      // initialize the active bullet type string    
@@ -31,7 +42,12 @@ public abstract class Unit : MonoBehaviour, IDamageable
         return this;
     }
 
-    public void UpdateUnit() => transform.position = moveable.Move(transform.position, angle, speed);
+    public void UpdateUnit()
+    {
+        // Increament the time value to be used with the bezier curve function
+        bezierCurveT = (bezierCurveT + Time.deltaTime) % 1.0f;
+        transform.position = moveable.Move(default, speed, bezierCurveT, controlPoints[0], controlPoints[1], controlPoints[2]);
+    }
 
     public IEnumerator Play()
     {
