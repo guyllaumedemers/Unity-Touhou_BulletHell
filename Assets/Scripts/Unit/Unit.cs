@@ -34,7 +34,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
             controlPoints[i] = WaypointSystem.Instance.Waypoints[i].Pos;
         }
         bezierCurveT = 0.0f;
-        speed = 5.0f;
+        speed = 0.5f;
         rad = Globals.hitbox;
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => enumFiltering.EnumToString(bulletT).Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
         activeBullet = bullets.SwapBulletType(bulletType);                                                                      // initialize the active bullet type string    
@@ -45,8 +45,9 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public void UpdateUnit()
     {
         // Increament the time value to be used with the bezier curve function
-        bezierCurveT = (bezierCurveT + Time.deltaTime) % 1.0f;
-        transform.position = moveable.Move(default, speed, bezierCurveT, controlPoints[0], controlPoints[1], controlPoints[2]);
+        // How will I stop when reaching a certain treshold and how will I update the new trajectory
+        bezierCurveT = (bezierCurveT + Time.deltaTime * speed) % 1.0f;
+        transform.position = moveable.Move(default, default, bezierCurveT, controlPoints[0], controlPoints[1], controlPoints[2]);
     }
 
     public IEnumerator Play()

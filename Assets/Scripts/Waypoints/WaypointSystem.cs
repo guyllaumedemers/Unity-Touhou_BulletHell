@@ -13,9 +13,9 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
     {
         {0, new Vector2[]
             {
-                new Vector2(-2,4),      // left side
+                new Vector2(-2,5),      // left side
                 new Vector2(0,0),
-                new Vector2(2,4),
+                new Vector2(2,5),
             }
         }
     };
