@@ -20,8 +20,8 @@ and prioritize Composition over Inheritance.
 #### Game Mechanics and Features
 
   * Input System
-  * Pattern Generation (WIP)
-  * Collision System (*try accessing comparing bullets with an RTree to make things more efficient)
+  * Pattern Generation 👻 (*early stage*)
+  * Collision System (*thinking about using RTree to make access bullets depending on the area they are in and make things more efficient*)
 
 #### Design Pattern and Memory Optimization
 
