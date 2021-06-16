@@ -1,4 +1,4 @@
-# Unity Touhou - Bullet Hell Game ![GitHub logo](/readmeImg.png)
+# Unity Touhou - Bullet Hell Game <img src="/readmeImg.png" width="5%" heright="5%">
 
 Welcome to Unity-Touhou, a personnal project currently in the making.
 Useful scripts are located in Assets/Scripts/..
