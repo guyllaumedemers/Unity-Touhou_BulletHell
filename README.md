@@ -32,4 +32,4 @@ and prioritize Composition over Inheritance.
 
 ## Resources
 
-💬 References for patterns are given from : [Design Patterns: Elements of Reusable Object‑Oriented Software]()
+💬 References for patterns are given from : [Design Patterns: Elements of Reusable Object‑Oriented Software](https://www.amazon.ca/-/fr/Gamma-Erich-ebook/dp/B000SEIBB8)
