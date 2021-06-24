@@ -22,6 +22,9 @@ and prioritize Composition over Inheritance.
   * Input System
   * Pattern Generation 👻 (*early stage*)
   * Collision System (*thinking about using RTree to make access bullets depending on the area they are in and make things more efficient*)
+  * Movement Mechanics (*early stage*)
+  * Bullet Management
+  * Unit Management (*early stage, 1 type so far*)
 
 #### Design Pattern and Memory Optimization
 
@@ -29,6 +32,7 @@ and prioritize Composition over Inheritance.
   * Object Pooling
   * Batching
   * Strategy Pattern
+  * Observer Pattern (*will have to implement an event system to trigger animation when limit scores are reach*)
 
 ## Resources
 
