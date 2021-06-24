@@ -30,7 +30,7 @@ public static class ObjectPool
     {
         while (true)
         {
-            foreach (var key in Bullets.Keys.Where(key => Time.time - LastUpdate[key] > Globals.timeInterval))
+            foreach (var key in Bullets.Keys.Where(key => Time.time - LastUpdate[key] > Globals.trimmingInterval))
             {
                 int count = Bullets[key].Count / 2;
                 while (count >= Globals.minBullets)
@@ -39,7 +39,7 @@ public static class ObjectPool
                     count--;
                 }
             }
-            yield return new WaitForSeconds(Globals.timeInterval);
+            yield return new WaitForSeconds(Globals.trimmingInterval);
         }
     }
 }

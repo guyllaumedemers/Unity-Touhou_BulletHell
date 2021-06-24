@@ -9,7 +9,7 @@ public static class Globals
     ///// FPS management
     public static float fps = 1 / 60;
     ///// Object Pooling Management - Interval of Trim function call
-    public static float timeInterval = 2.0f;
+    public static float trimmingInterval = 2.0f;
     ///// Object Pooling Management - Min Object in Pool per Type
     public static int minBullets = 10;
     ///// Tag
@@ -21,13 +21,15 @@ public static class Globals
     public static string poolParent = "Pool";
     public static string waypointParent = "Waypoints";
     ///// Distance wp
-    public static float min_wpDist = 0.01f;
+    public static float minWPDist = 0.01f;
     ///// Idl Time
-    public static float idl_time = 2.0f;
+    public static float idleTime = 2.0f;
     ///// Left Parse start pos
-    public static int lsPos_parse = 0;
+    public static int lsposParse = 0;
     ///// Right Parse start pos
-    public static int rsPos_parse = 3;
+    public static int rsposParse = 3;
     ///// Parse arr max length
-    public static int max_parse = 3;
+    public static int maxlengthParse = 3;
+    ///// Sequential init time interval
+    public static float initializationInterval = 1.0f;
 }

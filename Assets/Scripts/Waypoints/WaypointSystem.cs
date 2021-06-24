@@ -44,8 +44,8 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
     // quick solution that doesnt realy handle a boss waypoints behaviour
     public Vector3[] GetLevelWPpos(int level, SpawningPosEnum sposEnum) => sposEnum switch
     {
-        SpawningPosEnum.Right => Utilities.ParseArray(positions[level], Globals.rsPos_parse, Globals.max_parse),
-        SpawningPosEnum.Left => Utilities.ParseArray(positions[level], Globals.lsPos_parse, Globals.max_parse),
+        SpawningPosEnum.Right => Utilities.ParseArray(positions[level], Globals.rsposParse, Globals.maxlengthParse),
+        SpawningPosEnum.Left => Utilities.ParseArray(positions[level], Globals.lsposParse, Globals.maxlengthParse),
         SpawningPosEnum.None => positions[level],
         _ => throw new System.ArgumentOutOfRangeException()
     };
