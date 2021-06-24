@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -42,5 +43,15 @@ public static class Utilities
             yield return null;
         }
         status.Invoke();
+    }
+
+    public static T[] ParseArray<T>(T[] arr, int start, int length)     // works only with literalm types and struct, like Vector3
+    {
+        var parseArr = new List<T>();
+        for (int i = start; i < start + length; ++i)
+        {
+            parseArr.Add(arr[i]);
+        }
+        return parseArr.ToArray();
     }
 }

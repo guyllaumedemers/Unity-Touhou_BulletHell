@@ -13,9 +13,9 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
     {
         {0, new Vector3[]
             {
-                new Vector3(-2,5),      // left side
-                new Vector3(0,0),
-                new Vector3(2,5),
+                new Vector3(-2,5), new Vector3(0,0), new Vector3(-4,0),     // left
+                new Vector3(2,5), new Vector3(0,0), new Vector3(5,0),       // right
+                new Vector3(0,5)                                            // middle
             }
         }
     };
@@ -41,7 +41,14 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
         return points.ToArray();
     }
 
-    public Vector3[] GetLevelWPpos(int level) => positions[level];
+    // quick solution that doesnt realy handle a boss waypoints behaviour
+    public Vector3[] GetLevelWPpos(int level, SpawningPosEnum sposEnum) => sposEnum switch
+    {
+        SpawningPosEnum.Right => Utilities.ParseArray(positions[level], Globals.rsPos_parse, Globals.max_parse),
+        SpawningPosEnum.Left => Utilities.ParseArray(positions[level], Globals.lsPos_parse, Globals.max_parse),
+        SpawningPosEnum.None => positions[level],
+        _ => throw new System.ArgumentOutOfRangeException()
+    };
 
     //// Allows to clear current waypoints collection before switching levels
     private void ResetWaypoints() => GameObjectExtensions.Destroy(GameObject.FindGameObjectsWithTag(Globals.waypoint));
