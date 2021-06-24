@@ -55,10 +55,9 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
         Units = resources.ResourcesLoading(Globals.unitsPrefabs);
     }
 
-    // Unit Manager will handle which side the units are attract to
     public void InitializationMethod()
     {
-        StartCoroutine(SequencialInit<Boss>("Boss", Vector3.one, BulletTypeEnum.Circle | BulletTypeEnum.Star, SpawningPosEnum.Left, 0, 3, 1.0f));
+        StartCoroutine(SequencialInit<Boss>("Boss", Vector3.one, BulletTypeEnum.Circle | BulletTypeEnum.Star, SpawningPosEnum.Left, 0, 3, Globals.initializationInterval));
     }
 
     public void UpdateMethod() => UpdateUnits(UnitsDict);

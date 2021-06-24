@@ -45,13 +45,13 @@ public abstract class Unit : MonoBehaviour, IDamageable
 
     private void Move()
     {
-        if (Vector3.Distance(transform.position, controlPoints[curr_wp + 1 > 2 ? 0 : curr_wp + 1]) < Globals.min_wpDist)
+        if (Vector3.Distance(transform.position, controlPoints[curr_wp + 1 > 2 ? 0 : curr_wp + 1]) < Globals.minWPDist)
         {
             ++curr_wp;
             curr_wp %= controlPoints.Length;
             idle = !idle;
             bezierCurveT = default;
-            StartCoroutine(Utilities.Timer(Globals.idl_time, () => { idle = !idle; }));
+            StartCoroutine(Utilities.Timer(Globals.idleTime, () => { idle = !idle; }));
             return;
         }
         bezierCurveT = bezierCurveT + Time.deltaTime * speed % 1.0f;
