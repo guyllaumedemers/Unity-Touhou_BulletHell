@@ -19,6 +19,8 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public Queue<string> bulletType;
     private float bezierCurveT;
     private Vector3[] controlPoints;
+    private int curr_wp = 0;
+    private bool idle = false;
 
     /**********************ACTIONS**************************/
 
@@ -27,6 +29,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
     {
         bulletType = new Queue<string>();
         controlPoints = new Vector3[3];
+        transform.position = new Vector3(1, 1, 1);
         for (int i = 0; i < controlPoints.Length; i++)                                       // Temp solution
         {
             // some units are using the waypoints that are left while others use the right
@@ -44,10 +47,22 @@ public abstract class Unit : MonoBehaviour, IDamageable
 
     public void UpdateUnit()
     {
-        // Increament the time value to be used with the bezier curve function
-        // How will I stop when reaching a certain treshold and how will I update the new trajectory
-        bezierCurveT = (bezierCurveT + Time.deltaTime * speed) % 1.0f;
-        transform.position = moveable.Move(default, default, bezierCurveT, controlPoints[0], controlPoints[1], controlPoints[2]);
+        if (!idle) Move();
+    }
+
+    private void Move()
+    {
+        if (Vector3.Distance(transform.position, controlPoints[curr_wp + 1 > 2 ? 0 : curr_wp + 1]) < Globals.min_wpDist)
+        {
+            ++curr_wp;
+            idle = true;
+            curr_wp %= controlPoints.Length;
+            StartCoroutine(Utilities.Timer(Globals.idl_time, () => { return idle = false; }));
+            bezierCurveT = 0.0f;    // reset bezier curve
+            return;
+        }
+        bezierCurveT = bezierCurveT + Time.deltaTime * speed % 1.0f;
+        transform.position = moveable.Move(default, default, bezierCurveT, controlPoints[curr_wp], controlPoints[curr_wp + 1 > 2 ? 0 : curr_wp + 1]);
     }
 
     public IEnumerator Play()

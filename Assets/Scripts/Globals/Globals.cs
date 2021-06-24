@@ -20,4 +20,8 @@ public static class Globals
     public static string bulletParent = "Active Bullets";
     public static string poolParent = "Pool";
     public static string waypointParent = "Waypoints";
+    ///// Distance wp
+    public static float min_wpDist = 0.01f;
+    ///// Idl Time
+    public static float idl_time = 2.0f;
 }

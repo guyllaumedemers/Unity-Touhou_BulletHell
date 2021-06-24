@@ -33,4 +33,14 @@ public static class Utilities
         if (viewport.y < 0 || viewport.y > 1) return false;
         return true;
     }
+
+    public static IEnumerator Timer(float time, Func<bool> status)
+    {
+        while (time >= 0.0f)
+        {
+            time -= Time.deltaTime;
+            yield return null;
+        }
+        status.Invoke();
+    }
 }
