@@ -9,25 +9,25 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
     private GameObject waypointParent;
     //// Access Waypoints positions from the dictionnary by selecting the active level
     //// Can be serialized and manage inside a JSON file later on
-    private Dictionary<int, Vector2[]> positions = new Dictionary<int, Vector2[]>()
+    private Dictionary<int, Vector3[]> positions = new Dictionary<int, Vector3[]>()
     {
-        {0, new Vector2[]
+        {0, new Vector3[]
             {
-                new Vector2(-2,5),      // left side
-                new Vector2(0,0),
-                new Vector2(2,5),
+                new Vector3(-2,5),      // left side
+                new Vector3(0,0),
+                new Vector3(2,5),
             }
         }
     };
 
     /**********************ACTIONS**************************/
 
-    private Waypoint[] InitializeNewWaypointsForLevel(Dictionary<int, Vector2[]> positions, int level, Transform parent)
+    private Waypoint[] InitializeNewWaypointsForLevel(Dictionary<int, Vector3[]> positions, int level, Transform parent)
     {
         return Create(positions, level, parent);
     }
 
-    private Waypoint[] Create(Dictionary<int, Vector2[]> positions, int level, Transform parent)
+    private Waypoint[] Create(Dictionary<int, Vector3[]> positions, int level, Transform parent)
     {
         List<Waypoint> points = new List<Waypoint>();
         for (int i = 0; i < positions[level].Length; i++)
@@ -41,6 +41,8 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
         return points.ToArray();
     }
 
+    public Vector3[] GetLevelWPpos(int level) => positions[level];
+
     //// Allows to clear current waypoints collection before switching levels
     private void ResetWaypoints() => GameObjectExtensions.Destroy(GameObject.FindGameObjectsWithTag(Globals.waypoint));
 
@@ -49,7 +51,7 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
     public void PreIntilizationMethod()
     {
         waypointParent = Utilities.InstanciateObjectParent(Globals.waypointParent, true);
-        Waypoints = InitializeNewWaypointsForLevel(positions, 0, waypointParent.transform);
+        Waypoints = InitializeNewWaypointsForLevel(positions, 0, waypointParent.transform);         // level value will be handle by the level manager eventually
     }
 
     public void InitializationMethod() { }

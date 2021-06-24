@@ -19,23 +19,17 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public Queue<string> bulletType;
     private float bezierCurveT;
     private Vector3[] controlPoints;
-    private int curr_wp = 0;
-    private bool idle = false;
+    private int curr_wp = default;
+    private bool idle = default;
 
     /**********************ACTIONS**************************/
 
     // Bullet Type is now pass as arguments so i can parametrize the instanciation of an unit type directly in the function call instead of having values all around and overwriting
-    public Unit PreInitializeUnit(BulletTypeEnum bulletT)
+    public Unit PreInitializeUnit(BulletTypeEnum bulletT, Vector3[] waypoints)
     {
         bulletType = new Queue<string>();
-        controlPoints = new Vector3[3];
-        for (int i = 0; i < controlPoints.Length; i++)                                      // Temp solution
-        {
-            // some units are using the waypoints that are left while others use the right
-            // how can I assign which waypoint needs to be used
-            controlPoints[i] = WaypointSystem.Instance.Waypoints[i].Pos;
-        }
-        bezierCurveT = 0.0f;
+        controlPoints = waypoints;
+        bezierCurveT = default;
         speed = 0.5f;
         rad = Globals.hitbox;
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => enumFiltering.EnumToString(bulletT).Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
@@ -55,9 +49,9 @@ public abstract class Unit : MonoBehaviour, IDamageable
         {
             ++curr_wp;
             curr_wp %= controlPoints.Length;
-            idle = true;
-            bezierCurveT = 0.0f;
-            StartCoroutine(Utilities.Timer(Globals.idl_time, () => { idle = false; }));
+            idle = !idle;
+            bezierCurveT = default;
+            StartCoroutine(Utilities.Timer(Globals.idl_time, () => { idle = !idle; }));
             return;
         }
         bezierCurveT = bezierCurveT + Time.deltaTime * speed % 1.0f;
@@ -68,7 +62,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
     {
         while (true)
         {
-            pattern.Fill(activeBullet, null, transform.position, 0, 0);
+            pattern.Fill(activeBullet, null, transform.position, default, default);
             yield return new WaitForSeconds(1 / (pattern as AbsPattern).rof);
         }
     }
