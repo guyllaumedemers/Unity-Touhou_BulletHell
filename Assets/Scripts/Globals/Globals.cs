@@ -24,4 +24,10 @@ public static class Globals
     public static float min_wpDist = 0.01f;
     ///// Idl Time
     public static float idl_time = 2.0f;
+    ///// Left Parse start pos
+    public static int lsPos_parse = 0;
+    ///// Right Parse start pos
+    public static int rsPos_parse = 3;
+    ///// Parse arr max length
+    public static int max_parse = 3;
 }

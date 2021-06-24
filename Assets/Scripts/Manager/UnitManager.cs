@@ -36,12 +36,13 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
         }
     }
 
-    private IEnumerator SequencialInit<T>(string name, Vector3 pos, BulletTypeEnum bulletType, int level, int maxUnitWave, float interval) where T : class
+    private IEnumerator SequencialInit<T>(string name, Vector3 pos, BulletTypeEnum bulletType, SpawningPosEnum spEnum,
+        int level, int maxUnitWave, float interval) where T : class
     {
         int curr_count = -1;
         while (++curr_count < maxUnitWave)
         {
-            Create<T>(name, pos, bulletType, WaypointSystem.Instance.GetLevelWPpos(level));
+            Create<T>(name, pos, bulletType, WaypointSystem.Instance.GetLevelWPpos(level, spEnum));
             yield return new WaitForSeconds(interval);
         }
     }
@@ -57,7 +58,7 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
     // Unit Manager will handle which side the units are attract to
     public void InitializationMethod()
     {
-        StartCoroutine(SequencialInit<Boss>("Boss", Vector3.one, BulletTypeEnum.Circle | BulletTypeEnum.Star, 0, 3, 1.0f));
+        StartCoroutine(SequencialInit<Boss>("Boss", Vector3.one, BulletTypeEnum.Circle | BulletTypeEnum.Star, SpawningPosEnum.Left, 0, 3, 1.0f));
     }
 
     public void UpdateMethod() => UpdateUnits(UnitsDict);

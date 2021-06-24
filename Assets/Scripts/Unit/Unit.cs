@@ -30,8 +30,8 @@ public abstract class Unit : MonoBehaviour, IDamageable
         bulletType = new Queue<string>();
         controlPoints = waypoints;
         bezierCurveT = default;
-        speed = 0.5f;
         rad = Globals.hitbox;
+        speed = 0.5f;
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => enumFiltering.EnumToString(bulletT).Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
         activeBullet = bullets.SwapBulletType(bulletType);                                                                      // initialize the active bullet type string    
         pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));                 // initialize the pattern with the active bullet type
