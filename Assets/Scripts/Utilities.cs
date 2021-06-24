@@ -34,7 +34,7 @@ public static class Utilities
         return true;
     }
 
-    public static IEnumerator Timer(float time, Func<bool> status)
+    public static IEnumerator Timer(float time, Action status)
     {
         while (time >= 0.0f)
         {

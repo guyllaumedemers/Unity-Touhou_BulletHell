@@ -43,7 +43,7 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
         Units = resources.ResourcesLoading(Globals.unitsPrefabs);
     }
 
-    public void InitializationMethod() => Create<Boss>("Boss", Vector3.zero, BulletTypeEnum.Circle | BulletTypeEnum.Star);
+    public void InitializationMethod() => Create<Boss>("Boss", Vector3.one, BulletTypeEnum.Circle | BulletTypeEnum.Star);
 
     public void UpdateMethod() => UpdateUnits(UnitsDict);
 }

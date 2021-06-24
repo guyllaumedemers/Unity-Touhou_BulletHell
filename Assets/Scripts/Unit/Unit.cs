@@ -29,8 +29,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
     {
         bulletType = new Queue<string>();
         controlPoints = new Vector3[3];
-        transform.position = new Vector3(1, 1, 1);
-        for (int i = 0; i < controlPoints.Length; i++)                                       // Temp solution
+        for (int i = 0; i < controlPoints.Length; i++)                                      // Temp solution
         {
             // some units are using the waypoints that are left while others use the right
             // how can I assign which waypoint needs to be used
@@ -55,10 +54,10 @@ public abstract class Unit : MonoBehaviour, IDamageable
         if (Vector3.Distance(transform.position, controlPoints[curr_wp + 1 > 2 ? 0 : curr_wp + 1]) < Globals.min_wpDist)
         {
             ++curr_wp;
-            idle = true;
             curr_wp %= controlPoints.Length;
-            StartCoroutine(Utilities.Timer(Globals.idl_time, () => { return idle = false; }));
-            bezierCurveT = 0.0f;    // reset bezier curve
+            idle = true;
+            bezierCurveT = 0.0f;
+            StartCoroutine(Utilities.Timer(Globals.idl_time, () => { idle = false; }));
             return;
         }
         bezierCurveT = bezierCurveT + Time.deltaTime * speed % 1.0f;
