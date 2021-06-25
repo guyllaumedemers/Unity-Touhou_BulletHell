@@ -8,6 +8,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
 {
     private IPatternGenerator pattern;
     private readonly IEnumFiltering enumFiltering = new EnumFilteringBehaviour();
+    private readonly IAnimate animationBehaviour = new PlayerAnimationBehaviour();
     private readonly ISwappable bullets = new SwappablePatternBehaviour();
     Coroutine fireCoroutine;
     // Player values
@@ -61,12 +62,6 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
         transform.position = Wrap(transform.position);
     }
 
-    private void Animation()
-    {
-        animator.SetFloat("vX", inputs.Player.Move.ReadValue<Vector2>().x);
-        animator.SetFloat("vY", inputs.Player.Move.ReadValue<Vector2>().y);
-    }
-
     private Vector2 Wrap(Vector2 pos)
     {
         var cam = Camera.main;
@@ -113,6 +108,6 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
             pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));
         }
         Movement();
-        Animation();
+        animationBehaviour.Animate(animator, null, inputs.Player.Move.ReadValue<Vector2>());
     }
 }

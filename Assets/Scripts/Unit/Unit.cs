@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator), typeof(SpriteRenderer))]
 public abstract class Unit : MonoBehaviour, IDamageable
 {
     public IPatternGenerator pattern;
     public IMoveable moveable = new MoveableUnitBehaviour();
     public readonly IEnumFiltering enumFiltering = new EnumFilteringBehaviour();
+    public readonly IAnimate animationBehaviour = new UnitAnimationBehaviour();
     public readonly ISwappable bullets = new SwappablePatternBehaviour();
     public Coroutine fireCoroutine;
     // Unit values
@@ -17,10 +19,13 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public float angle;
     public string activeBullet;
     public Queue<string> bulletType;
-    private float bezierCurveT;
-    private Vector3[] controlPoints;
-    private int curr_wp = default;
-    private bool idle = default;
+    // Check later for encapsulation
+    public float bezierCurveT;
+    public Vector3[] controlPoints;
+    public int curr_wp = default;
+    public bool idle = default;
+    public SpriteRenderer spriteRen;
+    public Animator animator;
 
     /**********************ACTIONS**************************/
 
@@ -28,6 +33,8 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public Unit PreInitializeUnit(BulletTypeEnum bulletT, Vector3[] waypoints)
     {
         bulletType = new Queue<string>();
+        animator = GetComponent<Animator>();
+        spriteRen = GetComponent<SpriteRenderer>();
         controlPoints = waypoints;
         bezierCurveT = default;
         rad = Globals.hitbox;
@@ -41,6 +48,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public void UpdateUnit()
     {
         if (!idle) Move();
+        animationBehaviour.Animate(animator, spriteRen, (controlPoints[curr_wp + 1 > 2 ? 0 : curr_wp + 1] - controlPoints[curr_wp]).normalized);
     }
 
     private void Move()
@@ -51,7 +59,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
             curr_wp %= controlPoints.Length;
             idle = !idle;
             bezierCurveT = default;
-            StartCoroutine(Utilities.Timer(Globals.idleTime, () => { idle = !idle; }));
+            StartCoroutine(Utilities.Timer(Globals.idleTime, () => { idle = !idle; }));                 // need to find a way to set the idl time differently as it will be diff per units type
             return;
         }
         bezierCurveT = bezierCurveT + Time.deltaTime * speed % 1.0f;
