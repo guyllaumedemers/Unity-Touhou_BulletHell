@@ -23,7 +23,7 @@ public static class Globals
     ///// Distance wp
     public static float minWPDist = 0.01f;
     ///// Idl Time
-    public static float idleTime = 2.0f;
+    public static float idleTime = 0.7f;
     ///// Left Parse start pos
     public static int lsposParse = 0;
     ///// Right Parse start pos
