@@ -32,4 +32,8 @@ public static class Globals
     public static int maxlengthParse = 3;
     ///// Sequential init time interval
     public static float initializationInterval = 1.0f;
+    ///// Unit Generation
+    public static string boss = "Boss";
+    public static string fairies = "Fairies";
+    public static string player = "Player";
 }

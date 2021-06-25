@@ -18,6 +18,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
     PlayerInputActions inputs;
     Queue<string> bulletType;
     private PlayerController() { }
+    private Animator animator;
 
     /****************FILTERING BULLETS ENUM******************/
 
@@ -60,6 +61,12 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
         transform.position = Wrap(transform.position);
     }
 
+    private void Animation()
+    {
+        animator.SetFloat("vX", inputs.Player.Move.ReadValue<Vector2>().x);
+        animator.SetFloat("vY", inputs.Player.Move.ReadValue<Vector2>().y);
+    }
+
     private Vector2 Wrap(Vector2 pos)
     {
         var cam = Camera.main;
@@ -87,6 +94,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
         bulletType = new Queue<string>();
         health = 10.0f;
         speed = 5.0f;
+        animator = GetComponent<Animator>();
         rad = Globals.hitbox;
     }
 
@@ -105,5 +113,6 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
             pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));
         }
         Movement();
+        Animation();
     }
 }
