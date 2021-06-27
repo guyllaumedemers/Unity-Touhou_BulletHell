@@ -11,6 +11,7 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
     //// Can be serialized and manage inside a JSON file later on
     private Dictionary<int, Vector3[]> positions = new Dictionary<int, Vector3[]>()
     {
+        //// Have to update the waypoints so that the fairies that spawn during the second phase of the wave doesnt go thru the same waypoints
         {0, new Vector3[]
             {
                 new Vector3(-2,5), new Vector3(0,0), new Vector3(-4,0),     // left
