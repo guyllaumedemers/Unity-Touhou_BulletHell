@@ -16,6 +16,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
     private float health;
     private float speed;
     private string activeBullet;
+    private bool collapse = true;
     PlayerInputActions inputs;
     Queue<string> bulletType;
     private PlayerController() { }
@@ -72,6 +73,24 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
         return pos;
     }
 
+    private void SwapBulletType()
+    {
+        if (Keyboard.current.tabKey.wasPressedThisFrame)
+        {
+            activeBullet = bullets.SwapBulletType(bulletType);
+            pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));
+        }
+    }
+
+    private void ToggleOrb()
+    {
+        if (Keyboard.current.shiftKey.wasPressedThisFrame)
+        {
+            collapse = !collapse;
+            OrbRotation.Instance.ExpandAndCollapse(transform.position, collapse);
+        }
+    }
+
     public void TakeDamage(float dmg) => this.health -= dmg;
 
     /**********************ENABLE**************************/
@@ -93,6 +112,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
         rad = Globals.hitbox;
         animator = GetComponent<Animator>();
         sprRen = GetComponent<SpriteRenderer>();
+        OrbRotation.Instance.PreIntilizationMethod();
     }
 
     public void InitializationMethod()
@@ -104,11 +124,8 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
 
     public void UpdateMethod()
     {
-        if (Keyboard.current.tabKey.wasPressedThisFrame)
-        {
-            activeBullet = bullets.SwapBulletType(bulletType);
-            pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));
-        }
+        SwapBulletType();
+        ToggleOrb();
         Movement();
         animationBehaviour.Animate(animator, sprRen, inputs.Player.Move.ReadValue<Vector2>());
         OrbRotation.Instance.UpdateMethod();

@@ -1929,6 +1929,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3758752878830663992, guid: 947d00fabbb758d4cb4adc51b1f79956, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758752878830663992, guid: 947d00fabbb758d4cb4adc51b1f79956, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758752879165038765, guid: 947d00fabbb758d4cb4adc51b1f79956, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758752879704119038, guid: 947d00fabbb758d4cb4adc51b1f79956, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758752879704119038, guid: 947d00fabbb758d4cb4adc51b1f79956, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758752880446635546, guid: 947d00fabbb758d4cb4adc51b1f79956, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 7451500850834610225, guid: 947d00fabbb758d4cb4adc51b1f79956, type: 3}
       propertyPath: m_RootOrder
       value: 10
