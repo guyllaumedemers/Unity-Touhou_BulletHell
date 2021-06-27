@@ -38,7 +38,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
         controlPoints = waypoints;
         bezierCurveT = default;
         rad = Globals.hitbox;
-        speed = 0.5f;
+        speed = 0.05f;
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => enumFiltering.EnumToString(bulletT).Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
         activeBullet = bullets.SwapBulletType(bulletType);                                                                      // initialize the active bullet type string    
         pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));                 // initialize the pattern with the active bullet type
@@ -63,7 +63,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
             return;
         }
         bezierCurveT = bezierCurveT + Time.deltaTime * speed % 1.0f;
-        transform.position = moveable.Move(default, default, bezierCurveT, controlPoints[curr_wp], controlPoints[curr_wp + 1 > 2 ? 0 : curr_wp + 1]);
+        transform.position = moveable.Move(default, default, bezierCurveT, transform.position, controlPoints[curr_wp + 1 > 2 ? 0 : curr_wp + 1]);
     }
 
     public IEnumerator Play()
