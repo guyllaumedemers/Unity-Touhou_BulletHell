@@ -1,0 +1,5772 @@
+fileFormatVersion: 2
+guid: e960af3de0b9b074db520089d0bae2f6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1294349533070432909
+    second: Enemies_Spritesheet - Zombiefairy_0
+  - first:
+      213: 6283318869396924796
+    second: Enemies_Spritesheet - Zombiefairy_1
+  - first:
+      213: -888437814982425986
+    second: Enemies_Spritesheet - Zombiefairy_2
+  - first:
+      213: -5633606087581333010
+    second: Enemies_Spritesheet - Zombiefairy_3
+  - first:
+      213: 4782327815362343880
+    second: Enemies_Spritesheet - Zombiefairy_4
+  - first:
+      213: -3124401001659512000
+    second: Enemies_Spritesheet - Zombiefairy_5
+  - first:
+      213: 6172137362582070039
+    second: Enemies_Spritesheet - Zombiefairy_6
+  - first:
+      213: -807653788208583121
+    second: Enemies_Spritesheet - Zombiefairy_7
+  - first:
+      213: -5092633907622937760
+    second: Enemies_Spritesheet - Zombiefairy_8
+  - first:
+      213: -6731407029108574789
+    second: Enemies_Spritesheet - Zombiefairy_9
+  - first:
+      213: -8456676609367704112
+    second: Enemies_Spritesheet - Zombiefairy_10
+  - first:
+      213: -4980922310650504242
+    second: Enemies_Spritesheet - Zombiefairy_11
+  - first:
+      213: 4617389370832253035
+    second: Enemies_Spritesheet - Zombiefairy_12
+  - first:
+      213: 8425453265042621948
+    second: Enemies_Spritesheet - Zombiefairy_13
+  - first:
+      213: -4669061758440924720
+    second: Enemies_Spritesheet - Zombiefairy_14
+  - first:
+      213: -5967906676736868385
+    second: Enemies_Spritesheet - Zombiefairy_15
+  - first:
+      213: 3053507804625636975
+    second: Enemies_Spritesheet - Zombiefairy_16
+  - first:
+      213: -6705069576638421553
+    second: Enemies_Spritesheet - Zombiefairy_17
+  - first:
+      213: -8152182444876996288
+    second: Enemies_Spritesheet - Zombiefairy_18
+  - first:
+      213: 6613631754099728533
+    second: Enemies_Spritesheet - Zombiefairy_19
+  - first:
+      213: 4973481837006158526
+    second: Enemies_Spritesheet - Zombiefairy_20
+  - first:
+      213: 8097821219368207453
+    second: Enemies_Spritesheet - Zombiefairy_21
+  - first:
+      213: -3937184320039229036
+    second: Enemies_Spritesheet - Zombiefairy_22
+  - first:
+      213: 8105493448969052739
+    second: Enemies_Spritesheet - Zombiefairy_23
+  - first:
+      213: -2703590464675883796
+    second: Enemies_Spritesheet - Zombiefairy_24
+  - first:
+      213: -5941836275239860932
+    second: Enemies_Spritesheet - Zombiefairy_25
+  - first:
+      213: 8802246805756283001
+    second: Enemies_Spritesheet - Zombiefairy_26
+  - first:
+      213: -382388037284909106
+    second: Enemies_Spritesheet - Zombiefairy_27
+  - first:
+      213: -8718296879991960353
+    second: Enemies_Spritesheet - Zombiefairy_28
+  - first:
+      213: -407013083807487404
+    second: Enemies_Spritesheet - Zombiefairy_29
+  - first:
+      213: -4393544108959559456
+    second: Enemies_Spritesheet - Zombiefairy_30
+  - first:
+      213: -244272336908242842
+    second: Enemies_Spritesheet - Zombiefairy_31
+  - first:
+      213: 8983754752206444043
+    second: Enemies_Spritesheet - Zombiefairy_32
+  - first:
+      213: -4548116094013593183
+    second: Enemies_Spritesheet - Zombiefairy_33
+  - first:
+      213: -8747666907639227274
+    second: Enemies_Spritesheet - Zombiefairy_34
+  - first:
+      213: -8995018346967211140
+    second: Enemies_Spritesheet - Zombiefairy_35
+  - first:
+      213: 3992693032832183068
+    second: Enemies_Spritesheet - Zombiefairy_36
+  - first:
+      213: 6986166600822702704
+    second: Enemies_Spritesheet - Zombiefairy_37
+  - first:
+      213: 2806524967310748923
+    second: Enemies_Spritesheet - Zombiefairy_38
+  - first:
+      213: 4973646919581224484
+    second: Enemies_Spritesheet - Zombiefairy_39
+  - first:
+      213: -1073042732343833095
+    second: Enemies_Spritesheet - Zombiefairy_40
+  - first:
+      213: 1445175587455976581
+    second: Enemies_Spritesheet - Zombiefairy_41
+  - first:
+      213: 1257209678255893272
+    second: Enemies_Spritesheet - Zombiefairy_42
+  - first:
+      213: 1218829422394329177
+    second: Enemies_Spritesheet - Zombiefairy_43
+  - first:
+      213: 6712632858302559320
+    second: Enemies_Spritesheet - Zombiefairy_44
+  - first:
+      213: 4797938638740749816
+    second: Enemies_Spritesheet - Zombiefairy_45
+  - first:
+      213: 5283042096797011528
+    second: Enemies_Spritesheet - Zombiefairy_46
+  - first:
+      213: -4871397176231875781
+    second: Enemies_Spritesheet - Zombiefairy_47
+  - first:
+      213: -9215749143750047412
+    second: Enemies_Spritesheet - Zombiefairy_48
+  - first:
+      213: 4752263529114624440
+    second: Enemies_Spritesheet - Zombiefairy_49
+  - first:
+      213: -727875410139165627
+    second: Enemies_Spritesheet - Zombiefairy_50
+  - first:
+      213: -1405745519997120535
+    second: Enemies_Spritesheet - Zombiefairy_51
+  - first:
+      213: -2241191661850202797
+    second: Enemies_Spritesheet - Zombiefairy_52
+  - first:
+      213: -6810247043667603382
+    second: Enemies_Spritesheet - Zombiefairy_53
+  - first:
+      213: 7764095772438805580
+    second: Enemies_Spritesheet - Zombiefairy_54
+  - first:
+      213: -1195386723984968205
+    second: Enemies_Spritesheet - Zombiefairy_55
+  - first:
+      213: 3917608031949307004
+    second: Enemies_Spritesheet - Zombiefairy_56
+  - first:
+      213: -1625403867092540900
+    second: Enemies_Spritesheet - Zombiefairy_57
+  - first:
+      213: -1040332700428080605
+    second: Enemies_Spritesheet - Zombiefairy_58
+  - first:
+      213: -1908524043513507955
+    second: Enemies_Spritesheet - Zombiefairy_59
+  - first:
+      213: -4316927717148089041
+    second: Enemies_Spritesheet - Zombiefairy_60
+  - first:
+      213: -8480413330544616486
+    second: Enemies_Spritesheet - Zombiefairy_61
+  - first:
+      213: -9172152426233866476
+    second: Enemies_Spritesheet - Zombiefairy_62
+  - first:
+      213: 7459240598712018601
+    second: Enemies_Spritesheet - Zombiefairy_63
+  - first:
+      213: 3697563394302315554
+    second: Enemies_Spritesheet - Zombiefairy_64
+  - first:
+      213: 2875360101358054037
+    second: Enemies_Spritesheet - Zombiefairy_65
+  - first:
+      213: 4729411355371467581
+    second: Enemies_Spritesheet - Zombiefairy_66
+  - first:
+      213: 6163697738419025831
+    second: Enemies_Spritesheet - Zombiefairy_67
+  - first:
+      213: 8515074955659367346
+    second: Enemies_Spritesheet - Zombiefairy_68
+  - first:
+      213: 622707212500269550
+    second: Enemies_Spritesheet - Zombiefairy_69
+  - first:
+      213: 6094358473944928008
+    second: Enemies_Spritesheet - Zombiefairy_70
+  - first:
+      213: 5156131025354173122
+    second: Enemies_Spritesheet - Zombiefairy_71
+  - first:
+      213: 1350962275175424426
+    second: Enemies_Spritesheet - Zombiefairy_72
+  - first:
+      213: 6612559758721406740
+    second: Enemies_Spritesheet - Zombiefairy_73
+  - first:
+      213: -5877248357160219722
+    second: Enemies_Spritesheet - Zombiefairy_74
+  - first:
+      213: 1446514334189086113
+    second: Enemies_Spritesheet - Zombiefairy_75
+  - first:
+      213: 4542407826638943671
+    second: Enemies_Spritesheet - Zombiefairy_76
+  - first:
+      213: 382539771671084018
+    second: Enemies_Spritesheet - Zombiefairy_77
+  - first:
+      213: -6836868636773501663
+    second: Enemies_Spritesheet - Zombiefairy_78
+  - first:
+      213: 5656987611907761435
+    second: Enemies_Spritesheet - Zombiefairy_79
+  - first:
+      213: 4277948759498310833
+    second: Enemies_Spritesheet - Zombiefairy_80
+  - first:
+      213: -9100406871214836970
+    second: Enemies_Spritesheet - Zombiefairy_81
+  - first:
+      213: -7242950444902466034
+    second: Enemies_Spritesheet - Zombiefairy_82
+  - first:
+      213: 2506512921400954496
+    second: Enemies_Spritesheet - Zombiefairy_83
+  - first:
+      213: -386429702290699922
+    second: Enemies_Spritesheet - Zombiefairy_84
+  - first:
+      213: 4157712146909551604
+    second: Enemies_Spritesheet - Zombiefairy_85
+  - first:
+      213: 5207156953272083846
+    second: Enemies_Spritesheet - Zombiefairy_86
+  - first:
+      213: -5921506467591962913
+    second: Enemies_Spritesheet - Zombiefairy_87
+  - first:
+      213: 139962122619203242
+    second: Enemies_Spritesheet - Zombiefairy_88
+  - first:
+      213: -195066041518214264
+    second: Enemies_Spritesheet - Zombiefairy_89
+  - first:
+      213: 45348984624510331
+    second: Enemies_Spritesheet - Zombiefairy_90
+  - first:
+      213: -3585892574298110204
+    second: Enemies_Spritesheet - Zombiefairy_91
+  - first:
+      213: -7104142223441467578
+    second: Enemies_Spritesheet - Zombiefairy_92
+  - first:
+      213: -2043214346285377828
+    second: Enemies_Spritesheet - Zombiefairy_93
+  - first:
+      213: 4639928710467783541
+    second: Enemies_Spritesheet - Zombiefairy_94
+  - first:
+      213: 8378214603776172331
+    second: Enemies_Spritesheet - Zombiefairy_95
+  - first:
+      213: 8768513443188903540
+    second: Enemies_Spritesheet - Zombiefairy_96
+  - first:
+      213: 1346182559794259234
+    second: Enemies_Spritesheet - Zombiefairy_97
+  - first:
+      213: -2944030153464113054
+    second: Enemies_Spritesheet - Zombiefairy_98
+  - first:
+      213: 5072931824046733288
+    second: Enemies_Spritesheet - Zombiefairy_99
+  - first:
+      213: 3376930833194261010
+    second: Enemies_Spritesheet - Zombiefairy_100
+  - first:
+      213: 3493744379549393286
+    second: Enemies_Spritesheet - Zombiefairy_101
+  - first:
+      213: 8668422983938010416
+    second: Enemies_Spritesheet - Zombiefairy_102
+  - first:
+      213: -7820076990830279228
+    second: Enemies_Spritesheet - Zombiefairy_103
+  - first:
+      213: -5473555149614554646
+    second: Enemies_Spritesheet - Zombiefairy_104
+  - first:
+      213: -2321028167982805188
+    second: Enemies_Spritesheet - Zombiefairy_105
+  - first:
+      213: 4976227892545554524
+    second: Enemies_Spritesheet - Zombiefairy_106
+  - first:
+      213: 6203335098688327809
+    second: Enemies_Spritesheet - Zombiefairy_107
+  - first:
+      213: -4244100578906329787
+    second: Enemies_Spritesheet - Zombiefairy_108
+  - first:
+      213: 6990522481075446083
+    second: Enemies_Spritesheet - Zombiefairy_109
+  - first:
+      213: 1847574276460017239
+    second: Enemies_Spritesheet - Zombiefairy_110
+  - first:
+      213: -488911648374205781
+    second: Enemies_Spritesheet - Zombiefairy_111
+  - first:
+      213: 5212964267192471272
+    second: Enemies_Spritesheet - Zombiefairy_112
+  - first:
+      213: 8192111420494105737
+    second: Enemies_Spritesheet - Zombiefairy_113
+  - first:
+      213: -907239786574310063
+    second: Enemies_Spritesheet - Zombiefairy_114
+  - first:
+      213: -7771708046020929230
+    second: Enemies_Spritesheet - Zombiefairy_115
+  - first:
+      213: 7569867436436524236
+    second: Enemies_Spritesheet - Zombiefairy_116
+  - first:
+      213: -6099989443658985274
+    second: Enemies_Spritesheet - Zombiefairy_117
+  - first:
+      213: -2920365782407363148
+    second: Enemies_Spritesheet - Zombiefairy_118
+  - first:
+      213: -2073825743108396441
+    second: Enemies_Spritesheet - Zombiefairy_119
+  - first:
+      213: 2085308857616110439
+    second: Enemies_Spritesheet - Zombiefairy_120
+  - first:
+      213: -267008721635100643
+    second: Enemies_Spritesheet - Zombiefairy_121
+  - first:
+      213: -2347484831804244653
+    second: Enemies_Spritesheet - Zombiefairy_122
+  - first:
+      213: -125648900539826148
+    second: Enemies_Spritesheet - Zombiefairy_123
+  - first:
+      213: -1866245639078770757
+    second: Enemies_Spritesheet - Zombiefairy_124
+  - first:
+      213: 5643643003397850482
+    second: Enemies_Spritesheet - Zombiefairy_125
+  - first:
+      213: 4000537276585039411
+    second: Enemies_Spritesheet - Zombiefairy_126
+  - first:
+      213: 2075775108540326940
+    second: Enemies_Spritesheet - Zombiefairy_127
+  - first:
+      213: 6685394553941527165
+    second: Enemies_Spritesheet - Zombiefairy_128
+  - first:
+      213: 7657409327894636699
+    second: Enemies_Spritesheet - Zombiefairy_129
+  - first:
+      213: -551839391975223332
+    second: Enemies_Spritesheet - Zombiefairy_130
+  - first:
+      213: 7643068414152243839
+    second: Enemies_Spritesheet - Zombiefairy_131
+  - first:
+      213: -5118723922512595703
+    second: Enemies_Spritesheet - Zombiefairy_132
+  - first:
+      213: -3226789219718048203
+    second: Enemies_Spritesheet - Zombiefairy_133
+  - first:
+      213: -6149276441771241833
+    second: Enemies_Spritesheet - Zombiefairy_134
+  - first:
+      213: -2724433818365421147
+    second: Enemies_Spritesheet - Zombiefairy_135
+  - first:
+      213: -6179087064576957326
+    second: Enemies_Spritesheet - Zombiefairy_136
+  - first:
+      213: -5200005340631771551
+    second: Enemies_Spritesheet - Zombiefairy_137
+  - first:
+      213: -9111944666867681719
+    second: Enemies_Spritesheet - Zombiefairy_138
+  - first:
+      213: 7043537720394503061
+    second: Enemies_Spritesheet - Zombiefairy_139
+  - first:
+      213: -8462527608942796570
+    second: Enemies_Spritesheet - Zombiefairy_140
+  - first:
+      213: 471487254171401303
+    second: Enemies_Spritesheet - Zombiefairy_141
+  - first:
+      213: -7400066753155832610
+    second: Enemies_Spritesheet - Zombiefairy_142
+  - first:
+      213: 630161863477496120
+    second: Enemies_Spritesheet - Zombiefairy_143
+  - first:
+      213: 8588185911274168412
+    second: Enemies_Spritesheet - Zombiefairy_144
+  - first:
+      213: 352164536586441132
+    second: Enemies_Spritesheet - Zombiefairy_145
+  - first:
+      213: -6103309842360320976
+    second: Enemies_Spritesheet - Zombiefairy_146
+  - first:
+      213: 6680470373130834375
+    second: Enemies_Spritesheet - Zombiefairy_147
+  - first:
+      213: 7505813128025037993
+    second: Enemies_Spritesheet - Zombiefairy_148
+  - first:
+      213: 3248226491196639963
+    second: Enemies_Spritesheet - Zombiefairy_149
+  - first:
+      213: 1212269803603091674
+    second: Enemies_Spritesheet - Zombiefairy_150
+  - first:
+      213: 6221621814366248778
+    second: Enemies_Spritesheet - Zombiefairy_151
+  - first:
+      213: -245325066455757242
+    second: Enemies_Spritesheet - Zombiefairy_152
+  - first:
+      213: -9027090966483309006
+    second: Enemies_Spritesheet - Zombiefairy_153
+  - first:
+      213: -3168870460084919299
+    second: Enemies_Spritesheet - Zombiefairy_154
+  - first:
+      213: 6575895824234923508
+    second: Enemies_Spritesheet - Zombiefairy_155
+  - first:
+      213: -7444024017926668186
+    second: Enemies_Spritesheet - Zombiefairy_156
+  - first:
+      213: -2346828264607843558
+    second: Enemies_Spritesheet - Zombiefairy_157
+  - first:
+      213: 2748963187800009826
+    second: Enemies_Spritesheet - Zombiefairy_158
+  - first:
+      213: 5079463670066145509
+    second: Enemies_Spritesheet - Zombiefairy_159
+  - first:
+      213: -8502588380847143699
+    second: Enemies_Spritesheet - Zombiefairy_160
+  - first:
+      213: -5177367529686469927
+    second: Enemies_Spritesheet - Zombiefairy_161
+  - first:
+      213: -1946359216001711277
+    second: Enemies_Spritesheet - Zombiefairy_162
+  - first:
+      213: -7061364379358024504
+    second: Enemies_Spritesheet - Zombiefairy_163
+  - first:
+      213: 1602232629963728902
+    second: Enemies_Spritesheet - Zombiefairy_164
+  - first:
+      213: -4286754514107291545
+    second: Enemies_Spritesheet - Zombiefairy_165
+  - first:
+      213: 5596401642631572252
+    second: Enemies_Spritesheet - Zombiefairy_166
+  - first:
+      213: -1416184646865367771
+    second: Enemies_Spritesheet - Zombiefairy_167
+  - first:
+      213: -485799278423373610
+    second: Enemies_Spritesheet - Zombiefairy_168
+  - first:
+      213: 7762811921985024495
+    second: Enemies_Spritesheet - Zombiefairy_169
+  - first:
+      213: -8349666001254002407
+    second: Enemies_Spritesheet - Zombiefairy_170
+  - first:
+      213: -4533119199629040317
+    second: Enemies_Spritesheet - Zombiefairy_171
+  - first:
+      213: 125379831166132688
+    second: Enemies_Spritesheet - Zombiefairy_172
+  - first:
+      213: -4221150271468254092
+    second: Enemies_Spritesheet - Zombiefairy_173
+  - first:
+      213: -3488340180604672232
+    second: Enemies_Spritesheet - Zombiefairy_174
+  - first:
+      213: -7468979920172598235
+    second: Enemies_Spritesheet - Zombiefairy_175
+  - first:
+      213: 1328291848079952394
+    second: Enemies_Spritesheet - Zombiefairy_176
+  - first:
+      213: -1020692707541928667
+    second: Enemies_Spritesheet - Zombiefairy_177
+  - first:
+      213: 7253910976283234458
+    second: Enemies_Spritesheet - Zombiefairy_178
+  - first:
+      213: 6952578533308726977
+    second: Enemies_Spritesheet - Zombiefairy_179
+  - first:
+      213: 6125397296530661268
+    second: Enemies_Spritesheet - Zombiefairy_180
+  - first:
+      213: -1455913555197621098
+    second: Enemies_Spritesheet - Zombiefairy_181
+  - first:
+      213: 683720907018390070
+    second: Enemies_Spritesheet - Zombiefairy_182
+  - first:
+      213: 7777999391663019495
+    second: Enemies_Spritesheet - Zombiefairy_183
+  - first:
+      213: 186194486849331828
+    second: Enemies_Spritesheet - Zombiefairy_184
+  - first:
+      213: 6066006501527399795
+    second: Enemies_Spritesheet - Zombiefairy_185
+  - first:
+      213: -5108679386559825064
+    second: Enemies_Spritesheet - Zombiefairy_186
+  - first:
+      213: 4566387481409231754
+    second: Enemies_Spritesheet - Zombiefairy_187
+  - first:
+      213: -7459200279555786302
+    second: Enemies_Spritesheet - Zombiefairy_188
+  - first:
+      213: -4021730050536746841
+    second: Enemies_Spritesheet - Zombiefairy_189
+  - first:
+      213: -5693013739877168024
+    second: Enemies_Spritesheet - Zombiefairy_190
+  - first:
+      213: -6602035243773465879
+    second: Enemies_Spritesheet - Zombiefairy_191
+  - first:
+      213: -5251507501307067451
+    second: Enemies_Spritesheet - Zombiefairy_192
+  - first:
+      213: 3273085108617999430
+    second: Enemies_Spritesheet - Zombiefairy_193
+  - first:
+      213: 542082744323596565
+    second: Enemies_Spritesheet - Zombiefairy_194
+  - first:
+      213: -4518918403100421650
+    second: Enemies_Spritesheet - Zombiefairy_195
+  - first:
+      213: 3135642594032723108
+    second: Enemies_Spritesheet - Zombiefairy_196
+  - first:
+      213: 7689526123241255193
+    second: Enemies_Spritesheet - Zombiefairy_197
+  - first:
+      213: -3063538445844049798
+    second: Enemies_Spritesheet - Zombiefairy_198
+  - first:
+      213: -9215474708680876635
+    second: Enemies_Spritesheet - Zombiefairy_199
+  - first:
+      213: 6119839691199709418
+    second: Enemies_Spritesheet - Zombiefairy_200
+  - first:
+      213: -8630267261710073659
+    second: Enemies_Spritesheet - Zombiefairy_201
+  - first:
+      213: 7347474452938756044
+    second: Enemies_Spritesheet - Zombiefairy_202
+  - first:
+      213: -6722126486813746265
+    second: Enemies_Spritesheet - Zombiefairy_203
+  - first:
+      213: 4770659269822449118
+    second: Enemies_Spritesheet - Zombiefairy_204
+  - first:
+      213: 6613238614271987061
+    second: Enemies_Spritesheet - Zombiefairy_205
+  - first:
+      213: -6143516865884076782
+    second: Enemies_Spritesheet - Zombiefairy_206
+  - first:
+      213: 5181526255675079647
+    second: Enemies_Spritesheet - Zombiefairy_207
+  - first:
+      213: -644858065177446581
+    second: Enemies_Spritesheet - Zombiefairy_208
+  - first:
+      213: 1311323374822759922
+    second: Enemies_Spritesheet - Zombiefairy_209
+  - first:
+      213: -3942938316402516155
+    second: Enemies_Spritesheet - Zombiefairy_210
+  - first:
+      213: -5308930966836859739
+    second: Enemies_Spritesheet - Zombiefairy_211
+  - first:
+      213: 6164807266729557856
+    second: Enemies_Spritesheet - Zombiefairy_212
+  - first:
+      213: -919267819770030809
+    second: Enemies_Spritesheet - Zombiefairy_213
+  - first:
+      213: -9208158941445146461
+    second: Enemies_Spritesheet - Zombiefairy_214
+  - first:
+      213: 2973885492663022754
+    second: Enemies_Spritesheet - Zombiefairy_215
+  - first:
+      213: -1542163789225975487
+    second: Enemies_Spritesheet - Zombiefairy_216
+  - first:
+      213: 6502603591561897832
+    second: Enemies_Spritesheet - Zombiefairy_217
+  - first:
+      213: -1327053328157533059
+    second: Enemies_Spritesheet - Zombiefairy_218
+  - first:
+      213: -7040956513488950600
+    second: Enemies_Spritesheet - Zombiefairy_219
+  - first:
+      213: 2703261571642986435
+    second: Enemies_Spritesheet - Zombiefairy_220
+  - first:
+      213: -7905796259248049659
+    second: Enemies_Spritesheet - Zombiefairy_221
+  - first:
+      213: -8004069101896700250
+    second: Enemies_Spritesheet - Zombiefairy_222
+  - first:
+      213: -4688270206369268836
+    second: Enemies_Spritesheet - Zombiefairy_223
+  - first:
+      213: 3601675709951088363
+    second: Enemies_Spritesheet - Zombiefairy_224
+  - first:
+      213: -1675118349118495022
+    second: Enemies_Spritesheet - Zombiefairy_225
+  - first:
+      213: 436062099574542610
+    second: Enemies_Spritesheet - Zombiefairy_226
+  - first:
+      213: -292770534286602739
+    second: Enemies_Spritesheet - Zombiefairy_227
+  - first:
+      213: 2777803656283845252
+    second: Enemies_Spritesheet - Zombiefairy_228
+  - first:
+      213: 862826609062240520
+    second: Enemies_Spritesheet - Zombiefairy_229
+  - first:
+      213: -7315044196250167111
+    second: Enemies_Spritesheet - Zombiefairy_230
+  - first:
+      213: -1841092076156028230
+    second: Enemies_Spritesheet - Zombiefairy_231
+  - first:
+      213: -7260298166469164987
+    second: Enemies_Spritesheet - Zombiefairy_232
+  - first:
+      213: 2600007424289350927
+    second: Enemies_Spritesheet - Zombiefairy_233
+  - first:
+      213: 7678375071113034853
+    second: Enemies_Spritesheet - Zombiefairy_234
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 50
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 841
+        width: 62
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 375e42a15fb890ee0800000000000000
+      internalID: -1294349533070432909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_1
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 845
+        width: 56
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c79a9e4a835d23750800000000000000
+      internalID: 6283318869396924796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_2
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 841
+        width: 60
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e72c2f0b382aba3f0800000000000000
+      internalID: -888437814982425986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_3
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 841
+        width: 63
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee98c398c1961d1b0800000000000000
+      internalID: -5633606087581333010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_4
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 841
+        width: 62
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c3742a6fcd3e5240800000000000000
+      internalID: 4782327815362343880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_5
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 842
+        width: 57
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04bc530c7d5e3a4d0800000000000000
+      internalID: -3124401001659512000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_6
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 845
+        width: 56
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 713ee99da36d7a550800000000000000
+      internalID: 6172137362582070039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_7
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 844
+        width: 53
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2e2454a823aac4f0800000000000000
+      internalID: -807653788208583121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_8
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 871
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06b760561745359b0800000000000000
+      internalID: -5092633907622937760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_9
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 871
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb57a67b8fc3592a0800000000000000
+      internalID: -6731407029108574789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_10
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 870
+        width: 25
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dd784edd69d3aa80800000000000000
+      internalID: -8456676609367704112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_11
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 871
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecbdbdb6c8530eab0800000000000000
+      internalID: -4980922310650504242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_12
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 873
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b60fe163b23441040800000000000000
+      internalID: 4617389370832253035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_13
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 873
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf54586ca193de470800000000000000
+      internalID: 8425453265042621948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_14
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 871
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d994c58119243fb0800000000000000
+      internalID: -4669061758440924720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_15
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 871
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdfba603f7cbd2da0800000000000000
+      internalID: -5967906676736868385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_16
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 839
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6e089d8b2d306a20800000000000000
+      internalID: 3053507804625636975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_17
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 839
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc5203abebec2f2a0800000000000000
+      internalID: -6705069576638421553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_18
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 838
+        width: 25
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0416eec2241adde80800000000000000
+      internalID: -8152182444876996288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_19
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 839
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 590ab523a0758cb50800000000000000
+      internalID: 6613631754099728533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_20
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 841
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebafb9f416b550540800000000000000
+      internalID: 4973481837006158526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_21
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 841
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d540013be7d316070800000000000000
+      internalID: 8097821219368207453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_22
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 839
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 499e2d498bf4c59c0800000000000000
+      internalID: -3937184320039229036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_23
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 839
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3426e0bd85f7c7070800000000000000
+      internalID: 8105493448969052739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_24
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 780
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce45cdeebcaea7ad0800000000000000
+      internalID: -2703590464675883796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_25
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 780
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c354ccc836b5a8da0800000000000000
+      internalID: -5941836275239860932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_26
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 782
+        width: 42
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9788b6265dcd72a70800000000000000
+      internalID: 8802246805756283001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_27
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 781
+        width: 50
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecf26472b1c71baf0800000000000000
+      internalID: -382388037284909106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_28
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 819
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdcceaddd23620780800000000000000
+      internalID: -8718296879991960353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_29
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 819
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45ae7b8b1cff95af0800000000000000
+      internalID: -407013083807487404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_30
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 822
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e0947039eef603c0800000000000000
+      internalID: -4393544108959559456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_31
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 816
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66031229a9b2c9cf0800000000000000
+      internalID: -244272336908242842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_32
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 824
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b061e726955bcac70800000000000000
+      internalID: 8983754752206444043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_33
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 824
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a9251b6288d1e0c0800000000000000
+      internalID: -4548116094013593183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_34
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 807
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67c59bc6b4b0a9680800000000000000
+      internalID: -8747666907639227274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_35
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 807
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c73e5e898764b2380800000000000000
+      internalID: -8995018346967211140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_36
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 806
+        width: 25
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1ba32fb825e86730800000000000000
+      internalID: 3992693032832183068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_37
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 807
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0724cb75289d3f060800000000000000
+      internalID: 6986166600822702704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_38
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 809
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfc62d19697c2f620800000000000000
+      internalID: 2806524967310748923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_39
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 809
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ecad79581f50540800000000000000
+      internalID: 4973646919581224484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_40
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 807
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fdc4d5f159cb11f0800000000000000
+      internalID: -1073042732343833095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_41
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 807
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58441683a8b4e0410800000000000000
+      internalID: 1445175587455976581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_42
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 811
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81b20a89a81827110800000000000000
+      internalID: 1257209678255893272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_43
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 811
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 958cb9be6e62ae010800000000000000
+      internalID: 1218829422394329177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_44
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 814
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8543db20500182d50800000000000000
+      internalID: 6712632858302559320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_45
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 814
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fd734875c3b59240800000000000000
+      internalID: 4797938638740749816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_46
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 813
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84e4509dbc2215940800000000000000
+      internalID: 5283042096797011528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_47
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 813
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3babd6f312556cb0800000000000000
+      internalID: -4871397176231875781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_48
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 784
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c490bab1bf41b1080800000000000000
+      internalID: -9215749143750047412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_49
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 791
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b1ebeb408e63f140800000000000000
+      internalID: 4752263529114624440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_50
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 787
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54cc9e1cb2116e5f0800000000000000
+      internalID: -727875410139165627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_51
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 790
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ef89f3c5e9cd7ce0800000000000000
+      internalID: -1405745519997120535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_52
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 775
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35de9d1de00b5e0e0800000000000000
+      internalID: -2241191661850202797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_53
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 775
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a40d98165642d71a0800000000000000
+      internalID: -6810247043667603382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_54
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 774
+        width: 25
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4cb35618fb9fbb60800000000000000
+      internalID: 7764095772438805580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_55
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 775
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f578a3ab12296fe0800000000000000
+      internalID: -1195386723984968205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_56
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 777
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7c3e89afb32e5630800000000000000
+      internalID: 3917608031949307004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_57
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 777
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c12276d6bc76179e0800000000000000
+      internalID: -1625403867092540900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_58
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 775
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32ae2cebbeeff81f0800000000000000
+      internalID: -1040332700428080605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_59
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 775
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8fc5158e7f8385e0800000000000000
+      internalID: -1908524043513507955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_60
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 779
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f25a9520d113714c0800000000000000
+      internalID: -4316927717148089041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_61
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 778
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adb966cc1058f4a80800000000000000
+      internalID: -8480413330544616486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_62
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 708
+        width: 64
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 417d798e6f7f5b080800000000000000
+      internalID: -9172152426233866476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_63
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 741
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a6e664cdcb848760800000000000000
+      internalID: 7459240598712018601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_64
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 741
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22c80eb0152605330800000000000000
+      internalID: 3697563394302315554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_65
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 712
+        width: 58
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59a27c227c457e720800000000000000
+      internalID: 2875360101358054037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_66
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 726
+        width: 39
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d337d99f19e32a140800000000000000
+      internalID: 4729411355371467581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_67
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 728
+        width: 40
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a73859bf6ad98550800000000000000
+      internalID: 6163697738419025831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_68
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 741
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b3d6efae8f9b2670800000000000000
+      internalID: 8515074955659367346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_69
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 741
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee9f62819ec44a800800000000000000
+      internalID: 622707212500269550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_70
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 743
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80f01652eb2839450800000000000000
+      internalID: 6094358473944928008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_71
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 709
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ca2b9569d14e8740800000000000000
+      internalID: 5156131025354173122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_72
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 709
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa1e8c418059fb210800000000000000
+      internalID: 1350962275175424426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_73
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 676
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 417d1a2d01884cb50800000000000000
+      internalID: 6612559758721406740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_74
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 676
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bb87b612c1df6ea0800000000000000
+      internalID: -5877248357160219722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_75
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 676
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a5e9db7f1d031410800000000000000
+      internalID: 1446514334189086113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_76
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 676
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b5b4c30adfd90f30800000000000000
+      internalID: 4542407826638943671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_77
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 683
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fbf9e245ed0f4500800000000000000
+      internalID: 382539771671084018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_78
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 683
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1253b19b2309e11a0800000000000000
+      internalID: -6836868636773501663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_79
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 683
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b152c82d248a18e40800000000000000
+      internalID: 5656987611907761435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_80
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 683
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b448313bb35e5b30800000000000000
+      internalID: 4277948759498310833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_81
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 643
+        width: 159
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61337b9aa2cd4b180800000000000000
+      internalID: -9100406871214836970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_82
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 643
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0eb4d5f1fedb7b90800000000000000
+      internalID: -7242950444902466034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_83
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 643
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08ec701d83ce8c220800000000000000
+      internalID: 2506512921400954496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_84
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 643
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e698d40bb3023aaf0800000000000000
+      internalID: -386429702290699922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_85
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 614
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fbdeda4b2923b930800000000000000
+      internalID: 4157712146909551604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_86
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 614
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 685ec7909a9834840800000000000000
+      internalID: 5207156953272083846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_87
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 614
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdeb000cd3592dda0800000000000000
+      internalID: -5921506467591962913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_88
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 614
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aae2ab81fce31f100800000000000000
+      internalID: 139962122619203242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_89
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 614
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 883b09ff77cfa4df0800000000000000
+      internalID: -195066041518214264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_90
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 614
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b75f77749ac11a000800000000000000
+      internalID: 45348984624510331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_91
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 614
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 407004ad3b95c3ec0800000000000000
+      internalID: -3585892574298110204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_92
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 614
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 647eae18944096d90800000000000000
+      internalID: -7104142223441467578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_93
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 614
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd69da1a06b05a3e0800000000000000
+      internalID: -2043214346285377828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_94
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 614
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57b819a2496546040800000000000000
+      internalID: 4639928710467783541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_95
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 614
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b21a11edac5654470800000000000000
+      internalID: 8378214603776172331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_96
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 614
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47e038dd48400b970800000000000000
+      internalID: 8768513443188903540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_97
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 588
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 225ec5fd7e99ea210800000000000000
+      internalID: 1346182559794259234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_98
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 588
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2689bbe6c24b427d0800000000000000
+      internalID: -2944030153464113054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_99
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 582
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e7741ecd9ca66640800000000000000
+      internalID: 5072931824046733288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_100
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 582
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21a9b9773b44dde20800000000000000
+      internalID: 3376930833194261010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_101
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 582
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6812f07a0064c7030800000000000000
+      internalID: 3493744379549393286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_102
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 582
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03de470d6cc6c4870800000000000000
+      internalID: 8668422983938010416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_103
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 582
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c50b5dc861897390800000000000000
+      internalID: -7820076990830279228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_104
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 582
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae1e6b077960a04b0800000000000000
+      internalID: -5473555149614554646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_105
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 582
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3f85b5bd2d0acfd0800000000000000
+      internalID: -2321028167982805188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_106
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 582
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c58819037ec1f0540800000000000000
+      internalID: 4976227892545554524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_107
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 582
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 180d704d76ca61650800000000000000
+      internalID: 6203335098688327809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_108
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 582
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54d224b720de915c0800000000000000
+      internalID: -4244100578906329787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_109
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 582
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34162eeb823530160800000000000000
+      internalID: 6990522481075446083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_110
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 582
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7567c8cf307e3a910800000000000000
+      internalID: 1847574276460017239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_111
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 550
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba2da1832790739f0800000000000000
+      internalID: -488911648374205781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_112
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 550
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8eecfcca16b285840800000000000000
+      internalID: 5212964267192471272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_113
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 550
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98cc8faeee930b170800000000000000
+      internalID: 8192111420494105737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_114
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 550
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 155132b8836d863f0800000000000000
+      internalID: -907239786574310063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_115
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 550
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23990ea55b8552490800000000000000
+      internalID: -7771708046020929230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_116
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 550
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccc889993529d0960800000000000000
+      internalID: 7569867436436524236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_117
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 550
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c0d21d8beb785ba0800000000000000
+      internalID: -6099989443658985274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_118
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 550
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b5476d2bc6c877d0800000000000000
+      internalID: -2920365782407363148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_119
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 550
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76aa6f7697a4833e0800000000000000
+      internalID: -2073825743108396441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_120
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 550
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7631f298b5180fc10800000000000000
+      internalID: 2085308857616110439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_121
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 550
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d18320b7bf46b4cf0800000000000000
+      internalID: -267008721635100643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_122
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 550
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35db0b4abfe0c6fd0800000000000000
+      internalID: -2347484831804244653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_123
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 526
+        width: 42
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c10c7ec9dfa914ef0800000000000000
+      internalID: -125648900539826148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_124
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 525
+        width: 50
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb78613aa73c916e0800000000000000
+      internalID: -1866245639078770757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_125
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 518
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 275c5a8096f325e40800000000000000
+      internalID: 5643643003397850482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_126
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 518
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3365f811573c48730800000000000000
+      internalID: 4000537276585039411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_127
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 518
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c14e42a9672aecc10800000000000000
+      internalID: 2075775108540326940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_128
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 518
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a04031dea47cc50800000000000000
+      internalID: 6685394553941527165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_129
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 518
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b982ce88635944a60800000000000000
+      internalID: 7657409327894636699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_130
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 518
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdfcf3c2ff87758f0800000000000000
+      internalID: -551839391975223332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_131
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 518
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7a7d8b5a32a11a60800000000000000
+      internalID: 7643068414152243839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_132
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 518
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 905b75f66b3a6f8b0800000000000000
+      internalID: -5118723922512595703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_133
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 518
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53655a90d442833d0800000000000000
+      internalID: -3226789219718048203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_134
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 518
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79e0c8e08a169aaa0800000000000000
+      internalID: -6149276441771241833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_135
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 518
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a9944a70edd03ad0800000000000000
+      internalID: -2724433818365421147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_136
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 518
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 274edaf8d097f3aa0800000000000000
+      internalID: -6179087064576957326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_137
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 457
+        width: 62
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 166528981bed5d7b0800000000000000
+      internalID: -5200005340631771551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_138
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 461
+        width: 56
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94636564a9edb8180800000000000000
+      internalID: -9111944666867681719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_139
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 457
+        width: 60
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 593dd2a0d3cafb160800000000000000
+      internalID: 7043537720394503061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_140
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 457
+        width: 63
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e0670fd9ff0f8a80800000000000000
+      internalID: -8462527608942796570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_141
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 457
+        width: 62
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75cb20dd82f0b8600800000000000000
+      internalID: 471487254171401303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_142
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 458
+        width: 57
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed4e7f7ce7ead4990800000000000000
+      internalID: -7400066753155832610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_143
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 461
+        width: 56
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 839039740e8ceb800800000000000000
+      internalID: 630161863477496120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_144
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 460
+        width: 53
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c50e28a859d5f2770800000000000000
+      internalID: 8588185911274168412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_145
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 402
+        width: 60
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca199b9b7c323e400800000000000000
+      internalID: 352164536586441132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_146
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 402
+        width: 60
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03cb7fbf800bc4ba0800000000000000
+      internalID: -6103309842360320976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_147
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 402
+        width: 60
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c11cf2e86cc5bc50800000000000000
+      internalID: 6680470373130834375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_148
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 402
+        width: 60
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ac556eb5410a2860800000000000000
+      internalID: 7505813128025037993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_149
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 402
+        width: 60
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bda0acda8c4041d20800000000000000
+      internalID: 3248226491196639963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_150
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 402
+        width: 60
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad0e1b7a6f8d2d010800000000000000
+      internalID: 1212269803603091674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_151
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 402
+        width: 60
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4f1f1c9314a75650800000000000000
+      internalID: 6221621814366248778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_152
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 402
+        width: 60
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64ec76fd62e689cf0800000000000000
+      internalID: -245325066455757242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_153
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 265
+        width: 114
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23eef93f79459b280800000000000000
+      internalID: -9027090966483309006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_154
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 357
+        width: 63
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df3e86f1b19e504d0800000000000000
+      internalID: -3168870460084919299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_155
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 357
+        width: 31
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f54f7b5966424b50800000000000000
+      internalID: 6575895824234923508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_156
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 357
+        width: 94
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6604108889381b890800000000000000
+      internalID: -7444024017926668186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_157
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 357
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1bf33b90246e6fd0800000000000000
+      internalID: -2346828264607843558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_158
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 357
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26ce1756477462620800000000000000
+      internalID: 2748963187800009826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_159
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 357
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e86bc7bb41ed7640800000000000000
+      internalID: 5079463670066145509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_160
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 357
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de40e309aecb00a80800000000000000
+      internalID: -8502588380847143699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_161
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 357
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d27561a9ab4628b0800000000000000
+      internalID: -5177367529686469927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_162
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 357
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35309e4fa942df4e0800000000000000
+      internalID: -1946359216001711277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_163
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 227
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cca4ca728ef00e90800000000000000
+      internalID: -7061364379358024504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_164
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 227
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 608278486164c3610800000000000000
+      internalID: 1602232629963728902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_165
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 227
+        width: 31
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 768255b4b736284c0800000000000000
+      internalID: -4286754514107291545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_166
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 227
+        width: 64
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1ba77994a96aad40800000000000000
+      internalID: 5596401642631572252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_167
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 227
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52d4a332193b85ce0800000000000000
+      internalID: -1416184646865367771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_168
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 227
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d80f6151281249f0800000000000000
+      internalID: -485799278423373610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_169
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 227
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe1b51c505c0bbb60800000000000000
+      internalID: 7762811921985024495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_170
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 227
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9115912a207002c80800000000000000
+      internalID: -8349666001254002407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_171
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 227
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 345ab9dfa102711c0800000000000000
+      internalID: -4533119199629040317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_172
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 227
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d1e7aaca407db100800000000000000
+      internalID: 125379831166132688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_173
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 227
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47c479551367b65c0800000000000000
+      internalID: -4221150271468254092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_174
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 200
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8172657761de69fc0800000000000000
+      internalID: -3488340180604672232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_175
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 200
+        width: 47
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52c369fb55ad85890800000000000000
+      internalID: -7468979920172598235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_176
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 202
+        width: 61
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0a4ad2f56a0f6210800000000000000
+      internalID: 1328291848079952394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_177
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 202
+        width: 60
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 525b12ee365c5d1f0800000000000000
+      internalID: -1020692707541928667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_178
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 203
+        width: 60
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a905bad99911ba460800000000000000
+      internalID: 7253910976283234458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_179
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 202
+        width: 60
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ce7fd6f6558c7060800000000000000
+      internalID: 6952578533308726977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_180
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 195
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49f19df2368c10550800000000000000
+      internalID: 6125397296530661268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_181
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 195
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69c05c6d55e8bcbe0800000000000000
+      internalID: -1455913555197621098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_182
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 195
+        width: 31
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63ac65cda801d7900800000000000000
+      internalID: 683720907018390070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_183
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 195
+        width: 64
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e55743bc3101fb60800000000000000
+      internalID: 7777999391663019495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_184
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 195
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4726ac736ee759200800000000000000
+      internalID: 186194486849331828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_185
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 195
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37d20c826c8ce2450800000000000000
+      internalID: 6066006501527399795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_186
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 195
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85bbdb43a235a19b0800000000000000
+      internalID: -5108679386559825064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_187
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 195
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8b103878311f5f30800000000000000
+      internalID: 4566387481409231754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_188
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 195
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c93594cdd89b7890800000000000000
+      internalID: -7459200279555786302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_189
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 195
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a05e3bb3d1ff28c0800000000000000
+      internalID: -4021730050536746841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_190
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 195
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86c043d9a2a5ef0b0800000000000000
+      internalID: -5693013739877168024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_191
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 163
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eae544ccebd064a0800000000000000
+      internalID: -6602035243773465879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_192
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 163
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c30b4150c5ee17b0800000000000000
+      internalID: -5251507501307067451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_193
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 163
+        width: 31
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 644fbc290955c6d20800000000000000
+      internalID: 3273085108617999430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_194
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 163
+        width: 64
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 511e646426dd58700800000000000000
+      internalID: 542082744323596565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_195
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 163
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee1593697a39941c0800000000000000
+      internalID: -4518918403100421650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_196
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 163
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a4a7ef635a048b20800000000000000
+      internalID: 3135642594032723108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_197
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 163
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911b1eaa44fa6ba60800000000000000
+      internalID: 7689526123241255193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_198
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 163
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7096bbc3002c75d0800000000000000
+      internalID: -3063538445844049798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_199
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 163
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5adda70049e0c1080800000000000000
+      internalID: -9215474708680876635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_200
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 163
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae08b4c56c90ee450800000000000000
+      internalID: 6119839691199709418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_201
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 163
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c0861d86a12b3880800000000000000
+      internalID: -8630267261710073659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_202
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 138
+        width: 44
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccf0cab161977f560800000000000000
+      internalID: 7347474452938756044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_203
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 137
+        width: 52
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7abd83a539536b2a0800000000000000
+      internalID: -6722126486813746265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_204
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 138
+        width: 61
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed501327459c43240800000000000000
+      internalID: 4770659269822449118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_205
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 138
+        width: 60
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57d04923b71f6cb50800000000000000
+      internalID: 6613238614271987061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_206
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 139
+        width: 60
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 215cb51d5f7ddbaa0800000000000000
+      internalID: -6143516865884076782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_207
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 138
+        width: 60
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdb7fd73daa78e740800000000000000
+      internalID: 5181526255675079647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_208
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 131
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b477d8e91010d07f0800000000000000
+      internalID: -644858065177446581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_209
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 131
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fd1af569a1c23210800000000000000
+      internalID: 1311323374822759922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_210
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 131
+        width: 31
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54f1d87ed7ed749c0800000000000000
+      internalID: -3942938316402516155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_211
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 131
+        width: 64
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ac2e90e963e256b0800000000000000
+      internalID: -5308930966836859739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_212
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 131
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06f792aeb8bcd8550800000000000000
+      internalID: 6164807266729557856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_213
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 131
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 725d825d9ca1e33f0800000000000000
+      internalID: -919267819770030809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_214
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 131
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a833dbca3c063080800000000000000
+      internalID: -9208158941445146461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_215
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 131
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a4fdd8691d554920800000000000000
+      internalID: 2973885492663022754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_216
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 131
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14127b55432299ae0800000000000000
+      internalID: -1542163789225975487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_217
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 131
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 867e936a383ed3a50800000000000000
+      internalID: 6502603591561897832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_218
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 131
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7c9b21770c559de0800000000000000
+      internalID: -1327053328157533059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_219
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 69
+        width: 63
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8baa4860b5f794e90800000000000000
+      internalID: -7040956513488950600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_220
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 73
+        width: 58
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cf8eb0b31ae38520800000000000000
+      internalID: 2703261571642986435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_221
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 69
+        width: 62
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50278ec5038f84290800000000000000
+      internalID: -7905796259248049659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_222
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 69
+        width: 64
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ae64c72f85dbe090800000000000000
+      internalID: -8004069101896700250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_223
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 69
+        width: 63
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9bff4a361befeeb0800000000000000
+      internalID: -4688270206369268836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_224
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 70
+        width: 59
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be699c7c9f8bbf130800000000000000
+      internalID: 3601675709951088363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_225
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 73
+        width: 58
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d6ad049cb8c0c8e0800000000000000
+      internalID: -1675118349118495022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_226
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 72
+        width: 55
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 211d6215b243d0600800000000000000
+      internalID: 436062099574542610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_227
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 74
+        width: 61
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0e452f00cedfebf0800000000000000
+      internalID: -292770534286602739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_228
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 74
+        width: 60
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 482749c35bdbc8620800000000000000
+      internalID: 2777803656283845252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_229
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 75
+        width: 60
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 801e8efba3069fb00800000000000000
+      internalID: 862826609062240520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_230
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 74
+        width: 60
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b8d93e6f0ebb7a90800000000000000
+      internalID: -7315044196250167111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_231
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 10
+        width: 61
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abafee1e2802376e0800000000000000
+      internalID: -1841092076156028230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_232
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 10
+        width: 60
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5408f28c84d3e3b90800000000000000
+      internalID: -7260298166469164987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_233
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 11
+        width: 60
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f05252a1af4151420800000000000000
+      internalID: 2600007424289350927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies_Spritesheet - Zombiefairy_234
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 10
+        width: 60
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56c38e502711f8a60800000000000000
+      internalID: 7678375071113034853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

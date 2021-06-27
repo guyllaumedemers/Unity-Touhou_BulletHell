@@ -34,6 +34,7 @@ public static class Globals
     public static float initializationInterval = 2.0f;
     ///// Unit Generation
     public static string boss = "Boss";
-    public static string fairies = "Fairies";
+    public static string sunflowerFairy = "SunflowerFairy";
+    public static string zombieFairy = "ZombieFairy";
     public static string player = "Player";
 }
