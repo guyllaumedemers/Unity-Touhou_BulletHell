@@ -8,7 +8,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
 {
     private IPatternGenerator pattern;
     private readonly IEnumFiltering enumFiltering = new EnumFilteringBehaviour();
-    private readonly IAnimate animationBehaviour = new PlayerAnimationBehaviour();
+    private readonly IAnimate animationBehaviour = new UnitAnimationBehaviour();
     private readonly ISwappable bullets = new SwappablePatternBehaviour();
     Coroutine fireCoroutine;
     // Player values
@@ -20,6 +20,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
     Queue<string> bulletType;
     private PlayerController() { }
     private Animator animator;
+    private SpriteRenderer sprRen;
 
     /****************FILTERING BULLETS ENUM******************/
 
@@ -89,8 +90,9 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
         bulletType = new Queue<string>();
         health = 10.0f;
         speed = 5.0f;
-        animator = GetComponent<Animator>();
         rad = Globals.hitbox;
+        animator = GetComponent<Animator>();
+        sprRen = GetComponent<SpriteRenderer>();
     }
 
     public void InitializationMethod()
@@ -108,6 +110,6 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
             pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));
         }
         Movement();
-        animationBehaviour.Animate(animator, null, inputs.Player.Move.ReadValue<Vector2>());
+        animationBehaviour.Animate(animator, sprRen, inputs.Player.Move.ReadValue<Vector2>());
     }
 }
