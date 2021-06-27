@@ -14,8 +14,8 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
         //// Have to update the waypoints so that the fairies that spawn during the second phase of the wave doesnt go thru the same waypoints
         {0, new Vector3[]
             {
-                new Vector3(-2,5), new Vector3(0,0), new Vector3(-4,0),     // left
-                new Vector3(2,5), new Vector3(0,0), new Vector3(5,0),       // right
+                new Vector3(-10,20), new Vector3(-1,0), new Vector3(-10,0),     // left
+                new Vector3(10,20), new Vector3(1,0), new Vector3(10,0),       // right
                 new Vector3(0,5)                                            // middle
             }
         }

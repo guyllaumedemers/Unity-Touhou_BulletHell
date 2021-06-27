@@ -57,8 +57,8 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
 
     public void InitializationMethod()
     {
-        StartCoroutine(SequencialInit<Fairy>(Globals.fairies, Vector3.one, BulletTypeEnum.Circle | BulletTypeEnum.Star, SpawningPosEnum.Left, 0, 3, Globals.initializationInterval));
-        StartCoroutine(SequencialInit<Fairy>(Globals.fairies, Vector3.one, BulletTypeEnum.Circle | BulletTypeEnum.Star, SpawningPosEnum.Right, 0, 3, Globals.initializationInterval));
+        StartCoroutine(SequencialInit<Fairy>(Globals.sunflowerFairy, Vector3.one, BulletTypeEnum.Circle | BulletTypeEnum.Star, SpawningPosEnum.Left, 0, 3, Globals.initializationInterval));
+        StartCoroutine(SequencialInit<Fairy>(Globals.zombieFairy, Vector3.one, BulletTypeEnum.Circle | BulletTypeEnum.Star, SpawningPosEnum.Right, 0, 3, Globals.initializationInterval));
     }
 
     public void UpdateMethod() => UpdateUnits(UnitsDict);
