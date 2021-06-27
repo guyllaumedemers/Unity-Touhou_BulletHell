@@ -39,4 +39,8 @@ public static class Globals
     public static string player = "Player";
     ///// Orb Rotation
     public static float orbRotationSpeed = 120.0f;
+    ///// Orb Fade
+    public static float fadingTime = 2.0f;
+    ///// string comparison - player
+    public static string missile = "Missile";
 }
