@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class OrbRotation : SingletonMono<OrbRotation>, IFlow
 {
+    /*  Orbs could be a special attack unlock once the player reach a specific score which would unlock the ability
+     *  and allow the player to fire from the orbs in a forward motion instead of firing from the player position
+     * 
+     */
+
     private OrbRotation() { }
     private Vector3[] positions = new Vector3[]{
         // Collapse
