@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OrbRotation : SingletonMono<OrbRotation>, IFlow
@@ -34,7 +32,11 @@ public class OrbRotation : SingletonMono<OrbRotation>, IFlow
 
     /**********************FLOW****************************/
 
-    public void PreIntilizationMethod() { ExpandAndCollapse(Vector3.zero, true); }
+    public void PreIntilizationMethod()
+    {
+        ExpandAndCollapse(Vector3.zero, true);
+        foreach (Transform orb in transform) orb.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+    }
 
     public void InitializationMethod() { }
 

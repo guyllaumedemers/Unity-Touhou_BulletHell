@@ -30,9 +30,9 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
 
     /**********************ACTIONS**************************/
 
-    private void Shoot(Transform orbT)
+    private void Shoot(Transform firingPos)
     {
-        pattern.Fill(activeBullet, BulletManager.Instance.bulletParent.transform, orbT.position, 0, 0);
+        pattern.Fill(activeBullet, BulletManager.Instance.bulletParent.transform, firingPos.position, 0, 0);
         pattern.UpdateBulletPattern(default, default);
         foreach (IProduct b in (pattern as AbsPattern).bullets.Cast<IProduct>()) b.SetIgnoredLayer(IgnoreLayerEnum.Player);
     }
@@ -51,7 +51,8 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
         {
             if (Time.time - last > 1 / (pattern as AbsPattern).rof)
             {
-                foreach (Transform orb in orbParent) Shoot(orb);
+                if (activeBullet != Globals.missile) Shoot(transform);
+                else foreach (Transform orb in orbParent) Shoot(orb);
                 last = Time.time;
             }
             yield return null;
@@ -80,6 +81,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
         {
             activeBullet = bullets.SwapBulletType(bulletType);
             pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));
+            foreach (Transform spr in orbParent) StartCoroutine(Utilities.Fade(spr.GetComponent<SpriteRenderer>(), activeBullet));
         }
     }
 
