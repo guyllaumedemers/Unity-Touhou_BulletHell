@@ -37,4 +37,6 @@ public static class Globals
     public static string sunflowerFairy = "SunflowerFairy";
     public static string zombieFairy = "ZombieFairy";
     public static string player = "Player";
+    ///// Orb Rotation
+    public static float orbRotationSpeed = 120.0f;
 }

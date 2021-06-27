@@ -17,13 +17,13 @@ public class WaveSystem : MonoBehaviour
     private static Dictionary<int, Dictionary<string, int>> waveDict = new Dictionary<int, Dictionary<string, int>>()
     {
         {0, new Dictionary<string, int>(){
-                {"SunflowerFairy", 6 },
-                {"ZombieFairy", 2 }
+                {Globals.sunflowerFairy, 6 },
+                {Globals.zombieFairy, 2 }
             }
         },
         {1, new Dictionary<string, int>(){
-                {"SunflowerFairy", 6 },
-                {"ZombieFairy", 2 },
+                {Globals.sunflowerFairy, 6 },
+                {Globals.zombieFairy, 2 },
                 {"SunflowerFairy", 6 },
                 {"ZombieFairy", 2 }
             }

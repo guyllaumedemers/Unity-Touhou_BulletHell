@@ -111,5 +111,6 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
         }
         Movement();
         animationBehaviour.Animate(animator, sprRen, inputs.Player.Move.ReadValue<Vector2>());
+        OrbRotation.Instance.UpdateMethod();
     }
 }
