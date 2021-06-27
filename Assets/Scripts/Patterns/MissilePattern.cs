@@ -25,7 +25,7 @@ public class MissilePattern : AbsPattern
             indexJ = 0;
         }
         bullets[indexI, indexJ] = Create(type, transform, pos);
-        (bullets[indexI, indexJ] as Bullet).transform.position = Align((bullets[indexI, indexJ] as Bullet).transform.position, indexI);
+        //(bullets[indexI, indexJ] as Bullet).transform.position = Align((bullets[indexI, indexJ] as Bullet).transform.position, indexI);
         return Fill(type, transform, pos, indexI, ++indexJ);
     }
 

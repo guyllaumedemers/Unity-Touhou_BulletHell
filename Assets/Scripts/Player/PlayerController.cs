@@ -22,6 +22,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
     private PlayerController() { }
     private Animator animator;
     private SpriteRenderer sprRen;
+    private Transform orbParent;
 
     /****************FILTERING BULLETS ENUM******************/
 
@@ -29,9 +30,9 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
 
     /**********************ACTIONS**************************/
 
-    private void Shoot()
+    private void Shoot(Transform orbT)
     {
-        pattern.Fill(activeBullet, BulletManager.Instance.bulletParent.transform, transform.position, 0, 0);
+        pattern.Fill(activeBullet, BulletManager.Instance.bulletParent.transform, orbT.position, 0, 0);
         pattern.UpdateBulletPattern(default, default);
         foreach (IProduct b in (pattern as AbsPattern).bullets.Cast<IProduct>()) b.SetIgnoredLayer(IgnoreLayerEnum.Player);
     }
@@ -50,7 +51,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
         {
             if (Time.time - last > 1 / (pattern as AbsPattern).rof)
             {
-                Shoot();
+                foreach (Transform orb in orbParent) Shoot(orb);
                 last = Time.time;
             }
             yield return null;
@@ -112,6 +113,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
         rad = Globals.hitbox;
         animator = GetComponent<Animator>();
         sprRen = GetComponent<SpriteRenderer>();
+        orbParent = transform.GetChild(0).GetComponent<Transform>();
         OrbRotation.Instance.PreIntilizationMethod();
     }
 
