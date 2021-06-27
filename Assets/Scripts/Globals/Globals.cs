@@ -31,7 +31,7 @@ public static class Globals
     ///// Parse arr max length
     public static int maxlengthParse = 3;
     ///// Sequential init time interval
-    public static float initializationInterval = 1.0f;
+    public static float initializationInterval = 2.0f;
     ///// Unit Generation
     public static string boss = "Boss";
     public static string fairies = "Fairies";
