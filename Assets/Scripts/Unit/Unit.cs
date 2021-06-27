@@ -32,13 +32,13 @@ public abstract class Unit : MonoBehaviour, IDamageable
     // Bullet Type is now pass as arguments so i can parametrize the instanciation of an unit type directly in the function call instead of having values all around and overwriting
     public Unit PreInitializeUnit(BulletTypeEnum bulletT, Vector3[] waypoints)
     {
-        bulletType = new Queue<string>();
-        animator = GetComponent<Animator>();
         spriteRen = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        bulletType = new Queue<string>();
         controlPoints = waypoints;
         bezierCurveT = default;
-        rad = Globals.hitbox;
         speed = 0.05f;
+        rad = Globals.hitbox;
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => enumFiltering.EnumToString(bulletT).Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
         activeBullet = bullets.SwapBulletType(bulletType);                                                                      // initialize the active bullet type string    
         pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));                 // initialize the pattern with the active bullet type
