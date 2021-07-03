@@ -18,7 +18,7 @@ public class EntryPoint : SingletonMono<EntryPoint>
     {
         StartCoroutine(ObjectPool.Trim());
         PlayerController.Instance.InitializationMethod();
-        WaveSystem.Instance.InitializationMethod();
+        StartCoroutine(Utilities.Timer(3.0f, () => { StartCoroutine(WaveSystem.Instance.InitializationMethod()); }));
     }
 
     private void Update()
