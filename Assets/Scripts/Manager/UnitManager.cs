@@ -36,7 +36,7 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
         }
     }
 
-    private IEnumerator SequencialInit<T>(string name, Vector3 pos, BulletTypeEnum bulletType, SpawningPosEnum spEnum,
+    public IEnumerator SequencialInit<T>(string name, Vector3 pos, BulletTypeEnum bulletType, SpawningPosEnum spEnum,
         int level, int maxUnitWave, float interval) where T : class
     {
         int curr_count = -1;
@@ -55,13 +55,7 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
         Units = resources.ResourcesLoading(Globals.unitsPrefabs);
     }
 
-    public void InitializationMethod()
-    {
-        StartCoroutine(SequencialInit<Fairy>(Globals.sunflowerFairy, Vector3.one, BulletTypeEnum.Circle | BulletTypeEnum.Star, SpawningPosEnum.Left, 0, 3, Globals.initializationInterval));
-        StartCoroutine(SequencialInit<Fairy>(Globals.zombieFairy, Vector3.one, BulletTypeEnum.Circle | BulletTypeEnum.Star, SpawningPosEnum.Right, 0, 3, Globals.initializationInterval));
-    }
+    public void InitializationMethod() { }
 
     public void UpdateMethod() => UpdateUnits(UnitsDict);
-
-
 }
