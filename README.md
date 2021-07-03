@@ -16,16 +16,19 @@ and prioritize Composition over Inheritance.
 * [Assets/Scripts/Behaviours](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/tree/master/Assets/Scripts/Behaviours) : Behaviours Scripts (Strategy Pattern)
 * [Assets/Scipts/Manager](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/tree/master/Assets/Scripts/Manager) : Manager Scripts (Factory Pattern)
 * [Assets/Scripts/..](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/blob/master/Assets/Scripts/ObjectPool.cs) : Object Pooling (Memory Management)
+* * [Assets/Scripts/..](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/blob/master/Assets/Scripts/Waves/WaveSystem.cs) : Wave System (Wave Management)
 
 #### Game Mechanics and Features
 
   * Input System
   * Pattern Generation 👻 (*early stage*)
   * Collision System (*thinking about using RTree to make access bullets depending on the area they are in and make things more efficient*)
-  * Player Mechanics (*working on the orbs positioning - modif bullets firing to start from the orbs position*)
+  * Player Mechanics
   * Movement Mechanics (*early stage*)
+  * Orb Rotation
   * Bullet Management
-  * Unit Management (*early stage, 1 type so far*)
+  * Unit Management
+  * Wave System (*early stage - need to figure out some stuff like : setting proper position from which units are suppose to spawn*)
 
 #### Design Pattern and Memory Optimization
 
