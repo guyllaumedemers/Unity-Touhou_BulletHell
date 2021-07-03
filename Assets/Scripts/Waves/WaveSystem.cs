@@ -41,9 +41,15 @@ public class WaveSystem : SingletonMono<WaveSystem>
         StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, pos, bulletType, spEnum, level, maxUnitWave, interval));
     }
 
-    public int currentWave { get; private set; }
+    public int stageSelection { get; private set; }
 
     /**********************FLOW****************************/
+
+    public void PreIntilizationMethod(int stageselect)
+    {
+        // will be set in the menu selection
+        stageSelection = stageselect;
+    }
 
     public IEnumerator InitializationMethod()
     {
@@ -57,10 +63,10 @@ public class WaveSystem : SingletonMono<WaveSystem>
          *          
          *          How can I manage better the interval on which each wave are called?
          */
-        while (waveDict[currentWave].Keys.Count > 0)
+        while (waveDict[stageSelection].Keys.Count > 0)
         {
-            Launch<Unit>(waveDict[currentWave].First().Key, Vector3.zero, BulletTypeEnum.Circle, SpawningPosEnum.Left, 0,
-                    waveDict[currentWave].First().Value, Globals.initializationInterval);
+            Launch<Unit>(waveDict[stageSelection].First().Key, Vector3.zero, BulletTypeEnum.Circle, SpawningPosEnum.Left, 0,
+                    waveDict[stageSelection].First().Value, Globals.initializationInterval);
             RemoveEntry();
             yield return new WaitForSeconds(Globals.waveInterval);
         }
@@ -68,5 +74,5 @@ public class WaveSystem : SingletonMono<WaveSystem>
 
     /***************DICTIONARY MANAGEMENT********************/
 
-    private void RemoveEntry() => waveDict[currentWave].Remove(waveDict[currentWave].First().Key);
+    private void RemoveEntry() => waveDict[stageSelection].Remove(waveDict[stageSelection].First().Key);
 }
