@@ -8,7 +8,7 @@ public class EntryPoint : SingletonMono<EntryPoint>
     {
         FactoryManager.Instance.PreIntilizationMethod();
         WaypointSystem.Instance.PreIntilizationMethod();
-        WaveSystem.Instance.PreIntilizationMethod(0, 1, 8);
+        WaveSystem.Instance.PreIntilizationMethod(0, (int)SpawningPosEnum.Left, (int)SpawningPosEnum.Pivot);
         ObjectPool.PreInitializeMethod();
         PlayerController.Instance.PreIntilizationMethod();
         BulletManager.Instance.PreIntilizationMethod();
