@@ -23,6 +23,9 @@ public class WaveSystem : SingletonMono<WaveSystem>
 
     private WaveSystem() { }
 
+#if TODO // Find a way to have multiple identical key so we can layout the units involved in a wave. Dict dont allow duplicated keys
+#endif
+
     private Dictionary<int, Dictionary<string, int>> waveDict = new Dictionary<int, Dictionary<string, int>>()
     {
         {0, new Dictionary<string, int>(){          // stage 0 :
@@ -32,6 +35,10 @@ public class WaveSystem : SingletonMono<WaveSystem>
             }
         }
     };
+
+    public int stageSelection { get; private set; }
+    public int curr_dir { get; private set; }
+    public int pivot_point { get; private set; }
 
     /**********************ACTIONS**************************/
 
@@ -47,56 +54,9 @@ public class WaveSystem : SingletonMono<WaveSystem>
         StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, Vector3.zero + pos, bulletType, SpawningPosEnum.Right, level, maxUnitWave / 2, interval));
     }
 
-    public int stageSelection { get; private set; }
-    public int curr_dir { get; private set; }
-    public int pivot_point { get; private set; }
-
-    /**********************FLOW****************************/
-
-    public void PreIntilizationMethod(int stageselect, int startingDir, int pivot)
-    {
-        // will be set in the menu selection
-        stageSelection = stageselect;
-        curr_dir = startingDir;
-        pivot_point = pivot;
-    }
-
-    public IEnumerator InitializationMethod()
-    {
-        /*  How to handle the spawning direction update?
-         * 
-         *          Garbage way -> I could have a queue that pop thru the enum values and return the current spawing pos to be at
-         *          but that sucks
-         * 
-         *          Bullet management could also be handled that way -> altho it involves having 2 sets of data structures just for
-         *          managing the params of the instantiation function
-         *          
-         *          How can I manage better the interval on which each wave are called?
-         *          
-         *          How can I instanciate two sides at the same time?
-         *          
-         *          TEMP solution for the initial position to spawn -> still have to fix the waypoint system function GetlevelWPpos
-         */
-        while (waveDict[stageSelection].Keys.Count > 0)
-        {
-            Launch<Unit>(waveDict[stageSelection].First().Key, new Vector3(10, 5, 0), BulletTypeEnum.Circle, (SpawningPosEnum)UpdateOrientation(false), 0,
-                    waveDict[stageSelection].First().Value, Globals.initializationInterval);
-            RemoveEntry();
-            yield return new WaitForSeconds(Globals.waveInterval);
-        }
-        // do something -> new level -> go back menu -> from calling game manager -> trigger event
-    }
-
-    /***************DATA STRUCTURE MANAGEMENT********************/
-
-    private void RemoveEntry() => waveDict[stageSelection].Remove(waveDict[stageSelection].First().Key);
-
+    // Update Orientation allows to loop over the SpawningPosEnum and create variation in which unit spawn from
     private int UpdateOrientation(bool skip)
     {
-        /*      The idea here is to be able to loop over the choice and create variation without the mean of a queue for direction management
-         *              pivot point represent the value at which we loop back to being SpawningEnum.left
-         *                      an args for skipping is available when we try to create variation -> must be parametrize outside the function
-         */
         if (skip) return curr_dir;
         else
         {
@@ -105,4 +65,35 @@ public class WaveSystem : SingletonMono<WaveSystem>
             return curr_dir;
         }
     }
+
+    /**********************FLOW****************************/
+
+#if TODO // PreIntilizationMethod will be called from the UI menu selection when the user select the stage
+#endif
+
+    public void PreIntilizationMethod(int stageselect, int startingDir, int pivot)
+    {
+        stageSelection = stageselect;
+        curr_dir = startingDir;
+        pivot_point = pivot;
+    }
+
+#if TODO // Vector3 position for the launch function must be set depending on the waypoint of the unit so the unit comes in the opposite direction from it
+#endif
+
+    public IEnumerator InitializationMethod()
+    {
+        while (waveDict[stageSelection].Keys.Count > 0)
+        {
+            Launch<Unit>(waveDict[stageSelection].First().Key, new Vector3(10, 5, 0), BulletTypeEnum.Circle, (SpawningPosEnum)UpdateOrientation(false), 0,
+                    waveDict[stageSelection].First().Value, Globals.initializationInterval);
+            RemoveEntry();
+            yield return new WaitForSeconds(Globals.waveInterval);
+        }
+        // trigger event to go back to menu or to trigger next level
+    }
+
+    /***************DATA STRUCTURE MANAGEMENT********************/
+
+    private void RemoveEntry() => waveDict[stageSelection].Remove(waveDict[stageSelection].First().Key);
 }
