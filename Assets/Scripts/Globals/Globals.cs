@@ -31,7 +31,7 @@ public static class Globals
     ///// Parse arr max length
     public static int maxlengthParse = 3;
     ///// Sequential init time interval
-    public static float initializationInterval = 0.3f;
+    public static float initializationInterval = 0.6f;
     ///// Wave time interval
     public static float waveInterval = 2.0f;
     ///// Unit Generation
