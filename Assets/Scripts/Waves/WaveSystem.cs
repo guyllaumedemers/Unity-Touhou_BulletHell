@@ -33,19 +33,6 @@ public class WaveSystem : SingletonMono<WaveSystem>
         }
     };
 
-    /*  What if I wanted to make 120 levels... this wouldnt be efficient
-     *  
-     *          Also, Units shouldnt all share the same waypoints and waypoints should have their position updated
-     *          so that it isnt too static
-     * 
-     */
-
-    private Queue<SpawningPosEnum> spawnDir = new Queue<SpawningPosEnum>(new[] {
-        SpawningPosEnum.Left,
-        SpawningPosEnum.Both,
-        SpawningPosEnum.Right
-    });
-
     /**********************ACTIONS**************************/
 
     private void Launch<T>(string name, Vector3 pos, BulletTypeEnum bulletType, SpawningPosEnum spEnum,
@@ -61,13 +48,17 @@ public class WaveSystem : SingletonMono<WaveSystem>
     }
 
     public int stageSelection { get; private set; }
+    public int curr_dir { get; private set; }
+    public int pivot_point { get; private set; }
 
     /**********************FLOW****************************/
 
-    public void PreIntilizationMethod(int stageselect)
+    public void PreIntilizationMethod(int stageselect, int startingDir, int pivot)
     {
         // will be set in the menu selection
         stageSelection = stageselect;
+        curr_dir = startingDir;
+        pivot_point = pivot;
     }
 
     public IEnumerator InitializationMethod()
@@ -88,7 +79,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
          */
         while (waveDict[stageSelection].Keys.Count > 0)
         {
-            Launch<Unit>(waveDict[stageSelection].First().Key, new Vector3(10, 5, 0), BulletTypeEnum.Circle, UpdateOrientation(), 0,
+            Launch<Unit>(waveDict[stageSelection].First().Key, new Vector3(10, 5, 0), BulletTypeEnum.Circle, (SpawningPosEnum)UpdateOrientation(false), 0,
                     waveDict[stageSelection].First().Value, Globals.initializationInterval);
             RemoveEntry();
             yield return new WaitForSeconds(Globals.waveInterval);
@@ -100,5 +91,18 @@ public class WaveSystem : SingletonMono<WaveSystem>
 
     private void RemoveEntry() => waveDict[stageSelection].Remove(waveDict[stageSelection].First().Key);
 
-    private SpawningPosEnum UpdateOrientation() => spawnDir.Dequeue();
+    private int UpdateOrientation(bool skip)
+    {
+        /*      The idea here is to be able to loop over the choice and create variation without the mean of a queue for direction management
+         *              pivot point represent the value at which we loop back to being SpawningEnum.left
+         *                      an args for skipping is available when we try to create variation -> must be parametrize outside the function
+         */
+        if (skip) return curr_dir;
+        else
+        {
+            curr_dir += curr_dir;
+            if (curr_dir % pivot_point == 0) curr_dir = (curr_dir % pivot_point) + 1;
+            return curr_dir;
+        }
+    }
 }
