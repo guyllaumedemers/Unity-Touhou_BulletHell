@@ -3,11 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class WaveSystem : SingletonMono<WaveSystem>, IFlow
+public class WaveSystem : SingletonMono<WaveSystem>
 {
     /*  Wave System goes as follow :
      * 
      *      Keep in mind that in a touhou game there is no randomization
+     *      
+     *      How it should work is that until the player die OR the stage level isnt complete, I want to run the wave system
+     *      BUT
+     *      I do not want to update it at every execution order cycle
+     *      I want to be able to :
+     *      
+     *              run the initial wave
+     *              and keep on running until the level is complete
+     *              
+     *              for each wave instance, a timer is set to trigger the next wave
      * 
      */
 
@@ -15,18 +25,10 @@ public class WaveSystem : SingletonMono<WaveSystem>, IFlow
 
     private Dictionary<int, Dictionary<string, int>> waveDict = new Dictionary<int, Dictionary<string, int>>()
     {
-        {0, new Dictionary<string, int>(){
-                {Globals.sunflowerFairy, 6 },
-                {Globals.zombieFairy, 2 }
-            }
-        },
-        {1, new Dictionary<string, int>(){
-                {Globals.sunflowerFairy, 12 },
-                {Globals.zombieFairy, 4 }
-            }
-        },
-        {2, new Dictionary<string, int>(){
-                {Globals.boss, 1 },
+        {0, new Dictionary<string, int>(){          // stage 0 :
+                {Globals.sunflowerFairy, 5 },       // left
+                {Globals.zombieFairy, 1 },          // right
+                {Globals.boss, 1 }
             }
         }
     };
@@ -43,24 +45,28 @@ public class WaveSystem : SingletonMono<WaveSystem>, IFlow
 
     /**********************FLOW****************************/
 
-    public void PreIntilizationMethod() { }
-
-    public void InitializationMethod()
+    public IEnumerator InitializationMethod()
     {
-        StartCoroutine(Utilities.Timer(3.0f, () =>
+        /*  How to handle the spawning direction update?
+         * 
+         *          Garbage way -> I could have a queue that pop thru the enum values and return the current spawing pos to be at
+         *          but that sucks
+         * 
+         *          Bullet management could also be handled that way -> altho it involves having 2 sets of data structures just for
+         *          managing the params of the instantiation function
+         *          
+         *          How can I manage better the interval on which each wave are called?
+         */
+        while (waveDict[currentWave].Keys.Count > 0)
         {
             Launch<Unit>(waveDict[currentWave].First().Key, Vector3.zero, BulletTypeEnum.Circle, SpawningPosEnum.Left, 0,
-                waveDict[currentWave].First().Value / 2, Globals.initializationInterval);
-        }));
+                    waveDict[currentWave].First().Value, Globals.initializationInterval);
+            RemoveEntry();
+            yield return new WaitForSeconds(Globals.waveInterval);
+        }
     }
 
-    public void UpdateMethod()
-    {
-        // the wave manager has to instanciate a number of units for the length of a wave
-        // a wave consist of multiple phase which instantiate half the unit per side for the current key entry
-        // when the key entry is at 0
-        // the key is removed -> problem, this doesnt allow reusability of the set of enemies in the dictionary
+    /***************DICTIONARY MANAGEMENT********************/
 
-        // questions are : how will I update the args for the units like : BulletType and SpawingPos
-    }
+    private void RemoveEntry() => waveDict[currentWave].Remove(waveDict[currentWave].First().Key);
 }
