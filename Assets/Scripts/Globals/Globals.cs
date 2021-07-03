@@ -31,12 +31,14 @@ public static class Globals
     ///// Parse arr max length
     public static int maxlengthParse = 3;
     ///// Sequential init time interval
-    public static float initializationInterval = 2.0f;
+    public static float initializationInterval = 0.3f;
     ///// Unit Generation
     public static string boss = "Boss";
     public static string sunflowerFairy = "SunflowerFairy";
     public static string zombieFairy = "ZombieFairy";
     public static string player = "Player";
+    ///// Unit Speed
+    public static float u_speed = 0.03f;
     ///// Orb Rotation
     public static float orbRotationSpeed = 120.0f;
     ///// Orb Fade
