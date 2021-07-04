@@ -32,11 +32,8 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
         }
         while (pool.Count > 0)
         {
-            // If my object pool was generic I could manage the deletation of unit more effectivly
             Unit depool = pool.Dequeue();
-            string[] keys = depool.gameObject.name.Split('(');
-            dict[keys[0]].Remove(depool);
-            Destroy(depool.gameObject);
+            RemoveAndDestroy(dict, depool.gameObject.name.Split('(')[0], depool);
         }
     }
 
@@ -48,6 +45,12 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
             UnitsDict.Add(type, new HashSet<Unit>());
             UnitsDict[type].Add(unit);
         }
+    }
+
+    private void RemoveAndDestroy(Dictionary<string, HashSet<Unit>> dict, string key, Unit unit)
+    {
+        dict[key].Remove(unit);
+        Destroy(unit.gameObject);
     }
 
     public IEnumerator SequencialInit<T>(string name, Vector3 pos, BulletTypeEnum bulletType, SpawningPosEnum spEnum,
