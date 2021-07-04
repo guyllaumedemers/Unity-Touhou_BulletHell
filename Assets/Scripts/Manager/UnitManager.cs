@@ -9,6 +9,8 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
     public GameObject[] Units { get; private set; }
     private UnitManager() { }
     private readonly IResourcesLoading resources = new ResourcesLoadingBehaviour();
+    private Queue<Unit> UnitPool = new Queue<Unit>();
+
 
     /**********************ACTIONS**************************/
 
@@ -21,9 +23,21 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
         return instance.PreInitializeUnit(bulletT, waypoints);
     }
 
-    private void UpdateUnits(Dictionary<string, HashSet<Unit>> unitsDict)
+    private void UpdateUnits(Dictionary<string, HashSet<Unit>> dict, Queue<Unit> pool)
     {
-        foreach (var unit in unitsDict.Keys.SelectMany(key => unitsDict[key])) unit.UpdateUnit();
+        foreach (var unit in dict.Keys.SelectMany(key => dict[key]))
+        {
+            if (unit.hasReachDestination && !Utilities.InsideCameraBounds(Camera.main, unit.transform.position)) pool.Enqueue(unit);
+            else unit.UpdateUnit();
+        }
+        while (pool.Count > 0)
+        {
+            // If my object pool was generic I could manage the deletation of unit more effectivly
+            Unit depool = pool.Dequeue();
+            string[] keys = depool.gameObject.name.Split('(');
+            dict[keys[0]].Remove(depool);
+            Destroy(depool.gameObject);
+        }
     }
 
     private void Add(string type, Unit unit)
@@ -57,5 +71,5 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
 
     public void InitializationMethod() { }
 
-    public void UpdateMethod() => UpdateUnits(UnitsDict);
+    public void UpdateMethod() => UpdateUnits(UnitsDict, UnitPool);
 }

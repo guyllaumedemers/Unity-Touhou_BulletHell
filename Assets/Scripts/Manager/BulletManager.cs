@@ -6,27 +6,20 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
 {
     public Dictionary<string, HashSet<Bullet>> BulletsDict { get; private set; }
     private BulletManager() { }
-    public float Last { get; private set; }
     public GameObject bulletParent { get; private set; }
     // handle the removal of bullets that are out of bounds
-    private Queue<IProduct> products = new Queue<IProduct>();
+    private Queue<IProduct> oob_bullets = new Queue<IProduct>();
 
     /**********************ACTIONS**************************/
 
-    private void UpdateBullets(Dictionary<string, HashSet<Bullet>> bulletsDict) => BatchUpdate(bulletsDict);
-
-    private void BatchUpdate(Dictionary<string, HashSet<Bullet>> bulletsDict)
+    private void UpdateBullets(Dictionary<string, HashSet<Bullet>> dict, Queue<IProduct> pool)
     {
-        if (Time.time - Last > Globals.fps)
+        foreach (var bullet in dict.Keys.SelectMany(key => dict[key]))
         {
-            foreach (var b in bulletsDict.Keys.SelectMany(key => bulletsDict[key]))
-            {
-                if (!Utilities.InsideCameraBounds(Camera.main, b.transform.position)) products.Enqueue(b);
-                else b.UpdateBulletPosition();
-            }
-            while (products.Count > 0) (products.Dequeue() as Bullet).Pool();
-            Last = Time.time;
+            if (!Utilities.InsideCameraBounds(Camera.main, bullet.transform.position)) pool.Enqueue(bullet);
+            else bullet.UpdateBulletPosition();
         }
+        while (pool.Count > 0) (pool.Dequeue() as Bullet).Pool();
     }
 
     public void Add(string type, IProduct bullet)
@@ -50,11 +43,10 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
     public void PreIntilizationMethod()
     {
         BulletsDict = new Dictionary<string, HashSet<Bullet>>();
-        Last = default;
         bulletParent = Utilities.InstanciateObjectParent(Globals.bulletParent, true);
     }
 
     public void InitializationMethod() { }
 
-    public void UpdateMethod() => UpdateBullets(BulletsDict);
+    public void UpdateMethod() => UpdateBullets(BulletsDict, oob_bullets);
 }
