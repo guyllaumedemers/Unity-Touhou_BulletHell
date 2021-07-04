@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,16 +24,16 @@ public class WaveSystem : SingletonMono<WaveSystem>
 
     private WaveSystem() { }
 
-#if TODO // Find a way to have multiple identical key so we can layout the units involved in a wave. Dict dont allow duplicated keys
-#endif
-
-    private Dictionary<int, Dictionary<string, int>> waveDict = new Dictionary<int, Dictionary<string, int>>()
+    private Dictionary<int, Queue<(string, int)>> waveDict = new Dictionary<int, Queue<(string, int)>>()
     {
-        {0, new Dictionary<string, int>(){          // stage 0 :
-                {Globals.sunflowerFairy, 5 },       // left
-                {Globals.zombieFairy, 2 },          // right
-                {Globals.boss, 1 }
-            }
+        {0, new Queue<(string, int)>(new []{
+            (Globals.sunflowerFairy, 5),
+            (Globals.zombieFairy, 1),
+            (Globals.zombieFairy, 2),
+            (Globals.sunflowerFairy, 5),
+            (Globals.sunflowerFairy, 5),
+            (Globals.boss, 1)
+            })
         }
     };
 
@@ -57,20 +58,19 @@ public class WaveSystem : SingletonMono<WaveSystem>
     // Update Orientation allows to loop over the SpawningPosEnum and create variation in which unit spawn from
     private int UpdateOrientation(bool skip)
     {
-        if (skip) return curr_dir;
-        else
+        if (!skip)
         {
             curr_dir += curr_dir;
-            if (curr_dir % pivot_point == 0) curr_dir = (curr_dir % pivot_point) + 1;
-            return curr_dir;
+            if (curr_dir % pivot_point == 0) curr_dir = 1;
         }
+        return curr_dir;
     }
 
     /**********************FLOW****************************/
 
 #if TODO // PreIntilizationMethod will be called from the UI menu selection when the user select the stage
 #endif
-
+    // sucks that this cannot be used as an initializer list like constructors
     public void PreIntilizationMethod(int stageselect, int startingDir, int pivot)
     {
         stageSelection = stageselect;
@@ -83,10 +83,10 @@ public class WaveSystem : SingletonMono<WaveSystem>
 
     public IEnumerator InitializationMethod()
     {
-        while (waveDict[stageSelection].Keys.Count > 0)
+        while (waveDict[stageSelection].Count > 0)
         {
-            Launch<Unit>(waveDict[stageSelection].First().Key, new Vector3(10, 5, 0), BulletTypeEnum.Circle, (SpawningPosEnum)UpdateOrientation(false), 0,
-                    waveDict[stageSelection].First().Value, Globals.initializationInterval);
+            Launch<Unit>(waveDict[stageSelection].First().Item1, new Vector3(10, 5, 0), BulletTypeEnum.Circle, (SpawningPosEnum)UpdateOrientation(false),
+                0, waveDict[stageSelection].First().Item2, Globals.initializationInterval);
             RemoveEntry();
             yield return new WaitForSeconds(Globals.waveInterval);
         }
@@ -95,5 +95,5 @@ public class WaveSystem : SingletonMono<WaveSystem>
 
     /***************DATA STRUCTURE MANAGEMENT********************/
 
-    private void RemoveEntry() => waveDict[stageSelection].Remove(waveDict[stageSelection].First().Key);
+    private void RemoveEntry() => waveDict[stageSelection].Dequeue();
 }

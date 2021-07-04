@@ -18,6 +18,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public float speed;
     public float angle;
     public string activeBullet;
+    public bool hasReachDestination = false;
     public Queue<string> bulletType;
     // Check later for encapsulation
     public float bezierCurveT;
@@ -59,6 +60,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
             curr_wp %= controlPoints.Length;
             idle = !idle;
             bezierCurveT = default;
+            hasReachDestination = true;
             StartCoroutine(Utilities.Timer(Globals.idleTime, () => { idle = !idle; }));                 // need to find a way to set the idl time differently as it will be diff per units type
             return;
         }
