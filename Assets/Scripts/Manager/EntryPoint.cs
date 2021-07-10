@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EntryPoint : SingletonMono<EntryPoint>
@@ -9,12 +10,22 @@ public class EntryPoint : SingletonMono<EntryPoint>
     {
         FactoryManager.Instance.PreIntilizationMethod();
         WaypointSystem.Instance.PreIntilizationMethod();
-        WaveSystem.Instance.PreIntilizationMethod(0, (int)SpawningPosEnum.None, (int)SpawningPosEnum.Pivot);
+        WaveSystem.Instance.PreIntilizationMethod(0, (int)SpawningPosEnum.None, (int)SpawningPosEnum.Pivot, 4);
         ObjectPool.PreInitializeMethod();
         PlayerController.Instance.PreIntilizationMethod();
         BulletManager.Instance.PreIntilizationMethod();
         UnitManager.Instance.PreIntilizationMethod();
         Last = default;
+        //Tool.XMLSerialization_Array(Application.dataPath + "/Resources/positions.xml", WaypointSystem.Instance.positions);
+        IDictionary<int, Vector3[]> test = Tool.XMLDeserialization_Array(Application.dataPath + "/Resources/positions.xml");
+        foreach (var key in test.Keys)
+        {
+            foreach (var val in test[key])
+            {
+                System.Console.WriteLine(key.ToString() + " " + val.ToString());
+            }
+            System.Console.WriteLine("");
+        }
     }
 
     private void Start()

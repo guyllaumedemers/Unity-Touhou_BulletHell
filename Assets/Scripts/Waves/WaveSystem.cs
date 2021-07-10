@@ -31,7 +31,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
             (Globals.zombieFairy, 1),
             (Globals.zombieFairy, 2),
             (Globals.sunflowerFairy, 5),
-            (Globals.sunflowerFairy, 5),
+            (Globals.zombieFairy, 4),
             (Globals.boss, 1)
             })
         }
@@ -40,6 +40,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
     public int stageSelection { get; private set; }
     public int curr_dir { get; private set; }
     public int pivot_point { get; private set; }
+    public int variable_mod { get; private set; }
 
     /**********************ACTIONS**************************/
 
@@ -56,14 +57,22 @@ public class WaveSystem : SingletonMono<WaveSystem>
     }
 
     // Update Orientation allows to loop over the SpawningPosEnum and create variation in which unit spawn from
-    private int UpdateOrientation(bool skip)
+    private int UpdateDir(bool skip)
     {
         if (!skip)
         {
             curr_dir += curr_dir;
             if (curr_dir % pivot_point == 0) curr_dir = 1;
+            return curr_dir;
         }
-        return curr_dir;
+        return LateDirUpdate(curr_dir);
+    }
+
+    private int LateDirUpdate(int value)
+    {
+        curr_dir += value;
+        if (curr_dir % pivot_point == 0) curr_dir = 1;
+        return value;
     }
 
     /**********************FLOW****************************/
@@ -71,11 +80,12 @@ public class WaveSystem : SingletonMono<WaveSystem>
 #if TODO // PreIntilizationMethod will be called from the UI menu selection when the user select the stage
 #endif
     // sucks that this cannot be used as an initializer list like constructors
-    public void PreIntilizationMethod(int stageselect, int startingDir, int pivot)
+    public void PreIntilizationMethod(int stageselect, int startingDir, int pivot, int var_mod)
     {
         stageSelection = stageselect;
         curr_dir = startingDir;
         pivot_point = pivot;
+        variable_mod = var_mod;
     }
 
 #if TODO // Vector3 position for the launch function must be set depending on the waypoint of the unit so the unit comes in the opposite direction from it
@@ -85,7 +95,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
     {
         while (waveDict[stageSelection].Count > 0)
         {
-            Launch<Unit>(waveDict[stageSelection].First().Item1, new Vector3(10, 5, 0), BulletTypeEnum.Circle, (SpawningPosEnum)UpdateOrientation(false),
+            Launch<Unit>(waveDict[stageSelection].First().Item1, new Vector3(10, 5, 0), BulletTypeEnum.Circle, (SpawningPosEnum)UpdateDir(curr_dir % variable_mod == 2),
                 0, waveDict[stageSelection].First().Item2, Globals.initializationInterval);
             RemoveEntry();
             yield return new WaitForSeconds(Globals.waveInterval);
