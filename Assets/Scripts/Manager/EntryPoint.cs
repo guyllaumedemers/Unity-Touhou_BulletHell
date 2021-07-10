@@ -16,16 +16,6 @@ public class EntryPoint : SingletonMono<EntryPoint>
         BulletManager.Instance.PreIntilizationMethod();
         UnitManager.Instance.PreIntilizationMethod();
         Last = default;
-        //Tool.XMLSerialization_Array(Application.dataPath + "/Resources/positions.xml", WaypointSystem.Instance.positions);
-        IDictionary<int, Vector3[]> test = Tool.XMLDeserialization_Array(Application.dataPath + "/Resources/positions.xml");
-        foreach (var key in test.Keys)
-        {
-            foreach (var val in test[key])
-            {
-                System.Console.WriteLine(key.ToString() + " " + val.ToString());
-            }
-            System.Console.WriteLine("");
-        }
     }
 
     private void Start()

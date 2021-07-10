@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Linq;
+using System;
 
 public class Tool
 {
@@ -31,28 +32,19 @@ public class Tool
             Debug.LogWarning("file doesn't exist");
             return null;
         }
-        using FileStream fstream = File.OpenRead(path);
-        if (fstream == null)
-        {
-            Debug.LogWarning("stream couldn't be open");
-        }
-        XElement rootElement = XElement.Parse("<root><item></item></root>");
+
+        XElement rootElement = XElement.Load(path);
         IDictionary<int, Vector3[]> dict = new Dictionary<int, Vector3[]>();
 
-        List<Vector3> list = new List<Vector3>();
-        foreach (var xel in rootElement.Elements())
+        foreach (var el in rootElement.Elements())
         {
-            if (xel.Name.LocalName.Split('_')[0].Equals("item"))
+            List<Vector3> vl = new List<Vector3>();
+            foreach (var xa in el.Attributes())
             {
-                foreach (var attributes in xel.Attributes())        // attributes are null for some reason
-                {
-                    if (attributes.Name.LocalName.Split('_')[0].Equals("pos")) list.Add(Utilities.StringTovec3(attributes.Value));
-                }
-                dict.Add(int.Parse(xel.Attribute("id").Value), list.ToArray());
-                list.Clear();
+                if (!xa.Name.LocalName.Equals("id")) vl.Add(Utilities.StringTovec3(xa.Value));
             }
+            dict.Add(Int32.Parse(el.Attribute("id").Value), vl.ToArray());
         }
-        fstream.Close();
         return dict;
     }
 }
