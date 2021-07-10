@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 public static class Globals
 {
     ///// Resources loading
@@ -23,7 +25,7 @@ public static class Globals
     ///// Distance wp
     public static float minWPDist = 0.01f;
     ///// Idl Time
-    public static float idleTime = 0.7f;
+    public static float idleTime = 1.2f;
     ///// Left Parse start pos
     public static int lsposParse = 0;
     ///// Right Parse start pos
@@ -31,9 +33,9 @@ public static class Globals
     ///// Parse arr max length
     public static int maxlengthParse = 3;
     ///// Sequential init time interval
-    public static float initializationInterval = 1.0f;
+    public static float initializationInterval = 1.4f;
     ///// Wave time interval
-    public static float waveInterval = 7.0f;
+    public static float waveInterval = 5.0f;
     ///// Unit Generation
     public static string boss = "Boss";
     public static string sunflowerFairy = "SunflowerFairy";

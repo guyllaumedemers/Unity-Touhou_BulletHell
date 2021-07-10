@@ -9,14 +9,14 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
     private GameObject waypointParent;
     //// Access Waypoints positions from the dictionnary by selecting the active level
     //// Can be serialized and manage inside a JSON file later on
-    private Dictionary<int, Vector3[]> positions = new Dictionary<int, Vector3[]>()
+    public Dictionary<int, Vector3[]> positions = new Dictionary<int, Vector3[]>()
     {
         //// Have to update the waypoints so that the fairies that spawn during the second phase of the wave doesnt go thru the same waypoints
         {0, new Vector3[]
             {
-                new Vector3(-10,20), new Vector3(-1,0), new Vector3(-10,0),     // left
-                new Vector3(10,20), new Vector3(1,0), new Vector3(10,0),       // right
-                new Vector3(0,5)                                            // middle
+                new Vector3(-10,20,0), new Vector3(-1,0,0), new Vector3(-10,0,0),     // left
+                new Vector3(10,20,0), new Vector3(1,0,0), new Vector3(10,0,0),       // right
+                new Vector3(0,5,0)                                            // middle
             }
         }
     };

@@ -64,4 +64,10 @@ public static class Utilities
             yield return null;
         }
     }
+
+    public static Vector3 StringTovec3(string str)
+    {
+        string[] index = str.Split('(', ',', ')');
+        return new Vector3(float.Parse(index[1]), float.Parse(index[2]), float.Parse(index[3]));
+    }
 }
