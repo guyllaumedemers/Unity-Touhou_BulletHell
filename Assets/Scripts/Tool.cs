@@ -7,7 +7,7 @@ using System;
 
 public class Tool
 {
-    public static void XMLSerialization_Array(string path, IDictionary<int, Vector3[]> dict)
+    public static void XMLSerialization_KVParray(string path, IDictionary<int, Vector3[]> dict)
     {
         if (File.Exists(path)) File.Delete(path);
 
@@ -25,7 +25,7 @@ public class Tool
         fstream.Close();
     }
 
-    public static IDictionary<int, Vector3[]> XMLDeserialization_Array(string path)
+    public static IDictionary<int, Vector3[]> XMLDeserialization_KVParray(string path)
     {
         if (!File.Exists(path))
         {
@@ -41,7 +41,7 @@ public class Tool
             List<Vector3> vl = new List<Vector3>();
             foreach (var xa in el.Attributes())
             {
-                if (!xa.Name.LocalName.Equals("id")) vl.Add(Utilities.StringTovec3(xa.Value));
+                if (!xa.Name.LocalName.Equals("id")) vl.Add(Utilities.StringParseToVector3(xa.Value));
             }
             dict.Add(Int32.Parse(el.Attribute("id").Value), vl.ToArray());
         }

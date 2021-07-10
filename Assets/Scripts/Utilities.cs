@@ -65,7 +65,7 @@ public static class Utilities
         }
     }
 
-    public static Vector3 StringTovec3(string str)
+    public static Vector3 StringParseToVector3(string str)
     {
         string[] index = str.Split('(', ',', ')');
         return new Vector3(float.Parse(index[1]), float.Parse(index[2]), float.Parse(index[3]));
