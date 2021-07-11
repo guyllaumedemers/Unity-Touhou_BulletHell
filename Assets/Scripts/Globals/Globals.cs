@@ -49,4 +49,8 @@ public static class Globals
     public static float fadingTime = 2.0f;
     ///// string comparison - player
     public static string missile = "Missile";
+    ///// path
+    public static string resources = "/Resources/";
+    ///// filename
+    public static string posXMLfilename = "positions.xml";
 }
