@@ -7,9 +7,9 @@ using System;
 
 public class Tool
 {
-    public static void XMLSerialization_KVParray<T, K>(string path, IDictionary<T, K[]> dict, params string[] childs) where T : struct where K : struct
+    public static void XMLSerialization_KVParray(string path, string child, IDictionary<int, Vector3[]> dict)
     {
-        if (File.Exists(path)) AppendXML(path, childs);
+        if (File.Exists(path)) AppendXML(path, child, LastEntry(path, child), dict);
         else
         {
             int i = 0;
@@ -19,11 +19,21 @@ public class Tool
         }
     }
 
-    private static void AppendXML(string path, params string[] childs)
+    private static void AppendXML(string path, string child, XElement lastXel, IDictionary<int, Vector3[]> dict)
     {
+        int id = Int32.Parse(lastXel.Attribute("id").Value);
         var file = XDocument.Load(path);
-        file.Root.Element(childs[0]).AddAfterSelf(new XElement(childs[1]));
+        foreach (var key in dict.Keys.Where(key => key > Int32.Parse(lastXel.Attribute("id").Value)))
+        {
+            XElement xel = new XElement(child, new XAttribute("id", key), dict[key].Select(x => new XAttribute("pos_" + ++id, x)));
+            file.Root.Element(child).AddAfterSelf(xel);
+        }
         file.Save(path);
+    }
+
+    private static XElement LastEntry(string path, string child)
+    {
+        return XDocument.Load(path).Root.Elements(child).Last();
     }
 
     public static IDictionary<int, Vector3[]> XMLDeserialization_KVParray(string path)
@@ -44,4 +54,16 @@ public class Tool
         }
         return dict;
     }
+
+    //public static void XMLSerialization_KVPTuple(string path, IDictionary<int, ICollection<(string, int)>> dict, params string[] childs)
+    //{
+    //    if (File.Exists(path)) AppendXML(path, childs);
+    //    else
+    //    {
+    //        int i = 0;
+    //        XElement xel = new XElement("root", dict.Select(kv => new XElement("waypoints", new XAttribute("id", kv.Key), dict[kv.Key].Select(x => new XAttribute("pos_" + ++i, x)))));
+    //        if (xel != null) xel.Save(path, SaveOptions.None);
+    //        else Debug.LogWarning("dictionary couldnt be parse to xml");
+    //    }
+    //}
 }
