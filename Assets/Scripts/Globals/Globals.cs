@@ -47,5 +47,5 @@ public static class Globals
     ///// string comparison - player
     public static string missile = "Missile";
     ///// filename
-    public static string XMLGameinfo = "Assets/Resources/GameInfo.xml";
+    public static string XMLGameinfo = "GameInfo.xml";
 }
