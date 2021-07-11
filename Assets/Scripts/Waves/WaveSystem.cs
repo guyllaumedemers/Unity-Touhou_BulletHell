@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +23,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
 
     private WaveSystem() { }
 
-    private Dictionary<int, Queue<(string, int)>> waveDict = new Dictionary<int, Queue<(string, int)>>()
+    public Dictionary<int, Queue<(string, int)>> waveDict = new Dictionary<int, Queue<(string, int)>>()
     {
         {0, new Queue<(string, int)>(new []{
             (Globals.sunflowerFairy, 5),
@@ -77,9 +76,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
 
     /**********************FLOW****************************/
 
-#if TODO // PreIntilizationMethod will be called from the UI menu selection when the user select the stage
-#endif
-    // sucks that this cannot be used as an initializer list like constructors
+    //TODO PreIntilizationMethod will be called from the UI menu selection when the user select the stage
     public void PreIntilizationMethod(int stageselect, int startingDir, int pivot, int var_mod)
     {
         stageSelection = stageselect;
@@ -88,9 +85,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
         variable_mod = var_mod;
     }
 
-#if TODO // Vector3 position for the launch function must be set depending on the waypoint of the unit so the unit comes in the opposite direction from it
-#endif
-
+    //TODO Vector3 position for the launch function must be set depending on the waypoint of the unit so the unit comes in the opposite direction from it
     public IEnumerator InitializationMethod()
     {
         while (waveDict[stageSelection].Count > 0)

@@ -7,7 +7,17 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
     private WaypointSystem() { }
     private GameObject waypointParent;
     public Waypoint[] Waypoints { get; private set; }
-    public Dictionary<int, Vector3[]> positions = new Dictionary<int, Vector3[]>();
+    public Dictionary<int, Vector3[]> positions = new Dictionary<int, Vector3[]>()
+    {
+        //// Have to update the waypoints so that the fairies that spawn during the second phase of the wave doesnt go thru the same waypoints
+        {0, new Vector3[]
+            {
+                new Vector3(-10,20), new Vector3(-1,0), new Vector3(-10,0),
+                new Vector3(10,20), new Vector3(1,0), new Vector3(10,0),
+                new Vector3(0,5)
+            }
+        }
+    };
 
     /**********************ACTIONS**************************/
 
@@ -46,7 +56,7 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
 
     public void PreIntilizationMethod()
     {
-        positions = Tool.XMLDeserialization_KVParray(Application.dataPath + Globals.resources + Globals.posXMLfilename) as Dictionary<int, Vector3[]>;
+        //positions = Tool.XMLDeserialization_KVParray(Application.dataPath + Globals.XMLGameinfo) as Dictionary<int, Vector3[]>;
         waypointParent = Utilities.InstanciateObjectParent(Globals.waypointParent, true);
         Waypoints = InitializeNewWaypointsForLevel(positions, default, waypointParent.transform);
     }

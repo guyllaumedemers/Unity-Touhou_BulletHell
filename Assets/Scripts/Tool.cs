@@ -7,20 +7,30 @@ using System;
 
 public class Tool
 {
-    public static void XMLSerialization_KVParray(string path, IDictionary<int, Vector3[]> dict)
+    public static void XMLSerialization_KVParray<T, K>(string path, IDictionary<T, K[]> dict, params string[] childs) where T : struct where K : struct
     {
-        using FileStream fstream = File.OpenWrite(path);
-        if (fstream == null)
+        using FileStream fstream = File.Open(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+        if (fstream.Length <= 0)
         {
-            Debug.LogWarning("stream was not created properly");
-            goto STREAM_FAIL;
+            if (fstream == null)
+            {
+                Debug.LogWarning("stream failed");
+                return;
+            }
+            int i = 0;
+            XElement xel = new XElement("root", dict.Select(kv => new XElement("waypoints", new XAttribute("id", kv.Key), dict[kv.Key].Select(x => new XAttribute("pos_" + ++i, x)))));
+            if (xel != null) xel.Save(fstream);
+            else Debug.LogWarning("dictionary couldnt be parse to xml");
         }
-        int i = 0, j = 0;
-        XElement xel = new XElement("root", dict.Select(kv => new XElement("item_" + ++j, new XAttribute("id", kv.Key), dict[kv.Key].Select(x => new XAttribute("pos_" + ++i, x)))));
-        if (xel != null) xel.Save(fstream);
-        else Debug.LogWarning("elements couldn't be serialized");
-        STREAM_FAIL:
+        else AppendXML(fstream, path, childs);
         fstream.Close();
+    }
+
+    private static void AppendXML(Stream stream, string path, params string[] childs)
+    {
+        var file = XDocument.Load(stream);
+        file.Element(childs[0]).Add(new XElement(childs[1]));
+        file.Save(stream);
     }
 
     public static IDictionary<int, Vector3[]> XMLDeserialization_KVParray(string path)
