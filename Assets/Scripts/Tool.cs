@@ -9,28 +9,21 @@ public class Tool
 {
     public static void XMLSerialization_KVParray<T, K>(string path, IDictionary<T, K[]> dict, params string[] childs) where T : struct where K : struct
     {
-        using FileStream fstream = File.Open(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-        if (fstream.Length <= 0)
+        if (File.Exists(path)) AppendXML(path, childs);
+        else
         {
-            if (fstream == null)
-            {
-                Debug.LogWarning("stream failed");
-                return;
-            }
             int i = 0;
             XElement xel = new XElement("root", dict.Select(kv => new XElement("waypoints", new XAttribute("id", kv.Key), dict[kv.Key].Select(x => new XAttribute("pos_" + ++i, x)))));
-            if (xel != null) xel.Save(fstream);
+            if (xel != null) xel.Save(path, SaveOptions.None);
             else Debug.LogWarning("dictionary couldnt be parse to xml");
         }
-        else AppendXML(fstream, path, childs);
-        fstream.Close();
     }
 
-    private static void AppendXML(Stream stream, string path, params string[] childs)
+    private static void AppendXML(string path, params string[] childs)
     {
-        var file = XDocument.Load(stream);
-        file.Element(childs[0]).Add(new XElement(childs[1]));
-        file.Save(stream);
+        var file = XDocument.Load(path);
+        file.Root.Element(childs[0]).AddAfterSelf(new XElement(childs[1]));
+        file.Save(path);
     }
 
     public static IDictionary<int, Vector3[]> XMLDeserialization_KVParray(string path)
