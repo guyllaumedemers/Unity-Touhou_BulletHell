@@ -38,6 +38,9 @@ and prioritize Composition over Inheritance.
   * Strategy Pattern
   * Observer Pattern (*will have to implement an event system to trigger animation when limit scores are reach*)
 
+#### Tools
+  * XML Serialization (*WIP*)
+
 ## Resources
 
 💬 References for patterns are given from : [Design Patterns: Elements of Reusable Object‑Oriented Software](https://www.amazon.ca/-/fr/Gamma-Erich-ebook/dp/B000SEIBB8)
