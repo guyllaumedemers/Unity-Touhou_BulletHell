@@ -9,8 +9,6 @@ public class Tool
 {
     public static void XMLSerialization_KVParray(string path, IDictionary<int, Vector3[]> dict)
     {
-        if (File.Exists(path)) File.Delete(path);
-
         using FileStream fstream = File.OpenWrite(path);
         if (fstream == null)
         {
@@ -38,11 +36,7 @@ public class Tool
 
         foreach (var el in rootElement.Elements())
         {
-            List<Vector3> vl = new List<Vector3>();
-            foreach (var xa in el.Attributes())
-            {
-                if (!xa.Name.LocalName.Equals("id")) vl.Add(Utilities.StringParseToVector3(xa.Value));
-            }
+            List<Vector3> vl = (el.Attributes().Where(xa => !xa.Name.LocalName.Equals("id")).Select(xa => Utilities.StringParseToVector3(xa.Value))).ToList();
             dict.Add(Int32.Parse(el.Attribute("id").Value), vl.ToArray());
         }
         return dict;
