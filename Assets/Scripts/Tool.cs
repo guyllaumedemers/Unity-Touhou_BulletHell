@@ -12,8 +12,7 @@ public class Tool
         if (File.Exists(path)) AppendXML(path, child, LastEntry(path, child), dict);
         else
         {
-            int i = 0;
-            XElement xel = new XElement("root", dict.Select(kv => new XElement("waypoints", new XAttribute("id", kv.Key), dict[kv.Key].Select(x => new XAttribute("pos_" + ++i, x)))));
+            XElement xel = new XElement("root", dict.Select(kv => new XElement("waypoints", new XAttribute("id", kv.Key), dict[kv.Key].Select(x => new XElement("position", x)))));
             if (xel != null) xel.Save(path, SaveOptions.None);
             else Debug.LogWarning("dictionary couldnt be parse to xml");
         }
@@ -25,7 +24,7 @@ public class Tool
         var file = XDocument.Load(path);
         foreach (var key in dict.Keys.Where(key => key > Int32.Parse(lastXel.Attribute("id").Value)))
         {
-            XElement xel = new XElement(child, new XAttribute("id", key), dict[key].Select(x => new XAttribute("pos_" + ++id, x)));
+            XElement xel = new XElement(child, new XAttribute("id", key), dict[key].Select(x => new XElement("position", x)));
             file.Root.Element(child).AddAfterSelf(xel);
         }
         file.Save(path);
@@ -47,23 +46,11 @@ public class Tool
         XElement rootElement = XElement.Load(path);
         IDictionary<int, Vector3[]> dict = new Dictionary<int, Vector3[]>();
 
-        foreach (var el in rootElement.Elements())
+        foreach (var el in rootElement.Elements("waypoints"))
         {
-            List<Vector3> vl = (el.Attributes().Where(xa => !xa.Name.LocalName.Equals("id")).Select(xa => Utilities.StringParseToVector3(xa.Value))).ToList();
+            List<Vector3> vl = (el.Elements("position").Select(xa => Utilities.StringParseToVector3(xa.Value))).ToList();
             dict.Add(Int32.Parse(el.Attribute("id").Value), vl.ToArray());
         }
         return dict;
     }
-
-    //public static void XMLSerialization_KVPTuple(string path, IDictionary<int, ICollection<(string, int)>> dict, params string[] childs)
-    //{
-    //    if (File.Exists(path)) AppendXML(path, childs);
-    //    else
-    //    {
-    //        int i = 0;
-    //        XElement xel = new XElement("root", dict.Select(kv => new XElement("waypoints", new XAttribute("id", kv.Key), dict[kv.Key].Select(x => new XAttribute("pos_" + ++i, x)))));
-    //        if (xel != null) xel.Save(path, SaveOptions.None);
-    //        else Debug.LogWarning("dictionary couldnt be parse to xml");
-    //    }
-    //}
 }

@@ -16,7 +16,6 @@ public class EntryPoint : SingletonMono<EntryPoint>
         BulletManager.Instance.PreIntilizationMethod();
         UnitManager.Instance.PreIntilizationMethod();
         Last = default;
-        //Tool.XMLSerialization_KVParray(Globals.XMLGameinfo, "waypoints", new Dictionary<int, Vector3[]> { { 1, new Vector3[] { new Vector3(1, 0, 1), new Vector3(1, 0, 1), new Vector3(1, 0, 1) } } });
     }
 
     private void Start()
