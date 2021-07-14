@@ -30,7 +30,7 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
         return points.ToArray();
     }
 
-    // quick solution that doesnt realy handle a boss waypoints behaviour
+    //TODO Fix Enum management problem
     public Vector3[] GetLevelWPpos(int level, SpawningPosEnum sposEnum) => sposEnum switch
     {
         SpawningPosEnum.Right => Utilities.ParseArray(positions[level], Globals.rsposParse, Globals.maxlengthParse),
@@ -39,7 +39,6 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
         _ => throw new System.ArgumentOutOfRangeException()
     };
 
-    //// Allows to clear current waypoints collection before switching levels
     private void ResetWaypoints() => GameObjectExtensions.Destroy(GameObject.FindGameObjectsWithTag(Globals.waypoint));
 
     /**********************FLOW****************************/

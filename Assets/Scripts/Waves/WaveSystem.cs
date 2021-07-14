@@ -5,30 +5,13 @@ using UnityEngine;
 
 public class WaveSystem : SingletonMono<WaveSystem>
 {
-    /*  Wave System goes as follow :
-     * 
-     *      Keep in mind that in a touhou game there is no randomization
-     *      
-     *      How it should work is that until the player die OR the stage level isnt complete, I want to run the wave system
-     *      BUT
-     *      I do not want to update it at every execution order cycle
-     *      I want to be able to :
-     *      
-     *              run the initial wave
-     *              and keep on running until the level is complete
-     *              
-     *              for each wave instance, a timer is set to trigger the next wave
-     * 
-     */
-
     private WaveSystem() { }
-
-    public IDictionary<int, Queue<(string, int)>> waveDict = new Dictionary<int, Queue<(string, int)>>();
 
     public int stageSelection { get; private set; }
     public int curr_dir { get; private set; }
     public int pivot_point { get; private set; }
     public int variable_mod { get; private set; }
+    public IDictionary<int, Queue<(string, int)>> waveDict = new Dictionary<int, Queue<(string, int)>>();
 
     /**********************ACTIONS**************************/
 
@@ -44,7 +27,8 @@ public class WaveSystem : SingletonMono<WaveSystem>
         StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, Vector3.zero + pos, bulletType, SpawningPosEnum.Right, level, maxUnitWave / 2, interval));
     }
 
-    // Update Orientation allows to loop over the SpawningPosEnum and create variation in which unit spawn from
+    //INFO Update the direction in which the unit spawn
+    //TODO NEED to figure out a way to parametrize so the bool doesnt fall in an infinite loop skipping an enum value like its currently doing
     private int UpdateDir(bool skip)
     {
         if (!skip)
@@ -76,6 +60,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
     }
 
     //TODO Vector3 position for the launch function must be set depending on the waypoint of the unit so the unit comes in the opposite direction from it
+    //TODO Need to make the bulletType relevant to the pattern the Unit plays : Is it known from a value in the serialize file?
     public IEnumerator InitializationMethod()
     {
         while (waveDict[stageSelection].Count > 0)
@@ -85,7 +70,8 @@ public class WaveSystem : SingletonMono<WaveSystem>
             RemoveEntry();
             yield return new WaitForSeconds(Globals.waveInterval);
         }
-        // trigger event to go back to menu or to trigger next level
+        //TODO Reset Waypoints for new level
+        //TODO Trigger event to go back to menu OR start a new wave
     }
 
     /***************DATA STRUCTURE MANAGEMENT********************/
