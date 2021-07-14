@@ -61,7 +61,8 @@ public abstract class Unit : MonoBehaviour, IDamageable
             idle = !idle;
             bezierCurveT = default;
             hasReachDestination = true;
-            StartCoroutine(Utilities.Timer(Globals.idleTime, () => { idle = !idle; }));                 // need to find a way to set the idl time differently as it will be diff per units type
+            //TODO NEED to find a way to make the idl time variable according to the unit AND the level we are currently in OR wave we are at
+            StartCoroutine(Utilities.Timer(Globals.idleTime, () => { idle = !idle; }));
             return;
         }
         bezierCurveT = bezierCurveT + Time.deltaTime * speed % 1.0f;
