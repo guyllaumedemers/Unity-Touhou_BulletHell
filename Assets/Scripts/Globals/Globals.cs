@@ -48,4 +48,5 @@ public static class Globals
     public static string missile = "Missile";
     ///// filename
     public static string XMLGameinfo = "GameInfo.xml";
+    public static string XMLLevelinfo = "LevelInfo.xml";
 }

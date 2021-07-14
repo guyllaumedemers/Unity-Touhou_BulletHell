@@ -7,7 +7,7 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
     private WaypointSystem() { }
     private GameObject waypointParent;
     public Waypoint[] Waypoints { get; private set; }
-    public Dictionary<int, Vector3[]> positions = new Dictionary<int, Vector3[]>();
+    public IDictionary<int, Vector3[]> positions = new Dictionary<int, Vector3[]>();
 
     /**********************ACTIONS**************************/
 
@@ -46,9 +46,9 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
 
     public void PreIntilizationMethod()
     {
-        positions = Tool.XMLDeserialization_KVParray(Globals.XMLGameinfo) as Dictionary<int, Vector3[]>;
+        positions = Tool.XMLDeserialization_KVParray(Globals.XMLGameinfo);
         waypointParent = Utilities.InstanciateObjectParent(Globals.waypointParent, true);
-        Waypoints = InitializeNewWaypointsForLevel(positions, default, waypointParent.transform);
+        Waypoints = InitializeNewWaypointsForLevel(positions as Dictionary<int, Vector3[]>, default, waypointParent.transform);
     }
 
     public void InitializationMethod() { }
