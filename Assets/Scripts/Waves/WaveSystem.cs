@@ -23,18 +23,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
 
     private WaveSystem() { }
 
-    public Dictionary<int, Queue<(string, int)>> waveDict = new Dictionary<int, Queue<(string, int)>>()
-    {
-        {0, new Queue<(string, int)>(new []{
-            (Globals.sunflowerFairy, 5),
-            (Globals.zombieFairy, 1),
-            (Globals.zombieFairy, 2),
-            (Globals.sunflowerFairy, 5),
-            (Globals.zombieFairy, 4),
-            (Globals.boss, 1)
-            })
-        }
-    };
+    public IDictionary<int, Queue<(string, int)>> waveDict = new Dictionary<int, Queue<(string, int)>>();
 
     public int stageSelection { get; private set; }
     public int curr_dir { get; private set; }
@@ -83,6 +72,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
         curr_dir = startingDir;
         pivot_point = pivot;
         variable_mod = var_mod;
+        waveDict = Tool.XMLDeserialization_KVPTuple(Globals.XMLLevelinfo);
     }
 
     //TODO Vector3 position for the launch function must be set depending on the waypoint of the unit so the unit comes in the opposite direction from it
