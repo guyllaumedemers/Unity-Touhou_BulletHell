@@ -36,7 +36,7 @@ public static class Globals
     ///// Sequential init time interval
     public static float initializationInterval = 0.7f;
     ///// Wave time interval
-    public static float waveInterval = 5.0f;
+    public static float waveInterval = 2.0f;
     ///// Unit Generation
     public static string boss = "Boss";
     public static string sunflowerFairy = "SunflowerFairy";
