@@ -62,7 +62,14 @@ public abstract class Unit : MonoBehaviour, IDamageable
             bezierCurveT = default;
             hasReachDestination = true;
             //TODO NEED to find a way to make the idl time variable according to the unit AND the level we are currently in OR wave we are at
-            StartCoroutine(DriftOff());
+            if(moveable.GetType() == typeof(MoveableUnitBehaviour))
+            {
+                StartCoroutine(DriftOff());
+            }
+            else
+            {
+                //TODO Add behaviour for units that use cubic bezier curve // spline
+            }
             StartCoroutine(Utilities.Timer(Globals.idleTime, () => { idle = !idle; }));
             return;
         }
