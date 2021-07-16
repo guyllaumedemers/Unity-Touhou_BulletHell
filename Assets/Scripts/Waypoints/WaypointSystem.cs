@@ -30,12 +30,13 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
         return points.ToArray();
     }
 
-    //TODO Fix Enum management problem
+    //TODO Have to handle splines
     public Vector3[] GetLevelWPpos(int level, SpawningPosEnum sposEnum) => sposEnum switch
     {
+        SpawningPosEnum.Left  => Utilities.ParseArray(positions[level], Globals.lsposParse, Globals.maxlengthParse),
         SpawningPosEnum.Right => Utilities.ParseArray(positions[level], Globals.rsposParse, Globals.maxlengthParse),
-        SpawningPosEnum.Left => Utilities.ParseArray(positions[level], Globals.lsposParse, Globals.maxlengthParse),
-        SpawningPosEnum.None => positions[level],
+        SpawningPosEnum.Both  => Utilities.ParseArray(positions[level], Globals.bothsposParse, Globals.maxlengthParse * 2),
+        //MAYBE have a special case for it // Would have to update the IMoveable assignation during unit creation to make it use cubic bezier curve
         _ => throw new System.ArgumentOutOfRangeException()
     };
 

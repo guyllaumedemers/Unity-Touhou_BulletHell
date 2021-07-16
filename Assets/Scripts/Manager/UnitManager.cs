@@ -14,8 +14,7 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
 
     /**********************ACTIONS**************************/
 
-    ///// Unit creation is not handle inside the Factory Pattern
-    ///// Factory Pattern is only going to handle bullet instanciation as there wont be that many units on screen
+    //TODO Upon loading level after Menu Selection, PreLoad Units inside a Unit Pool
     public Unit Create<T>(string type, Vector2 pos, BulletTypeEnum bulletT, Vector3[] waypoints) where T : class
     {
         Unit instance = Utilities.InstanciateType<T>(resources.GetPrefab(Units, type), null, pos) as Unit;
@@ -53,13 +52,12 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
         Destroy(unit.gameObject);
     }
 
-    public IEnumerator SequencialInit<T>(string name, Vector3 pos, BulletTypeEnum bulletType, SpawningPosEnum spEnum,
-        int level, int maxUnitWave, float interval) where T : class
+    public IEnumerator SequencialInit<T>(string name, Vector3 pos, BulletTypeEnum bulletType, Vector3[] waypoints, int maxUnitWave, float interval) where T : class
     {
         int curr_count = -1;
         while (++curr_count < maxUnitWave)
         {
-            Create<T>(name, pos, bulletType, WaypointSystem.Instance.GetLevelWPpos(level, spEnum));
+            Create<T>(name, pos, bulletType, waypoints);
             yield return new WaitForSeconds(interval);
         }
     }
