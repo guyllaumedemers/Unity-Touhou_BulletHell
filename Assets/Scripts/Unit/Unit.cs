@@ -62,11 +62,22 @@ public abstract class Unit : MonoBehaviour, IDamageable
             bezierCurveT = default;
             hasReachDestination = true;
             //TODO NEED to find a way to make the idl time variable according to the unit AND the level we are currently in OR wave we are at
+            StartCoroutine(DriftOff());
             StartCoroutine(Utilities.Timer(Globals.idleTime, () => { idle = !idle; }));
             return;
         }
         bezierCurveT = bezierCurveT + Time.deltaTime * speed % 1.0f;
         transform.position = moveable.Move(default, default, bezierCurveT, transform.position, controlPoints[curr_wp + 1 > 2 ? 0 : curr_wp + 1]);
+    }
+
+    public IEnumerator DriftOff()
+    {
+        int dir = controlPoints[0].x < 0 ? 1 : -1;
+        while (idle)
+        {
+            transform.position += new Vector3(0.5f * dir, -0.3f, 0.0f) * Time.deltaTime;
+            yield return null;
+        }
     }
 
     public IEnumerator Play()

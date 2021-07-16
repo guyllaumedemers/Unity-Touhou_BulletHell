@@ -61,17 +61,12 @@ public class WaveSystem : SingletonMono<WaveSystem>
     //TODO Need to make the bulletType relevant to the pattern the Unit plays : Is it known from a value in the serialize file?
     public IEnumerator InitializationMethod()
     {
-        int count = waveDict[stageSelection].Count;
         while (waveDict[stageSelection].Count > 0)
         {
-            /*      What i could do is if the unit is following along the path of a spline it would retrieve the information of a set array of waypoints
-             *      while if he was to just move in a linear direction he would retrieve a specific index according to his EnumSpawnType
-             * 
-             */
             SpawningPosEnum sposEnum = (SpawningPosEnum)UpdateDir(false);
 
-            Launch<Unit>(waveDict[stageSelection].First().Item1, WaypointSystem.Instance.GetLevelWPpos(stageSelection, sposEnum),
-                BulletTypeEnum.Circle, sposEnum, waveDict[stageSelection].First().Item2, Globals.initializationInterval);
+            Launch<Unit>(waveDict[stageSelection].First().Item1, WaypointSystem.Instance.GetLevelWPpos(stageSelection, sposEnum), BulletTypeEnum.Circle, sposEnum,
+                waveDict[stageSelection].First().Item2, Globals.initializationInterval);
             RemoveEntry();
             yield return new WaitForSeconds(Globals.waveInterval);
         }

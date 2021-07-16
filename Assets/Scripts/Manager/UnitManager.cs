@@ -57,7 +57,7 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
         int curr_count = -1;
         while (++curr_count < maxUnitWave)
         {
-            Create<T>(name, pos, bulletType, waypoints);
+            Create<T>(name, pos += Globals.unit_offset, bulletType, waypoints);
             yield return new WaitForSeconds(interval);
         }
     }
