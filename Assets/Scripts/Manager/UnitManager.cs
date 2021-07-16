@@ -15,11 +15,11 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
     /**********************ACTIONS**************************/
 
     //TODO Upon loading level after Menu Selection, PreLoad Units inside a Unit Pool
-    public Unit Create<T>(string type, Vector2 pos, BulletTypeEnum bulletT, Vector3[] waypoints) where T : class
+    public Unit Create<T>(string type, Vector2 pos, IMoveable move_behaviour, Vector3[] waypoints, BulletTypeEnum bulletT) where T : class
     {
         Unit instance = Utilities.InstanciateType<T>(resources.GetPrefab(Units, type), null, pos) as Unit;
         Add(type, instance);
-        return instance.PreInitializeUnit(bulletT, waypoints);
+        return instance.PreInitializeUnit(move_behaviour, waypoints, bulletT);
     }
 
     private void UpdateUnits(Dictionary<string, HashSet<Unit>> dict, Queue<Unit> pool)
@@ -52,12 +52,15 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
         Destroy(unit.gameObject);
     }
 
-    public IEnumerator SequencialInit<T>(string name, Vector3 pos, BulletTypeEnum bulletType, Vector3[] waypoints, int maxUnitWave, float interval) where T : class
+    //TODO Handle offset position when instancing rapidly on the same side OR make it follow in line
+    //Currently following in line
+    public IEnumerator SequencialInit<T>(string name, IMoveable move_behaviour, Vector3 pos, BulletTypeEnum bulletType, Vector3[] waypoints, int maxUnitWave, float interval)
+        where T : class
     {
         int curr_count = -1;
         while (++curr_count < maxUnitWave)
         {
-            Create<T>(name, pos += Globals.unit_offset, bulletType, waypoints);
+            Create<T>(name, pos, move_behaviour, waypoints, bulletType);
             yield return new WaitForSeconds(interval);
         }
     }

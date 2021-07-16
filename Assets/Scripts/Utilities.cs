@@ -70,4 +70,9 @@ public static class Utilities
         string[] index = str.Split('(', ',', ')');
         return new Vector3(float.Parse(index[1]), float.Parse(index[2]), float.Parse(index[3]));
     }
+
+    public static bool CheckInterfaceType<T>(T myInterface, Type compare) where T : class
+    {
+        return myInterface.GetType().Equals(compare);
+    }
 }

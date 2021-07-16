@@ -15,15 +15,23 @@ public class WaveSystem : SingletonMono<WaveSystem>
 
     /**********************ACTIONS**************************/
 
-    private void Launch<T>(string name, Vector3[] pos, BulletTypeEnum bulletType, SpawningPosEnum spEnum, int maxUnitWave, float interval) where T : class
+    private void Launch<T>(string name, IMoveable move_behaviour, Vector3[] waypoints, BulletTypeEnum bulletType, SpawningPosEnum spEnum, int maxUnitWave, float interval)
+        where T : class
     {
-        if (spEnum != SpawningPosEnum.Both)
+        if (Utilities.CheckInterfaceType(move_behaviour, typeof(MoveableUnitLinearBezierB)))
         {
-            StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, pos[0], bulletType, pos, maxUnitWave, interval));
-            return;
+            if (spEnum != SpawningPosEnum.Both)
+            {
+                StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, move_behaviour, waypoints[0], bulletType, waypoints, maxUnitWave, interval));
+                return;
+            }
+            StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, move_behaviour, waypoints[0], bulletType, Utilities.ParseArray(waypoints, 0, 3), maxUnitWave / 2, interval));
+            StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, move_behaviour, waypoints[3], bulletType, Utilities.ParseArray(waypoints, 3, 3), maxUnitWave / 2, interval));
         }
-        StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, pos[0], bulletType, Utilities.ParseArray(pos, 0, 3), maxUnitWave / 2, interval));
-        StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, pos[3], bulletType, Utilities.ParseArray(pos, 3, 3), maxUnitWave / 2, interval));
+        else
+        {
+            Debug.Log("Instanciate units and pass spline waypoints as params");
+        }
     }
 
     //INFO Update the direction in which the unit spawn
@@ -63,10 +71,11 @@ public class WaveSystem : SingletonMono<WaveSystem>
     {
         while (waveDict[stageSelection].Count > 0)
         {
-            SpawningPosEnum sposEnum = (SpawningPosEnum)UpdateDir(false);
+            SpawningPosEnum spEnum = (SpawningPosEnum)UpdateDir(false);
+            IMoveable move_behaviour = (curr_dir % variable_mod == 0) ? (IMoveable)new MoveableUnitCubicBezierB() : new MoveableUnitLinearBezierB();
 
-            Launch<Unit>(waveDict[stageSelection].First().Item1, WaypointSystem.Instance.GetLevelWPpos(stageSelection, sposEnum), BulletTypeEnum.Circle, sposEnum,
-                waveDict[stageSelection].First().Item2, Globals.initializationInterval);
+            Launch<Unit>(waveDict[stageSelection].First().Item1, move_behaviour, WaypointSystem.Instance.GetWaypoints((curr_dir % variable_mod == 0), stageSelection, spEnum),
+                BulletTypeEnum.Circle, spEnum, waveDict[stageSelection].First().Item2, Globals.initializationInterval);
             RemoveEntry();
             yield return new WaitForSeconds(Globals.waveInterval);
         }
