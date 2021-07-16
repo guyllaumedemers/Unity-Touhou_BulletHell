@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
 {
-    IMoveable moveable = new MoveableBulletBehaviour();
+    IMoveable moveable = new MoveableBulletB();
     public IgnoreLayerEnum ignoredLayer { get; private set; }
     // bullet values
     protected const float speed = 5;

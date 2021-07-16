@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class Unit : MonoBehaviour, IDamageable
 {
     public IPatternGenerator pattern;
-    public IMoveable moveable = new MoveableUnitBehaviour();
+    public IMoveable moveable;
     public readonly IEnumFiltering enumFiltering = new EnumFilteringBehaviour();
     public readonly IAnimate animationBehaviour = new UnitAnimationBehaviour();
     public readonly ISwappable bullets = new SwappablePatternBehaviour();
@@ -31,7 +31,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
     /**********************ACTIONS**************************/
 
     // Bullet Type is now pass as arguments so i can parametrize the instanciation of an unit type directly in the function call instead of having values all around and overwriting
-    public Unit PreInitializeUnit(BulletTypeEnum bulletT, Vector3[] waypoints)
+    public Unit PreInitializeUnit(IMoveable move_behaviour, Vector3[] waypoints, BulletTypeEnum bulletT)
     {
         spriteRen = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -40,6 +40,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
         bezierCurveT = default;
         speed = Globals.u_speed;
         rad = Globals.hitbox;
+        moveable = move_behaviour;
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => enumFiltering.EnumToString(bulletT).Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
         activeBullet = bullets.SwapBulletType(bulletType);                                                                      // initialize the active bullet type string    
         pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));                 // initialize the pattern with the active bullet type
@@ -62,10 +63,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
             bezierCurveT = default;
             hasReachDestination = true;
             //TODO NEED to find a way to make the idl time variable according to the unit AND the level we are currently in OR wave we are at
-            if(moveable.GetType() == typeof(MoveableUnitBehaviour))
-            {
-                StartCoroutine(DriftOff());
-            }
+            if (moveable.GetType() == typeof(MoveableUnitLinearBezierB)) StartCoroutine(DriftOff());
             else
             {
                 //TODO Add behaviour for units that use cubic bezier curve // spline

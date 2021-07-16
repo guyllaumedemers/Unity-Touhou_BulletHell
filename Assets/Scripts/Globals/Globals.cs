@@ -31,6 +31,8 @@ public static class Globals
     public static int rsposParse = 3;
     ///// Both Parse start pos
     public static int bothsposParse = 6;
+    ///// Spline Parse start pos
+    public static int splinesposParse = 6;
     ///// Parse arr max length
     public static int maxlengthParse = 3;
     ///// Sequential init time interval
@@ -54,5 +56,5 @@ public static class Globals
     public static string XMLGameinfo = "GameInfo.xml";
     public static string XMLLevelinfo = "LevelInfo.xml";
     ///// Instanciation position offset
-    public static Vector3 unit_offset = new Vector3(0.0f, 0.7f, 0.0f);
+    public static Vector3 unit_offset = new Vector3(0.0f, 1.4f, 0.0f);
 }
