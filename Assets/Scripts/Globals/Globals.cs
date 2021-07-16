@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public static class Globals
 {
     ///// Resources loading
@@ -32,7 +34,7 @@ public static class Globals
     ///// Parse arr max length
     public static int maxlengthParse = 3;
     ///// Sequential init time interval
-    public static float initializationInterval = 1.4f;
+    public static float initializationInterval = 0.7f;
     ///// Wave time interval
     public static float waveInterval = 5.0f;
     ///// Unit Generation
@@ -51,4 +53,6 @@ public static class Globals
     ///// filename
     public static string XMLGameinfo = "GameInfo.xml";
     public static string XMLLevelinfo = "LevelInfo.xml";
+    ///// Instanciation position offset
+    public static Vector3 unit_offset = new Vector3(0.0f, 0.7f, 0.0f);
 }
