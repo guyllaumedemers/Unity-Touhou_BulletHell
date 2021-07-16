@@ -27,6 +27,8 @@ public static class Globals
     public static int lsposParse = 0;
     ///// Right Parse start pos
     public static int rsposParse = 3;
+    ///// Both Parse start pos
+    public static int bothsposParse = 6;
     ///// Parse arr max length
     public static int maxlengthParse = 3;
     ///// Sequential init time interval

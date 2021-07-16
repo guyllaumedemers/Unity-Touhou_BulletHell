@@ -15,16 +15,15 @@ public class WaveSystem : SingletonMono<WaveSystem>
 
     /**********************ACTIONS**************************/
 
-    private void Launch<T>(string name, Vector3 pos, BulletTypeEnum bulletType, SpawningPosEnum spEnum,
-        int level, int maxUnitWave, float interval) where T : class
+    private void Launch<T>(string name, Vector3[] pos, BulletTypeEnum bulletType, SpawningPosEnum spEnum, int maxUnitWave, float interval) where T : class
     {
         if (spEnum != SpawningPosEnum.Both)
         {
-            StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, pos, bulletType, spEnum, level, maxUnitWave, interval));
+            StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, pos[0], bulletType, pos, maxUnitWave, interval));
             return;
         }
-        StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, Vector3.zero - pos, bulletType, SpawningPosEnum.Left, level, maxUnitWave / 2, interval));
-        StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, Vector3.zero + pos, bulletType, SpawningPosEnum.Right, level, maxUnitWave / 2, interval));
+        StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, pos[0], bulletType, Utilities.ParseArray(pos, 0, 3), maxUnitWave / 2, interval));
+        StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, pos[3], bulletType, Utilities.ParseArray(pos, 3, 3), maxUnitWave / 2, interval));
     }
 
     //INFO Update the direction in which the unit spawn
@@ -59,14 +58,20 @@ public class WaveSystem : SingletonMono<WaveSystem>
         waveDict = Tool.XMLDeserialization_KVPTuple(Globals.XMLLevelinfo);
     }
 
-    //TODO Vector3 position for the launch function must be set depending on the waypoint of the unit so the unit comes in the opposite direction from it
     //TODO Need to make the bulletType relevant to the pattern the Unit plays : Is it known from a value in the serialize file?
     public IEnumerator InitializationMethod()
     {
+        int count = waveDict[stageSelection].Count;
         while (waveDict[stageSelection].Count > 0)
         {
-            Launch<Unit>(waveDict[stageSelection].First().Item1, new Vector3(10, 5, 0), BulletTypeEnum.Circle, (SpawningPosEnum)UpdateDir(curr_dir % variable_mod == 2),
-                0, waveDict[stageSelection].First().Item2, Globals.initializationInterval);
+            /*      What i could do is if the unit is following along the path of a spline it would retrieve the information of a set array of waypoints
+             *      while if he was to just move in a linear direction he would retrieve a specific index according to his EnumSpawnType
+             * 
+             */
+            SpawningPosEnum sposEnum = (SpawningPosEnum)UpdateDir(false);
+
+            Launch<Unit>(waveDict[stageSelection].First().Item1, WaypointSystem.Instance.GetLevelWPpos(stageSelection, sposEnum),
+                BulletTypeEnum.Circle, sposEnum, waveDict[stageSelection].First().Item2, Globals.initializationInterval);
             RemoveEntry();
             yield return new WaitForSeconds(Globals.waveInterval);
         }
