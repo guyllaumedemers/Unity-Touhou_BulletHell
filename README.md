@@ -24,11 +24,11 @@ and prioritize Composition over Inheritance.
   * Pattern Generation 👻 (*early stage*)
   * Collision System (*thinking about using RTree to make access bullets depending on the area they are in and make things more efficient*)
   * Player Mechanics
-  * Movement Mechanics (*early stage*)
+  * Movement Mechanics
   * Orb Rotation
   * Bullet Management
   * Unit Management
-  * Wave System (*early stage - need to figure out some stuff like : setting proper position from which units are suppose to spawn*)
+  * Wave System (*units can spawn from both side following either a linear progression OR a cubic bezier curve*)
 
 #### Design Pattern and Memory Optimization
 
@@ -39,7 +39,7 @@ and prioritize Composition over Inheritance.
   * Observer Pattern (*will have to implement an event system to trigger animation when limit scores are reach*)
 
 #### Tools
-  * XML Serialization (*WIP*)
+  * XML Serialization (*Currently manage position in a file called : GameInfo and the instanciation of units inside the file : LevelInfo -> Both are accessible at the solution level*)
 
 ## Resources
 
