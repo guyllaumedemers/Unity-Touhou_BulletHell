@@ -18,13 +18,13 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public float speed;
     public float angle;
     public string activeBullet;
-    public bool hasReachDestination = false;
+    public bool hasReachDestination;
     public Queue<string> bulletType;
     // Check later for encapsulation
     public float bezierCurveT;
     public Vector3[] controlPoints;
-    public int curr_wp = default;
-    public bool idle = default;
+    public int curr_wp;
+    public bool idle;
     public SpriteRenderer spriteRen;
     public Animator animator;
 
@@ -49,31 +49,29 @@ public abstract class Unit : MonoBehaviour, IDamageable
 
     private void Move()
     {
-        if (Vector3.Distance(transform.position, controlPoints[curr_wp + 1 > controlPoints.Length - 1 ? 0 : curr_wp + 1]) < Globals.minWPDist)
+        if (Vector3.Distance(transform.position, controlPoints[controlPoints.Length - 1]) < Globals.minWPDist)
+        {
+            hasReachDestination = true;
+        }
+        else if (Vector3.Distance(transform.position, controlPoints[curr_wp + 1 > controlPoints.Length - 1 ? 0 : curr_wp + 1]) < Globals.minWPDist)
         {
             ++curr_wp;
             curr_wp %= controlPoints.Length;
-            idle = !idle;
             bezierCurveT = default;
-            hasReachDestination = true;
+            idle = !idle;
             //TODO NEED to find a way to make the idl time variable according to the unit AND the level we are currently in OR wave we are at
-            if (Utilities.CheckInterfaceType(moveable, typeof(MoveableUnitLinearBezierB)))
-            {
-                StartCoroutine(DriftOff());
-                StartCoroutine(Utilities.Timer(Globals.idleTime, () => { idle = !idle; }));
-            }
+            StartCoroutine(Utilities.Timer(Globals.idleTime, () => { idle = !idle; }));
             return;
         }
         bezierCurveT = bezierCurveT + Time.deltaTime * speed % 1.0f;
         transform.position = UpdateUnitPosition(moveable, curr_wp, controlPoints);
     }
 
-    //TODO Fix problem with linear bezier curve // setting transform directly as first index isnt the right thing to do
     private Vector3 UpdateUnitPosition(IMoveable move_beahaviour, int curr_wp, Vector3[] waypoints)
     {
         if (Utilities.CheckInterfaceType(move_beahaviour, typeof(MoveableUnitLinearBezierB)))
         {
-            return moveable.Move(default, default, bezierCurveT, transform.position, waypoints[curr_wp + 1 > waypoints.Length - 1 ? 0 : curr_wp + 1]);
+            return moveable.Move(default, default, bezierCurveT, waypoints[curr_wp > waypoints.Length - 1 ? 0 : curr_wp], waypoints[curr_wp + 1 > waypoints.Length - 1 ? 0 : curr_wp + 1]);
         }
         return moveable.Move(default, default, bezierCurveT, waypoints[0], waypoints[1], waypoints[2], waypoints[3]);
     }
@@ -118,9 +116,12 @@ public abstract class Unit : MonoBehaviour, IDamageable
         animator = GetComponent<Animator>();
         bulletType = new Queue<string>();
         controlPoints = waypoints;
-        bezierCurveT = default;
+        moveable = move_behaviour;
         speed = Globals.u_speed;
         rad = Globals.hitbox;
-        moveable = move_behaviour;
+        hasReachDestination = false;
+        bezierCurveT = default;
+        curr_wp = default;
+        idle = default;
     }
 }

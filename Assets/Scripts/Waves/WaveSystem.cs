@@ -12,7 +12,6 @@ public class WaveSystem : SingletonMono<WaveSystem>
     public int curr_dir { get; private set; }
     public int pivot_point { get; private set; }
     public int variable_mod { get; private set; }
-    int i = 0;
     public IDictionary<int, Queue<(string, int)>> waveDict = new Dictionary<int, Queue<(string, int)>>();
 
     /**********************ACTIONS**************************/
