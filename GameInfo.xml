@@ -18,7 +18,7 @@
 	<position>( 2.0,  0.0, 0.0)</position>
 	<position>( 2.0, 10.0, 0.0)</position>
 	<!--Spline Position-->
-	<position>( -5.0, 5.0, 0.0)</position>	<!--Spline-->
+	<position>( -5.0, 5.0, 0.0)</position>
 	<position>(  0.0, 2.0, 0.0)</position>
 	<position>(  0.0,-2.0, 0.0)</position>
 	<position>( -5.0,-5.0, 0.0)</position>

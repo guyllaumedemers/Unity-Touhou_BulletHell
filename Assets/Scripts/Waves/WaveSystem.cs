@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
     public int curr_dir { get; private set; }
     public int pivot_point { get; private set; }
     public int variable_mod { get; private set; }
+    int i = 0;
     public IDictionary<int, Queue<(string, int)>> waveDict = new Dictionary<int, Queue<(string, int)>>();
 
     /**********************ACTIONS**************************/
@@ -38,7 +40,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
                 return;
             }
             StartInstanciationCoroutine<T>(name, move_behaviour, waypoints[0], waypoints, bulletType, maxUnitWave, interval);
-            StartInstanciationCoroutine<T>(name, move_behaviour, Utilities.FlipX(waypoints, -1)[0], Utilities.FlipX(waypoints, -1), bulletType, maxUnitWave, interval);
+            StartInstanciationCoroutine<T>(name, move_behaviour, Utilities.FlipX(waypoints.Clone() as Vector3[], -1)[0], Utilities.FlipX(waypoints.Clone() as Vector3[], -1), bulletType, maxUnitWave, interval);
         }
     }
 
@@ -93,10 +95,9 @@ public class WaveSystem : SingletonMono<WaveSystem>
         {
             SpawningPosEnum spEnum = (SpawningPosEnum)UpdateDir(false);
             IMoveable move_behaviour = (curr_dir % variable_mod == 0) ? (IMoveable)new MoveableUnitCubicBezierB() : new MoveableUnitLinearBezierB();
-            Debug.Log("Move " + move_behaviour.GetType() + "  " + " Enum " + spEnum);
 
             Launch<Unit>(waveDict[level].First().Item1, move_behaviour, WaypointSystem.Instance.GetWaypoints((curr_dir % variable_mod == 0), level, spEnum),
-                BulletTypeEnum.Circle, spEnum, waveDict[level].First().Item2, Globals.initializationInterval);
+                BulletTypeEnum.Circle, SpawningPosEnum.Both, waveDict[level].First().Item2, Globals.initializationInterval);
             RemoveEntry();
             yield return new WaitForSeconds(Globals.waveInterval);
         }
