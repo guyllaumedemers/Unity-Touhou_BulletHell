@@ -24,7 +24,7 @@ public static class Globals
     ///// Distance wp
     public static float minWPDist = 0.01f;
     ///// Idl Time
-    public static float idleTime = 1.2f;
+    public static float idleTime = 2.0f;
     ///// Left Parse start pos
     public static int lsposParse = 0;
     ///// Right Parse start pos
@@ -47,7 +47,7 @@ public static class Globals
     public static string zombieFairy = "ZombieFairy";
     public static string player = "Player";
     ///// Unit Speed
-    public static float u_speed = 0.03f;
+    public static float u_speed = 0.5f;
     ///// Orb Rotation
     public static float orbRotationSpeed = 120.0f;
     ///// Orb Fade

@@ -65,7 +65,17 @@ public abstract class Unit : MonoBehaviour, IDamageable
             return;
         }
         bezierCurveT = bezierCurveT + Time.deltaTime * speed % 1.0f;
-        transform.position = moveable.Move(default, default, bezierCurveT, transform.position, controlPoints[curr_wp + 1 > controlPoints.Length - 1 ? 0 : curr_wp + 1]);
+        transform.position = UpdateUnitPosition(moveable, curr_wp, controlPoints);
+    }
+
+    //TODO Fix problem with linear bezier curve // setting transform directly as first index isnt the right thing to do
+    private Vector3 UpdateUnitPosition(IMoveable move_beahaviour, int curr_wp, Vector3[] waypoints)
+    {
+        if (Utilities.CheckInterfaceType(move_beahaviour, typeof(MoveableUnitLinearBezierB)))
+        {
+            return moveable.Move(default, default, bezierCurveT, transform.position, waypoints[curr_wp + 1 > waypoints.Length - 1 ? 0 : curr_wp + 1]);
+        }
+        return moveable.Move(default, default, bezierCurveT, waypoints[0], waypoints[1], waypoints[2], waypoints[3]);
     }
 
     public IEnumerator DriftOff()

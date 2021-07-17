@@ -34,24 +34,24 @@ public class WaveSystem : SingletonMono<WaveSystem>
         {
             if (spEnum != SpawningPosEnum.Both)
             {
-                StartInstanciationCoroutine<T>(name, move_behaviour, FlipArray(waypoints, spEnum)[0], FlipArray(waypoints, spEnum), bulletType, maxUnitWave, interval);
+                StartInstanciationCoroutine<T>(name, move_behaviour, CheckEnumAndFlip(waypoints, spEnum)[0], CheckEnumAndFlip(waypoints, spEnum), bulletType, maxUnitWave, interval);
                 return;
             }
             StartInstanciationCoroutine<T>(name, move_behaviour, waypoints[0], waypoints, bulletType, maxUnitWave, interval);
-            StartInstanciationCoroutine<T>(name, move_behaviour, Utilities.ReverseArray(waypoints)[0], Utilities.ReverseArray(waypoints), bulletType, maxUnitWave, interval);
+            StartInstanciationCoroutine<T>(name, move_behaviour, Utilities.FlipX(waypoints, -1)[0], Utilities.FlipX(waypoints, -1), bulletType, maxUnitWave, interval);
         }
     }
 
-    private void StartInstanciationCoroutine<T>(string name, IMoveable move_behaviour, Vector3 start_pos, Vector3[] waypoints, BulletTypeEnum bulletType, int maxUnitWave, float interval)
-        where T : class
+    private void StartInstanciationCoroutine<T>(string name, IMoveable move_behaviour, Vector3 start_pos, Vector3[] waypoints, BulletTypeEnum bulletType, int maxUnitWave,
+        float interval) where T : class
     {
         StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, move_behaviour, start_pos, bulletType, waypoints, maxUnitWave, interval));
     }
 
-    private Vector3[] FlipArray(Vector3[] myArr, SpawningPosEnum spEnum) => spEnum switch
+    private Vector3[] CheckEnumAndFlip(Vector3[] myArr, SpawningPosEnum spEnum) => spEnum switch
     {
         SpawningPosEnum.Left => myArr,
-        SpawningPosEnum.Right => Utilities.ReverseArray(myArr),
+        SpawningPosEnum.Right => Utilities.FlipX(myArr, -1),
         _ => throw new System.NotImplementedException()
     };
 
@@ -93,6 +93,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
         {
             SpawningPosEnum spEnum = (SpawningPosEnum)UpdateDir(false);
             IMoveable move_behaviour = (curr_dir % variable_mod == 0) ? (IMoveable)new MoveableUnitCubicBezierB() : new MoveableUnitLinearBezierB();
+            Debug.Log("Move " + move_behaviour.GetType() + "  " + " Enum " + spEnum);
 
             Launch<Unit>(waveDict[level].First().Item1, move_behaviour, WaypointSystem.Instance.GetWaypoints((curr_dir % variable_mod == 0), level, spEnum),
                 BulletTypeEnum.Circle, spEnum, waveDict[level].First().Item2, Globals.initializationInterval);
