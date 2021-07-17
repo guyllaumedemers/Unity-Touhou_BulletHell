@@ -97,7 +97,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
             IMoveable move_behaviour = (curr_dir % variable_mod == 0) ? (IMoveable)new MoveableUnitCubicBezierB() : new MoveableUnitLinearBezierB();
 
             Launch<Unit>(waveDict[level].First().Item1, move_behaviour, WaypointSystem.Instance.GetWaypoints((curr_dir % variable_mod == 0), level, spEnum),
-                BulletTypeEnum.Circle, SpawningPosEnum.Both, waveDict[level].First().Item2, Globals.initializationInterval);
+                BulletTypeEnum.Circle, spEnum, waveDict[level].First().Item2, Globals.initializationInterval);
             RemoveEntry();
             yield return new WaitForSeconds(Globals.waveInterval);
         }
