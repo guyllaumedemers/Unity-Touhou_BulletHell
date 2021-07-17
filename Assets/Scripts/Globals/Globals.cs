@@ -22,7 +22,7 @@ public static class Globals
     public static string poolParent = "Pool";
     public static string waypointParent = "Waypoints";
     ///// Distance wp
-    public static float minWPDist = 0.01f;
+    public static float minWPDist = 0.1f;
     ///// Idl Time
     public static float idleTime = 2.0f;
     ///// Left Parse start pos
