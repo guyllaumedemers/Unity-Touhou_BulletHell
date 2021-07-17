@@ -34,13 +34,16 @@ public class WaveSystem : SingletonMono<WaveSystem>
         }
         else
         {
+            Vector3[] cloneArr = waypoints.Clone() as Vector3[];
             if (spEnum != SpawningPosEnum.Both)
             {
-                StartInstanciationCoroutine<T>(name, move_behaviour, CheckEnumAndFlip(waypoints, spEnum)[0], CheckEnumAndFlip(waypoints, spEnum), bulletType, maxUnitWave, interval);
+                cloneArr = CheckEnumAndFlip(cloneArr, spEnum);
+                StartInstanciationCoroutine<T>(name, move_behaviour, cloneArr[0], cloneArr, bulletType, maxUnitWave, interval);
                 return;
             }
             StartInstanciationCoroutine<T>(name, move_behaviour, waypoints[0], waypoints, bulletType, maxUnitWave, interval);
-            StartInstanciationCoroutine<T>(name, move_behaviour, Utilities.FlipX(waypoints.Clone() as Vector3[], -1)[0], Utilities.FlipX(waypoints.Clone() as Vector3[], -1), bulletType, maxUnitWave, interval);
+            cloneArr = Utilities.FlipX(cloneArr, -1);
+            StartInstanciationCoroutine<T>(name, move_behaviour, cloneArr[0], cloneArr, bulletType, maxUnitWave, interval);
         }
     }
 
@@ -97,7 +100,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
             IMoveable move_behaviour = (curr_dir % variable_mod == 0) ? (IMoveable)new MoveableUnitCubicBezierB() : new MoveableUnitLinearBezierB();
 
             Launch<Unit>(waveDict[level].First().Item1, move_behaviour, WaypointSystem.Instance.GetWaypoints((curr_dir % variable_mod == 0), level, spEnum),
-                BulletTypeEnum.Circle, SpawningPosEnum.Both, waveDict[level].First().Item2, Globals.initializationInterval);
+                BulletTypeEnum.Circle, spEnum, waveDict[level].First().Item2, Globals.initializationInterval);
             RemoveEntry();
             yield return new WaitForSeconds(Globals.waveInterval);
         }
