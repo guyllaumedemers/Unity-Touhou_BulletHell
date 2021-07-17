@@ -7,7 +7,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
 {
     private WaveSystem() { }
 
-    public int stageSelection { get; private set; }
+    public int level { get; private set; }
     public int curr_dir { get; private set; }
     public int pivot_point { get; private set; }
     public int variable_mod { get; private set; }
@@ -15,6 +15,8 @@ public class WaveSystem : SingletonMono<WaveSystem>
 
     /**********************ACTIONS**************************/
 
+    //HINT Launch trigger the start of a wave and manage the behaviour for unit creation, handling assignation of waypoints array for left / right / both side
+    //AND  also handle the assignation of positions for splines for all sides 
     private void Launch<T>(string name, IMoveable move_behaviour, Vector3[] waypoints, BulletTypeEnum bulletType, SpawningPosEnum spEnum, int maxUnitWave, float interval)
         where T : class
     {
@@ -22,20 +24,38 @@ public class WaveSystem : SingletonMono<WaveSystem>
         {
             if (spEnum != SpawningPosEnum.Both)
             {
-                StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, move_behaviour, waypoints[0], bulletType, waypoints, maxUnitWave, interval));
+                StartInstanciationCoroutine<T>(name, move_behaviour, waypoints[0], waypoints, bulletType, maxUnitWave, interval);
                 return;
             }
-            StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, move_behaviour, waypoints[0], bulletType, Utilities.ParseArray(waypoints, 0, 3), maxUnitWave / 2, interval));
-            StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, move_behaviour, waypoints[3], bulletType, Utilities.ParseArray(waypoints, 3, 3), maxUnitWave / 2, interval));
+            StartInstanciationCoroutine<T>(name, move_behaviour, waypoints[0], Utilities.ParseArray(waypoints, 0, 3), bulletType, maxUnitWave, interval);
+            StartInstanciationCoroutine<T>(name, move_behaviour, waypoints[3], Utilities.ParseArray(waypoints, 3, 3), bulletType, maxUnitWave, interval);
         }
         else
         {
-            Debug.Log("Instanciate units and pass spline waypoints as params");
+            if (spEnum != SpawningPosEnum.Both)
+            {
+                StartInstanciationCoroutine<T>(name, move_behaviour, FlipArray(waypoints, spEnum)[0], FlipArray(waypoints, spEnum), bulletType, maxUnitWave, interval);
+                return;
+            }
+            StartInstanciationCoroutine<T>(name, move_behaviour, waypoints[0], waypoints, bulletType, maxUnitWave, interval);
+            StartInstanciationCoroutine<T>(name, move_behaviour, Utilities.ReverseArray(waypoints)[0], Utilities.ReverseArray(waypoints), bulletType, maxUnitWave, interval);
         }
     }
 
-    //INFO Update the direction in which the unit spawn
-    //TODO NEED to figure out a way to parametrize so the bool doesnt fall in an infinite loop skipping an enum value like its currently doing
+    private void StartInstanciationCoroutine<T>(string name, IMoveable move_behaviour, Vector3 start_pos, Vector3[] waypoints, BulletTypeEnum bulletType, int maxUnitWave, float interval)
+        where T : class
+    {
+        StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, move_behaviour, start_pos, bulletType, waypoints, maxUnitWave, interval));
+    }
+
+    private Vector3[] FlipArray(Vector3[] myArr, SpawningPosEnum spEnum) => spEnum switch
+    {
+        SpawningPosEnum.Left => myArr,
+        SpawningPosEnum.Right => Utilities.ReverseArray(myArr),
+        _ => throw new System.NotImplementedException()
+    };
+
+    //TODO UpdateDir is currently creating a loop where a specific value is never visited
     private int UpdateDir(bool skip)
     {
         if (!skip)
@@ -57,9 +77,9 @@ public class WaveSystem : SingletonMono<WaveSystem>
     /**********************FLOW****************************/
 
     //TODO PreIntilizationMethod will be called from the UI menu selection when the user select the stage
-    public void PreIntilizationMethod(int stageselect, int startingDir, int pivot, int var_mod)
+    public void PreIntilizationMethod(int levelSelect, int startingDir, int pivot, int var_mod)
     {
-        stageSelection = stageselect;
+        level = levelSelect;
         curr_dir = startingDir;
         pivot_point = pivot;
         variable_mod = var_mod;
@@ -69,13 +89,13 @@ public class WaveSystem : SingletonMono<WaveSystem>
     //TODO Need to make the bulletType relevant to the pattern the Unit plays : Is it known from a value in the serialize file?
     public IEnumerator InitializationMethod()
     {
-        while (waveDict[stageSelection].Count > 0)
+        while (waveDict[level].Count > 0)
         {
             SpawningPosEnum spEnum = (SpawningPosEnum)UpdateDir(false);
             IMoveable move_behaviour = (curr_dir % variable_mod == 0) ? (IMoveable)new MoveableUnitCubicBezierB() : new MoveableUnitLinearBezierB();
 
-            Launch<Unit>(waveDict[stageSelection].First().Item1, move_behaviour, WaypointSystem.Instance.GetWaypoints((curr_dir % variable_mod == 0), stageSelection, spEnum),
-                BulletTypeEnum.Circle, spEnum, waveDict[stageSelection].First().Item2, Globals.initializationInterval);
+            Launch<Unit>(waveDict[level].First().Item1, move_behaviour, WaypointSystem.Instance.GetWaypoints((curr_dir % variable_mod == 0), level, spEnum),
+                BulletTypeEnum.Circle, spEnum, waveDict[level].First().Item2, Globals.initializationInterval);
             RemoveEntry();
             yield return new WaitForSeconds(Globals.waveInterval);
         }
@@ -85,5 +105,5 @@ public class WaveSystem : SingletonMono<WaveSystem>
 
     /***************DATA STRUCTURE MANAGEMENT********************/
 
-    private void RemoveEntry() => waveDict[stageSelection].Dequeue();
+    private void RemoveEntry() => waveDict[level].Dequeue();
 }

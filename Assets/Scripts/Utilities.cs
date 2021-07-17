@@ -75,4 +75,23 @@ public static class Utilities
     {
         return myInterface.GetType().Equals(compare);
     }
+
+    public static T[] ReverseArray<T>(T[] myArr) where T : struct
+    {
+        int index_a = 0, index_b = myArr.Length - 1;
+        while (index_a < index_b)
+        {
+            T temp = myArr[index_a];
+            myArr[index_a] = myArr[index_b];
+            myArr[index_b] = temp;
+            ++index_a;
+            --index_b;
+        }
+        return myArr;
+    }
+
+    public static void Print<T>(T[] myArr) where T : struct
+    {
+        foreach (var i in myArr) Debug.Log(i);
+    }
 }
