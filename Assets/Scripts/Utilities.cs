@@ -94,4 +94,13 @@ public static class Utilities
     {
         foreach (var i in myArr) Debug.Log(i);
     }
+
+    public static Vector3[] FlipX(Vector3[] myArr, int dir)
+    {
+        for (int i = 0; i < myArr.Length; ++i)
+        {
+            myArr[i] = new Vector3(myArr[i].x * dir, myArr[i].y, myArr[i].z);
+        }
+        return myArr;
+    }
 }
