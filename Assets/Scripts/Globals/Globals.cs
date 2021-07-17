@@ -32,9 +32,11 @@ public static class Globals
     ///// Both Parse start pos
     public static int bothsposParse = 6;
     ///// Spline Parse start pos
-    public static int splinesposParse = 6;
+    public static int splinesposParse = 12;
     ///// Parse arr max length
     public static int maxlengthParse = 3;
+    ///// Parse arr max length Splice
+    public static int maxlengthsplineParse = 4;
     ///// Sequential init time interval
     public static float initializationInterval = 0.7f;
     ///// Wave time interval

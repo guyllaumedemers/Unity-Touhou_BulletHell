@@ -30,32 +30,26 @@ public abstract class Unit : MonoBehaviour, IDamageable
 
     /**********************ACTIONS**************************/
 
-    // Bullet Type is now pass as arguments so i can parametrize the instanciation of an unit type directly in the function call instead of having values all around and overwriting
+    // Bullet Type is now pass as arguments so i can parametrize the instanciation of an unit type directly in the function call
+    // instead of having values all around and overwriting
     public Unit PreInitializeUnit(IMoveable move_behaviour, Vector3[] waypoints, BulletTypeEnum bulletT)
     {
-        spriteRen = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
-        bulletType = new Queue<string>();
-        controlPoints = waypoints;
-        bezierCurveT = default;
-        speed = Globals.u_speed;
-        rad = Globals.hitbox;
-        moveable = move_behaviour;
+        StaticInitialization(move_behaviour, waypoints);
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => enumFiltering.EnumToString(bulletT).Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
-        activeBullet = bullets.SwapBulletType(bulletType);                                                                      // initialize the active bullet type string    
-        pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));                 // initialize the pattern with the active bullet type
+        activeBullet = bullets.SwapBulletType(bulletType);                                                                  // initialize the active bullet type string    
+        pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));             // initialize the pattern with the active bullet type
         return this;
     }
 
     public void UpdateUnit()
     {
         if (!idle) Move();
-        animationBehaviour.Animate(animator, spriteRen, (controlPoints[curr_wp + 1 > 2 ? 0 : curr_wp + 1] - controlPoints[curr_wp]).normalized);
+        animationBehaviour.Animate(animator, spriteRen, (controlPoints[curr_wp + 1 > controlPoints.Length - 1 ? 0 : curr_wp + 1] - controlPoints[curr_wp]).normalized);
     }
 
     private void Move()
     {
-        if (Vector3.Distance(transform.position, controlPoints[curr_wp + 1 > 2 ? 0 : curr_wp + 1]) < Globals.minWPDist)
+        if (Vector3.Distance(transform.position, controlPoints[curr_wp + 1 > controlPoints.Length - 1 ? 0 : curr_wp + 1]) < Globals.minWPDist)
         {
             ++curr_wp;
             curr_wp %= controlPoints.Length;
@@ -63,16 +57,15 @@ public abstract class Unit : MonoBehaviour, IDamageable
             bezierCurveT = default;
             hasReachDestination = true;
             //TODO NEED to find a way to make the idl time variable according to the unit AND the level we are currently in OR wave we are at
-            if (moveable.GetType() == typeof(MoveableUnitLinearBezierB)) StartCoroutine(DriftOff());
-            else
+            if (Utilities.CheckInterfaceType(moveable, typeof(MoveableUnitLinearBezierB)))
             {
-                //TODO Add behaviour for units that use cubic bezier curve // spline
+                StartCoroutine(DriftOff());
+                StartCoroutine(Utilities.Timer(Globals.idleTime, () => { idle = !idle; }));
             }
-            StartCoroutine(Utilities.Timer(Globals.idleTime, () => { idle = !idle; }));
             return;
         }
         bezierCurveT = bezierCurveT + Time.deltaTime * speed % 1.0f;
-        transform.position = moveable.Move(default, default, bezierCurveT, transform.position, controlPoints[curr_wp + 1 > 2 ? 0 : curr_wp + 1]);
+        transform.position = moveable.Move(default, default, bezierCurveT, transform.position, controlPoints[curr_wp + 1 > controlPoints.Length - 1 ? 0 : curr_wp + 1]);
     }
 
     public IEnumerator DriftOff()
@@ -106,4 +99,18 @@ public abstract class Unit : MonoBehaviour, IDamageable
     /**********************DISABLE**************************/
 
     public void OnBecameInvisible() => StopFiring();
+
+    /***************STATIC INITIALIZATION*******************/
+
+    private void StaticInitialization(IMoveable move_behaviour, Vector3[] waypoints)
+    {
+        spriteRen = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        bulletType = new Queue<string>();
+        controlPoints = waypoints;
+        bezierCurveT = default;
+        speed = Globals.u_speed;
+        rad = Globals.hitbox;
+        moveable = move_behaviour;
+    }
 }

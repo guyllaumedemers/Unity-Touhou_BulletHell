@@ -32,10 +32,10 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
 
     private Vector3[] GetLevelWPpos(int level, SpawningPosEnum spEnum) => spEnum switch
     {
-        SpawningPosEnum.Left => Utilities.ParseArray(positions[level], Globals.lsposParse, Globals.maxlengthParse),
+        SpawningPosEnum.Left  => Utilities.ParseArray(positions[level], Globals.lsposParse, Globals.maxlengthParse),
         SpawningPosEnum.Right => Utilities.ParseArray(positions[level], Globals.rsposParse, Globals.maxlengthParse),
-        SpawningPosEnum.Both => Utilities.ParseArray(positions[level], Globals.bothsposParse, Globals.maxlengthParse * 2),
-        SpawningPosEnum.None => Utilities.ParseArray(positions[level], Globals.splinesposParse, Globals.maxlengthParse * 2),
+        SpawningPosEnum.Both  => Utilities.ParseArray(positions[level], Globals.bothsposParse, Globals.maxlengthParse * 2),
+        SpawningPosEnum.None  => Utilities.ParseArray(positions[level], Globals.splinesposParse, Globals.maxlengthsplineParse),
         _ => throw new System.ArgumentOutOfRangeException()
     };
 
