@@ -61,4 +61,7 @@ public static class Globals
     public static string XMLLevelinfo = "LevelInfo.xml";
     ///// Instanciation position offset
     public static Vector3 unit_offset = new Vector3(0.0f, 1.4f, 0.0f);
+    ///// Tags
+    public static string optionTag = "Options";
+    public static string mainTag = "Main";
 }
