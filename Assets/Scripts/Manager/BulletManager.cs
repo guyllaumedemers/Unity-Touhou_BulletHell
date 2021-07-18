@@ -8,7 +8,7 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
     private BulletManager() { }
     public GameObject bulletParent { get; private set; }
     // handle the removal of bullets that are out of bounds
-    private Queue<IProduct> oob_bullets = new Queue<IProduct>();
+    private Queue<IProduct> oob_bullets;
 
     /**********************ACTIONS**************************/
 
@@ -43,6 +43,7 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
     public void PreIntilizationMethod()
     {
         BulletsDict = new Dictionary<string, HashSet<Bullet>>();
+        oob_bullets = new Queue<IProduct>();
         bulletParent = Utilities.InstanciateObjectParent(Globals.bulletParent, true);
     }
 

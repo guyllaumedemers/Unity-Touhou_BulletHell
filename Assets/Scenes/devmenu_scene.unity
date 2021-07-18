@@ -2031,7 +2031,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 54945102}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: GoBack
+        m_MethodName: GoMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

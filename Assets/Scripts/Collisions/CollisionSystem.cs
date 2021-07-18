@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
 {
-    private Queue<IProduct> pool = new Queue<IProduct>();
+    private Queue<IProduct> pool;
 
     /**********************ACTIONS*************************/
 
@@ -41,7 +41,7 @@ public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
 
     /**********************FLOW****************************/
 
-    public void PreIntilizationMethod() { }
+    public void PreIntilizationMethod() => pool = new Queue<IProduct>();
 
     public void InitializationMethod() { }
 
