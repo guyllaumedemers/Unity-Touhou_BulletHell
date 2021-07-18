@@ -46,8 +46,8 @@ public class WaveSystem : SingletonMono<WaveSystem>
         }
     }
 
-    private void StartInstanciationCoroutine<T>(string name, IMoveable move_behaviour, Vector3 start_pos, Vector3[] waypoints, BulletTypeEnum bulletType, int maxUnitWave,
-        float interval) where T : class
+    private void StartInstanciationCoroutine<T>(string name, IMoveable move_behaviour, Vector3 start_pos, Vector3[] waypoints, BulletTypeEnum bulletType,
+        int maxUnitWave, float interval) where T : class
     {
         StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, move_behaviour, start_pos, bulletType, waypoints, maxUnitWave, interval));
     }
