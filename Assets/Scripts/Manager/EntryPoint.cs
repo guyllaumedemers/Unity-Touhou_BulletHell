@@ -1,39 +1,43 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EntryPoint : SingletonMono<EntryPoint>
 {
     private EntryPoint() { }
     public float Last { get; private set; }
 
-    private void Awake()
+    public void Awake()
     {
-        FactoryManager.Instance.PreIntilizationMethod();
-        //WaypointSystem.Instance.PreIntilizationMethod();
-        //WaveSystem.Instance.PreIntilizationMethod(default, (int)SpawningPosEnum.None, (int)SpawningPosEnum.Pivot, 4);
-        //ObjectPool.PreInitializeMethod();
-        //PlayerController.Instance.PreIntilizationMethod();
-        //BulletManager.Instance.PreIntilizationMethod();
-        //UnitManager.Instance.PreIntilizationMethod();
-        UIManager.Instance.PreIntilizationMethod();
+        if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            UIManager.Instance.PreIntilizationMethod();
+            return;
+        }
+        GameManagerIntermediate.StartGame();
         Last = default;
     }
 
     private void Start()
     {
-        //StartCoroutine(ObjectPool.Trim());
-        //PlayerController.Instance.InitializationMethod();
-        //StartCoroutine(Utilities.Timer(3.0f, () => { StartCoroutine(WaveSystem.Instance.InitializationMethod()); }));
+        if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            return;
+        }
+        StartCoroutine(ObjectPool.Trim());
+        GameManagerIntermediate.InitializeGame();
+        StartCoroutine(Utilities.Timer(Globals.waveInterval, () => { StartCoroutine(WaveSystem.Instance.InitializationMethod()); }));
     }
 
     private void Update()
     {
-        //if (Time.time - Last > Globals.fps)
-        //{
-        //    PlayerController.Instance.UpdateMethod();
-        //    CollisionSystem.Instance.UpdateMethod();
-        //    BulletManager.Instance.UpdateMethod();
-        //    UnitManager.Instance.UpdateMethod();
-        //    Last = Time.time;
-        //}
+        if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            return;
+        }
+        if (Time.time - Last > Globals.fps)
+        {
+            GameManagerIntermediate.UpdateMethod();
+            Last = Time.time;
+        }
     }
 }

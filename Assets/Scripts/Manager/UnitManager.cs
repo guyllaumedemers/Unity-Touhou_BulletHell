@@ -9,7 +9,7 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
     public GameObject[] Units { get; private set; }
     private UnitManager() { }
     private readonly IResourcesLoading resources = new ResourcesLoadingBehaviour();
-    private Queue<Unit> UnitPool = new Queue<Unit>();
+    private Queue<Unit> UnitPool;
 
 
     /**********************ACTIONS**************************/
@@ -70,6 +70,7 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
     public void PreIntilizationMethod()
     {
         UnitsDict = new Dictionary<string, HashSet<Unit>>();
+        UnitPool = new Queue<Unit>();
         Units = resources.ResourcesLoading(Globals.unitsPrefabs);
     }
 

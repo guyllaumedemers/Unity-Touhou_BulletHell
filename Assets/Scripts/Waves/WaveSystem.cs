@@ -7,12 +7,11 @@ using UnityEngine;
 public class WaveSystem : SingletonMono<WaveSystem>
 {
     private WaveSystem() { }
-
     public int level { get; private set; }
     public int curr_dir { get; private set; }
     public int pivot_point { get; private set; }
     public int variable_mod { get; private set; }
-    public IDictionary<int, Queue<(string, int)>> waveDict = new Dictionary<int, Queue<(string, int)>>();
+    public IDictionary<int, Queue<(string, int)>> waveDict;
 
     /**********************ACTIONS**************************/
 
