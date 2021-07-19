@@ -24,8 +24,8 @@ and prioritize Composition over Inheritance.
   * Pattern Generation 👻 (*early stage*)
   * Collision System (*thinking about using RTree to make access bullets depending on the area they are in and make things more efficient*)
   * Player Mechanics
-  * Movement Mechanics
-  * Orb Rotation
+  * Movement Mechanics (*need to  implement more variation of pattern to follow for units*)
+  * UI Management
   * Bullet Management
   * Unit Management
   * Wave System (*units can spawn from both side following either a linear progression OR a cubic bezier curve*)
