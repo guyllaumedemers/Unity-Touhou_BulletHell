@@ -12,7 +12,7 @@ public class UIManager : SingletonMono<UIManager>, IFlow
 
     /*********************ACTIONS**************************/
 
-    public void StartGame() => SceneManager.LoadScene(1, LoadSceneMode.Single);
+    public void StartGame() => LoadScene(1);
 
     public void StartPractice()
     {
@@ -44,31 +44,34 @@ public class UIManager : SingletonMono<UIManager>, IFlow
     public void ShowOption()
     {
         optionPanel.SetActive(true);
-        if (SceneManager.GetActiveScene().buildIndex != 1)
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             foreach (GameObject go in menuPanels) go.SetActive(false);
             return;
         }
+        pausePanel.SetActive(false);
     }
 
     public void HideOption()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 1)
+        //TODO Serialize value change
+        optionPanel.SetActive(false);
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             GoBack();
             return;
         }
-        optionPanel.SetActive(false);
+        pausePanel.SetActive(true);
     }
 
     public void GoMainMenu()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 1)
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             GoBack();
             return;
         }
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        LoadScene(0);
     }
 
     public void GoBack()
@@ -81,22 +84,42 @@ public class UIManager : SingletonMono<UIManager>, IFlow
         }
     }
 
+    private void LoadScene(int index)
+    {
+        AudioManager.Instance.OnSceneLoading();
+        SceneManager.LoadScene(index, LoadSceneMode.Single);
+    }
+
     private void PauseGame() => Time.timeScale = 0.0f;
 
     private void ResumeGame() => Time.timeScale = 1.0f;
 
     public void Quit() => Application.Quit();
 
-
     /**********************FLOW****************************/
+
     public void PreIntilizationMethod()
     {
-        optionPanel = GameObject.FindGameObjectWithTag(Globals.optionTag);
-        optionPanel.SetActive(false);
-        menuPanels = GameObject.FindGameObjectsWithTag(Globals.mainTag);
+        RetrieveAllTags();
+        DisableAllUIExceptMainMenu();
     }
 
     public void InitializationMethod() { }
 
     public void UpdateMethod() { }
+
+    /**************************************************/
+
+    private void DisableAllUIExceptMainMenu()
+    {
+        optionPanel.SetActive(false);
+        pausePanel.SetActive(false);
+    }
+
+    private void RetrieveAllTags()
+    {
+        optionPanel = GameObject.FindGameObjectWithTag(Globals.optionMenuTag);
+        pausePanel = GameObject.FindGameObjectWithTag(Globals.pauseMenuTag);
+        menuPanels = GameObject.FindGameObjectsWithTag(Globals.mainMenuTag);
+    }
 }

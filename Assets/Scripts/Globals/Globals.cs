@@ -62,6 +62,9 @@ public static class Globals
     ///// Instanciation position offset
     public static Vector3 unit_offset = new Vector3(0.0f, 1.4f, 0.0f);
     ///// Tags
-    public static string optionTag = "Options";
-    public static string mainTag = "Main";
+    public static string optionMenuTag = "Options";
+    public static string mainMenuTag = "Main";
+    public static string pauseMenuTag = "Pause";
+    public static string mainVolumeTag = "MainVolume";
+    public static string sfxVolumeTag = "SFXVolume";
 }
