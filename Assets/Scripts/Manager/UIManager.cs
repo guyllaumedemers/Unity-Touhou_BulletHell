@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : SingletonMono<UIManager>, IFlow
 {
-    GameObject OptionPanel;
+    GameObject optionPanel;
+    GameObject pausePanel;
     GameObject[] menuPanels;
     private UIManager() { }
 
@@ -28,27 +29,36 @@ public class UIManager : SingletonMono<UIManager>, IFlow
         //TODO Scores are going to be displayed on screen overlaying the current menu while the background canvas will be blured out
     }
 
-    public void ShowOptions()
+    public void ShowPauseMenu()
     {
-        //TODO Options are going to be displayed on screen overlaying the current menu while the background canvas will be blured out
-        OptionPanel.SetActive(true);
+        //TODO Manage Menu Action
+        PauseGame();
+    }
+
+    public void HidePauseMenu()
+    {
+        //TODO Manage Menu Action
+        ResumeGame();
+    }
+
+    public void ShowOption()
+    {
+        optionPanel.SetActive(true);
         if (SceneManager.GetActiveScene().buildIndex != 1)
         {
             foreach (GameObject go in menuPanels) go.SetActive(false);
             return;
         }
-        PauseGame();
     }
 
-    public void HideOptions()
+    public void HideOption()
     {
         if (SceneManager.GetActiveScene().buildIndex != 1)
         {
             GoBack();
             return;
         }
-        OptionPanel.SetActive(false);
-        ResumeGame();
+        optionPanel.SetActive(false);
     }
 
     public void GoMainMenu()
@@ -64,10 +74,10 @@ public class UIManager : SingletonMono<UIManager>, IFlow
     public void GoBack()
     {
         //TODO Only handle the GoBack from the option menu for now
-        if (OptionPanel.activeSelf)
+        if (optionPanel.activeSelf)
         {
             foreach (GameObject go in menuPanels) go.SetActive(true);
-            OptionPanel.SetActive(false);
+            optionPanel.SetActive(false);
         }
     }
 
@@ -81,8 +91,8 @@ public class UIManager : SingletonMono<UIManager>, IFlow
     /**********************FLOW****************************/
     public void PreIntilizationMethod()
     {
-        OptionPanel = GameObject.FindGameObjectWithTag(Globals.optionTag);
-        OptionPanel.SetActive(false);
+        optionPanel = GameObject.FindGameObjectWithTag(Globals.optionTag);
+        optionPanel.SetActive(false);
         menuPanels = GameObject.FindGameObjectsWithTag(Globals.mainTag);
     }
 
