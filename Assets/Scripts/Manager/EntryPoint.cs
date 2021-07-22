@@ -8,8 +8,9 @@ public class EntryPoint : SingletonMono<EntryPoint>
 
     public void Awake()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 1)
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
+            AudioManager.Instance.PreIntilizationMethod();
             UIManager.Instance.PreIntilizationMethod();
             return;
         }
@@ -19,7 +20,7 @@ public class EntryPoint : SingletonMono<EntryPoint>
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 1)
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             return;
         }
@@ -30,7 +31,7 @@ public class EntryPoint : SingletonMono<EntryPoint>
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 1)
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             return;
         }

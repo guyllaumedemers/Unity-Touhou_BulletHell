@@ -7,6 +7,9 @@ TagManager:
   - Options
   - Waypoint
   - Main
+  - Pause
+  - MainVolume
+  - SFXVolume
   layers:
   - Default
   - TransparentFX
