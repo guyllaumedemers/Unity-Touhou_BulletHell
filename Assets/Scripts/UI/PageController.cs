@@ -17,7 +17,7 @@ public class PageController : SingletonMonoPersistent<PageController>, IFlow
         if (type.Equals(PageTypeEnum.None)) return;
         else if (!PageExist(type))
         {
-            Debug.LogWarning("You are trying to turn a page on " + type + " that has not been registered");
+            LogWarning("You are trying to turn a page on " + type + " that has not been registered");
             return;
         }
         else
@@ -33,7 +33,7 @@ public class PageController : SingletonMonoPersistent<PageController>, IFlow
         if (off.Equals(PageTypeEnum.None)) return;
         else if (!PageExist(off))
         {
-            Debug.LogWarning("You are trying to turn a page off " + off + " that has not been registered");
+            LogWarning("You are trying to turn a page off " + off + " that has not been registered");
             return;
         }
         else
@@ -79,7 +79,7 @@ public class PageController : SingletonMonoPersistent<PageController>, IFlow
     {
         if (PageExist(page.type))
         {
-            Debug.LogWarning("Type " + page.type + " is already registered");
+            LogWarning("Type " + page.type + " is already registered");
             return;
         }
         hashPages.Add(page.type, page);
@@ -89,7 +89,7 @@ public class PageController : SingletonMonoPersistent<PageController>, IFlow
     {
         if (!PageExist(type))
         {
-            Debug.LogWarning("You are trying to get a page " + type + " that as not been registered");
+            LogWarning("You are trying to get a page " + type + " that as not been registered");
             return null;
         }
         return hashPages[type] as Page;
@@ -101,7 +101,7 @@ public class PageController : SingletonMonoPersistent<PageController>, IFlow
     {
         if (pages.Length < 2 || pages.Length > 2)
         {
-            Debug.LogWarning("Wait for Page Exit Coroutine takes in arguments 2 params");
+            LogWarning("Wait for Page Exit Coroutine takes in arguments 2 params");
             return;
         }
         co_WaitAnimation = StartCoroutine(WaitForPageExit(pages[0], pages[1]));
@@ -112,8 +112,9 @@ public class PageController : SingletonMonoPersistent<PageController>, IFlow
         if (co_WaitAnimation != null) StopCoroutine(co_WaitAnimation);
     }
 
-    #endregion
+    private void LogWarning(string msg) => Debug.LogWarning("[Page Controller] : " + msg);
 
+    #endregion
 
     #region Unity Functions
 
