@@ -29,6 +29,7 @@ and prioritize Composition over Inheritance.
   * Bullet Management
   * Unit Management
   * Wave System (*units can spawn from both side following either a linear progression OR a cubic bezier curve*)
+  * Audio Management (*WIP*)
 
 #### Design Pattern and Memory Optimization
 
