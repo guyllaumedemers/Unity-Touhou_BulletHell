@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Page : MonoBehaviour, IFlow
+public class Page : MonoBehaviour
 {
     public PageFlag state { get; private set; }
     public PageTypeEnum type;
@@ -56,7 +56,7 @@ public class Page : MonoBehaviour, IFlow
             animator = GetComponent<Animator>();
             if (!animator)
             {
-                Debug.LogWarning("You are missing an animator component OR have set the page to be using animation");
+                LogWarning("You are missing an animator component OR have set the page to be using animation");
                 return;
             }
         }
@@ -69,17 +69,7 @@ public class Page : MonoBehaviour, IFlow
         if (co_Animation != null) StopCoroutine(co_Animation);
     }
 
-    #endregion
-
-    #region Unity Functions
-
-    public void PreIntilizationMethod()
-    {
-    }
-
-    public void InitializationMethod() { }
-
-    public void UpdateMethod() { }
+    private void LogWarning(string msg) => Debug.LogWarning("[Page] : " + msg + " " + gameObject.name);
 
     #endregion
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -56,11 +54,11 @@ public class UIManager : SingletonMono<UIManager>, IFlow
 
     #region Unity Functions
 
-    public void PreIntilizationMethod() { }
+    public void PreIntilizationMethod() => PageController.Instance.PreIntilizationMethod();
 
-    public void InitializationMethod() { }
+    public void InitializationMethod() => PageController.Instance.InitializationMethod();
 
-    public void UpdateMethod() { }
+    public void UpdateMethod() => PageController.Instance.UpdateMethod();
 
     #endregion
 }

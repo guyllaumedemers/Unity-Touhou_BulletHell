@@ -10,9 +10,7 @@ public class EntryPoint : SingletonMono<EntryPoint>
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            AudioManager.Instance.PreIntilizationMethod();
-            PageController.Instance.PreIntilizationMethod();
-            //UIManager.Instance.PreIntilizationMethod();
+            UIManager.Instance.PreIntilizationMethod();
             return;
         }
         GameManagerFunctionWrapper.StartGame();
@@ -23,8 +21,7 @@ public class EntryPoint : SingletonMono<EntryPoint>
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            AudioManager.Instance.InitializationMethod();
-            PageController.Instance.InitializationMethod();
+            UIManager.Instance.InitializationMethod();
             return;
         }
         StartCoroutine(ObjectPool.Trim());
