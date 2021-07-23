@@ -68,6 +68,7 @@ public static class Globals
     public static string pauseMenuTag = "Pause";
     public static string mainVolumeTag = "MainVolume";
     public static string sfxVolumeTag = "SFXVolume";
+    public static string page = "Page";
     #endregion
 
     #region Dynamic Loading
