@@ -7,7 +7,6 @@ using UnityEngine.Audio;
 public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
 {
     public AudioMixer mixer;
-    AudioSource music;
     AudioClip[] clips;
     private AudioManager() { }
     TextMeshProUGUI main_volumeTxt;
@@ -52,7 +51,6 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
 
     private void SetAudioSource(AudioSource src, AudioClip clip, AudioMixerGroup output, params bool[] state)
     {
-        src = GetComponent<AudioSource>();
         src.clip = clip;
         src.loop = state[0];
         src.outputAudioMixerGroup = output;
@@ -68,16 +66,12 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
 
     public void PreIntilizationMethod()
     {
-        main_volume = Globals.temp_start_percent;      // TEMP : should be loaded from file
-        se_volume = Globals.temp_start_percent;        // TEMP
-        clips = Utilities.FindResources<AudioClip>(Globals.clips_path);
-        SetAudioSource(music, clips[0], GetAudioMixerGroupChannel(Globals.music_channel), true);
-        main_volumeTxt = GameObject.FindGameObjectWithTag(Globals.mainVolumeTag).GetComponent<TextMeshProUGUI>();
-        se_volumeTxt = GameObject.FindGameObjectWithTag(Globals.sfxVolumeTag).GetComponent<TextMeshProUGUI>();
+        SetAudio();
+        RetrieveTags();
     }
 
     public void InitializationMethod()
-    {   
+    {
         //HINT : Mixer is not accessible in the Awake function when trying to set the audio via function call
         //It has to be done in the start function
         SetChanel(Globals.music_channel, PercentTo(main_volume));
@@ -85,4 +79,20 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
     }
 
     public void UpdateMethod() { }
+
+    /**************************************************/
+
+    private void SetAudio()
+    {
+        main_volume = Globals.temp_start_percent;      // TEMP : should be loaded from file
+        se_volume = Globals.temp_start_percent;        // TEMP
+        clips = Utilities.FindResources<AudioClip>(Globals.clips_path);
+        SetAudioSource(GetComponents<AudioSource>()[0], clips[0], GetAudioMixerGroupChannel(Globals.music_channel), true);
+    }
+
+    private void RetrieveTags()
+    {
+        main_volumeTxt = GameObject.FindGameObjectWithTag(Globals.mainVolumeTag).GetComponent<TextMeshProUGUI>();
+        se_volumeTxt = GameObject.FindGameObjectWithTag(Globals.sfxVolumeTag).GetComponent<TextMeshProUGUI>();
+    }
 }
