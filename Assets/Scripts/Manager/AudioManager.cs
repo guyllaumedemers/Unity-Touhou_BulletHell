@@ -7,7 +7,9 @@ using UnityEngine.Audio;
 public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
 {
     public AudioMixer mixer;
-    AudioClip[] clips;
+    AudioClip[] music_clips;
+    AudioClip mouse_clip;
+    AudioSource[] sources;
     private AudioManager() { }
     TextMeshProUGUI main_volumeTxt;
     TextMeshProUGUI se_volumeTxt;
@@ -54,7 +56,7 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
         src.clip = clip;
         src.loop = state[0];
         src.outputAudioMixerGroup = output;
-        src.Play();
+        if (state[1]) src.Play();
     }
 
     private AudioMixerGroup GetAudioMixerGroupChannel(string name)
@@ -85,10 +87,12 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
 
     private void SetAudio()
     {
-        main_volume = Globals.temp_start_percent;      // TEMP : should be loaded from file
-        se_volume = Globals.temp_start_percent;        // TEMP
-        clips = Utilities.FindResources<AudioClip>(Globals.clips_path);
-        SetAudioSource(GetComponents<AudioSource>()[0], clips[0], GetAudioMixerGroupChannel(Globals.music_channel), true);
+        main_volume = Globals.temp_start_percent;           // TEMP : should be loaded from file
+        se_volume = Globals.temp_start_percent - 20;        // TEMP
+        music_clips = Utilities.FindResources<AudioClip>(Globals.music_clips_path);
+        mouse_clip = Utilities.FindResources<AudioClip>(Globals.sfx_clips_path)[0];
+        sources = GetComponents<AudioSource>();
+        SetAudioSource(sources[0], music_clips[0], GetAudioMixerGroupChannel(Globals.music_channel), true, true);
     }
 
     private void SetText()
@@ -96,6 +100,8 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
         InitializeOnStartup(main_volumeTxt, main_volume);
         InitializeOnStartup(se_volumeTxt, se_volume);
     }
+
+    public void TriggerMouseSFX() => sources[1].PlayOneShot(mouse_clip);
 
     private void RetrieveTags()
     {
