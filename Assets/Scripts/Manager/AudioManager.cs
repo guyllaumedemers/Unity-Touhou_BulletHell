@@ -8,13 +8,16 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
 {
     public AudioMixer mixer;
     AudioClip[] music_clips;
+    AudioClip[] sfx_clips;
     AudioClip mouse_clip;
+    AudioClip buttonclick_clip;
     AudioSource[] sources;
     private AudioManager() { }
     TextMeshProUGUI main_volumeTxt;
     TextMeshProUGUI se_volumeTxt;
     int main_volume;
     int se_volume;
+    float lastTime;
 
     /*********************ACTIONS**************************/
 
@@ -71,6 +74,7 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
         SetAudio();
         RetrieveTags();
         SetText();
+        lastTime = Time.time;
     }
 
     public void InitializationMethod()
@@ -90,7 +94,9 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
         main_volume = Globals.temp_start_percent;           // TEMP : should be loaded from file
         se_volume = Globals.temp_start_percent - 20;        // TEMP
         music_clips = Utilities.FindResources<AudioClip>(Globals.music_clips_path);
-        mouse_clip = Utilities.FindResources<AudioClip>(Globals.sfx_clips_path)[0];
+        sfx_clips = Utilities.FindResources<AudioClip>(Globals.sfx_clips_path);
+        mouse_clip = sfx_clips[0];
+        buttonclick_clip = sfx_clips[1];
         sources = GetComponents<AudioSource>();
         SetAudioSource(sources[0], music_clips[0], GetAudioMixerGroupChannel(Globals.music_channel), true, true);
     }
@@ -101,7 +107,17 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
         InitializeOnStartup(se_volumeTxt, se_volume);
     }
 
-    public void TriggerMouseSFX() => sources[1].PlayOneShot(mouse_clip);
+    //TO Avoid clicking a button and returning on the previous panel directly on another button triggering the other SFX
+    public void TriggerMouseSFX()
+    {
+        if (Time.time - lastTime > 0.5f)
+        {
+            sources[1].PlayOneShot(mouse_clip);
+            lastTime = Time.time;
+        }
+    }
+
+    public void TriggerButtonClickSFX() => sources[2].PlayOneShot(buttonclick_clip);
 
     private void RetrieveTags()
     {
