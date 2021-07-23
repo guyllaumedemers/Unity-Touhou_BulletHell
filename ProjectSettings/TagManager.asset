@@ -10,6 +10,7 @@ TagManager:
   - Pause
   - MainVolume
   - SFXVolume
+  - Page
   layers:
   - Default
   - TransparentFX
