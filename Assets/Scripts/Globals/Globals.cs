@@ -71,5 +71,8 @@ public static class Globals
     public static string music_channel = "Music";
     public static string sfx_channel = "SFX";
     public static int channel_lowestvalue = 80;
-    public static int percent = 100;
+    public static int max_percent = 100;
+    public static int temp_start_percent = 90;
+    // clips percent
+    public static string clips_path = "musics/";
 }

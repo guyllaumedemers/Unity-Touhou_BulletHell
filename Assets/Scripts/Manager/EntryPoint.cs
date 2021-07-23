@@ -22,6 +22,7 @@ public class EntryPoint : SingletonMono<EntryPoint>
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
+            AudioManager.Instance.InitializationMethod();
             return;
         }
         StartCoroutine(ObjectPool.Trim());
