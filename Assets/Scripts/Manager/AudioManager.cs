@@ -68,6 +68,7 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
     {
         SetAudio();
         RetrieveTags();
+        SetText();
     }
 
     public void InitializationMethod()
@@ -90,9 +91,17 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
         SetAudioSource(GetComponents<AudioSource>()[0], clips[0], GetAudioMixerGroupChannel(Globals.music_channel), true);
     }
 
+    private void SetText()
+    {
+        InitializeOnStartup(main_volumeTxt, main_volume);
+        InitializeOnStartup(se_volumeTxt, se_volume);
+    }
+
     private void RetrieveTags()
     {
         main_volumeTxt = GameObject.FindGameObjectWithTag(Globals.mainVolumeTag).GetComponent<TextMeshProUGUI>();
         se_volumeTxt = GameObject.FindGameObjectWithTag(Globals.sfxVolumeTag).GetComponent<TextMeshProUGUI>();
     }
+
+    private void InitializeOnStartup(TextMeshProUGUI text, int value) => text.text = value.ToString() + "%";
 }
