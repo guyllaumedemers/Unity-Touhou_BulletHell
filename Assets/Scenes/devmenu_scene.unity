@@ -10390,6 +10390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c6007f5d0b9a534da057b8079d37263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 0672b060bcd9605409cbc5908fa46d7f, type: 2}
 --- !u!4 &1256409587
 Transform:
   m_ObjectHideFlags: 0

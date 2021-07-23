@@ -67,4 +67,9 @@ public static class Globals
     public static string pauseMenuTag = "Pause";
     public static string mainVolumeTag = "MainVolume";
     public static string sfxVolumeTag = "SFXVolume";
+    ///// Audio Channels
+    public static string music_channel = "Music";
+    public static string sfx_channel = "SFX";
+    public static int channel_lowestvalue = 80;
+    public static int percent = 100;
 }
