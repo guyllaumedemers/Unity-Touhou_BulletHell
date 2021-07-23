@@ -9,7 +9,7 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
     public Waypoint[] Waypoints { get; private set; }
     public IDictionary<int, Vector3[]> positions;
 
-    /**********************ACTIONS**************************/
+    #region Waypoint System Functions
 
     private Waypoint[] InitializeNewWaypointsForLevel(Dictionary<int, Vector3[]> positions, int level, Transform parent)
     {
@@ -50,7 +50,9 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
 
     private void ResetWaypoints() => GameObjectExtensions.Destroy(GameObject.FindGameObjectsWithTag(Globals.waypoint));
 
-    /**********************FLOW****************************/
+    #endregion
+
+    #region Unity Functions
 
     public void PreIntilizationMethod()
     {
@@ -62,4 +64,6 @@ public class WaypointSystem : SingletonMono<WaypointSystem>, IFlow
     public void InitializationMethod() { }
 
     public void UpdateMethod() { }
+
+    #endregion
 }

@@ -24,11 +24,13 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
     private SpriteRenderer sprRen;
     private Transform orbParent;
 
-    /****************FILTERING BULLETS ENUM******************/
+    #region Bullet Filtering
 
     private readonly BulletTypeEnum patternFilter = BulletTypeEnum.Missile | BulletTypeEnum.Card;
 
-    /**********************ACTIONS**************************/
+    #endregion
+
+    #region Player Controller Functions
 
     private void Shoot(Transform firingPos)
     {
@@ -96,13 +98,17 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
 
     public void TakeDamage(float dmg) => this.health -= dmg;
 
-    /**********************ENABLE**************************/
+    #endregion
+
+    #region Input System Functions
 
     private void OnEnable() => inputs.Enable();
 
     private void OnDisable() => inputs.Disable();
 
-    /**********************FLOW****************************/
+    #endregion
+
+    #region Unity Functions
 
     public void PreIntilizationMethod()
     {
@@ -134,4 +140,6 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
         animationBehaviour.Animate(animator, sprRen, inputs.Player.Move.ReadValue<Vector2>());
         OrbRotation.Instance.UpdateMethod();
     }
+
+    #endregion
 }

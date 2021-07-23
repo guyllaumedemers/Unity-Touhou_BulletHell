@@ -13,10 +13,8 @@ public class WaveSystem : SingletonMono<WaveSystem>
     public int variable_mod { get; private set; }
     public IDictionary<int, Queue<(string, int)>> waveDict;
 
-    /**********************ACTIONS**************************/
+    #region Wave System Functions
 
-    //HINT Launch trigger the start of a wave and manage the behaviour for unit creation, handling assignation of waypoints array for left / right / both side
-    //AND  also handle the assignation of positions for splines for all sides 
     private void Launch<T>(string name, IMoveable move_behaviour, Vector3[] waypoints, BulletTypeEnum bulletType, SpawningPosEnum spEnum, int maxUnitWave, float interval)
         where T : class
     {
@@ -51,12 +49,24 @@ public class WaveSystem : SingletonMono<WaveSystem>
         StartCoroutine(UnitManager.Instance.SequencialInit<T>(name, move_behaviour, start_pos, bulletType, waypoints, maxUnitWave, interval));
     }
 
-    private Vector3[] CheckEnumAndFlip(Vector3[] myArr, SpawningPosEnum spEnum) => spEnum switch
+    //TODO Need to make the bulletType relevant to the pattern the Unit plays : Is it known from a value in the serialize file?
+    public IEnumerator InitializationMethod()
     {
-        SpawningPosEnum.Left => myArr,
-        SpawningPosEnum.Right => Utilities.FlipX(myArr, -1),
-        _ => throw new System.NotImplementedException()
-    };
+        while (waveDict[level].Count > 0)
+        {
+            SpawningPosEnum spEnum = (SpawningPosEnum)UpdateDir(false);
+            IMoveable move_behaviour = (curr_dir % variable_mod == 0) ? (IMoveable)new MoveableUnitCubicBezierB() : new MoveableUnitLinearBezierB();
+
+            Launch<Unit>(waveDict[level].First().Item1, move_behaviour, WaypointSystem.Instance.GetWaypoints((curr_dir % variable_mod == 0), level, spEnum),
+                BulletTypeEnum.Circle, spEnum, waveDict[level].First().Item2, Globals.initializationInterval);
+            RemoveEntry();
+            yield return new WaitForSeconds(Globals.waveInterval);
+        }
+        //TODO Reset Waypoints for new level
+        //TODO Trigger event to go back to menu OR start a new wave
+    }
+
+    private void RemoveEntry() => waveDict[level].Dequeue();
 
     //TODO UpdateDir is currently creating a loop where a specific value is never visited
     private int UpdateDir(bool skip)
@@ -77,7 +87,16 @@ public class WaveSystem : SingletonMono<WaveSystem>
         return value;
     }
 
-    /**********************FLOW****************************/
+    private Vector3[] CheckEnumAndFlip(Vector3[] myArr, SpawningPosEnum spEnum) => spEnum switch
+    {
+        SpawningPosEnum.Left => myArr,
+        SpawningPosEnum.Right => Utilities.FlipX(myArr, -1),
+        _ => throw new System.NotImplementedException()
+    };
+
+    #endregion
+
+    #region Unity Functions
 
     //TODO PreIntilizationMethod will be called from the UI menu selection when the user select the stage
     public void PreIntilizationMethod(int levelSelect, int startingDir, int pivot, int var_mod)
@@ -89,24 +108,5 @@ public class WaveSystem : SingletonMono<WaveSystem>
         waveDict = Tool.XMLDeserialization_KVPTuple(Globals.XMLLevelinfo);
     }
 
-    //TODO Need to make the bulletType relevant to the pattern the Unit plays : Is it known from a value in the serialize file?
-    public IEnumerator InitializationMethod()
-    {
-        while (waveDict[level].Count > 0)
-        {
-            SpawningPosEnum spEnum = (SpawningPosEnum)UpdateDir(false);
-            IMoveable move_behaviour = (curr_dir % variable_mod == 0) ? (IMoveable)new MoveableUnitCubicBezierB() : new MoveableUnitLinearBezierB();
-
-            Launch<Unit>(waveDict[level].First().Item1, move_behaviour, WaypointSystem.Instance.GetWaypoints((curr_dir % variable_mod == 0), level, spEnum),
-                BulletTypeEnum.Circle, spEnum, waveDict[level].First().Item2, Globals.initializationInterval);
-            RemoveEntry();
-            yield return new WaitForSeconds(Globals.waveInterval);
-        }
-        //TODO Reset Waypoints for new level
-        //TODO Trigger event to go back to menu OR start a new wave
-    }
-
-    /***************DATA STRUCTURE MANAGEMENT********************/
-
-    private void RemoveEntry() => waveDict[level].Dequeue();
+    #endregion
 }

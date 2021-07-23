@@ -28,10 +28,8 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public SpriteRenderer spriteRen;
     public Animator animator;
 
-    /**********************ACTIONS**************************/
+    #region Unit Functions
 
-    // Bullet Type is now pass as arguments so i can parametrize the instanciation of an unit type directly in the function call
-    // instead of having values all around and overwriting
     public Unit PreInitializeUnit(IMoveable move_behaviour, Vector3[] waypoints, BulletTypeEnum bulletT)
     {
         StaticInitialization(move_behaviour, waypoints);
@@ -104,11 +102,9 @@ public abstract class Unit : MonoBehaviour, IDamageable
 
     public void TakeDamage(float dmg) => health -= dmg;
 
-    /**********************DISABLE**************************/
+    #endregion
 
-    public void OnBecameInvisible() => StopFiring();
-
-    /***************STATIC INITIALIZATION*******************/
+    #region Unit Initialization Wrapper
 
     private void StaticInitialization(IMoveable move_behaviour, Vector3[] waypoints)
     {
@@ -124,4 +120,6 @@ public abstract class Unit : MonoBehaviour, IDamageable
         curr_wp = default;
         idle = default;
     }
+
+    #endregion
 }

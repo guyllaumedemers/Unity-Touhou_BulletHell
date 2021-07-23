@@ -10,7 +10,7 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
     // handle the removal of bullets that are out of bounds
     private Queue<IProduct> oob_bullets;
 
-    /**********************ACTIONS**************************/
+    #region  Bullet Manager Functions
 
     private void UpdateBullets(Dictionary<string, HashSet<Bullet>> dict, Queue<IProduct> pool)
     {
@@ -38,7 +38,9 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
         return find;
     }
 
-    /**********************FLOW****************************/
+    #endregion
+
+    #region Unity Functions
 
     public void PreIntilizationMethod()
     {
@@ -50,4 +52,6 @@ public class BulletManager : SingletonMono<BulletManager>, IFlow
     public void InitializationMethod() { }
 
     public void UpdateMethod() => UpdateBullets(BulletsDict, oob_bullets);
+
+    #endregion
 }

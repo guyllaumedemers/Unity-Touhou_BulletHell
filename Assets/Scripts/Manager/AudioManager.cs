@@ -19,7 +19,7 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
     int se_volume;
     float lastTime;
 
-    /*********************ACTIONS**************************/
+    #region Audio Manager Functions
 
     public void IncrementMainVolume()
     {
@@ -50,22 +50,23 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
         //TODO Retrieve the values for the main_volume and se_volume from the XML file upon scene loading / swaping scene
     }
 
+    //TO Avoid clicking a button and returning on the previous panel directly on another button triggering the other SFX
+    public void TriggerMouseSFX()
+    {
+        if (Time.time - lastTime > 0.5f)
+        {
+            sources[1].PlayOneShot(mouse_clip);
+            lastTime = Time.time;
+        }
+    }
+
+    public void TriggerButtonClickSFX() => sources[2].PlayOneShot(buttonclick_clip);
+
     private float PercentTo(int value) => (value * Globals.channel_lowestvalue / Globals.max_percent) - Globals.channel_lowestvalue;
 
-    private void SetChanel(string channel, float value) => mixer.SetFloat(channel, value);
+    #endregion
 
-    private void SetAudioSource(AudioSource src, AudioClip clip, AudioMixerGroup output, params bool[] state)
-    {
-        src.clip = clip;
-        src.loop = state[0];
-        src.outputAudioMixerGroup = output;
-        if (state[1]) src.Play();
-    }
-
-    private AudioMixerGroup GetAudioMixerGroupChannel(string name)
-    {
-        return mixer.FindMatchingGroups(string.Empty).Where(x => x.name.Equals(name)).FirstOrDefault();
-    }
+    #region Unity Functions
 
     /**********************FLOW****************************/
 
@@ -87,7 +88,9 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
 
     public void UpdateMethod() { }
 
-    /**************************************************/
+    #endregion
+
+    #region Audio Manager Initialization Functions
 
     private void SetAudio()
     {
@@ -101,23 +104,13 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
         SetAudioSource(sources[0], music_clips[0], GetAudioMixerGroupChannel(Globals.music_channel), true, true);
     }
 
-    private void SetText()
+    private void SetAudioSource(AudioSource src, AudioClip clip, AudioMixerGroup output, params bool[] state)
     {
-        InitializeOnStartup(main_volumeTxt, main_volume);
-        InitializeOnStartup(se_volumeTxt, se_volume);
+        src.clip = clip;
+        src.loop = state[0];
+        src.outputAudioMixerGroup = output;
+        if (state[1]) src.Play();
     }
-
-    //TO Avoid clicking a button and returning on the previous panel directly on another button triggering the other SFX
-    public void TriggerMouseSFX()
-    {
-        if (Time.time - lastTime > 0.5f)
-        {
-            sources[1].PlayOneShot(mouse_clip);
-            lastTime = Time.time;
-        }
-    }
-
-    public void TriggerButtonClickSFX() => sources[2].PlayOneShot(buttonclick_clip);
 
     private void RetrieveTags()
     {
@@ -126,4 +119,19 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
     }
 
     private void InitializeOnStartup(TextMeshProUGUI text, int value) => text.text = value.ToString() + "%";
+
+    private void SetText()
+    {
+        InitializeOnStartup(main_volumeTxt, main_volume);
+        InitializeOnStartup(se_volumeTxt, se_volume);
+    }
+
+    private AudioMixerGroup GetAudioMixerGroupChannel(string name)
+    {
+        return mixer.FindMatchingGroups(string.Empty).Where(x => x.name.Equals(name)).FirstOrDefault();
+    }
+
+    private void SetChanel(string channel, float value) => mixer.SetFloat(channel, value);
+
+    #endregion
 }

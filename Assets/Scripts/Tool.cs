@@ -10,8 +10,7 @@ public class Tool
 
     // I dont like the redundancy of this class
 
-#if VEC3
-#endif
+    #region XMl Serialization Vector3
 
     public static void XMLSerialization_KVParray(string path, string child, IDictionary<int, Vector3[]> dict)
     {
@@ -60,8 +59,9 @@ public class Tool
         return dict;
     }
 
-#if TUPLE
-#endif
+    #endregion
+
+    #region XML Serialization Tuple
 
     public static void XMLSerialization_KVPTuple(string path, string child, IDictionary<int, Queue<(string, int)>> dict)
     {
@@ -109,4 +109,6 @@ public class Tool
         }
         return dict;
     }
+
+    #endregion
 }

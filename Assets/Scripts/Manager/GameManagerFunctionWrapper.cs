@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public static class GameManagerIntermediate
+public static class GameManagerFunctionWrapper
 {
 
     public static void StartGame()

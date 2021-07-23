@@ -14,7 +14,7 @@ public class EntryPoint : SingletonMono<EntryPoint>
             UIManager.Instance.PreIntilizationMethod();
             return;
         }
-        GameManagerIntermediate.StartGame();
+        GameManagerFunctionWrapper.StartGame();
         Last = default;
     }
 
@@ -26,7 +26,7 @@ public class EntryPoint : SingletonMono<EntryPoint>
             return;
         }
         StartCoroutine(ObjectPool.Trim());
-        GameManagerIntermediate.InitializeGame();
+        GameManagerFunctionWrapper.InitializeGame();
         StartCoroutine(Utilities.Timer(Globals.waveInterval, () => { StartCoroutine(WaveSystem.Instance.InitializationMethod()); }));
     }
 
@@ -38,7 +38,7 @@ public class EntryPoint : SingletonMono<EntryPoint>
         }
         if (Time.time - Last > Globals.fps)
         {
-            GameManagerIntermediate.UpdateMethod();
+            GameManagerFunctionWrapper.UpdateMethod();
             Last = Time.time;
         }
     }
