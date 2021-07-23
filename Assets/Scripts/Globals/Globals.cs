@@ -74,5 +74,6 @@ public static class Globals
     public static int max_percent = 100;
     public static int temp_start_percent = 90;
     // clips percent
-    public static string clips_path = "musics/";
+    public static string music_clips_path = "musics/";
+    public static string sfx_clips_path = "sfx/";
 }
