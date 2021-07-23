@@ -10,7 +10,7 @@ public class UIManager : SingletonMono<UIManager>, IFlow
     GameObject[] menuPanels;
     private UIManager() { }
 
-    /*********************ACTIONS**************************/
+    #region UI Functions
 
     public void StartGame() => LoadScene(1);
 
@@ -96,7 +96,9 @@ public class UIManager : SingletonMono<UIManager>, IFlow
 
     public void Quit() => Application.Quit();
 
-    /**********************FLOW****************************/
+    #endregion
+
+    #region Unity Functions
 
     public void PreIntilizationMethod()
     {
@@ -108,7 +110,9 @@ public class UIManager : SingletonMono<UIManager>, IFlow
 
     public void UpdateMethod() { }
 
-    /**************************************************/
+    #endregion
+
+    #region UI Initialization and Management
 
     private void DisableAllUIExceptMainMenu()
     {
@@ -122,4 +126,6 @@ public class UIManager : SingletonMono<UIManager>, IFlow
         pausePanel = GameObject.FindGameObjectWithTag(Globals.pauseMenuTag);
         menuPanels = GameObject.FindGameObjectsWithTag(Globals.mainMenuTag);
     }
+
+    #endregion
 }

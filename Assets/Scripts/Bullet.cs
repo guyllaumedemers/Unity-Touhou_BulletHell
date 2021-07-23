@@ -1,20 +1,16 @@
-using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
 {
     IMoveable moveable = new MoveableBulletB();
-    public IgnoreLayerEnum ignoredLayer { get; private set; }
-    // bullet values
     protected const float speed = 5;
     protected float angle;
+    public IgnoreLayerEnum ignoredLayer { get; private set; }
     public float dmg { get; private set; }
 
-    /**********************ACTIONS**************************/
+    #region Bullet Functions
 
-    //// Bullet Update position will be different depending on the pattern => Boss, Mobs, etc...
-    //// Dont forget to think about the direction in which they travel
     public virtual void UpdateBulletPosition() => transform.position = moveable.Move(angle, speed, default, transform.position);
 
     public void SetIgnoredLayer(IgnoreLayerEnum layer) => ignoredLayer = layer;
@@ -27,7 +23,9 @@ public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
         transform.position = newPos;
     }
 
-    /**********************POOL****************************/
+    #endregion
+
+    #region Pooling Functions
 
     public void Pool()
     {
@@ -38,4 +36,6 @@ public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
     }
 
     public void Depool() { }
+
+    #endregion
 }

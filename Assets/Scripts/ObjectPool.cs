@@ -25,7 +25,6 @@ public static class ObjectPool
         foreach (var go in FactoryManager.Instance.FactoryBullets) LastUpdate.Add(go.name, Time.time);
     }
 
-    //// Seems to be the cause of the crash as it is trying to remove a bullet that doesnt exist
     public static IEnumerator Trim()
     {
         while (true)

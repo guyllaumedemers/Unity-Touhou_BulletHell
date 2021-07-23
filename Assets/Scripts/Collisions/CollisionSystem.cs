@@ -7,7 +7,7 @@ public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
 {
     private Queue<IProduct> pool;
 
-    /**********************ACTIONS*************************/
+    #region Collision System Functions
 
     public bool DistanceCheck(Vector2 pos, Vector2 target, float rad) => Vector2.Distance(pos, target) <= rad;
 
@@ -39,11 +39,15 @@ public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
         while (pool.Count > 0) (pool.Dequeue() as Bullet).Pool();
     }
 
-    /**********************FLOW****************************/
+    #endregion
+
+    #region Unity Functions
 
     public void PreIntilizationMethod() => pool = new Queue<IProduct>();
 
     public void InitializationMethod() { }
 
     public void UpdateMethod() => UpdateCollisionSystem(BulletManager.Instance.BulletsDict, UnitManager.Instance.UnitsDict, pool, PlayerController.Instance);
+
+    #endregion
 }

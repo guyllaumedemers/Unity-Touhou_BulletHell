@@ -21,6 +21,8 @@ public class FactoryManager : IFactoryAbs, IFlow
     public GameObject[] FactoryBullets { get; private set; }
     private readonly IResourcesLoading resources = new ResourcesLoadingBehaviour();
 
+    #region Facotry Manager Functions
+
     public IProduct FactoryMethod<T>(string type, Transform parent, Vector2 pos) where T : class
     {
         IProduct bullet;
@@ -36,11 +38,15 @@ public class FactoryManager : IFactoryAbs, IFlow
         return bullet;
     }
 
-    /**********************FLOW****************************/
+    #endregion
+
+    #region Unity Functions
 
     public void PreIntilizationMethod() => FactoryBullets = resources.ResourcesLoading(Globals.bulletsPrefabs);
 
     public void InitializationMethod() { }
 
     public void UpdateMethod() { }
+
+    #endregion
 }

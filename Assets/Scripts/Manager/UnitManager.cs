@@ -11,8 +11,7 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
     private readonly IResourcesLoading resources = new ResourcesLoadingBehaviour();
     private Queue<Unit> UnitPool;
 
-
-    /**********************ACTIONS**************************/
+    #region Unit Manager Functions
 
     //TODO Upon loading level after Menu Selection, PreLoad Units inside a Unit Pool
     public Unit Create<T>(string type, Vector2 pos, IMoveable move_behaviour, Vector3[] waypoints, BulletTypeEnum bulletT) where T : class
@@ -65,7 +64,9 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
         }
     }
 
-    /**********************FLOW****************************/
+    #endregion
+
+    #region Unity Functions
 
     public void PreIntilizationMethod()
     {
@@ -77,4 +78,6 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
     public void InitializationMethod() { }
 
     public void UpdateMethod() => UpdateUnits(UnitsDict, UnitPool);
+
+    #endregion
 }
