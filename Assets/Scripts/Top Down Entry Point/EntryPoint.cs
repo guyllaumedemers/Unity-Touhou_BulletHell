@@ -10,6 +10,7 @@ public class EntryPoint : SingletonMono<EntryPoint>
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
+            AudioManager.Instance.PreIntilizationMethod();
             UIManager.Instance.PreIntilizationMethod();
             return;
         }
@@ -21,6 +22,7 @@ public class EntryPoint : SingletonMono<EntryPoint>
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
+            AudioManager.Instance.InitializationMethod();
             UIManager.Instance.InitializationMethod();
             return;
         }

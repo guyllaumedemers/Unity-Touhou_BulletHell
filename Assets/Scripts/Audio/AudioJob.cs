@@ -1,12 +1,12 @@
 
 public class AudioJob
 {
-    public AudioJobActionEnum actionType;
-    public AudioTypeEnum audioType;
+    public AudioJobActionEnum job_type;
+    public AudioTypeEnum audio_type;
 
     public AudioJob(AudioJobActionEnum action, AudioTypeEnum type)
     {
-        actionType = action;
-        audioType = type;
+        job_type = action;
+        audio_type = type;
     }
 }

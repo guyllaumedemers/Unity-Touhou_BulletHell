@@ -21,8 +21,11 @@ public static class Globals
     #endregion
 
     #region Audio Channel ref
-    public static string music_channel = "Music";
-    public static string sfx_channel = "SFX";
+    public static string ST_Channel = "Soundtracks";
+    public static string MenuSFX_Channel = "Menuing Sound Effects";
+    public static string FiringSFX_Channel = "Firing Sound Effects";
+    public static string AnimationSFX_Channel = "Animation Sound Effects";
+    public static string Dialogue_Channel = "Dialogues";
     #endregion
 
     #region Audio values
