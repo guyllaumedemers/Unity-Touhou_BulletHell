@@ -31,28 +31,36 @@ public class AudioController : SingletonMono<AudioController>, IFlow
 
     private void Dispose()
     {
-
+        foreach (DictionaryEntry entry in hashJob)
+        {
+            IEnumerator job = (IEnumerator)entry.Value;
+            if (job != null)
+            {
+                StopCoroutine(job);
+            }
+        }
     }
 
     private void PopulateAudioTable()
     {
         foreach (var (track, audioOBJ) in audioTracks.SelectMany(track => track.audio_objects.Select(audioOBJ => (track, audioOBJ))))
         {
-            if (AudioExist(audioOBJ.type))
+            if (AudioExist(audioOBJ.audio_type))
             {
                 LogWarning("You are trying to add an Audio Type that already exist");
                 return;
             }
-            hashAudio.Add(audioOBJ.type, track);
+            hashAudio.Add(audioOBJ.audio_type, track);
         }
     }
 
     private void AddJob(AudioJob job)
     {
-        RemoveConflictingJobs(job.audioType);
+        RemoveConflictingJobs(job.audio_type);
 
         IEnumerator jobRunner = RunAudioJob(job);
-        hashJob.Add(job.audioType, jobRunner);
+        StartCoroutine(jobRunner);
+        hashJob.Add(job.audio_type, jobRunner);
     }
 
     private void RemoveJob(AudioTypeEnum type)
@@ -64,7 +72,10 @@ public class AudioController : SingletonMono<AudioController>, IFlow
         }
 
         IEnumerator runningJob = (IEnumerator)hashJob[type];
-        StopCoroutine(runningJob);
+        if (runningJob != null)
+        {
+            StopCoroutine(runningJob);
+        }
         hashJob.Remove(type);
     }
 
@@ -83,8 +94,8 @@ public class AudioController : SingletonMono<AudioController>, IFlow
         foreach (DictionaryEntry item in hashJob)
         {
             AudioTypeEnum itemAudioType = (AudioTypeEnum)item.Key;
-            AudioTrack audioTrackInUse = (AudioTrack)hashJob[itemAudioType];
-            AudioTrack audioTrackNeeded = (AudioTrack)hashJob[type];
+            AudioTrack audioTrackInUse = (AudioTrack)hashAudio[itemAudioType];
+            AudioTrack audioTrackNeeded = (AudioTrack)hashAudio[type];
             if (audioTrackNeeded.Equals(audioTrackInUse))
             {
                 conflictAudio = itemAudioType;
@@ -95,8 +106,33 @@ public class AudioController : SingletonMono<AudioController>, IFlow
 
     private IEnumerator RunAudioJob(AudioJob job)
     {
-        //TO CONTINUE
+        AudioTrack track = (AudioTrack)hashAudio[job.audio_type];
+        track.source.clip = GetAudioClipFromTrack(job.audio_type, track);
+
+        switch (job.job_type)
+        {
+            case AudioJobActionEnum.START:
+                track.source.Play();
+                break;
+            case AudioJobActionEnum.STOP:
+                track.source.Stop();
+                break;
+            case AudioJobActionEnum.RESTART:
+                track.source.Stop();
+                track.source.Play();
+                break;
+            default:
+                LogWarning("Invalid Job Enum Type");
+                break;
+        }
+
+        RemoveJob(job.audio_type);
         yield return null;
+    }
+
+    private AudioClip GetAudioClipFromTrack(AudioTypeEnum audio_type, AudioTrack track)
+    {
+        return track.audio_objects.Where(audioOBJ => audioOBJ.audio_type.Equals(audio_type)).FirstOrDefault().audio_clip;
     }
 
     private bool AudioExist(AudioTypeEnum type) => hashAudio.ContainsKey(type);
@@ -111,7 +147,7 @@ public class AudioController : SingletonMono<AudioController>, IFlow
 
     public void PreIntilizationMethod() => Configure();
 
-    public void InitializationMethod() { }
+    public void InitializationMethod() => Play(AudioTypeEnum.ST_01);
 
     public void UpdateMethod() { }
 

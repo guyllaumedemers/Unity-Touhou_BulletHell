@@ -4,14 +4,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
+public class AudioManager : SingletonMono<AudioManager>, IFlow
 {
     public AudioMixer mixer;
-    AudioClip[] music_clips;
-    AudioClip[] sfx_clips;
-    AudioClip mouse_clip;
-    AudioClip buttonclick_clip;
-    AudioSource[] sources;
     private AudioManager() { }
     TextMeshProUGUI main_volumeTxt;
     TextMeshProUGUI se_volumeTxt;
@@ -24,25 +19,25 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
     public void IncrementMainVolume()
     {
         main_volume = PlayerConfig.IncrementVolume(main_volumeTxt, main_volume);
-        SetChanel(Globals.music_channel, PercentTo(main_volume));
+        SetChanel(Globals.ST_Channel, PercentTo(main_volume));
     }
 
     public void DecrementMainVolume()
     {
         main_volume = PlayerConfig.DecrementVolume(main_volumeTxt, main_volume);
-        SetChanel(Globals.music_channel, PercentTo(main_volume));
+        SetChanel(Globals.ST_Channel, PercentTo(main_volume));
     }
 
     public void IncrementSFXVolume()
     {
         se_volume = PlayerConfig.IncrementVolume(se_volumeTxt, se_volume);
-        SetChanel(Globals.sfx_channel, PercentTo(se_volume));
+        SetChanel(Globals.MenuSFX_Channel, PercentTo(se_volume));
     }
 
     public void DecrementSFXVolume()
     {
         se_volume = PlayerConfig.DecrementVolume(se_volumeTxt, se_volume);
-        SetChanel(Globals.sfx_channel, PercentTo(se_volume));
+        SetChanel(Globals.MenuSFX_Channel, PercentTo(se_volume));
     }
 
     public void OnSceneLoading()
@@ -55,12 +50,12 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
     {
         if (Time.time - lastTime > 0.5f)
         {
-            sources[1].PlayOneShot(mouse_clip);
+            AudioController.Instance.Play(AudioTypeEnum.MenuSFX_01);
             lastTime = Time.time;
         }
     }
 
-    public void TriggerButtonClickSFX() => sources[2].PlayOneShot(buttonclick_clip);
+    public void TriggerButtonClickSFX() => AudioController.Instance.Play(AudioTypeEnum.MenuSFX_02);
 
     private float PercentTo(int value) => (value * Globals.channel_lowestvalue / Globals.max_percent) - Globals.channel_lowestvalue;
 
@@ -72,6 +67,7 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
 
     public void PreIntilizationMethod()
     {
+        AudioController.Instance.PreIntilizationMethod();
         SetAudio();
         RetrieveTags();
         SetText();
@@ -80,10 +76,11 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
 
     public void InitializationMethod()
     {
+        AudioController.Instance.InitializationMethod();
         //HINT : Mixer is not accessible in the Awake function when trying to set the audio via function call
         //It has to be done in the start function
-        SetChanel(Globals.music_channel, PercentTo(main_volume));
-        SetChanel(Globals.sfx_channel, PercentTo(se_volume));
+        SetChanel(Globals.ST_Channel, PercentTo(main_volume));
+        SetChanel(Globals.MenuSFX_Channel, PercentTo(se_volume));
     }
 
     public void UpdateMethod() { }
@@ -95,21 +92,7 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
     private void SetAudio()
     {
         main_volume = Globals.temp_start_percent;           // TEMP : should be loaded from file
-        se_volume = Globals.temp_start_percent - 20;        // TEMP
-        music_clips = Utilities.FindResources<AudioClip>(Globals.music_clips_path);
-        sfx_clips = Utilities.FindResources<AudioClip>(Globals.sfx_clips_path);
-        mouse_clip = sfx_clips[0];
-        buttonclick_clip = sfx_clips[1];
-        sources = GetComponents<AudioSource>();
-        SetAudioSource(sources[0], music_clips[0], GetAudioMixerGroupChannel(Globals.music_channel), true, true);
-    }
-
-    private void SetAudioSource(AudioSource src, AudioClip clip, AudioMixerGroup output, params bool[] state)
-    {
-        src.clip = clip;
-        src.loop = state[0];
-        src.outputAudioMixerGroup = output;
-        if (state[1]) src.Play();
+        se_volume = Globals.temp_start_percent - 10;        // TEMP
     }
 
     private void RetrieveTags()
@@ -124,11 +107,6 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>, IFlow
     {
         InitializeOnStartup(main_volumeTxt, main_volume);
         InitializeOnStartup(se_volumeTxt, se_volume);
-    }
-
-    private AudioMixerGroup GetAudioMixerGroupChannel(string name)
-    {
-        return mixer.FindMatchingGroups(string.Empty).Where(x => x.name.Equals(name)).FirstOrDefault();
     }
 
     private void SetChanel(string channel, float value) => mixer.SetFloat(channel, value);

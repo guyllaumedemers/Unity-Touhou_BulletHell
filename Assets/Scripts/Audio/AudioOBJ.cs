@@ -3,6 +3,6 @@ using UnityEngine;
 [System.Serializable]
 public class AudioOBJ
 {
-    public AudioTypeEnum type;
-    public AudioClip clip;
+    public AudioTypeEnum audio_type;
+    public AudioClip audio_clip;
 }

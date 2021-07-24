@@ -147,7 +147,17 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 114e4c4a3805b8b4d8d28c764b2192de
+    name: Animation Sound Effects
+  - guid: 77d1f5e4aa74145488394cd46ae35228
+    name: Dialogues
+  - guid: 1e6850192afa7dc40975a1d28e2a5001
+    name: Firing Sound Effects
+  - guid: 1b12652c5ae20194e9bee7096b733e36
+    name: Menuing Sound Effects
+  - guid: 019049d082fe20746ad3c280e0b9cec5
+    name: Soundtracks
   m_AudioMixerGroupViews:
   - guids:
     - a779b191bc339bc46a8b83d2c47e8141

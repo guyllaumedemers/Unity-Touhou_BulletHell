@@ -2,7 +2,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-public class PageController : SingletonMonoPersistent<PageController>, IFlow
+public class PageController : SingletonMono<PageController>, IFlow
 {
     private PageController() { }
     private Page[] pages;
