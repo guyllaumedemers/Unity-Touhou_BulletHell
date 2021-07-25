@@ -44,16 +44,18 @@ public class Bullet : MonoBehaviour, IProduct, IPoolable
     private void LogWarning(string msg) => Debug.LogWarning("[Bullet] " + msg);
 }
 
-public struct BulletDataContainer
+public class BulletDataContainer
 {
     public IMoveable moveable;
     public IgnoreLayerEnum ignoredLayer;
     public float speed;
     public float angle;
     public float dmg;
+    public BulletTypeEnum bulletType;
 
-    public BulletDataContainer(float speed, float dmg)
+    public BulletDataContainer(BulletTypeEnum bulletType, float speed, float dmg)
     {
+        this.bulletType = bulletType;
         this.moveable = new MoveableBulletB();
         this.ignoredLayer = IgnoreLayerEnum.None;
         this.speed = speed;

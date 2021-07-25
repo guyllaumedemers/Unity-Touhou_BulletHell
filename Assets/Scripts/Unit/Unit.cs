@@ -19,9 +19,9 @@ public class Unit : MonoBehaviour, IDamageable
         StaticInitialization(type, move_behaviour, waypoints);
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => EnumFiltering.EnumToString(bulletT).Any(w => w.Equals(x.name))))
         {
-            unitData.bulletType.Enqueue(obj.name);
+            unitData.bulletTypeList.Enqueue(obj.name);
         }
-        unitData.activeBullet = unitData.bullets.SwapBulletType(unitData.bulletType);                                                           // initialize the active bullet type string    
+        unitData.activeBullet = unitData.bullets.SwapBulletType(unitData.bulletTypeList);                                                       // initialize the active bullet type string    
         unitData.pattern = unitData.bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), unitData.activeBullet));      // initialize the pattern with the active bullet type
         return this;
     }
@@ -47,7 +47,7 @@ public class Unit : MonoBehaviour, IDamageable
     {
         if (fireCoroutine != null) StopCoroutine(fireCoroutine);
     }
-    
+
     public void TakeDamage(float dmg) => unitData.health -= dmg;
 
     public UnitDataContainer GetUnitData() => unitData;
@@ -89,15 +89,16 @@ public class Unit : MonoBehaviour, IDamageable
     {
         spriteRen = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        //TODO Load Unit data instance from a file by type with unit info
-        unitData = new UnitDataContainer(0.4f, 100.0f, 2.0f, move_behaviour, 0, waypoints, false, false);
+        unitData = DatabaseHandler.RetrieveTableEntries<UnitDataContainer>(SQLTable.UnitData.ToString()).Where(x => x.unitType.ToString().Equals(type)).FirstOrDefault();
+        unitData.SetMoveableAction(move_behaviour);
+        unitData.SetWaypoints(waypoints);
         bezierCurveT = default;
     }
 
     #endregion
 }
 
-public struct UnitDataContainer
+public class UnitDataContainer
 {
     public float rad;
     public float health;
@@ -107,15 +108,17 @@ public struct UnitDataContainer
     public string activeBullet;
     public Vector3[] controlPoints;
     public bool hasReachDestination;
-    public Queue<string> bulletType;
+    public Queue<string> bulletTypeList;
     public IPatternGenerator pattern;
     public IMoveable moveable;
     public IAnimate animation;
     public ISwappable bullets;
+    public UnitTypeEnum unitType;
 
-    public UnitDataContainer(float rad, float health, float speed, IMoveable moveable = null,
-        int curr_wp = -1, Vector3[] controlPoints = null, bool idle = false, bool hasReachDestination = false)
+    public UnitDataContainer(UnitTypeEnum unitType, float rad, float health, float speed, IMoveable moveable = null,
+        int curr_wp = 0, Vector3[] controlPoints = null, bool idle = false, bool hasReachDestination = false)
     {
+        this.unitType = unitType;
         this.rad = rad;
         this.health = health;
         this.speed = speed;
@@ -124,10 +127,14 @@ public struct UnitDataContainer
         this.activeBullet = null;
         this.controlPoints = controlPoints;
         this.hasReachDestination = hasReachDestination;
-        this.bulletType = new Queue<string>();
+        this.bulletTypeList = new Queue<string>();
         this.pattern = null;
         this.moveable = moveable;
         this.animation = new UnitAnimationBehaviour();
         this.bullets = new SwappablePatternBehaviour();
     }
+
+    public void SetMoveableAction(IMoveable move) => this.moveable = move;
+
+    public void SetWaypoints(Vector3[] waypoints) => this.controlPoints = waypoints;
 }

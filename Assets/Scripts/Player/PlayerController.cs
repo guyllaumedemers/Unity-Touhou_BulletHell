@@ -73,7 +73,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
     {
         if (Keyboard.current.tabKey.wasPressedThisFrame)
         {
-            unitData.activeBullet = unitData.bullets.SwapBulletType(unitData.bulletType);
+            unitData.activeBullet = unitData.bullets.SwapBulletType(unitData.bulletTypeList);
             unitData.pattern = unitData.bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), unitData.activeBullet));
             foreach (Transform spr in orbParent) StartCoroutine(Utilities.Fade(spr.GetComponent<SpriteRenderer>(), unitData.activeBullet));
         }
@@ -101,7 +101,8 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
         inputs = new PlayerInputActions();                      // Instanciate a new PlayerInputActions
         inputs.Player.Fire.started += ctx => StartFiring();     // Register the rapid fire for a mouse press
         inputs.Player.Fire.canceled += ctx => StopFiring();     // Stop the coroutine from firing
-        unitData = new UnitDataContainer(Globals.hitbox, 100.0f, 5.0f);
+        unitData = DatabaseHandler.RetrieveTableEntries<UnitDataContainer>(SQLTable.UnitData.ToString()).Where(x => x.unitType.ToString().Equals(UnitTypeEnum.Player.ToString())).FirstOrDefault();
+        Debug.Log(unitData.health);
         animator = GetComponent<Animator>();
         sprRen = GetComponent<SpriteRenderer>();
         orbParent = transform.GetChild(0).GetComponent<Transform>();
@@ -112,9 +113,9 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
     {
         foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => EnumFiltering.EnumToString(patternFilter).Any(w => w.Equals(x.name))))
         {
-            unitData.bulletType.Enqueue(obj.name);
+            unitData.bulletTypeList.Enqueue(obj.name);
         }
-        unitData.activeBullet = unitData.bullets.SwapBulletType(unitData.bulletType);                                                              // initialize the active bullet type string    
+        unitData.activeBullet = unitData.bullets.SwapBulletType(unitData.bulletTypeList);                                                              // initialize the active bullet type string    
         unitData.pattern = unitData.bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), unitData.activeBullet));         // initialize the pattern with the active bullet type
     }
 
