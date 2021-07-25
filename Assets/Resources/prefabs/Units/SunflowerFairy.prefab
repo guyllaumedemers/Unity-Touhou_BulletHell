@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1195473168753555591}
   - component: {fileID: 4607551816782478198}
-  - component: {fileID: 5891246653930940331}
   - component: {fileID: 271804789}
+  - component: {fileID: 3303463326756048639}
   m_Layer: 0
   m_Name: SunflowerFairy
   m_TagString: Untagged
@@ -84,22 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5891246653930940331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7935104346781038620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97212c6a1a1281a4f93bcbb0267e23f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  speed: 0
-  angle: 0
-  activeBullet: 
 --- !u!95 &271804789
 Animator:
   serializedVersion: 3
@@ -119,3 +103,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3303463326756048639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935104346781038620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730f1f30400c7b942ad791b66077b9c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator), typeof(SpriteRenderer))]
-public abstract class Unit : MonoBehaviour, IDamageable
+public class Unit : MonoBehaviour, IDamageable
 {
     private Coroutine fireCoroutine;
     private SpriteRenderer spriteRen;
