@@ -90,7 +90,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
         spriteRen = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         //TODO Load Unit data instance from a file by type with unit info
-        unitData = new UnitDataContainer(1.0f, 100.0f, 2.0f, null, new Queue<string>(), null, move_behaviour, 0, waypoints, false, false);
+        unitData = new UnitDataContainer(1.0f, 100.0f, 2.0f, move_behaviour, 0, waypoints, false, false);
         bezierCurveT = default;
     }
 
@@ -113,7 +113,7 @@ public struct UnitDataContainer
     public IAnimate animation;
     public ISwappable bullets;
 
-    public UnitDataContainer(float rad, float health, float speed, string activeBullet, Queue<string> bulletType, IPatternGenerator pattern, IMoveable moveable = null,
+    public UnitDataContainer(float rad, float health, float speed, IMoveable moveable = null,
         int curr_wp = -1, Vector3[] controlPoints = null, bool idle = false, bool hasReachDestination = false)
     {
         this.rad = rad;
@@ -121,11 +121,11 @@ public struct UnitDataContainer
         this.speed = speed;
         this.idle = idle;
         this.curr_wp = curr_wp;
-        this.activeBullet = activeBullet;
+        this.activeBullet = null;
         this.controlPoints = controlPoints;
         this.hasReachDestination = hasReachDestination;
-        this.bulletType = bulletType;
-        this.pattern = pattern;
+        this.bulletType = new Queue<string>();
+        this.pattern = null;
         this.moveable = moveable;
         this.animation = new UnitAnimationBehaviour();
         this.bullets = new SwappablePatternBehaviour();

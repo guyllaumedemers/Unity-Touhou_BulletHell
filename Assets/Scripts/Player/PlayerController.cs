@@ -101,7 +101,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
         inputs = new PlayerInputActions();                      // Instanciate a new PlayerInputActions
         inputs.Player.Fire.started += ctx => StartFiring();     // Register the rapid fire for a mouse press
         inputs.Player.Fire.canceled += ctx => StopFiring();     // Stop the coroutine from firing
-        unitData = new UnitDataContainer(Globals.hitbox, 100.0f, 5.0f, null, new Queue<string>(), null);
+        unitData = new UnitDataContainer(Globals.hitbox, 100.0f, 5.0f);
         animator = GetComponent<Animator>();
         sprRen = GetComponent<SpriteRenderer>();
         orbParent = transform.GetChild(0).GetComponent<Transform>();
