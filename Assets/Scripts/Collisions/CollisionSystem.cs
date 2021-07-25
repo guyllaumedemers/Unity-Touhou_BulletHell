@@ -29,7 +29,7 @@ public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
             {
                 // do distance check with the units
                 foreach (var unit in unitsDict.Keys.SelectMany(key => unitsDict[key]).Where(x =>
-                DistanceCheck(bullet.transform.position, x.transform.position, x.rad)))
+                DistanceCheck(bullet.transform.position, x.transform.position, x.unitData.rad)))
                 {
                     unit.TakeDamage(bullet.dmg);
                     pool.Enqueue(bullet);

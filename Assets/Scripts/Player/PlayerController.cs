@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamageable
 {
     private IPatternGenerator pattern;
-    private readonly IEnumFiltering enumFiltering = new EnumFilteringBehaviour();
     private readonly IAnimate animationBehaviour = new UnitAnimationBehaviour();
     private readonly ISwappable bullets = new SwappablePatternBehaviour();
     Coroutine fireCoroutine;
@@ -127,7 +126,10 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
 
     public void InitializationMethod()
     {
-        foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => enumFiltering.EnumToString(patternFilter).Any(w => w.Equals(x.name)))) bulletType.Enqueue(obj.name);
+        foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => EnumFiltering.EnumToString(patternFilter).Any(w => w.Equals(x.name))))
+        {
+            bulletType.Enqueue(obj.name);
+        }
         activeBullet = bullets.SwapBulletType(bulletType);                                                              // initialize the active bullet type string    
         pattern = bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), activeBullet));         // initialize the pattern with the active bullet type
     }
