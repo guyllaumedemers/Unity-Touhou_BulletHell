@@ -1,25 +1,9 @@
-using System.Linq;
 using UnityEngine;
 
-public class FactoryManager : IFactoryAbs, IFlow
+public class FactoryManager : SingletonMono<FactoryManager>, IFactoryAbs, IFlow
 {
-    #region singleton
-    private static FactoryManager instance;
     private FactoryManager() { }
-    public static FactoryManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new FactoryManager();
-            }
-            return instance;
-        }
-    }
-    #endregion
     public GameObject[] FactoryBullets { get; private set; }
-    private readonly IResourcesLoading resources = new ResourcesLoadingBehaviour();
 
     #region Facotry Manager Functions
 
@@ -32,7 +16,7 @@ public class FactoryManager : IFactoryAbs, IFlow
             (bullet as Bullet).ResetBullet(pos);
             goto SKIP;
         }
-        bullet = Utilities.InstanciateType<T>(resources.GetPrefab(FactoryBullets, type), parent, pos) as IProduct;
+        bullet = Utilities.InstanciateType<T>(ResourcesLoader.GetPrefab(FactoryBullets, type), parent, pos) as IProduct;
     SKIP:
         BulletManager.Instance.Add(type, bullet);
         return bullet;
@@ -42,7 +26,7 @@ public class FactoryManager : IFactoryAbs, IFlow
 
     #region Unity Functions
 
-    public void PreIntilizationMethod() => FactoryBullets = resources.ResourcesLoading(Globals.bulletsPrefabs);
+    public void PreIntilizationMethod() => FactoryBullets = ResourcesLoader.ResourcesLoading(Globals.bulletsPrefabs);
 
     public void InitializationMethod() { }
 
