@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
+public class Bullet : MonoBehaviour, IProduct, IPoolable
 {
     public BulletDataContainer bulletData;
 
@@ -9,7 +9,7 @@ public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
 
     public void FillData(BulletDataContainer data) => bulletData = data;
 
-    public virtual void UpdateBulletPosition() => transform.position = bulletData.moveable.Move(bulletData.angle, bulletData.speed, default, transform.position);
+    public void UpdateBulletPosition() => transform.position = bulletData.moveable.Move(bulletData.angle, bulletData.speed, default, transform.position);
 
     public void SetIgnoredLayer(IgnoreLayerEnum layer) => bulletData.ignoredLayer = layer;
 
@@ -42,12 +42,12 @@ public struct BulletDataContainer
     public float angle;
     public float dmg;
 
-    public BulletDataContainer(float speed, float angle, float dmg)
+    public BulletDataContainer(float speed, float dmg)
     {
         this.moveable = new MoveableBulletB();
         this.ignoredLayer = IgnoreLayerEnum.None;
         this.speed = speed;
-        this.angle = angle;
+        this.angle = default;
         this.dmg = dmg;
     }
 }
