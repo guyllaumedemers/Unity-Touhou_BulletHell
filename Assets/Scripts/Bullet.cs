@@ -3,29 +3,23 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
 {
-    IMoveable moveable = new MoveableBulletB();
-    protected const float speed = 5;
-    protected float angle;
-    public IgnoreLayerEnum ignoredLayer { get; private set; }
-    public float dmg { get; private set; }
+    BulletDataContainer bulletData;
 
-    #region Bullet Functions
+    #region public functions
 
-    public virtual void UpdateBulletPosition() => transform.position = moveable.Move(angle, speed, default, transform.position);
+    public void FillData(BulletDataContainer data) => bulletData = data;
 
-    public void SetIgnoredLayer(IgnoreLayerEnum layer) => ignoredLayer = layer;
+    public virtual void UpdateBulletPosition() => transform.position = bulletData.moveable.Move(bulletData.angle, bulletData.speed, default, transform.position);
 
-    public void SetAngle(float angle) => this.angle = angle;
+    public void SetIgnoredLayer(IgnoreLayerEnum layer) => bulletData.ignoredLayer = layer;
+
+    public void SetAngle(float angle) => bulletData.angle = angle;
 
     public void ResetBullet(Vector2 newPos)
     {
         transform.SetParent(BulletManager.Instance.bulletParent.transform);
         transform.position = newPos;
     }
-
-    #endregion
-
-    #region Pooling Functions
 
     public void Pool()
     {
@@ -38,4 +32,22 @@ public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
     public void Depool() { }
 
     #endregion
+}
+
+public struct BulletDataContainer
+{
+    public IMoveable moveable;
+    public IgnoreLayerEnum ignoredLayer;
+    public float speed;
+    public float angle;
+    public float dmg;
+
+    public BulletDataContainer(IgnoreLayerEnum ignoredLayer, float speed, float angle, float dmg)
+    {
+        this.moveable = new MoveableBulletB();
+        this.ignoredLayer = ignoredLayer;
+        this.speed = speed;
+        this.angle = angle;
+        this.dmg = dmg;
+    }
 }
