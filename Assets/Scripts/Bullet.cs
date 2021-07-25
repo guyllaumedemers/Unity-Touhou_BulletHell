@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public abstract class Bullet : MonoBehaviour, IProduct, IPoolable
 {
-    BulletDataContainer bulletData;
+    public BulletDataContainer bulletData;
 
     #region public functions
 
@@ -42,10 +42,10 @@ public struct BulletDataContainer
     public float angle;
     public float dmg;
 
-    public BulletDataContainer(IgnoreLayerEnum ignoredLayer, float speed, float angle, float dmg)
+    public BulletDataContainer(float speed, float angle, float dmg)
     {
         this.moveable = new MoveableBulletB();
-        this.ignoredLayer = ignoredLayer;
+        this.ignoredLayer = IgnoreLayerEnum.None;
         this.speed = speed;
         this.angle = angle;
         this.dmg = dmg;

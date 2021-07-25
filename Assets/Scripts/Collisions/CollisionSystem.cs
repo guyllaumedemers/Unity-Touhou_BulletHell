@@ -16,12 +16,12 @@ public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
     {
         foreach (var bullet in bulletsDict.Keys.SelectMany(key => bulletsDict[key]))
         {
-            if (bullet.ignoredLayer != IgnoreLayerEnum.Player)
+            if (bullet.bulletData.ignoredLayer != IgnoreLayerEnum.Player)
             {
                 // do distance check with the player
                 if (DistanceCheck(bullet.transform.position, player.transform.position, player.unitData.rad))
                 {
-                    player.TakeDamage(bullet.dmg);
+                    player.TakeDamage(bullet.bulletData.dmg);
                     pool.Enqueue(bullet);
                 }
             }
@@ -31,7 +31,7 @@ public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
                 foreach (var unit in unitsDict.Keys.SelectMany(key => unitsDict[key]).Where(x =>
                 DistanceCheck(bullet.transform.position, x.transform.position, x.unitData.rad)))
                 {
-                    unit.TakeDamage(bullet.dmg);
+                    unit.TakeDamage(bullet.bulletData.dmg);
                     pool.Enqueue(bullet);
                 }
             }
