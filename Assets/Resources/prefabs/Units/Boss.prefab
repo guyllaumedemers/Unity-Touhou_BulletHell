@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3854865535831163480}
   - component: {fileID: 1880631847802257833}
-  - component: {fileID: 6190180492313622202}
+  - component: {fileID: 7358131568040875765}
+  - component: {fileID: 5015927019971479686}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -83,7 +84,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6190180492313622202
+--- !u!95 &7358131568040875765
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5473896752661037763}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5015927019971479686
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,10 +112,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5473896752661037763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a4972f826061f248bbc563ac7adbafe, type: 3}
+  m_Script: {fileID: 11500000, guid: 730f1f30400c7b942ad791b66077b9c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  speed: 0
-  angle: 0
-  activeBullet: 
