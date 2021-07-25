@@ -12,7 +12,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
     private float bezierCurveT;
     public UnitDataContainer unitData;
 
-    #region Unit Functions
+    #region public functions
 
     public Unit PreInitializeUnit(string type, IMoveable move_behaviour, Vector3[] waypoints, BulletTypeEnum bulletT)
     {
@@ -31,6 +31,30 @@ public abstract class Unit : MonoBehaviour, IDamageable
         if (!unitData.idle) Move();
         unitData.animation.Animate(animator, spriteRen, (unitData.controlPoints[unitData.curr_wp + 1 > unitData.controlPoints.Length - 1 ? 0 : unitData.curr_wp + 1] - unitData.controlPoints[unitData.curr_wp]).normalized);
     }
+
+    public IEnumerator Play()
+    {
+        while (true)
+        {
+            unitData.pattern.Fill(unitData.activeBullet, null, transform.position, default, default);
+            yield return new WaitForSeconds(1 / (unitData.pattern as AbsPattern).rof);
+        }
+    }
+
+    public void StartFiring() => fireCoroutine = StartCoroutine(Play());
+
+    public void StopFiring()
+    {
+        if (fireCoroutine != null) StopCoroutine(fireCoroutine);
+    }
+    
+    public void TakeDamage(float dmg) => unitData.health -= dmg;
+
+    public UnitDataContainer GetUnitData() => unitData;
+
+    #endregion
+
+    #region private functions
 
     private void Move()
     {
@@ -61,48 +85,14 @@ public abstract class Unit : MonoBehaviour, IDamageable
         return unitData.moveable.Move(default, default, bezierCurveT, waypoints[0], waypoints[1], waypoints[2], waypoints[3]);
     }
 
-    public IEnumerator DriftOff()
-    {
-        int dir = unitData.controlPoints[0].x < 0 ? 1 : -1;
-        while (unitData.idle)
-        {
-            transform.position += new Vector3(0.5f * dir, -0.3f, 0.0f) * Time.deltaTime;
-            yield return null;
-        }
-    }
-
-    public IEnumerator Play()
-    {
-        while (true)
-        {
-            unitData.pattern.Fill(unitData.activeBullet, null, transform.position, default, default);
-            yield return new WaitForSeconds(1 / (unitData.pattern as AbsPattern).rof);
-        }
-    }
-
-    public void StartFiring() => fireCoroutine = StartCoroutine(Play());
-
-    public void StopFiring()
-    {
-        if (fireCoroutine != null) StopCoroutine(fireCoroutine);
-    }
-
-    public void TakeDamage(float dmg) => unitData.health -= dmg;
-
-    #endregion
-
-    #region Unit Initialization Wrapper
-
     private void StaticInitialization(string type, IMoveable move_behaviour, Vector3[] waypoints)
     {
         spriteRen = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         //TODO Load Unit data instance from a file by type with unit info
-        unitData = new UnitDataContainer(1.0f, 100.0f, 2.0f, false, 0, null, waypoints, false, new Queue<string>(), null, move_behaviour);
+        unitData = new UnitDataContainer(1.0f, 100.0f, 2.0f, null, new Queue<string>(), null, move_behaviour, 0, waypoints, false, false);
         bezierCurveT = default;
     }
-
-    public UnitDataContainer GetUnitData() => unitData;
 
     #endregion
 }
@@ -123,8 +113,8 @@ public struct UnitDataContainer
     public IAnimate animation;
     public ISwappable bullets;
 
-    public UnitDataContainer(float rad, float health, float speed, bool idle, int curr_wp, string activeBullet, Vector3[] controlPoints, bool hasReachDestination,
-        Queue<string> bulletType, IPatternGenerator pattern, IMoveable moveable)
+    public UnitDataContainer(float rad, float health, float speed, string activeBullet, Queue<string> bulletType, IPatternGenerator pattern, IMoveable moveable = null,
+        int curr_wp = -1, Vector3[] controlPoints = null, bool idle = false, bool hasReachDestination = false)
     {
         this.rad = rad;
         this.health = health;
