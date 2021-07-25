@@ -90,7 +90,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
         spriteRen = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         //TODO Load Unit data instance from a file by type with unit info
-        unitData = new UnitDataContainer(1.0f, 100.0f, 2.0f, move_behaviour, 0, waypoints, false, false);
+        unitData = new UnitDataContainer(0.4f, 100.0f, 2.0f, move_behaviour, 0, waypoints, false, false);
         bezierCurveT = default;
     }
 

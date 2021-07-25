@@ -18,7 +18,7 @@ public class FactoryManager : SingletonMono<FactoryManager>, IFactoryAbs, IFlow
         }
         bullet = Utilities.InstanciateType<T>(ResourcesLoader.GetPrefab(FactoryBullets, type), parent, pos) as IProduct;
         //TODO Retrieve bullet data depending on the type pass as arguments and fill in the BulletDataContainer
-        (bullet as Bullet).FillData(new BulletDataContainer());
+        (bullet as Bullet).FillData(new BulletDataContainer(5.0f, 0.0f, 10.0f));
     SKIP:
         BulletManager.Instance.Add(type, bullet);
         return bullet;
