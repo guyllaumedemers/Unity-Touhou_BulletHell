@@ -19,7 +19,7 @@ public class CollisionSystem : SingletonMono<CollisionSystem>, IFlow
             if (bullet.ignoredLayer != IgnoreLayerEnum.Player)
             {
                 // do distance check with the player
-                if (DistanceCheck(bullet.transform.position, player.transform.position, player.rad))
+                if (DistanceCheck(bullet.transform.position, player.transform.position, player.unitData.rad))
                 {
                     player.TakeDamage(bullet.dmg);
                     pool.Enqueue(bullet);
