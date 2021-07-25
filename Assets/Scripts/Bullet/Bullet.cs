@@ -11,7 +11,15 @@ public class Bullet : MonoBehaviour, IProduct, IPoolable
 
     public void UpdateBulletPosition() => transform.position = bulletData.moveable.Move(bulletData.angle, bulletData.speed, default, transform.position);
 
-    public void SetIgnoredLayer(IgnoreLayerEnum layer) => bulletData.ignoredLayer = layer;
+    public void SetIgnoredLayer(IgnoreLayerEnum layer)
+    {
+        if (layer.Equals(IgnoreLayerEnum.None))
+        {
+            LogWarning("Invalid Layer Assignation");
+            return;
+        }
+        bulletData.ignoredLayer = layer;
+    }
 
     public void SetAngle(float angle) => bulletData.angle = angle;
 
@@ -32,6 +40,8 @@ public class Bullet : MonoBehaviour, IProduct, IPoolable
     public void Depool() { }
 
     #endregion
+
+    private void LogWarning(string msg) => Debug.LogWarning("[Bullet] " + msg);
 }
 
 public struct BulletDataContainer
