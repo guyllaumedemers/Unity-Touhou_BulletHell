@@ -29,7 +29,7 @@ and prioritize Composition over Inheritance.
   * Bullet Management
   * Unit Management
   * Wave System (*units can spawn from both side following either a linear progression OR a cubic bezier curve*)
-  * Audio Management (*WIP*)
+  * Audio Management
 
 #### Design Pattern and Memory Optimization
 
@@ -41,7 +41,7 @@ and prioritize Composition over Inheritance.
 
 #### Tools
   * XML Serialization (*Currently manage position in a file called : GameInfo and the instanciation of units inside the file : LevelInfo -> Both are accessible at the solution level*)
-  * SQLite Database Handler (*Manage the access to the database, retrieve and set the proper values for the bullet instance Type instanciated and unit type instanciated*)
+  * SQLite Database Handler (*Manage the access to the database, allow for dynamic loading of data*)
 
 ## Resources
 
