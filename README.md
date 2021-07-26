@@ -41,7 +41,7 @@ and prioritize Composition over Inheritance.
 
 #### Tools
   * XML Serialization (*Currently manage position in a file called : GameInfo and the instanciation of units inside the file : LevelInfo -> Both are accessible at the solution level*)
-  * SQLDatabaseHandler (*Manage the access to the database, retrieve and set the proper values for the bullet instance Type instanciated and unit type instanciated*)
+  * SQLite Database Handler (*Manage the access to the database, retrieve and set the proper values for the bullet instance Type instanciated and unit type instanciated*)
 
 ## Resources
 
