@@ -17,7 +17,7 @@ and prioritize Composition over Inheritance.
 * [Assets/Scipts/Manager/..](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/tree/master/Assets/Scripts/Manager) : Manager Scripts (Factory Pattern)
 * [Assets/Scripts/..](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/blob/master/Assets/Scripts/ObjectPool.cs) : Object Pooling (Memory Management)
 * [Assets/Scripts/Collisions/..](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/blob/master/Assets/Scripts/Collisions/CollisionSystem.cs) : Collision System
-* [Assets/Scripts/..](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/blob/master/Assets/Scripts/Waves/WaveSystem.cs) : Wave System
+* [Assets/Scripts/Waves/..](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/blob/master/Assets/Scripts/Waves/WaveSystem.cs) : Wave System
 * [Assets/Scripts/Waypoints/..](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/blob/master/Assets/Scripts/Waypoints/WaypointSystem.cs) : Waypoint System
 * [Assets/Scripts/UI/..](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/tree/master/Assets/Scripts/UI) : UI System
 * [Assets/Scripts/Audio/..](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/tree/master/Assets/Scripts/Audio) : Audio Management
