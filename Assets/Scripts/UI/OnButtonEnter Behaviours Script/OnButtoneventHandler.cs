@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class OnButtoneventHandler : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
+public class OnButtonEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
     public void OnPointerClick(PointerEventData eventData) => AudioManager.Instance.TriggerButtonClickSFX();
 
