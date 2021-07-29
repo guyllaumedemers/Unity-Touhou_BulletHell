@@ -6,7 +6,6 @@ public static class GameManagerFunctionWrapper
     public static void StartGame()
     {
         FactoryManager.Instance.PreIntilizationMethod();
-        WaypointSystem.Instance.PreIntilizationMethod();
         WaveSystem.Instance.PreIntilizationMethod(default, (int)SpawningPosEnum.None, (int)SpawningPosEnum.Pivot, 4);
         ObjectPool.PreInitializeMethod();
         CollisionSystem.Instance.PreIntilizationMethod();

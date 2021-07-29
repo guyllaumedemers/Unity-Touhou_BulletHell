@@ -8,6 +8,11 @@ public class EntryPoint : SingletonMono<EntryPoint>
 
     public void Awake()
     {
+        Vector3[] pos = Tool.CustomVec3Unwrapper(DatabaseHandler.RetrieveTableEntries<Tool.Vector3Wrapper>(Globals.waypointTable, $"WHERE Id = {0} AND Direction = '{SpawningPosEnum.Left.ToString()}'"));
+        for (int i = 0; i < pos.Length; ++i)
+        {
+            Debug.Log(pos[i]);
+        }
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             AudioManager.Instance.PreIntilizationMethod();
