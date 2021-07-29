@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,16 +8,6 @@ public class EntryPoint : SingletonMono<EntryPoint>
 
     public void Awake()
     {
-        Tuple<string, int>[] myTest = DatabaseHandler.RetrieveTableEntries<Tuple<string, int>>(Globals.waveTable, $"WHERE Id = {0}");
-        for (int i = 0; i < myTest.Length; ++i)
-        {
-            Debug.Log($"{myTest[i].Item1} {myTest[i].Item2}");
-        }
-        Vector3[] vec3 = Tool.CustomVec3Unwrapper(DatabaseHandler.RetrieveTableEntries<Tool.Vector3Wrapper>(Globals.waypointTable, $"WHERE Id = {0} AND Direction = '{SpawningPosEnum.Both.ToString()}'"));
-        for (int i = 0; i < vec3.Length; ++i)
-        {
-            Debug.Log($"{vec3[i]}");
-        }
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             AudioManager.Instance.PreIntilizationMethod();
