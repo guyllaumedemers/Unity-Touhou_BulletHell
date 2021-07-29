@@ -18,13 +18,13 @@ public class UIManager : SingletonMono<UIManager>, IFlow
     public void ShowOptionsMenu()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0) PageController.Instance.TurnPageOff(PageTypeEnum.Menu, PageTypeEnum.OptionMenu, true);
-        else PageController.Instance.TurnPageOff(PageTypeEnum.PauseMenu, PageTypeEnum.OptionMenu);
+        else PageController.Instance.TurnPageOff(PageTypeEnum.PauseMenu, PageTypeEnum.OptionMenu, true);
     }
 
     public void HideOptionsMenu()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0) PageController.Instance.TurnPageOff(PageTypeEnum.OptionMenu, PageTypeEnum.Menu);
-        else PageController.Instance.TurnPageOff(PageTypeEnum.OptionMenu, PageTypeEnum.PauseMenu);
+        if (SceneManager.GetActiveScene().buildIndex == 0) PageController.Instance.TurnPageOff(PageTypeEnum.OptionMenu, PageTypeEnum.Menu, true);
+        else PageController.Instance.TurnPageOff(PageTypeEnum.OptionMenu, PageTypeEnum.PauseMenu, true);
     }
 
     public void ShowScores() => PageController.Instance.TurnPageOff(PageTypeEnum.Menu, PageTypeEnum.ScoreMenu);
@@ -42,6 +42,16 @@ public class UIManager : SingletonMono<UIManager>, IFlow
     }
 
     public void ResetConfig()
+    {
+        //TODO
+    }
+
+    public void FullScreen()
+    {
+        //TODO
+    }
+
+    public void Windowed()
     {
         //TODO
     }

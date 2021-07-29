@@ -20,7 +20,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
         InitializeLevel(level, dir, pivot, var_mod);
         while (waveQueue.Count > 0)
         {
-            SpawningPosEnum spEnum = (SpawningPosEnum)UpdateDir(false);
+            DirectionEnum spEnum = (DirectionEnum)UpdateDir(false);
             IMoveable move_behaviour = (curr_dir % variable_mod == 0) ? (IMoveable)new MoveableUnitCubicBezierB() : new MoveableUnitLinearBezierB();
 
             Launch<Unit>(waveQueue.First().Item1, move_behaviour, WaypointSystem.GetWaypoints((curr_dir % variable_mod == 0), level, spEnum),
@@ -44,12 +44,12 @@ public class WaveSystem : SingletonMono<WaveSystem>
 
     #region private functions
 
-    private void Launch<T>(string name, IMoveable move_behaviour, Vector3[] waypoints, BulletTypeEnum bulletType, SpawningPosEnum spEnum, int maxUnitWave, float interval)
+    private void Launch<T>(string name, IMoveable move_behaviour, Vector3[] waypoints, BulletTypeEnum bulletType, DirectionEnum spEnum, int maxUnitWave, float interval)
         where T : class
     {
         if (Utilities.CheckInterfaceType(move_behaviour, typeof(MoveableUnitLinearBezierB)))
         {
-            if (spEnum != SpawningPosEnum.Both)
+            if (spEnum != DirectionEnum.Both)
             {
                 StartInstanciationCoroutine<T>(name, move_behaviour, waypoints[0], waypoints, bulletType, maxUnitWave, interval);
                 return;
@@ -60,7 +60,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
         else
         {
             Vector3[] cloneArr = waypoints.Clone() as Vector3[];
-            if (spEnum != SpawningPosEnum.Both)
+            if (spEnum != DirectionEnum.Both)
             {
                 cloneArr = CheckEnumAndFlip(cloneArr, spEnum);
                 StartInstanciationCoroutine<T>(name, move_behaviour, cloneArr[0], cloneArr, bulletType, maxUnitWave, interval);
@@ -97,12 +97,12 @@ public class WaveSystem : SingletonMono<WaveSystem>
         return value;
     }
 
-    private Vector3[] CheckEnumAndFlip(Vector3[] myArr, SpawningPosEnum spEnum)
+    private Vector3[] CheckEnumAndFlip(Vector3[] myArr, DirectionEnum spEnum)
     {
         return spEnum switch
         {
-            SpawningPosEnum.Left => myArr,
-            SpawningPosEnum.Right => Utilities.FlipX(myArr, -1),
+            DirectionEnum.Left => myArr,
+            DirectionEnum.Right => Utilities.FlipX(myArr, -1),
             _ => throw new System.NotImplementedException()
         };
     }

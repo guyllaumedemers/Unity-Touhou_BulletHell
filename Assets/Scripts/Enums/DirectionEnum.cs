@@ -1,7 +1,7 @@
 using System;
 
 [Flags]
-public enum SpawningPosEnum
+public enum DirectionEnum
 {
     None = 0,
     Left = 1,

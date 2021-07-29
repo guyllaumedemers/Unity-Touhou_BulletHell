@@ -29,7 +29,7 @@ public static class CustomDotTween
         while (time < animation)
         {
             time += Time.deltaTime;
-            rect.anchoredPosition = new Vector2(ix + Mathf.PingPong(Time.time, 700.0f) * dir, 0.0f);
+            rect.anchoredPosition = new Vector2(ix + Mathf.PingPong(Time.time, 10.0f) * dir, 0.0f);
             yield return null;
             dir *= -1;
         }
