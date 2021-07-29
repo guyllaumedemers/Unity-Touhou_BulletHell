@@ -36,6 +36,8 @@ public static class Globals
 
     #region Global values
     public static float fps = 1 / 60;
+    public static float blinkingTime = 0.1f;
+    public static float widgetTime = 0.1f;
     public static float trimmingInterval = 2.0f;
     public static float minWPDist = 0.1f;
     public static float idleTime = 0.5f;

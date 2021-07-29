@@ -7,7 +7,7 @@ public class UIManager : SingletonMono<UIManager>, IFlow
 
     #region UI Functions
 
-    public void Startgame() => LoadScene(1);
+    public void Startgame() => LoadScene(1);            //TODO Should be loading the loading scene and then go to game scene -> also should wait for the blinking time to complete
 
     public void ExitGame() => Application.Quit();       //TODO Add a dialogue box so the player can config if he wants to exit the game
 
