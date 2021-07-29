@@ -14,6 +14,6 @@ public class BlinkingUI : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         StopCoroutine("BlinkingUI");
-        StartCoroutine(CustomDotTween.BlinkingUI(text, Globals.blinkingTime, 20));
+        StartCoroutine(CustomDotTween.BlinkingUI(text, Globals.blinkingTime, 5));
     }
 }

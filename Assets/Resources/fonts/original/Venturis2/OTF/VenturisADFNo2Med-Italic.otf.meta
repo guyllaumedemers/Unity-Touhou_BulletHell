@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 593b8b6323149cf439efac8f90c10475
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Venturis ADF No2 Med
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b3c7c4068c73925409cb038c3beb3455, type: 3}
+  - {fileID: 12800000, guid: a668caba10b352c4193238a5ec17e20a, type: 3}
+  - {fileID: 12800000, guid: 594a1445ce8e8294d9b94950255594bb, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: c877ab9da548d0346b45ccac91e36e1e
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Venturis ADF No2
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b502aeff268f82749b29144d2eb9b79f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
