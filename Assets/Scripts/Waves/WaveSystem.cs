@@ -57,7 +57,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
             SpawningPosEnum spEnum = (SpawningPosEnum)UpdateDir(false);
             IMoveable move_behaviour = (curr_dir % variable_mod == 0) ? (IMoveable)new MoveableUnitCubicBezierB() : new MoveableUnitLinearBezierB();
 
-            Launch<Unit>(waveDict[level].First().Item1, move_behaviour, WaypointSystem.Instance.GetWaypoints((curr_dir % variable_mod == 0), level, spEnum),
+            Launch<Unit>(waveDict[level].First().Item1, move_behaviour, WaypointSystem.GetWaypoints((curr_dir % variable_mod == 0), level, spEnum),
                 BulletTypeEnum.Circle, spEnum, waveDict[level].First().Item2, Globals.initializationInterval);
             RemoveEntry();
             yield return new WaitForSeconds(Globals.waveInterval);
@@ -105,7 +105,7 @@ public class WaveSystem : SingletonMono<WaveSystem>
         curr_dir = startingDir;
         pivot_point = pivot;
         variable_mod = var_mod;
-        waveDict = Tool.XMLDeserialization_KVPTuple(Globals.XMLLevelinfo);
+        //waveDict = Tool.XMLDeserialization_KVPTuple(Globals.XMLLevelinfo);
     }
 
     #endregion

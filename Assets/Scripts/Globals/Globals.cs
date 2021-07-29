@@ -75,6 +75,7 @@ public static class Globals
     #endregion
 
     #region Dynamic Loading
+    public static string waypointTable = "Waypoint";
     public static string boss = "Boss";
     public static string sunflowerFairy = "SunflowerFairy";
     public static string zombieFairy = "ZombieFairy";

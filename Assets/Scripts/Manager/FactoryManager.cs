@@ -18,7 +18,7 @@ public class FactoryManager : SingletonMono<FactoryManager>, IFactoryAbs, IFlow
             goto SKIP;
         }
         bullet = Utilities.InstanciateType<T>(ResourcesLoader.GetPrefab(FactoryBullets, type), parent, pos) as IProduct;
-        (bullet as Bullet).FillData(DatabaseHandler.RetrieveTableEntries<BulletDataContainer>(SQLTable.Bullet.ToString()).Where(x => x.bulletType.ToString().Equals(type)).FirstOrDefault());
+        (bullet as Bullet).FillData(DatabaseHandler.RetrieveTableEntries<BulletDataContainer>(SQLTableEnum.Bullet.ToString()).Where(x => x.bulletType.ToString().Equals(type)).FirstOrDefault());
     SKIP:
         BulletManager.Instance.Add(type, bullet);
         return bullet;

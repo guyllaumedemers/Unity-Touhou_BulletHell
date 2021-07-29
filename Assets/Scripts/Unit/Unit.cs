@@ -89,7 +89,7 @@ public class Unit : MonoBehaviour, IDamageable
     {
         spriteRen = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        unitData = DatabaseHandler.RetrieveTableEntries<UnitDataContainer>(SQLTable.UnitData.ToString()).Where(x => x.unitType.ToString().Equals(type)).FirstOrDefault();
+        unitData = DatabaseHandler.RetrieveTableEntries<UnitDataContainer>(SQLTableEnum.UnitData.ToString()).Where(x => x.unitType.ToString().Equals(type)).FirstOrDefault();
         unitData.SetMoveableAction(move_behaviour);
         unitData.SetWaypoints(waypoints);
         bezierCurveT = default;
