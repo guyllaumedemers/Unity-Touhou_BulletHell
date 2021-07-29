@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -102,7 +101,6 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
         inputs.Player.Fire.started += ctx => StartFiring();     // Register the rapid fire for a mouse press
         inputs.Player.Fire.canceled += ctx => StopFiring();     // Stop the coroutine from firing
         unitData = DatabaseHandler.RetrieveTableEntries<UnitDataContainer>(SQLTableEnum.UnitData.ToString()).Where(x => x.unitType.ToString().Equals(UnitTypeEnum.Player.ToString())).FirstOrDefault();
-        Debug.Log(unitData.health);
         animator = GetComponent<Animator>();
         sprRen = GetComponent<SpriteRenderer>();
         orbParent = transform.GetChild(0).GetComponent<Transform>();

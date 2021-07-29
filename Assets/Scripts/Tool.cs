@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,5 +31,15 @@ public static class Tool
             wrapper.Add(Tool.UnityVec3(arr[i]));
         }
         return wrapper.ToArray();
+    }
+
+    public static Queue<Tuple<string, int>> EncapsulateInQueue(Tuple<string, int>[] arr)
+    {
+        Queue<Tuple<string, int>> myQ = new Queue<Tuple<string, int>>();
+        for (int i = 0; i < arr.Length; ++i)
+        {
+            myQ.Enqueue(arr[i]);
+        }
+        return myQ;
     }
 }
