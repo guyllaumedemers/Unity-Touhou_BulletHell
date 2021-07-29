@@ -42,6 +42,8 @@ public static class DatabaseHandler
                                 myOBJ.Add(vwrapper as T);
                                 break;
                             case SQLTableEnum.Spline:
+                                Tool.Vector3Wrapper spline = new Tool.Vector3Wrapper(reader.GetFloat(1), reader.GetFloat(2), 0.0f);
+                                myOBJ.Add(spline as T);
                                 break;
                             default:
                                 throw new System.InvalidOperationException();
