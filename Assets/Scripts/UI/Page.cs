@@ -15,7 +15,7 @@ public class Page : MonoBehaviour
     {
         if (useAnimation)
         {
-            animator.SetBool("on", on);
+            animator.SetBool("FLAG_ON", on);
             UnRegisterCoroutine();
             RegisterCoroutine(on);
         }
@@ -36,7 +36,7 @@ public class Page : MonoBehaviour
             yield return null;
         }
         //Wait for the animator to finish his animation
-        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
+        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.20f)
         {
             yield return null;
         }

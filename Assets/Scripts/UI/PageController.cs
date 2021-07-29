@@ -128,7 +128,13 @@ public class PageController : SingletonMono<PageController>, IFlow
     public void InitializationMethod()
     {
         RegisterAllPages();
-        foreach (var page in pages) TurnPageOff(page.type);
+        foreach (var page in pages)
+        {
+            if (!page.type.Equals(PageTypeEnum.None))
+            {
+                page.gameObject.SetActive(false);
+            }
+        }
         if (entryPage != PageTypeEnum.None) TurnPageOn(entryPage);
     }
 
