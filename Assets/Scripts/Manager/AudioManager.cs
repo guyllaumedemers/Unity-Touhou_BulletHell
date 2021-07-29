@@ -40,6 +40,16 @@ public class AudioManager : SingletonMono<AudioManager>, IFlow
         SetChanel(Globals.MenuSFX_Channel, PercentTo(se_volume));
     }
 
+    public void DisableMixer()
+    {
+        //TODO
+    }
+
+    public void EnableMixer()
+    {
+        //TODO
+    }
+
     public void OnSceneLoading()
     {
         //TODO Retrieve the values for the main_volume and se_volume from the XML file upon scene loading / swaping scene
@@ -48,7 +58,7 @@ public class AudioManager : SingletonMono<AudioManager>, IFlow
     //TO Avoid clicking a button and returning on the previous panel directly on another button triggering the other SFX
     public void TriggerMouseSFX()
     {
-        if (Time.time - lastTime > 0.5f)
+        if (Time.time - lastTime > 0.2f)
         {
             AudioController.Instance.Play(AudioTypeEnum.MenuSFX_01);
             lastTime = Time.time;

@@ -29,7 +29,7 @@ public class EntryPoint : SingletonMono<EntryPoint>
         StartCoroutine(ObjectPool.Trim());
         GameManagerFunctionWrapper.InitializeGame();
         // level selection should be done from menu
-        StartCoroutine(Utilities.Timer(Globals.waveInterval, () => { StartCoroutine(WaveSystem.Instance.StartWave(default, (int)SpawningPosEnum.None, (int)SpawningPosEnum.Pivot, 4)); }));
+        StartCoroutine(Utilities.Timer(Globals.waveInterval, () => { StartCoroutine(WaveSystem.Instance.StartWave(default, (int)DirectionEnum.None, (int)DirectionEnum.Pivot, 4)); }));
     }
 
     private void Update()
