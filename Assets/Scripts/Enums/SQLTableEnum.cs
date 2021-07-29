@@ -3,5 +3,6 @@
     Bullet,
     UnitData,
     Wave,
-    Waypoint
+    Waypoint,
+    Spline
 }

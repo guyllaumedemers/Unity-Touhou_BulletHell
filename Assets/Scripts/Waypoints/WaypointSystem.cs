@@ -6,7 +6,7 @@ public static class WaypointSystem
 
     public static Vector3[] GetWaypoints(bool moveInterfaceSelectIsCubic, int level, SpawningPosEnum spEnum)
     {
-        if (moveInterfaceSelectIsCubic) return GetLevelWPpos(level, SpawningPosEnum.None);
+        if (moveInterfaceSelectIsCubic) return GetSplineWP(level);
         else return GetLevelWPpos(level, spEnum);
     }
 
@@ -18,6 +18,11 @@ public static class WaypointSystem
     {
         return Tool.CustomVec3Unwrapper(DatabaseHandler.RetrieveTableEntries<Tool.Vector3Wrapper>(Globals.waypointTable,
             $"WHERE Id = {level} AND Direction = '{spEnum.ToString()}'"));
+    }
+
+    private static Vector3[] GetSplineWP(int level)
+    {
+        return Tool.CustomVec3Unwrapper(DatabaseHandler.RetrieveTableEntries<Tool.Vector3Wrapper>(Globals.splineTable, $"WHERE Id = {level}"));
     }
 
     #endregion

@@ -50,20 +50,6 @@ public static class Globals
     public static Vector3 unit_offset = new Vector3(0.0f, 1.4f, 0.0f);
     #endregion
 
-    #region XML File Path
-    public static string XMLGameinfo = "GameInfo.xml";
-    public static string XMLLevelinfo = "LevelInfo.xml";
-    #endregion
-
-    #region XML Parsing values
-    public static int lsposParse = 0;
-    public static int rsposParse = 3;
-    public static int bothsposParse = 6;
-    public static int splinesposParse = 12;
-    public static int maxlengthParse = 3;
-    public static int maxlengthsplineParse = 4;
-    #endregion
-
     #region Tags
     public static string waypoint = "Waypoint";
     public static string optionMenuTag = "Options";
@@ -77,6 +63,7 @@ public static class Globals
     #region Dynamic Loading
     public static string waypointTable = "Waypoint";
     public static string waveTable = "Wave";
+    public static string splineTable = "Spline";
     public static string boss = "Boss";
     public static string sunflowerFairy = "SunflowerFairy";
     public static string zombieFairy = "ZombieFairy";

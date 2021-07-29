@@ -41,6 +41,8 @@ public static class DatabaseHandler
                                 Tool.Vector3Wrapper vwrapper = new Tool.Vector3Wrapper(reader.GetFloat(2), reader.GetFloat(3), 0.0f);
                                 myOBJ.Add(vwrapper as T);
                                 break;
+                            case SQLTableEnum.Spline:
+                                break;
                             default:
                                 throw new System.InvalidOperationException();
                         }
