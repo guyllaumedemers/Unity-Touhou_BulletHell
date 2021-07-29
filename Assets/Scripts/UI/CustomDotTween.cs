@@ -8,7 +8,6 @@ public static class CustomDotTween
 
     public static IEnumerator BlinkingUI(TextMeshProUGUI text, float animation, int blinkPerSecond)
     {
-        Color last = text.color;
         float time = 0.0f;
         bool next = true;
         while (time < animation)
@@ -18,7 +17,7 @@ public static class CustomDotTween
             yield return new WaitForSeconds(animation / blinkPerSecond);
             next = !next;
         }
-        text.color = UpdateColor(last);
+        text.color = Color.white;
     }
 
     public static IEnumerator WidgetUI(RectTransform rect, float animation)
