@@ -44,7 +44,6 @@ and prioritize Composition over Inheritance.
   * Observer Pattern (*will have to implement an event system to trigger animation when limit scores are reach*)
 
 #### Tools
-  * XML Serialization (*Currently manage position in a file called : GameInfo and the instanciation of units inside the file : LevelInfo -> Both are accessible at the solution level*)
   * SQLite Database Handler (*Manage the access to the database, allow for dynamic loading of data - will also handle the dynamic loading for the waypoint system and the wave system in the futur - allowing to get rid of the XML Serialization*)
 
 ## Resources
