@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using Mono.Data.Sqlite;
@@ -33,6 +34,8 @@ public static class DatabaseHandler
                                 myOBJ.Add(udc as T);
                                 break;
                             case SQLTableEnum.Wave:
+                                Tuple<string, int> tuple = new Tuple<string, int>(reader.GetString(1), reader.GetInt32(2));
+                                myOBJ.Add(tuple as T);
                                 break;
                             case SQLTableEnum.Waypoint:
                                 Tool.Vector3Wrapper vwrapper = new Tool.Vector3Wrapper(reader.GetFloat(2), reader.GetFloat(3), 0.0f);
