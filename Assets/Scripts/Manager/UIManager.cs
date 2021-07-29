@@ -17,7 +17,7 @@ public class UIManager : SingletonMono<UIManager>, IFlow
 
     public void ShowOptionsMenu()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0) PageController.Instance.TurnPageOff(PageTypeEnum.Menu, PageTypeEnum.OptionMenu);
+        if (SceneManager.GetActiveScene().buildIndex == 0) PageController.Instance.TurnPageOff(PageTypeEnum.Menu, PageTypeEnum.OptionMenu, true);
         else PageController.Instance.TurnPageOff(PageTypeEnum.PauseMenu, PageTypeEnum.OptionMenu);
     }
 

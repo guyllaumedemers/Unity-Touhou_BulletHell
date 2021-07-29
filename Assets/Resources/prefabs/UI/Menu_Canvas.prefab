@@ -1193,6 +1193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1694744020260898753}
   - component: {fileID: 1694744020260898754}
+  - component: {fileID: 734038579}
   m_Layer: 5
   m_Name: Pause Panel
   m_TagString: Page
@@ -1234,7 +1235,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
-  useAnimation: 0
+  useAnimation: 1
+--- !u!95 &734038579
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694744020260898752}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa8ef6432fe3f2e44b01cf84002ae2fe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1694744020264715353
 GameObject:
   m_ObjectHideFlags: 0
@@ -4751,6 +4771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1694744021095909206}
   - component: {fileID: 1694744021095909207}
+  - component: {fileID: 1570222126}
   m_Layer: 5
   m_Name: Main Menu Panel
   m_TagString: Page
@@ -4792,7 +4813,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  useAnimation: 0
+  useAnimation: 1
+--- !u!95 &1570222126
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694744021095909205}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa8ef6432fe3f2e44b01cf84002ae2fe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1694744021109900807
 GameObject:
   m_ObjectHideFlags: 0
@@ -8174,6 +8214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1694744021831278907}
   - component: {fileID: 1694744021831278900}
+  - component: {fileID: 1036388075}
   m_Layer: 5
   m_Name: Config Panel
   m_TagString: Page
@@ -8215,7 +8256,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 4
-  useAnimation: 0
+  useAnimation: 1
+--- !u!95 &1036388075
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694744021831278906}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa8ef6432fe3f2e44b01cf84002ae2fe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1694744021838494632
 GameObject:
   m_ObjectHideFlags: 0
