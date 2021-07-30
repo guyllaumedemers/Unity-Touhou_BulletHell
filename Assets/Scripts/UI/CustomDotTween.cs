@@ -39,7 +39,6 @@ public static class CustomDotTween
     {
         float time = 0.0f;
         float dir = end - start > 0.0f ? 1.0f : -1.0f;
-        Debug.Log($"{rect.position.x } {end}");
         float ix = rect.position.x + (end - start);
         while (time < animationTime)
         {
