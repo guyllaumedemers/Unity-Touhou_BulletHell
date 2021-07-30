@@ -17,21 +17,4 @@ public static class PlayerConfig
         volumeTxt.text = value.ToString() + "%";
         return value;
     }
-
-    public static bool SetWindow(Button clicked)
-    {
-        //TODO brainstorm about this
-        return false;
-    }
-
-    public static bool Mute(Button clicked)
-    {
-        //TODO brainstorm about this
-        return false;
-    }
-
-    public static void Reset()
-    {
-
-    }
 }

@@ -1,5 +1,7 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : SingletonMono<UIManager>, IFlow
 {
@@ -46,19 +48,50 @@ public class UIManager : SingletonMono<UIManager>, IFlow
         //TODO
     }
 
-    public void FullScreen()
+    //HINT Fullscreen function and Windowed get passed the opposite button Text component so that upon click the other button text gets grey out
+    public void FullScreen(TextMeshProUGUI text)
     {
-        //TODO
+        if (!text)
+        {
+            LogWarning("There is no text assigned to the Fullscreen Event");
+            return;
+        }
+        Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+        text.color = Color.grey;
     }
 
-    public void Windowed()
+    public void Windowed(TextMeshProUGUI text)
     {
-        //TODO
+        if (!text)
+        {
+            LogWarning("There is no text assigned to the Fullscreen Event");
+            return;
+        }
+        Screen.fullScreenMode = FullScreenMode.Windowed;
+        text.color = Color.grey;
     }
 
-    public void GoBackMainMenu() => LoadScene(0);       // maybe think about saving of having periodic save
+    public void GoBackMainMenu()
+    {
+        //TODO Save Option - Pop Up Menu Save option
+        LoadScene(0);
+    }
 
-    private void LoadScene(int index) => SceneManager.LoadScene(index);
+    private void LoadScene(int index)
+    {
+        if (index < 0 || index > SceneManager.sceneCount)
+        {
+            LogWarning("Scene Index invalid");
+            return;
+        }
+        SceneManager.LoadScene(index);
+    }
+
+    #endregion
+
+    #region private functions
+
+    private void LogWarning(string msg) => Debug.LogWarning("[UI Manager] " + msg);
 
     #endregion
 
