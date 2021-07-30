@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -14,8 +15,9 @@ public class SlidingUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
             LogWarning("There is no RectTransform attach to the script");
             return;
         }
-        xMin = descriptionRect.anchorMin.x;
-        xMax = descriptionRect.anchorMax.x;
+
+        xMin = Camera.main.WorldToScreenPoint(Utilities.WorldSpaceAnchors(descriptionRect)[0]).x;
+        xMax = Camera.main.WorldToScreenPoint(Utilities.WorldSpaceAnchors(descriptionRect)[3]).x;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -32,8 +34,9 @@ public class SlidingUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
             LogWarning("There is no RectTransform attach to the script");
             return;
         }
-        StopCoroutine("SlidingUI");
-        StartCoroutine(CustomDotTween.SlidingUI(descriptionRect, xMax, xMin, 0.1f));
+
+        StopCoroutine(typeof(CustomDotTween).GetMethods().Where(x => x.Name == "SlidingUI").FirstOrDefault().ToString());
+        StartCoroutine(CustomDotTween.SlidingUI(descriptionRect, xMax, xMin, Globals.slidingTime));
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -43,8 +46,9 @@ public class SlidingUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
             LogWarning("There is no RectTransform attach to the script");
             return;
         }
-        StopCoroutine("SlidingUI");
-        StartCoroutine(CustomDotTween.SlidingUI(descriptionRect, xMin, xMax, 0.1f));
+
+        StopCoroutine(typeof(CustomDotTween).GetMethods().Where(x => x.Name == "SlidingUI").FirstOrDefault().ToString());
+        StartCoroutine(CustomDotTween.SlidingUI(descriptionRect, xMin, xMax, Globals.slidingTime));
     }
 
     private void LogWarning(string msg) => Debug.LogWarning("[Sliding UI] " + msg);

@@ -41,6 +41,7 @@ public static class Globals
     public static float fps = 1 / 60;
     public static float blinkingTime = 0.05f;
     public static float widgetTime = 0.1f;
+    public static float slidingTime = 0.01f;
     public static float nextSFXTime = 0.2f;
     public static float trimmingInterval = 2.0f;
     public static float minWPDist = 0.1f;
