@@ -24,13 +24,13 @@ public static class CustomDotTween
     {
         float ix = rect.anchoredPosition.x;
         float time = 0.0f;
-        float dir = 1;
+        float dir = 1.0f;
         while (time < animation)
         {
             time += Time.deltaTime;
             rect.anchoredPosition = new Vector2(ix + Mathf.PingPong(Time.time, 10.0f) * dir, 0.0f);
-            yield return null;
-            dir *= -1;
+            yield return new WaitForEndOfFrame();
+            dir *= -1.0f;
         }
         rect.anchoredPosition = new Vector2(ix, rect.anchoredPosition.y);
     }
@@ -38,13 +38,16 @@ public static class CustomDotTween
     public static IEnumerator SlidingUI(RectTransform rect, float start, float end, float animationTime)
     {
         float time = 0.0f;
-        float dir = end - start >= 0 ? 1 : -1;
+        float dir = end - start > 0.0f ? 1.0f : -1.0f;
+        Debug.Log($"{rect.position.x } {end}");
+        float ix = rect.position.x + (end - start);
         while (time < animationTime)
         {
             time += Time.deltaTime;
-            rect.position = rect.position + (new Vector3(Mathf.Lerp(start, end, time / animationTime), 0.0f, 0.0f) * dir);
-            yield return null;
+            rect.position += (new Vector3(Mathf.Lerp(start, end, time / animationTime), 0.0f, 0.0f) * dir);
+            yield return new WaitForEndOfFrame();
         }
+        rect.position = new Vector3(ix, rect.position.y, rect.position.z);
     }
 
     #endregion
