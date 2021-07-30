@@ -27,6 +27,7 @@ public static class Globals
     public static string AnimationSFX_Channel = "Animation Sound Effects";
     public static string Dialogue_Channel = "Dialogues";
     public static string Main_Channel = "Master";
+    public static string SE_Channel = "SE";
     #endregion
 
     #region Audio values

@@ -6,11 +6,11 @@ public class AudioManager : SingletonMono<AudioManager>, IFlow
 {
     public AudioMixer mixer;
     private AudioManager() { }
-    TextMeshProUGUI main_volumeTxt;
-    TextMeshProUGUI se_volumeTxt;
-    int main_volume;
-    int se_volume;
-    float lastTime;
+    private TextMeshProUGUI main_volumeTxt;
+    private TextMeshProUGUI se_volumeTxt;
+    private int main_volume;
+    private int se_volume;
+    private float lastTime;
 
     #region Audio Manager Functions
 
@@ -60,6 +60,8 @@ public class AudioManager : SingletonMono<AudioManager>, IFlow
         text.color = Color.grey;
     }
 
+    public void SaveAudio() => PlayerConfig.SetPlayerPref(new float[] { main_volume, se_volume }, new string[] { Globals.Main_Channel, Globals.SE_Channel });
+
     public void OnSceneLoading()
     {
         //TODO Retrieve the values for the main_volume and se_volume from the XML file upon scene loading / swaping scene
@@ -77,11 +79,59 @@ public class AudioManager : SingletonMono<AudioManager>, IFlow
 
     public void TriggerButtonClickSFX() => AudioController.Instance.Play(AudioTypeEnum.MenuSFX_02);
 
-    private float PercentTo(int value) => (value * Globals.channel_lowestvalue / Globals.max_percent) - Globals.channel_lowestvalue;
-
     #endregion
 
     #region private functions
+
+    private void LoadPlayerPref()
+    {
+        main_volume = (int)PlayerPrefs.GetFloat(Globals.Main_Channel);
+        se_volume = (int)PlayerPrefs.GetFloat(Globals.SE_Channel);
+    }
+
+    #region UI Management for Audio - HANDLING EXCEPTION - SHOULD BE DECOUPLED FROM THE AUDIO MANAGEMENT
+
+    private float PercentTo(int value) => (value * Globals.channel_lowestvalue / Globals.max_percent) - Globals.channel_lowestvalue;
+
+    private void RetrieveTags()
+    {
+        main_volumeTxt = GameObject.FindGameObjectWithTag(Globals.mainVolumeTag).GetComponent<TextMeshProUGUI>();
+        se_volumeTxt = GameObject.FindGameObjectWithTag(Globals.sfxVolumeTag).GetComponent<TextMeshProUGUI>();
+    }
+
+
+    private void SetTextToAudioComponentsValues(float[] values, params TextMeshProUGUI[] text)
+    {
+        if (values.Length != text.Length)
+        {
+            LogWarning("The number of entries in the value array doesnt match the entries in the key array");
+            return;
+        }
+
+        for (int i = 0; i < values.Length; ++i)
+        {
+            InitializeOnStartup(text[i], values[i]);
+        }
+    }
+    private void InitializeOnStartup(TextMeshProUGUI text, float value) => text.text = value.ToString() + "%";
+
+    #endregion
+
+    private void SetAudioComponentsValues(float[] values, string[] channels)
+    {
+        if (values.Length != channels.Length)
+        {
+            LogWarning("The number of entries in the value array doesnt match the entries in the key array");
+            return;
+        }
+
+        for (int i = 0; i < values.Length; ++i)
+        {
+            SetChanel(channels[i], values[i]);
+        }
+    }
+
+    private void SetChanel(string channel, float value) => mixer.SetFloat(channel, value);
 
     private void LogWarning(string msg) => Debug.LogWarning("[Audio Manager] " + msg);
 
@@ -94,48 +144,19 @@ public class AudioManager : SingletonMono<AudioManager>, IFlow
     public void PreIntilizationMethod()
     {
         AudioController.Instance.PreIntilizationMethod();
-        SetAudio();
+        LoadPlayerPref();
         RetrieveTags();
-        SetText();
+        SetTextToAudioComponentsValues(new float[] { main_volume, se_volume }, new TextMeshProUGUI[] { main_volumeTxt, se_volumeTxt });
         lastTime = Time.time;
     }
 
     public void InitializationMethod()
     {
         AudioController.Instance.InitializationMethod();
-        //HINT : Mixer is not accessible in the Awake function when trying to set the audio via function call
-        //It has to be done in the start function
-        SetChanel(Globals.ST_Channel, PercentTo(main_volume));
-        SetChanel(Globals.MenuSFX_Channel, PercentTo(se_volume));
+        SetAudioComponentsValues(new float[] { PercentTo(main_volume), PercentTo(se_volume) }, new string[] { Globals.ST_Channel, Globals.MenuSFX_Channel });
     }
 
     public void UpdateMethod() { }
-
-    #endregion
-
-    #region Audio Manager Initialization Functions
-
-    private void SetAudio()
-    {
-        main_volume = Globals.temp_start_percent;           // TEMP : should be loaded from file
-        se_volume = Globals.temp_start_percent - 10;        // TEMP
-    }
-
-    private void RetrieveTags()
-    {
-        main_volumeTxt = GameObject.FindGameObjectWithTag(Globals.mainVolumeTag).GetComponent<TextMeshProUGUI>();
-        se_volumeTxt = GameObject.FindGameObjectWithTag(Globals.sfxVolumeTag).GetComponent<TextMeshProUGUI>();
-    }
-
-    private void InitializeOnStartup(TextMeshProUGUI text, int value) => text.text = value.ToString() + "%";
-
-    private void SetText()
-    {
-        InitializeOnStartup(main_volumeTxt, main_volume);
-        InitializeOnStartup(se_volumeTxt, se_volume);
-    }
-
-    private void SetChanel(string channel, float value) => mixer.SetFloat(channel, value);
 
     #endregion
 }

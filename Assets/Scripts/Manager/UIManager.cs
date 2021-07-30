@@ -7,7 +7,7 @@ public class UIManager : SingletonMono<UIManager>, IFlow
 {
     private UIManager() { }
 
-    #region UI Functions
+    #region public functions
 
     public void Startgame() => LoadScene(1);            //TODO Should be loading the loading scene and then go to game scene -> also should wait for the blinking time to complete
 
