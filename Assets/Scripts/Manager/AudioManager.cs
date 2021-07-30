@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -8,33 +9,33 @@ public class AudioManager : SingletonMono<AudioManager>, IFlow
     private AudioManager() { }
     private TextMeshProUGUI main_volumeTxt;
     private TextMeshProUGUI se_volumeTxt;
-    private int main_volume;
-    private int se_volume;
+    private float main_volume;
+    private float se_volume;
     private float lastTime;
 
     #region Audio Manager Functions
 
     public void IncrementMainVolume()
     {
-        main_volume = PlayerConfig.IncrementVolume(main_volumeTxt, main_volume);
+        main_volume = IncrementVolume(main_volumeTxt, (int)main_volume);
         SetChanel(Globals.ST_Channel, PercentTo(main_volume));
     }
 
     public void DecrementMainVolume()
     {
-        main_volume = PlayerConfig.DecrementVolume(main_volumeTxt, main_volume);
+        main_volume = DecrementVolume(main_volumeTxt, (int)main_volume);
         SetChanel(Globals.ST_Channel, PercentTo(main_volume));
     }
 
     public void IncrementSFXVolume()
     {
-        se_volume = PlayerConfig.IncrementVolume(se_volumeTxt, se_volume);
+        se_volume = IncrementVolume(se_volumeTxt, (int)se_volume);
         SetChanel(Globals.MenuSFX_Channel, PercentTo(se_volume));
     }
 
     public void DecrementSFXVolume()
     {
-        se_volume = PlayerConfig.DecrementVolume(se_volumeTxt, se_volume);
+        se_volume = DecrementVolume(se_volumeTxt, (int)se_volume);
         SetChanel(Globals.MenuSFX_Channel, PercentTo(se_volume));
     }
 
@@ -83,15 +84,17 @@ public class AudioManager : SingletonMono<AudioManager>, IFlow
 
     #region private functions
 
+    //TODO Find a way to make this more parametrize -> currently cannot pass 2 arrays since the values updated wont translate to the class variable of main_volume and se_volume
+    //since they would be pass as copy and not by reference AND also since params cannot handle ref params... which sucks
     private void LoadPlayerPref()
     {
-        main_volume = (int)PlayerPrefs.GetFloat(Globals.Main_Channel);
-        se_volume = (int)PlayerPrefs.GetFloat(Globals.SE_Channel);
+        main_volume = PlayerPrefs.GetFloat(Globals.Main_Channel);
+        se_volume = PlayerPrefs.GetFloat(Globals.SE_Channel);
     }
 
     #region UI Management for Audio - HANDLING EXCEPTION - SHOULD BE DECOUPLED FROM THE AUDIO MANAGEMENT
 
-    private float PercentTo(int value) => (value * Globals.channel_lowestvalue / Globals.max_percent) - Globals.channel_lowestvalue;
+    private float PercentTo(float value) => (value * Globals.channel_lowestvalue / Globals.max_percent) - Globals.channel_lowestvalue;
 
     private void RetrieveTags()
     {
@@ -114,6 +117,20 @@ public class AudioManager : SingletonMono<AudioManager>, IFlow
         }
     }
     private void InitializeOnStartup(TextMeshProUGUI text, float value) => text.text = value.ToString() + "%";
+
+    public int IncrementVolume(TextMeshProUGUI volumeTxt, int value)
+    {
+        if (++value >= 100) value = 100;
+        volumeTxt.text = value.ToString() + "%";
+        return value;
+    }
+
+    public int DecrementVolume(TextMeshProUGUI volumeTxt, int value)
+    {
+        if (--value <= 0) value = 0;
+        volumeTxt.text = value.ToString() + "%";
+        return value;
+    }
 
     #endregion
 
