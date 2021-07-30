@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 4246053923608228558}
   - component: {fileID: 4246053923608228553}
   - component: {fileID: 4246053923608228554}
+  - component: {fileID: 1774359777}
   m_Layer: 5
   m_Name: Off Button
   m_TagString: Untagged
@@ -342,10 +343,10 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: DisableMixer
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 4246053925639447623}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -373,6 +374,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd03fd6e7ca3d634293bd9ef9fea34cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1774359777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246053923608228556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c47cdc62aac953489989b338616f2eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4246053923627710377
@@ -832,6 +845,7 @@ GameObject:
   - component: {fileID: 4246053923731378334}
   - component: {fileID: 4246053923731378329}
   - component: {fileID: 4246053923731378330}
+  - component: {fileID: 793318523}
   m_Layer: 5
   m_Name: On Button
   m_TagString: Untagged
@@ -944,10 +958,10 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: EnableMixer
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 4246053923788042166}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -975,6 +989,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd03fd6e7ca3d634293bd9ef9fea34cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &793318523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246053923731378332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c47cdc62aac953489989b338616f2eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4246053923769743205
@@ -8181,6 +8207,7 @@ GameObject:
   - component: {fileID: 4246053925147999817}
   - component: {fileID: 4246053925147999812}
   - component: {fileID: 4246053925147999813}
+  - component: {fileID: 1341674273}
   m_Layer: 5
   m_Name: Fullscreen Button
   m_TagString: Untagged
@@ -8293,10 +8320,10 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: FullScreen
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 4246053923627710379}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8324,6 +8351,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd03fd6e7ca3d634293bd9ef9fea34cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1341674273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246053925147999823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c47cdc62aac953489989b338616f2eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4246053925227473932
@@ -8915,6 +8954,7 @@ GameObject:
   - component: {fileID: 4246053925387481610}
   - component: {fileID: 4246053925387481605}
   - component: {fileID: 4246053925387481606}
+  - component: {fileID: 266249336}
   m_Layer: 5
   m_Name: Window Button
   m_TagString: Untagged
@@ -9027,10 +9067,10 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: Windowed
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 4246053924761346796}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9058,6 +9098,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd03fd6e7ca3d634293bd9ef9fea34cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &266249336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246053925387481608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c47cdc62aac953489989b338616f2eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4246053925396775927

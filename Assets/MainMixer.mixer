@@ -154,6 +154,8 @@ AudioMixerController:
     name: Dialogues
   - guid: 1e6850192afa7dc40975a1d28e2a5001
     name: Firing Sound Effects
+  - guid: 2a71b99c2062e9f41a9aa95dd9f7b508
+    name: Master
   - guid: 1b12652c5ae20194e9bee7096b733e36
     name: Menuing Sound Effects
   - guid: 019049d082fe20746ad3c280e0b9cec5

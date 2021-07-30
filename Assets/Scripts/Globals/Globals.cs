@@ -26,10 +26,12 @@ public static class Globals
     public static string FiringSFX_Channel = "Firing Sound Effects";
     public static string AnimationSFX_Channel = "Animation Sound Effects";
     public static string Dialogue_Channel = "Dialogues";
+    public static string Main_Channel = "Master";
     #endregion
 
     #region Audio values
     public static int channel_lowestvalue = 80;
+    public static int channel_default = 0;
     public static int max_percent = 100;
     public static int temp_start_percent = 90;
     #endregion
@@ -38,6 +40,7 @@ public static class Globals
     public static float fps = 1 / 60;
     public static float blinkingTime = 0.05f;
     public static float widgetTime = 0.1f;
+    public static float nextSFXTime = 0.2f;
     public static float trimmingInterval = 2.0f;
     public static float minWPDist = 0.1f;
     public static float idleTime = 0.5f;

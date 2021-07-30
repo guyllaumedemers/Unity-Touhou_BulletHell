@@ -1,6 +1,4 @@
-using System.Linq;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -40,14 +38,26 @@ public class AudioManager : SingletonMono<AudioManager>, IFlow
         SetChanel(Globals.MenuSFX_Channel, PercentTo(se_volume));
     }
 
-    public void DisableMixer()
+    public void DisableMixer(TextMeshProUGUI text)
     {
-        //TODO
+        if (!text)
+        {
+            LogWarning("There is no text assigned to the Enable Mixer Event");
+            return;
+        }
+        SetChanel(Globals.Main_Channel, -Globals.channel_lowestvalue);
+        text.color = Color.grey;
     }
 
-    public void EnableMixer()
+    public void EnableMixer(TextMeshProUGUI text)
     {
-        //TODO
+        if (!text)
+        {
+            LogWarning("There is no text assigned to the Enable Mixer Event");
+            return;
+        }
+        SetChanel(Globals.Main_Channel, Globals.channel_default);
+        text.color = Color.grey;
     }
 
     public void OnSceneLoading()
@@ -58,7 +68,7 @@ public class AudioManager : SingletonMono<AudioManager>, IFlow
     //TO Avoid clicking a button and returning on the previous panel directly on another button triggering the other SFX
     public void TriggerMouseSFX()
     {
-        if (Time.time - lastTime > 0.2f)
+        if (Time.time - lastTime > Globals.nextSFXTime)
         {
             AudioController.Instance.Play(AudioTypeEnum.MenuSFX_01);
             lastTime = Time.time;
@@ -68,6 +78,12 @@ public class AudioManager : SingletonMono<AudioManager>, IFlow
     public void TriggerButtonClickSFX() => AudioController.Instance.Play(AudioTypeEnum.MenuSFX_02);
 
     private float PercentTo(int value) => (value * Globals.channel_lowestvalue / Globals.max_percent) - Globals.channel_lowestvalue;
+
+    #endregion
+
+    #region private functions
+
+    private void LogWarning(string msg) => Debug.LogWarning("[Audio Manager] " + msg);
 
     #endregion
 
