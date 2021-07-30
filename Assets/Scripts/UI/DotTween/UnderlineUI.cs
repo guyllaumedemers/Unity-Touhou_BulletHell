@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UnderlineUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UnderlineUI : MonoBehaviour, IPointerEnterHandler, UnityEngine.EventSystems.IPointerExitHandler
 {
     private TextMeshProUGUI text;
 
