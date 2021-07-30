@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class UnitAnimationBehaviour : IAnimate
+public class UnitAnimationBehaviour : IPointerExitHandler
 {
     public void Animate(Animator animator, SpriteRenderer spr, Vector2 inputs)
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IAnimate
+public interface IPointerExitHandler
 {
     public abstract void Animate(Animator animator, SpriteRenderer spr, Vector2 inputs);
 }

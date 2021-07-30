@@ -10,7 +10,12 @@ public class UIManager : SingletonMono<UIManager>, IFlow
 
     #region public functions
 
-    public void Startgame() => LoadScene(1);            //TODO Should be loading the loading scene and then go to game scene -> also should wait for the blinking time to complete
+    public void Startgame()
+    {
+        //LoadScene(1);            //TODO Should be loading the loading scene and then go to game scene -> also should wait for the blinking time to complete
+        //TODO Character Selection first
+        PageController.Instance.TurnPageOff(PageTypeEnum.Menu, PageTypeEnum.PlayerSelection, true);
+    }
 
     public void ExitGame() => Application.Quit();       //TODO Add a dialogue box so the player can config if he wants to exit the game
 
@@ -77,6 +82,8 @@ public class UIManager : SingletonMono<UIManager>, IFlow
         //TODO Save Option - Pop Up Menu Save option
         LoadScene(0);
     }
+
+    public void LaunchGameScene() => LoadScene(1);
 
     #endregion
 

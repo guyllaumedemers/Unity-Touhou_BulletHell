@@ -13,7 +13,7 @@ public static class CustomDotTween
         while (time < animation)
         {
             time += Time.deltaTime;
-            text.color = UpdateColor(next ? Color.gray : Color.white);
+            text.color = UpdateColor(next ? Color.grey : Color.white);
             yield return new WaitForSeconds(animation / blinkPerSecond);
             next = !next;
         }
@@ -33,6 +33,19 @@ public static class CustomDotTween
             dir *= -1;
         }
         rect.anchoredPosition = new Vector2(ix, rect.anchoredPosition.y);
+    }
+
+    public static IEnumerator SlidingUI(RectTransform rect, float start, float end, float animationTime)
+    {
+        float time = 0.0f;
+        float dir = end - start >= 0 ? 1 : -1;
+        while (time < animationTime)
+        {
+            time += Time.deltaTime;
+            rect.position = rect.position + (new Vector3(Mathf.Lerp(start, end, time / animationTime), 0.0f, 0.0f) * dir);
+            yield return null;
+        }
+        Debug.Log($"Description {rect.position}");
     }
 
     #endregion
