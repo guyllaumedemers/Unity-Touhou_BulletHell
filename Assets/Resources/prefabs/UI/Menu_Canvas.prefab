@@ -342,7 +342,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: DisableMixer
+        m_MethodName: EnableMixer
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 4246053925639447623}
@@ -848,7 +848,7 @@ GameObject:
   - component: {fileID: 793318523}
   m_Layer: 5
   m_Name: On Button
-  m_TagString: Untagged
+  m_TagString: OnStartupDefault
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -957,7 +957,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: EnableMixer
+        m_MethodName: DisableMixer
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 4246053923788042166}
@@ -8957,7 +8957,7 @@ GameObject:
   - component: {fileID: 266249336}
   m_Layer: 5
   m_Name: Window Button
-  m_TagString: Untagged
+  m_TagString: OnStartupDefault
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

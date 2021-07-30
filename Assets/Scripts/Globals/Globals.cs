@@ -64,6 +64,7 @@ public static class Globals
     public static string mainVolumeTag = "MainVolume";
     public static string sfxVolumeTag = "SFXVolume";
     public static string page = "Page";
+    public static string onStartupDefault = "OnStartupDefault";
     #endregion
 
     #region Dynamic Loading
