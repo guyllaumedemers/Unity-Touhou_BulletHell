@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -77,6 +78,19 @@ public class UIManager : SingletonMono<UIManager>, IFlow
         LoadScene(0);
     }
 
+    #endregion
+
+    #region private functions
+
+    private void LoadUIElementsDefault()
+    {
+        TextMeshProUGUI[] textTodefault = GameObject.FindGameObjectsWithTag(Globals.onStartupDefault).Select(x => x.GetComponentInChildren<TextMeshProUGUI>()).ToArray();
+        for (int i = 0; i < textTodefault.Length; ++i)
+        {
+            textTodefault[i].color = Color.grey;
+        }
+    }
+
     private void LoadScene(int index)
     {
         if (index < 0 || index > SceneManager.sceneCount)
@@ -87,17 +101,17 @@ public class UIManager : SingletonMono<UIManager>, IFlow
         SceneManager.LoadScene(index);
     }
 
-    #endregion
-
-    #region private functions
-
     private void LogWarning(string msg) => Debug.LogWarning("[UI Manager] " + msg);
 
     #endregion
 
     #region Unity Functions
 
-    public void PreIntilizationMethod() => PageController.Instance.PreIntilizationMethod();
+    public void PreIntilizationMethod()
+    {
+        PageController.Instance.PreIntilizationMethod();
+        LoadUIElementsDefault();
+    }
 
     public void InitializationMethod() => PageController.Instance.InitializationMethod();
 
