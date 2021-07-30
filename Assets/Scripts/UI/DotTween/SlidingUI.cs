@@ -1,9 +1,22 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SlidingUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, UnityEngine.EventSystems.IPointerExitHandler
+public class SlidingUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public RectTransform descriptionRect;
+    private float xMin;
+    private float xMax;
+
+    private void Awake()
+    {
+        if (!descriptionRect)
+        {
+            LogWarning("There is no RectTransform attach to the script");
+            return;
+        }
+        xMin = descriptionRect.anchorMin.x;
+        xMax = descriptionRect.anchorMax.x;
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -20,7 +33,7 @@ public class SlidingUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
             return;
         }
         StopCoroutine("SlidingUI");
-        StartCoroutine(CustomDotTween.SlidingUI(descriptionRect, descriptionRect.anchorMax.x, descriptionRect.anchorMin.x, 0.1f));
+        StartCoroutine(CustomDotTween.SlidingUI(descriptionRect, xMax, xMin, 0.1f));
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -31,7 +44,7 @@ public class SlidingUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
             return;
         }
         StopCoroutine("SlidingUI");
-        StartCoroutine(CustomDotTween.SlidingUI(descriptionRect, descriptionRect.anchorMin.x, descriptionRect.anchorMax.x, 0.1f));
+        StartCoroutine(CustomDotTween.SlidingUI(descriptionRect, xMin, xMax, 0.1f));
     }
 
     private void LogWarning(string msg) => Debug.LogWarning("[Sliding UI] " + msg);

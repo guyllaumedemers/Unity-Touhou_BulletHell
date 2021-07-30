@@ -111,7 +111,7 @@ public class UnitDataContainer
     public Queue<string> bulletTypeList;
     public IPatternGenerator pattern;
     public IMoveable moveable;
-    public IPointerExitHandler animation;
+    public IAnimate animation;
     public ISwappable bullets;
     public UnitTypeEnum unitType;
 

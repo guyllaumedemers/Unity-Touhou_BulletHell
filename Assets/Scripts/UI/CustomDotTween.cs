@@ -45,7 +45,6 @@ public static class CustomDotTween
             rect.position = rect.position + (new Vector3(Mathf.Lerp(start, end, time / animationTime), 0.0f, 0.0f) * dir);
             yield return null;
         }
-        Debug.Log($"Description {rect.position}");
     }
 
     #endregion
