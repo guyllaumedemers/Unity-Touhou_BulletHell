@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class Page : MonoBehaviour
@@ -8,6 +9,7 @@ public class Page : MonoBehaviour
     public bool useAnimation;
     private Animator animator;
     private Coroutine co_Animation;
+    [SerializeField] private GameObject header;
 
     #region public functions
 
@@ -36,7 +38,7 @@ public class Page : MonoBehaviour
             yield return null;
         }
         //Wait for the animator to finish his animation
-        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.20f)
+        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < Globals.animationWaitTime)
         {
             yield return null;
         }
@@ -73,7 +75,26 @@ public class Page : MonoBehaviour
 
     #endregion
 
-    private void OnEnable() => CheckAnimator();
+    private void OnEnable()
+    {
+        CheckAnimator();
+        if (!header)
+        {
+            LogWarning("You have no header attach the the page script");
+            return;
+        }
+        header.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        if (!header)
+        {
+            LogWarning("You have no header attach the the page script");
+            return;
+        }
+        header.SetActive(false);
+    }
 }
 
 public enum PageFlag

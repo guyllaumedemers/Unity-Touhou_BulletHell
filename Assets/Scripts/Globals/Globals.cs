@@ -34,15 +34,16 @@ public static class Globals
     public static int channel_lowestvalue = 80;
     public static int channel_default = 0;
     public static int max_percent = 100;
-    public static int temp_start_percent = 90;
     #endregion
 
     #region Global values
     public static float fps = 1 / 60;
     public static float blinkingTime = 0.05f;
     public static float widgetTime = 0.1f;
-    public static float slidingTime = 0.01f;
+    public static float slidingTime = 0.5f;
     public static float nextSFXTime = 0.2f;
+    public static float animationWaitTime = 0.3f;
+    public static float sliding_offset = 15.0f;
     public static float trimmingInterval = 2.0f;
     public static float minWPDist = 0.1f;
     public static float idleTime = 0.5f;
