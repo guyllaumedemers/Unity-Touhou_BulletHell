@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -35,18 +36,23 @@ public static class CustomDotTween
         rect.anchoredPosition = new Vector2(ix, rect.anchoredPosition.y);
     }
 
-    public static IEnumerator SlidingUI(RectTransform rect, float start, float end, float animationTime)
+    #endregion
+
+    #region Testing
+
+    public static IEnumerator GenericAnimationRoutine(float duration, Action<float> changeFunction, Action onComplete)
     {
-        float time = 0.0f;
-        float dir = end - start > 0.0f ? 1.0f : -1.0f;
-        float ix = rect.position.x + (end - start);
-        while (time < animationTime)
+        float elapsedTime = 0.0f;
+        float progress = 0.0f;
+        while (progress < 1.0f)
         {
-            time += Time.deltaTime;
-            rect.position += (new Vector3(Mathf.Lerp(start, end, time / animationTime), 0.0f, 0.0f) * dir);
+            changeFunction(progress);
+            elapsedTime += Time.deltaTime;
+            progress = elapsedTime / duration;
             yield return new WaitForEndOfFrame();
         }
-        rect.position = new Vector3(ix, rect.position.y, rect.position.z);
+        changeFunction(1.0f);
+        onComplete?.Invoke();
     }
 
     #endregion
