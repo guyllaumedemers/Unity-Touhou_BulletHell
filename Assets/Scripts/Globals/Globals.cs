@@ -72,6 +72,7 @@ public static class Globals
     public static string onStartupDefault = "OnStartupDefault";
     public static string textcurtain = "TextCurtain";
     public static string uicurtain = "UICurtain";
+    public static string toggleMenuComponents = "ToggleMenuComponent";
     #endregion
 
     #region Dynamic Loading

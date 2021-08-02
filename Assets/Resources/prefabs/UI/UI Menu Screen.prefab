@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 1402308855853761147}
   - component: {fileID: 1402308855853761146}
   - component: {fileID: 356612082125796611}
+  - component: {fileID: 7617544121694373546}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Page
@@ -216,6 +217,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7617544121694373546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402308855853761144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1a61d2bb9d007e4ea94aa79f7e24a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1402308855867032362
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,7 +961,7 @@ GameObject:
   - component: {fileID: 1402308855994311307}
   m_Layer: 5
   m_Name: Off Text (TMP)
-  m_TagString: Untagged
+  m_TagString: ToggleMenuComponent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1723,7 +1736,7 @@ GameObject:
   - component: {fileID: 1402308856070518147}
   - component: {fileID: 1402308856070518148}
   m_Layer: 5
-  m_Name: Up Button
+  m_Name: SE Up Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2554,7 +2567,7 @@ GameObject:
   - component: {fileID: 1402308856291097238}
   m_Layer: 5
   m_Name: Window Text (TMP)
-  m_TagString: Untagged
+  m_TagString: ToggleMenuComponent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3336,7 +3349,7 @@ GameObject:
   - component: {fileID: 1402308856487832026}
   - component: {fileID: 1402308856487832027}
   m_Layer: 5
-  m_Name: UI Canvas
+  m_Name: UI Menu Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3575,7 +3588,7 @@ GameObject:
   - component: {fileID: 1402308856500998765}
   - component: {fileID: 1402308856500998766}
   m_Layer: 5
-  m_Name: Down Button
+  m_Name: ST Down Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4614,6 +4627,7 @@ GameObject:
   - component: {fileID: 1402308856588510230}
   - component: {fileID: 1402308856588510233}
   - component: {fileID: 356612083739640774}
+  - component: {fileID: 1687255594}
   m_Layer: 5
   m_Name: Config
   m_TagString: Page
@@ -4681,6 +4695,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1687255594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402308856588510231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabeb3fe4d01c60499918ee6390b96e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1402308856588896896
 GameObject:
   m_ObjectHideFlags: 0
@@ -7629,7 +7655,7 @@ GameObject:
   - component: {fileID: 1402308857164965355}
   - component: {fileID: 1402308857164965356}
   m_Layer: 5
-  m_Name: Up Button
+  m_Name: ST Up Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7773,7 +7799,7 @@ GameObject:
   - component: {fileID: 1402308857168621521}
   m_Layer: 5
   m_Name: Fullscreen Text (TMP)
-  m_TagString: Untagged
+  m_TagString: ToggleMenuComponent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9967,7 +9993,7 @@ GameObject:
   - component: {fileID: 1402308857497299322}
   m_Layer: 5
   m_Name: On Text (TMP)
-  m_TagString: Untagged
+  m_TagString: ToggleMenuComponent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10102,7 +10128,7 @@ GameObject:
   - component: {fileID: 1402308857549392770}
   - component: {fileID: 1402308857549392775}
   m_Layer: 5
-  m_Name: Down Button
+  m_Name: SE Down Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
