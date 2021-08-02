@@ -2,9 +2,8 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class UIManager : SingletonMono<UIManager>, IFlow
+public class UIManager : SingletonMonoPersistent<UIManager>, IFlow
 {
     private UIManager() { }
 

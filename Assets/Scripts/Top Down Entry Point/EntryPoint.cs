@@ -25,16 +25,16 @@ public class EntryPoint : SingletonMonoPersistent<EntryPoint>
 
     #region private functions
 
-    private void LoadScene(int index)
+    private void LoadScene(int index, int last = 0)
     {
         if (index < 0)
         {
             LogWarning("Scene Index invalid");
             return;
         }
-        else if (index - 1 > 0)
+        else if (last != 0 && last > 0)
         {
-            SceneManager.UnloadSceneAsync(index - 1);
+            SceneManager.UnloadSceneAsync(last);
         }
         SceneManager.LoadSceneAsync(index);
     }
