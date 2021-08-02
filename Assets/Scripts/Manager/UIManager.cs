@@ -12,8 +12,7 @@ public class UIManager : SingletonMono<UIManager>, IFlow
 
     public void Startgame()
     {
-        //LoadScene(1);            //TODO Should be loading the loading scene and then go to game scene -> also should wait for the blinking time to complete
-        //TODO Character Selection first
+        //TODO Add loading screen for player select page
         PageController.Instance.TurnPageOff(PageTypeEnum.Menu, PageTypeEnum.PlayerSelection, true);
     }
 

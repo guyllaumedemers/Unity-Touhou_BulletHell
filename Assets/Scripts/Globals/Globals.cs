@@ -42,8 +42,8 @@ public static class Globals
     public static float widgetTime = 0.1f;
     public static float slidingTime = 0.5f;
     public static float nextSFXTime = 0.2f;
+    public static float sliding_offset = 1000.0f;
     public static float animationWaitTime = 0.3f;
-    public static float sliding_offset = 15.0f;
     public static float trimmingInterval = 2.0f;
     public static float minWPDist = 0.1f;
     public static float idleTime = 0.5f;
