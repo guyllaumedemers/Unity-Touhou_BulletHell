@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AudioManager : SingletonMono<AudioManager>, IFlow
+public class AudioManager : SingletonMonoPersistent<AudioManager>
 {
     public AudioMixer mixer;
     private AudioManager() { }
@@ -156,24 +156,24 @@ public class AudioManager : SingletonMono<AudioManager>, IFlow
 
     #region Unity Functions
 
-    /**********************FLOW****************************/
-
-    public void PreIntilizationMethod()
+    public void PreInitializeTitleScreen()
     {
         AudioController.Instance.PreIntilizationMethod();
-        LoadPlayerPref();
-        RetrieveTags();
-        SetTextToAudioComponentsValues(new float[] { main_volume, se_volume }, new TextMeshProUGUI[] { main_volumeTxt, se_volumeTxt });
         lastTime = Time.time;
     }
 
-    public void InitializationMethod()
+    public void InitializeTitleScreen()
     {
-        AudioController.Instance.InitializationMethod();
+        LoadPlayerPref();
         SetAudioComponentsValues(new float[] { PercentTo(main_volume), PercentTo(se_volume) }, new string[] { Globals.ST_Channel, Globals.MenuSFX_Channel });
+        AudioController.Instance.InitializationMethod();
     }
 
-    public void UpdateMethod() { }
+    public void PreInitializeMenuScreen()
+    {
+        RetrieveTags();
+        SetTextToAudioComponentsValues(new float[] { main_volume, se_volume }, new TextMeshProUGUI[] { main_volumeTxt, se_volumeTxt });
+    }
 
     #endregion
 }

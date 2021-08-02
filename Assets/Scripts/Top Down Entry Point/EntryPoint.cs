@@ -1,47 +1,45 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EntryPoint : SingletonMono<EntryPoint>
+public class EntryPoint : SingletonMonoPersistent<EntryPoint>
 {
     private EntryPoint() { }
     public float Last { get; private set; }
 
-    public void Awake()
+    private int curr_scene = (int)SceneEnum.TitleScreen;
+
+    public override void Awake()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            AudioManager.Instance.PreIntilizationMethod();
-            UIManager.Instance.PreIntilizationMethod();
-            return;
-        }
-        GameManagerFunctionWrapper.StartGame();
-        Last = default;
+        base.Awake();
+        LoadScene(curr_scene);
     }
 
-    private void Start()
+    #region public functions
+
+    public void TriggerNextScene() => LoadScene(++curr_scene);
+
+    public void TriggerPreviousScene() => LoadScene(--curr_scene);
+
+    #endregion
+
+
+    #region private functions
+
+    private void LoadScene(int index)
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        if (index < 0)
         {
-            AudioManager.Instance.InitializationMethod();
-            UIManager.Instance.InitializationMethod();
+            LogWarning("Scene Index invalid");
             return;
         }
-        StartCoroutine(ObjectPool.Trim());
-        GameManagerFunctionWrapper.InitializeGame();
-        // level selection should be done from menu
-        StartCoroutine(Utilities.Timer(Globals.waveInterval, () => { StartCoroutine(WaveSystem.Instance.StartWave(default, (int)DirectionEnum.None, (int)DirectionEnum.Pivot, 4)); }));
+        else if (index - 1 > 0)
+        {
+            SceneManager.UnloadSceneAsync(index - 1);
+        }
+        SceneManager.LoadSceneAsync(index);
     }
 
-    private void Update()
-    {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            return;
-        }
-        if (Time.time - Last > Globals.fps)
-        {
-            GameManagerFunctionWrapper.UpdateMethod();
-            Last = Time.time;
-        }
-    }
+    private void LogWarning(string msg) => Debug.LogWarning("[EntryPoint] : " + msg);
+
+    #endregion
 }
