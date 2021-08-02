@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SlidingUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class SlidingUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public RectTransform descriptionRect;
     private Coroutine routine;
@@ -17,8 +17,6 @@ public class SlidingUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
         anchpos = descriptionRect.anchoredPosition.x;
     }
 
-    public void OnPointerClick(PointerEventData eventData) => UIManager.Instance.LaunchGameScene();
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (!descriptionRect)
@@ -32,7 +30,7 @@ public class SlidingUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
         {
             float ease = EasingFunction.EaseInOutSine(0, 1, progress);
             Vector2 start = descriptionRect.anchoredPosition;
-            Vector2 end = new Vector2(anchpos - Globals.sliding_offset, descriptionRect.anchoredPosition.y);
+            Vector2 end = new Vector2(anchpos, descriptionRect.anchoredPosition.y);
             descriptionRect.anchoredPosition = Vector2.Lerp(start, end, ease);
         },
         delegate
@@ -54,7 +52,7 @@ public class SlidingUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
         {
             float ease = EasingFunction.EaseInOutSine(0, 1, progress);
             Vector2 start = descriptionRect.anchoredPosition;
-            Vector2 end = new Vector2(anchpos, descriptionRect.anchoredPosition.y);
+            Vector2 end = new Vector2(anchpos - Globals.sliding_offset, descriptionRect.anchoredPosition.y);
             descriptionRect.anchoredPosition = Vector2.Lerp(start, end, ease);
         },
         delegate
