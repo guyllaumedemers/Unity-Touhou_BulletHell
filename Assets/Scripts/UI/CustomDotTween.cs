@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public static class CustomDotTween
 {
     #region public functions
 
-    public static IEnumerator BlinkingUI(TextMeshProUGUI text, float animation, int blinkPerSecond)
+    public static IEnumerator BlinkingTextUI(TextMeshProUGUI text, float animation, int blinkPerSecond)
     {
         float time = 0.0f;
         bool next = true;
@@ -21,7 +22,21 @@ public static class CustomDotTween
         text.color = Color.white;
     }
 
-    public static IEnumerator WidgetUI(RectTransform rect, float animation)
+    public static IEnumerator BlinkingImgUI(Image img, float animation, int blinkPerSecond)
+    {
+        float time = 0.0f;
+        bool next = true;
+        while (time < animation)
+        {
+            time += Time.deltaTime;
+            img.color = UpdateColor(next ? Color.grey : Color.white);
+            yield return new WaitForSeconds(animation / blinkPerSecond);
+            next = !next;
+        }
+        img.color = Color.white;
+    }
+
+    public static IEnumerator BuzzingUI(RectTransform rect, float animation)
     {
         float ix = rect.anchoredPosition.x;
         float time = 0.0f;
