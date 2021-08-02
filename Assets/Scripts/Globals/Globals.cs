@@ -5,6 +5,8 @@ public static class Globals
     #region Resources Loading
     public const string bulletsPrefabs = "prefabs/Bullets";
     public const string unitsPrefabs = "prefabs/Units/";
+    public const string shader = "shaders/";
+    public const string blurMat = "BlurMat";
     #endregion
 
     #region Transform parent name
@@ -54,6 +56,7 @@ public static class Globals
     public static float u_speed = 1.0f;
     public static float orbRotationSpeed = 120.0f;
     public static float fadingTime = 2.0f;
+    public static float curtainfade = 8.0f;
     public static float spinningUnitRotationSpeed = -240.0f;
     public static Vector3 unit_offset = new Vector3(0.0f, 1.4f, 0.0f);
     #endregion
@@ -67,6 +70,8 @@ public static class Globals
     public static string sfxVolumeTag = "SFXVolume";
     public static string page = "Page";
     public static string onStartupDefault = "OnStartupDefault";
+    public static string textcurtain = "TextCurtain";
+    public static string uicurtain = "UICurtain";
     #endregion
 
     #region Dynamic Loading

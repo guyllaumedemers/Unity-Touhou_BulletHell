@@ -12,6 +12,8 @@ TagManager:
   - SFXVolume
   - Page
   - OnStartupDefault
+  - TextCurtain
+  - UICurtain
   layers:
   - Default
   - TransparentFX

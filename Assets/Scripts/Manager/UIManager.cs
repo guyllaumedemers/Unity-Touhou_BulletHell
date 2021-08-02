@@ -24,13 +24,13 @@ public class UIManager : SingletonMono<UIManager>, IFlow
 
     public void ShowOptionsMenu()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0) PageController.Instance.TurnPageOff(PageTypeEnum.Menu, PageTypeEnum.OptionMenu, true);
+        if (SceneManager.GetActiveScene().buildIndex == (int)SceneEnum.Menu) PageController.Instance.TurnPageOff(PageTypeEnum.Menu, PageTypeEnum.OptionMenu, true);
         else PageController.Instance.TurnPageOff(PageTypeEnum.PauseMenu, PageTypeEnum.OptionMenu, true);
     }
 
     public void HideOptionsMenu()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0) PageController.Instance.TurnPageOff(PageTypeEnum.OptionMenu, PageTypeEnum.Menu, true);
+        if (SceneManager.GetActiveScene().buildIndex == (int)SceneEnum.Menu) PageController.Instance.TurnPageOff(PageTypeEnum.OptionMenu, PageTypeEnum.Menu, true);
         else PageController.Instance.TurnPageOff(PageTypeEnum.OptionMenu, PageTypeEnum.PauseMenu, true);
     }
 
@@ -79,10 +79,8 @@ public class UIManager : SingletonMono<UIManager>, IFlow
     public void GoBackMainMenu()
     {
         //TODO Save Option - Pop Up Menu Save option
-        LoadScene(0);
+        //LoadScene(0);
     }
-
-    public void LaunchGameScene() => LoadScene(1);
 
     #endregion
 
@@ -95,16 +93,6 @@ public class UIManager : SingletonMono<UIManager>, IFlow
         {
             textTodefault[i].color = Color.grey;
         }
-    }
-
-    private void LoadScene(int index)
-    {
-        if (index < 0 || index > SceneManager.sceneCount)
-        {
-            LogWarning("Scene Index invalid");
-            return;
-        }
-        SceneManager.LoadScene(index);
     }
 
     private void LogWarning(string msg) => Debug.LogWarning("[UI Manager] " + msg);
