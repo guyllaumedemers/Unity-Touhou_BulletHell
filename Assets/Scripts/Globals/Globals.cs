@@ -49,6 +49,7 @@ public static class Globals
     public static float trimmingInterval = 2.0f;
     public static float minWPDist = 0.1f;
     public static float idleTime = 0.5f;
+    public static float sceneDelay = 1.0f;
     public static float initializationInterval = 0.7f;
     public static float waveInterval = 2.0f;
     public static int minBullets = 10;
