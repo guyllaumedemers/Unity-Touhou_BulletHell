@@ -147,7 +147,10 @@ public class AudioController : SingletonMono<AudioController>, IFlow
 
     public void PreIntilizationMethod() => Configure();
 
-    public void InitializationMethod() => Play(AudioTypeEnum.ST_01);
+    public void InitializationMethod()
+    {
+        Play(AudioTypeEnum.ST_01);
+    }
 
     public void UpdateMethod() { }
 
