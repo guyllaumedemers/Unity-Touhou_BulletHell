@@ -1,15 +1,18 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EntryPoint : SingletonMonoPersistent<EntryPoint>
 {
     private EntryPoint() { }
-    private int curr_scene = (int)SceneEnum.TitleScreen;
+    private Coroutine routine;
+    private int curr_scene = (int)SceneEnum.None;
 
     public override void Awake()
     {
         base.Awake();
-        LoadScene(curr_scene);
+        this.EnsureRoutineStop(ref routine);
+        this.CreateAnimationRoutine(Globals.sceneDelay, delegate (float progress) { }, delegate { TriggerNextScene(); });
     }
 
     #region public functions
@@ -17,13 +20,15 @@ public class EntryPoint : SingletonMonoPersistent<EntryPoint>
     public void TriggerNextScene()
     {
         int last = curr_scene;
-        LoadScene(++curr_scene, last);
+        this.EnsureRoutineStop(ref routine);
+        this.CreateAnimationRoutine(Globals.sceneDelay, delegate (float progress) { }, delegate { StartCoroutine(LoadScene(++curr_scene)); });
     }
 
     public void TriggerPreviousScene()
     {
         int last = curr_scene;
-        LoadScene(--curr_scene, last);
+        this.EnsureRoutineStop(ref routine);
+        this.CreateAnimationRoutine(Globals.sceneDelay, delegate (float progress) { }, delegate { StartCoroutine(LoadScene(--curr_scene)); });
     }
 
     #endregion
@@ -31,18 +36,14 @@ public class EntryPoint : SingletonMonoPersistent<EntryPoint>
 
     #region private functions
 
-    private void LoadScene(int index, int last = default)
+    private IEnumerator LoadScene(int index)
     {
         if (index < 0)
         {
             LogWarning("Scene Index invalid");
-            return;
+            yield return null;
         }
-        else if (last != 0 && last > 0)
-        {
-            SceneManager.UnloadSceneAsync(last);
-        }
-        SceneManager.LoadSceneAsync(index);
+        SceneManager.LoadSceneAsync(index, LoadSceneMode.Single);
     }
 
     private void LogWarning(string msg) => Debug.LogWarning("[EntryPoint] : " + msg);
