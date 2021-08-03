@@ -9,7 +9,7 @@ public class UIManager : SingletonMonoPersistent<UIManager>, IFlow
 
     #region public functions
 
-    public void Startgame() => EntryPoint.Instance.TriggerNextScene();
+    public void Startgame() => PageController.Instance.TurnPageOff(PageTypeEnum.Menu, PageTypeEnum.PlayerSelection, true);
 
     public void ExitGame() => Application.Quit();       //TODO Add a dialogue box so the player can config if he wants to exit the game
 
