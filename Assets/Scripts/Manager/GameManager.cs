@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameSceneBehaviour : AbsSceneHandler
+public class GameManager : SingletonMono<GameManager>
 {
     private float last;
     public void Awake()
