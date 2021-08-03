@@ -31,18 +31,17 @@ public class WaveSystem : SingletonMono<WaveSystem>
         //TODO Trigger event to go back to menu OR start a new wave
     }
 
+    #endregion
+
+    #region private functions
     //TODO PreIntilizationMethod will be called from the UI menu selection when the user select the stage
-    public void InitializeLevel(int level, int dir, int pivot, int var_mod)
+    private void InitializeLevel(int level, int dir, int pivot, int var_mod)
     {
         curr_dir = dir;
         pivot_point = pivot;
         variable_mod = var_mod;
         waveQueue = Tool.EncapsulateInQueue(DatabaseHandler.RetrieveTableEntries<Tuple<string, int>>(Globals.waveTable, $"WHERE Id = {level}"));
     }
-
-    #endregion
-
-    #region private functions
 
     private void Launch<T>(string name, IMoveable move_behaviour, Vector3[] waypoints, BulletTypeEnum bulletType, DirectionEnum spEnum, int maxUnitWave, float interval)
         where T : class

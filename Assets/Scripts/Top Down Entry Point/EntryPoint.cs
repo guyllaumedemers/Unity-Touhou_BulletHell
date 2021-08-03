@@ -4,8 +4,6 @@ using UnityEngine.SceneManagement;
 public class EntryPoint : SingletonMonoPersistent<EntryPoint>
 {
     private EntryPoint() { }
-    public float Last { get; private set; }
-
     private int curr_scene = (int)SceneEnum.TitleScreen;
 
     public override void Awake()
@@ -16,16 +14,24 @@ public class EntryPoint : SingletonMonoPersistent<EntryPoint>
 
     #region public functions
 
-    public void TriggerNextScene() => LoadScene(++curr_scene);
+    public void TriggerNextScene()
+    {
+        int last = curr_scene;
+        LoadScene(++curr_scene, last);
+    }
 
-    public void TriggerPreviousScene() => LoadScene(--curr_scene);
+    public void TriggerPreviousScene()
+    {
+        int last = curr_scene;
+        LoadScene(--curr_scene, last);
+    }
 
     #endregion
 
 
     #region private functions
 
-    private void LoadScene(int index, int last = 0)
+    private void LoadScene(int index, int last = default)
     {
         if (index < 0)
         {

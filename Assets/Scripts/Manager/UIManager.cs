@@ -9,11 +9,7 @@ public class UIManager : SingletonMonoPersistent<UIManager>, IFlow
 
     #region public functions
 
-    public void Startgame()
-    {
-        //TODO Add loading screen for player select page
-        PageController.Instance.TurnPageOff(PageTypeEnum.Menu, PageTypeEnum.PlayerSelection, true);
-    }
+    public void Startgame() => EntryPoint.Instance.TriggerNextScene();
 
     public void ExitGame() => Application.Quit();       //TODO Add a dialogue box so the player can config if he wants to exit the game
 
@@ -33,9 +29,15 @@ public class UIManager : SingletonMonoPersistent<UIManager>, IFlow
         else PageController.Instance.TurnPageOff(PageTypeEnum.OptionMenu, PageTypeEnum.PauseMenu, true);
     }
 
-    public void ShowScores() => PageController.Instance.TurnPageOff(PageTypeEnum.Menu, PageTypeEnum.ScoreMenu);
+    public void ShowScores()
+    {
+        //TODO
+    }
 
-    public void HideScores() => PageController.Instance.TurnPageOff(PageTypeEnum.ScoreMenu, PageTypeEnum.Menu);
+    public void HideScores()
+    {
+        //TODO
+    }
 
     public void ShowKeyConfig()
     {
@@ -108,7 +110,7 @@ public class UIManager : SingletonMonoPersistent<UIManager>, IFlow
 
     public void InitializationMethod() => PageController.Instance.InitializationMethod();
 
-    public void UpdateMethod() => PageController.Instance.UpdateMethod();
+    public void UpdateMethod() { }
 
     #endregion
 }
