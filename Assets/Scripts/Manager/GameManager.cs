@@ -2,9 +2,17 @@ using UnityEngine;
 
 public class GameManager : SingletonMono<GameManager>
 {
+    private ParticleSystem particule;
     private float last;
     public void Awake()
     {
+        particule = FindObjectOfType<ParticleSystem>();
+        if (!particule)
+        {
+            LogWarning("There is no particule system in the scene");
+            return;
+        }
+        DestroyImmediate(particule);
         FactoryManager.Instance.PreIntilizationMethod();
         ObjectPool.PreInitializeMethod();
         CollisionSystem.Instance.PreIntilizationMethod();
@@ -31,4 +39,10 @@ public class GameManager : SingletonMono<GameManager>
             last = Time.time;
         }
     }
+
+    #region private functions
+
+    private void LogWarning(string msg) => Debug.Log("[Title Screen Behaviour] : " + msg);
+
+    #endregion
 }
