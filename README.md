@@ -41,6 +41,7 @@ and prioritize Composition over Inheritance.
   * Object Pooling
   * Batching
   * Strategy Pattern
+  * Decorator Pattern
   * Observer Pattern (*will have to implement an event system to trigger animation when limit scores are reach*)
 
 #### Tools
