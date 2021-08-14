@@ -3,7 +3,7 @@ public class MenuScreenBehaviour : AbsSceneHandler
 {
     private void Awake()
     {
-        LoadCanvas(ref alphagroup);
+        LoadCanvas();
         UIManager.Instance.PreIntilizationMethod();
         AudioManager.Instance.PreInitializeMenuScreen();
     }

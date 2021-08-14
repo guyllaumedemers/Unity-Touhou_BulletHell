@@ -9,12 +9,17 @@ public class ImgComponent : IGraphicComponent
 
     private void Awake()
     {
-        img = GetComponent<Image>();
         rect = GameObject.FindGameObjectWithTag(Globals.slidingComponent).GetComponent<RectTransform>();
+        img = GetComponent<Image>();
 
         if (!rect)
         {
-            LogWarning("There is no RectTransform attach to the script");
+            LogWarning($"The gameobject {gameObject.name} is not a UI element");
+            return;
+        }
+        else if (!img)
+        {
+            LogWarning($"There is no image compoenent attach to the gameobject {gameObject.name}");
             return;
         }
         anchpos = rect.anchoredPosition.x;

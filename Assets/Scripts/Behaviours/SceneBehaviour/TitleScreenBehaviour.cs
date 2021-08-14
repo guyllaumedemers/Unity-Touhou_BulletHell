@@ -15,8 +15,8 @@ public class TitleScreenBehaviour : AbsSceneHandler
             return;
         }
         DontDestroyOnLoad(particule);
-        LoadCanvas(ref alphagroup);
-        SetStartButton(ref startButton);
+        LoadCanvas();
+        SetStartButton();
         AudioManager.Instance.PreInitializeTitleScreen();
     }
 
@@ -28,15 +28,15 @@ public class TitleScreenBehaviour : AbsSceneHandler
 
     #region private functions
 
-    private void SetStartButton(ref Button start)
+    private void SetStartButton()
     {
-        start = FindObjectOfType<Button>();
-        if (!start)
+        startButton = FindObjectOfType<Button>();
+        if (!startButton)
         {
             LogWarning("There is no button in the scene");
             return;
         }
-        start.onClick.AddListener(() =>
+        startButton.onClick.AddListener(() =>
         {
             this.EnsureRoutineStop(ref routine);
             this.CreateAnimationRoutine(Globals.fadingTime, delegate (float progress)
