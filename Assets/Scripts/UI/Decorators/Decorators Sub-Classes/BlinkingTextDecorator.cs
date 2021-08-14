@@ -1,4 +1,5 @@
 using System.Linq;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class BlinkingTextDecorator : ButtonDecorator
@@ -12,6 +13,11 @@ public class BlinkingTextDecorator : ButtonDecorator
     public override void OnPointerClick(PointerEventData eventData)
     {
         base.OnPointerClick(eventData);
+        if (!buttonInstance.instance.interactable)
+        {
+            LogWarning("button interactable is set to false");
+            return;
+        }
         PlayGraphicAnimation();
     }
 
@@ -22,6 +28,8 @@ public class BlinkingTextDecorator : ButtonDecorator
         StopCoroutine(typeof(CustomDotTween).GetMethods().Where(x => x.Name == "BlinkingTextUI").FirstOrDefault().Name);
         StartCoroutine(CustomDotTween.BlinkingTextUI(buttonInstance.text, Globals.blinkingTime, 5));
     }
+
+    private void LogWarning(string msg) => Debug.LogWarning("[Blinking Text Decorator] : " + msg);
 
     #endregion
 }
