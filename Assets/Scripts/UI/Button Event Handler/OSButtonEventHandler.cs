@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OSButtonManager : SingletonMono<OSButtonManager>
+public class OSButtonEventHandler : SingletonMono<OSButtonEventHandler>
 {
     private Button[] buttons;
     private TextMeshProUGUI[] texts;

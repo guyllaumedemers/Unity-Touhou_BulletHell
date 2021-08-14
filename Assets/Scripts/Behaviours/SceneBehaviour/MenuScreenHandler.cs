@@ -1,5 +1,5 @@
 
-public class MenuScreenBehaviour : AbsSceneHandler
+public class MenuScreenHandler : AbsSceneHandler
 {
     private void Awake()
     {
