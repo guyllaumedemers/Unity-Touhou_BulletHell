@@ -13,7 +13,7 @@ public class BlinkingTextDecorator : ButtonDecorator
     public override void OnPointerClick(PointerEventData eventData)
     {
         base.OnPointerClick(eventData);
-        if (!buttonInstance.instance.interactable)
+        if (!buttonInstance.button.interactable)
         {
             LogWarning("button interactable is set to false");
             return;

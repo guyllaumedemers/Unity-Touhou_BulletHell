@@ -13,14 +13,14 @@ public class PanelComponent : IGraphicComponent
         rects = GetComponentsInChildren<Button>().Select(x => x.GetComponent<RectTransform>()).ToArray();
         instance = GetComponent<RectTransform>();
 
-        if (rects.Length <= 0)
+        if (!instance)
         {
-            LogWarning("There is no button child in this component");
+            LogWarning($"The gameobject {gameObject.name} is not a UI element");
             return;
         }
-        else if (!instance)
+        else if (rects.Length < 1)
         {
-            LogWarning("The game object on which this script is attach is not a UI component");
+            LogWarning("There is no button child on this component");
             return;
         }
         anchpos = instance.anchoredPosition.x;

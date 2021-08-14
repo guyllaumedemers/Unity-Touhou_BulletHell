@@ -8,31 +8,42 @@ public class ButtonComponent : IGraphicComponent
 
     public RectTransform rect { get; private set; }
 
-    public Button instance { get; private set; }
+    public Button button { get; private set; }
 
     private void Awake()
     {
-        instance = GetComponent<Button>();
+        button = GetComponent<Button>();
         rect = GetComponent<RectTransform>();
         text = GetComponentInChildren<TextMeshProUGUI>();
 
-        if (!instance || !text || !rect)
+
+        if (!rect)
         {
-            LogWarning($"There's a component missing : text {text} rect {rect} button {instance}");
+            LogWarning($"This gameobject {gameObject.name} is not a UI element");
+            return;
+        }
+        else if (!button)
+        {
+            LogWarning($"There is no button attach to this gameobject {gameObject.name}");
+            return;
+        }
+        else if (!text)
+        {
+            LogWarning($"There is no text component attach to this gameobject {gameObject.name}");
             return;
         }
     }
 
     private void Start()
     {
-        if (!instance.tag.Equals(Globals.onStartupDefault) && !instance.tag.Equals(Globals.on) && !instance.tag.Equals(Globals.off))
+        if (!button.tag.Equals(Globals.onStartupDefault) && !button.tag.Equals(Globals.on) && !button.tag.Equals(Globals.off))
         {
-            instance.colors = CustomDotTween.UpdateColorBlock(instance.colors, Color.grey, Color.white, Color.grey);
+            button.colors = CustomDotTween.UpdateColorBlock(button.colors, Color.grey, Color.white, Color.grey);
         }
         else
         {
-            instance.colors = CustomDotTween.UpdateColorBlock(instance.colors);
-            if (instance.tag.Equals(Globals.off))
+            button.colors = CustomDotTween.UpdateColorBlock(button.colors);
+            if (button.tag.Equals(Globals.off))
             {
                 // Toggle of color is set in the OSButtonManager as an event
                 text.color = Color.grey;
@@ -46,7 +57,7 @@ public class ButtonComponent : IGraphicComponent
 
     public void OnPointerEnterSFX()
     {
-        if (!instance.interactable)
+        if (!button.interactable)
         {
             LogWarning($"Button {gameObject.name} interactable feature is set to false");
             return;
@@ -55,7 +66,7 @@ public class ButtonComponent : IGraphicComponent
     }
     public void OnPointerClickSFX()
     {
-        if (!instance.interactable)
+        if (!button.interactable)
         {
             LogWarning($"Button {gameObject.name} interactable feature is set to false");
             return;

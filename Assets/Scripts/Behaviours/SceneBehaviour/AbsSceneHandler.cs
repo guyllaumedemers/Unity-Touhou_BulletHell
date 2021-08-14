@@ -7,15 +7,15 @@ public abstract class AbsSceneHandler : MonoBehaviour, ISceneHandler
     protected CanvasGroup alphagroup;
     protected Coroutine routine;
 
-    public void LoadCanvas(ref CanvasGroup canvasAlpha)
+    public void LoadCanvas()
     {
-        canvasAlpha = FindObjectOfType<CanvasGroup>(true);
-        if (!canvasAlpha)
+        alphagroup = FindObjectOfType<CanvasGroup>(true);
+        if (!alphagroup)
         {
             LogWarning("There is no canvas group in the scene : " + SceneManager.GetActiveScene().name);
             return;
         }
-        InitializeCanvasToDefaultValues(ref canvasAlpha);
+        InitializeCanvasToDefaultValues();
     }
 
     public virtual void PlayFadeAnimation(params Button[] buttons)
@@ -47,11 +47,11 @@ public abstract class AbsSceneHandler : MonoBehaviour, ISceneHandler
 
     #region private functions
 
-    private void InitializeCanvasToDefaultValues(ref CanvasGroup canvasAlpha)
+    private void InitializeCanvasToDefaultValues()
     {
-        canvasAlpha.gameObject.SetActive(true);
-        canvasAlpha.alpha = 1.0f;
-        canvasAlpha.blocksRaycasts = false;
+        alphagroup.gameObject.SetActive(true);
+        alphagroup.alpha = 1.0f;
+        alphagroup.blocksRaycasts = false;
     }
 
     private void LogWarning(string msg) => Debug.LogWarning("[Abs Scene Behaviour] : " + msg);
