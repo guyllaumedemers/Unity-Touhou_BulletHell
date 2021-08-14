@@ -51,7 +51,7 @@ public static class CustomDotTween
         rect.anchoredPosition = new Vector2(ix, rect.anchoredPosition.y);
     }
 
-    public static IEnumerator StaircaseAnimation(RectTransform rect, RectTransform[] buttonsRect, float duration, Action<RectTransform, float> next)
+    public static IEnumerator StaircaseAnimation(RectTransform[] buttonsRect, float duration, Action<RectTransform, float> next)
     {
         foreach (var item in buttonsRect)
         {
@@ -73,7 +73,7 @@ public static class CustomDotTween
         float time = 0.0f;
         while (time < duration)
         {
-            float ease = EasingFunction.EaseInOutSine(0, 1, time / duration);
+            float ease = EasingFunction.EaseInOutExpo(0, 1, time / duration);
             rect.anchoredPosition = Vector2.Lerp(start, end, ease);
             time += Time.deltaTime;
             yield return new WaitForEndOfFrame();
