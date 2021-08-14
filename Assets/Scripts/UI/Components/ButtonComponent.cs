@@ -27,11 +27,11 @@ public class ButtonComponent : IGraphicComponent
     {
         if (!instance.tag.Equals(Globals.onStartupDefault) && !instance.tag.Equals(Globals.on) && !instance.tag.Equals(Globals.off))
         {
-            instance.colors = CustomDotTween.UpdateColorBlock(instance.colors, Color.grey, Color.white);
+            instance.colors = CustomDotTween.UpdateColorBlock(instance.colors, Color.grey, Color.white, Color.grey);
         }
         else
         {
-            instance.colors = CustomDotTween.UpdateColorBlock(instance.colors, Color.white, Color.white);
+            instance.colors = CustomDotTween.UpdateColorBlock(instance.colors);
             if (instance.tag.Equals(Globals.off))
             {
                 // Toggle of color is set in the OSButtonManager as an event
