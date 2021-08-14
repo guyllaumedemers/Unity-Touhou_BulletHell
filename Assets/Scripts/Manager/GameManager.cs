@@ -42,7 +42,7 @@ public class GameManager : SingletonMono<GameManager>
 
     #region private functions
 
-    private void LogWarning(string msg) => Debug.Log("[Title Screen Behaviour] : " + msg);
+    private void LogWarning(string msg) => Debug.LogWarning("[Title Screen Behaviour] : " + msg);
 
     #endregion
 }

@@ -15,6 +15,7 @@ TagManager:
   - TextCurtain
   - UICurtain
   - ToggleMenuComponent
+  - SlidingComponent
   layers:
   - Default
   - TransparentFX

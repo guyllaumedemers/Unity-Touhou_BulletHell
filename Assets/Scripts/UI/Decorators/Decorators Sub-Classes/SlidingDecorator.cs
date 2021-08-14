@@ -1,25 +1,14 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SlidingUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class SlidingDecorator : ImgDecorator, IPointerExitHandler
 {
-    public RectTransform descriptionRect;
-    private Coroutine routine;
-    private float anchpos;
+    public Coroutine routine;
 
-    private void Awake()
+    public override void OnPointerEnter(PointerEventData eventData)
     {
-        if (!descriptionRect)
-        {
-            LogWarning("There is no RectTransform attach to the script");
-            return;
-        }
-        anchpos = descriptionRect.anchoredPosition.x;
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (!descriptionRect)
+        base.OnPointerEnter(eventData);
+        if (!imgInstance.descriptionRect)
         {
             LogWarning("There is no RectTransform attach to the script");
             return;
@@ -29,9 +18,9 @@ public class SlidingUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         this.CreateAnimationRoutine(Globals.slidingTime, delegate (float progress)
         {
             float ease = EasingFunction.EaseInOutSine(0, 1, progress);
-            Vector2 start = descriptionRect.anchoredPosition;
-            Vector2 end = new Vector2(anchpos, descriptionRect.anchoredPosition.y);
-            descriptionRect.anchoredPosition = Vector2.Lerp(start, end, ease);
+            Vector2 start = imgInstance.descriptionRect.anchoredPosition;
+            Vector2 end = new Vector2(imgInstance.anchpos, imgInstance.descriptionRect.anchoredPosition.y);
+            imgInstance.descriptionRect.anchoredPosition = Vector2.Lerp(start, end, ease);
         },
         delegate
         {
@@ -41,7 +30,7 @@ public class SlidingUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (!descriptionRect)
+        if (!imgInstance.descriptionRect)
         {
             LogWarning("There is no RectTransform attach to the script");
             return;
@@ -51,9 +40,9 @@ public class SlidingUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         this.CreateAnimationRoutine(Globals.slidingTime, delegate (float progress)
         {
             float ease = EasingFunction.EaseInOutSine(0, 1, progress);
-            Vector2 start = descriptionRect.anchoredPosition;
-            Vector2 end = new Vector2(anchpos - Globals.sliding_offset, descriptionRect.anchoredPosition.y);
-            descriptionRect.anchoredPosition = Vector2.Lerp(start, end, ease);
+            Vector2 start = imgInstance.descriptionRect.anchoredPosition;
+            Vector2 end = new Vector2(imgInstance.anchpos - Globals.sliding_offset, imgInstance.descriptionRect.anchoredPosition.y);
+            imgInstance.descriptionRect.anchoredPosition = Vector2.Lerp(start, end, ease);
         },
         delegate
         {
