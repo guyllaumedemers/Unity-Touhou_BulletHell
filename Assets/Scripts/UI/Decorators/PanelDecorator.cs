@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PanelDecorator : IGraphicComponent
 {
-    private PanelComponent panelInstance;
+    public PanelComponent panelInstance { get; private set; }
 
     private void Awake()
     {

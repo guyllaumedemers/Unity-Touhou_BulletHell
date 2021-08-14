@@ -1,16 +1,25 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PanelComponent : IGraphicComponent
 {
-    private Button[] buttons;
+    public RectTransform[] rects { get; private set; }
+    public RectTransform instance { get; private set; }
 
     private void Awake()
     {
-        buttons = GetComponentsInChildren<Button>();
-        if (buttons.Length <= 0)
+        rects = GetComponentsInChildren<Button>().Select(x => x.GetComponent<RectTransform>()).ToArray();
+        instance = GetComponent<RectTransform>();
+
+        if (rects.Length <= 0)
         {
             LogWarning("There is no button child in this component");
+            return;
+        }
+        else if (!instance)
+        {
+            LogWarning("The game object on which this script is attach is not a UI component");
             return;
         }
     }

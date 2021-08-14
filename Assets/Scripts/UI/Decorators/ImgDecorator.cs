@@ -10,7 +10,7 @@ public class ImgDecorator : IGraphicComponent, IPointerEnterHandler, IPointerCli
         imgInstance = gameObject.GetComponent<ImgComponent>();
         if (!imgInstance)
         {
-            LogWarning($"There is no panelComponent script attach to this gameobject {gameObject.name}");
+            LogWarning($"There is no imgComponent script attach to this gameobject {gameObject.name}");
             return;
         }
     }

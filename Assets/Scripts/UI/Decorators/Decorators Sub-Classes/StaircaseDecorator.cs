@@ -14,7 +14,7 @@ public class StaircaseDecorator : PanelDecorator
     private void StaircaseAnimation()
     {
         StopCoroutine(typeof(CustomDotTween).GetMethods().Where(x => x.Name == "StaircaseAnimation").FirstOrDefault().Name);
-        StartCoroutine(CustomDotTween.StaircaseAnimation());
+        StartCoroutine(CustomDotTween.StaircaseAnimation(panelInstance.instance, panelInstance.rects, Globals.staircaseTime));
     }
 
     #endregion
