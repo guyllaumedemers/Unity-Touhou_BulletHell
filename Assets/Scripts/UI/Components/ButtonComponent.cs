@@ -17,6 +17,11 @@ public class ButtonComponent : IGraphicComponent
         instance = GetComponent<Button>();
     }
 
+    private void Start()
+    {
+        instance.colors = CustomDotTween.UpdateColorBlock(instance.colors, Color.grey, Color.white);
+    }
+
     #region public functions
 
     #region events
