@@ -6,6 +6,7 @@ public class PanelComponent : IGraphicComponent
 {
     public RectTransform[] rects { get; private set; }
     public RectTransform instance { get; private set; }
+    public float anchpos { get; private set; }
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class PanelComponent : IGraphicComponent
             LogWarning("The game object on which this script is attach is not a UI component");
             return;
         }
+        anchpos = instance.anchoredPosition.x;
     }
 
     public override void PlayGraphicAnimation()

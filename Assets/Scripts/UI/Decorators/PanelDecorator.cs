@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PanelDecorator : IGraphicComponent
+public abstract class PanelDecorator : IGraphicComponent
 {
     public PanelComponent panelInstance { get; private set; }
 
