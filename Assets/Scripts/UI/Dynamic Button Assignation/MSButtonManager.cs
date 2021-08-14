@@ -20,21 +20,27 @@ public class MSButtonManager : SingletonMono<MSButtonManager>
             {
                 case (int)MenuSelectionEnum.Start:
                     buttons[i].onClick.AddListener(UIManager.Instance.Startgame);
+                    buttons[i].onClick.AddListener(() => { GetComponent<StaircaseDecorator>()?.PlayGraphicAnimation(); });
                     break;
                 case (int)MenuSelectionEnum.Practice:
                     //TODO
+                    buttons[i].onClick.AddListener(() => { GetComponent<StaircaseDecorator>()?.PlayGraphicAnimation(); });
                     break;
                 case (int)MenuSelectionEnum.Replay:
                     //TODO
+                    buttons[i].onClick.AddListener(() => { GetComponent<StaircaseDecorator>()?.PlayGraphicAnimation(); });
                     break;
                 case (int)MenuSelectionEnum.Score:
                     buttons[i].onClick.AddListener(UIManager.Instance.ShowScores);
+                    buttons[i].onClick.AddListener(() => { GetComponent<StaircaseDecorator>()?.PlayGraphicAnimation(); });
                     break;
                 case (int)MenuSelectionEnum.Options:
                     buttons[i].onClick.AddListener(UIManager.Instance.ShowOptionsMenu);
+                    buttons[i].onClick.AddListener(() => { GetComponent<StaircaseDecorator>()?.PlayGraphicAnimation(); });
                     break;
                 case (int)MenuSelectionEnum.Quit:
                     buttons[i].onClick.AddListener(UIManager.Instance.ExitGame);
+                    buttons[i].onClick.AddListener(() => { GetComponent<StaircaseDecorator>()?.PlayGraphicAnimation(); });
                     break;
                 default:
                     throw new System.InvalidOperationException();

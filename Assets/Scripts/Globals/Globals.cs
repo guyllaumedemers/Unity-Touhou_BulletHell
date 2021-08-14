@@ -43,7 +43,7 @@ public static class Globals
     public static float blinkingTime = 0.05f;
     public static float widgetTime = 0.1f;
     public static float slidingTime = 0.5f;
-    public static float staircaseTime = 3.0f;
+    public static float staircaseTime = 0.2f;
     public static float nextSFXTime = 0.2f;
     public static float sliding_offset = 1000.0f;
     public static float animationWaitTime = 0.3f;
