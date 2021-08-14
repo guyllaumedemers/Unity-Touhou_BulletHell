@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TitleScreenBehaviour : AbsSceneHandler
+public class TitleScreenHandler : AbsSceneHandler
 {
     private Button startButton;
     private ParticleSystem particule;

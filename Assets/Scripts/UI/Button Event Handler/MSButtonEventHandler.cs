@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MSButtonManager : SingletonMono<MSButtonManager>
+public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
 {
     private Button[] buttons;
     private StaircaseDecorator animationInstance;
