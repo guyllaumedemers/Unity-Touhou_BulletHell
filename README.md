@@ -19,7 +19,7 @@ and prioritize Composition over Inheritance.
 * [Assets/Scripts/Collisions/..](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/blob/master/Assets/Scripts/Collisions/CollisionSystem.cs) : Collision System
 * [Assets/Scripts/Waves/..](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/blob/master/Assets/Scripts/Waves/WaveSystem.cs) : Wave System
 * [Assets/Scripts/Waypoints/..](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/blob/master/Assets/Scripts/Waypoints/WaypointSystem.cs) : Waypoint System
-* [Assets/Scripts/UI/..](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/tree/master/Assets/Scripts/UI) : UI System
+* [Assets/Scripts/UI/..](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/tree/master/Assets/Scripts/UI) : UI System (Decorator Pattern)
 * [Assets/Scripts/Audio/..](https://github.com/guyllaumedemers/Unity-Touhou_BulletHell/tree/master/Assets/Scripts/Audio) : Audio Management
 
 #### Game Mechanics and Features
