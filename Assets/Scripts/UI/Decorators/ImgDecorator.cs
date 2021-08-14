@@ -5,7 +5,15 @@ public class ImgDecorator : IGraphicComponent, IPointerEnterHandler, IPointerCli
 {
     public ImgComponent imgInstance { get; private set; }
 
-    private void Awake() => imgInstance = gameObject.GetComponent<ImgComponent>();
+    private void Awake()
+    {
+        imgInstance = gameObject.GetComponent<ImgComponent>();
+        if (!imgInstance)
+        {
+            LogWarning($"There is no panelComponent script attach to this gameobject {gameObject.name}");
+            return;
+        }
+    }
 
     #region public functions
 
@@ -24,6 +32,12 @@ public class ImgDecorator : IGraphicComponent, IPointerEnterHandler, IPointerCli
     public virtual void OnPointerClick(PointerEventData eventData) => OnPointerClickSFX();
 
     public virtual void OnPointerEnter(PointerEventData eventData) => OnPointerEnterSFX();
+
+    #endregion
+
+    #region  private functions
+
+    private void LogWarning(string msg) => Debug.LogWarning("[Img Decorator] : " + msg);
 
     #endregion
 }

@@ -51,6 +51,11 @@ public static class CustomDotTween
         rect.anchoredPosition = new Vector2(ix, rect.anchoredPosition.y);
     }
 
+    public static IEnumerator StaircaseAnimation()
+    {
+        yield return null;
+    }
+
     #endregion
 
     #region Testing
