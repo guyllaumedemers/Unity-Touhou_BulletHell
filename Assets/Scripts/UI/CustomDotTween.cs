@@ -70,11 +70,25 @@ public static class CustomDotTween
         onComplete?.Invoke();
     }
 
+    public static ColorBlock UpdateColorBlock(ColorBlock cb, params Color[] colors)
+    {
+        if (colors.Length < 2)
+        {
+            LogWarning("Color params is missing and cannot assign colors to the normal color and highlighted color, Default ColorBlock returned");
+            return ColorBlock.defaultColorBlock;
+        }
+        cb.normalColor = colors[0];
+        cb.highlightedColor = colors[1];
+        return cb;
+    }
+
     #endregion
 
     #region private functions
 
     private static Color UpdateColor(Color target) => new Color(target.r, target.g, target.b, target.a);
+
+    private static void LogWarning(string msg) => Debug.LogWarning("[CustomDotTween] : " + msg);
 
     #endregion
 }
