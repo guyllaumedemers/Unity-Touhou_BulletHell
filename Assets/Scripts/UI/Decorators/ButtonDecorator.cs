@@ -5,7 +5,15 @@ public abstract class ButtonDecorator : IGraphicComponent, IPointerEnterHandler,
 {
     public ButtonComponent buttonInstance { get; private set; }
 
-    private void Awake() => buttonInstance = gameObject.GetComponent<ButtonComponent>();
+    private void Awake()
+    {
+        buttonInstance = gameObject.GetComponent<ButtonComponent>();
+        if (!buttonInstance)
+        {
+            LogWarning($"There is no panelComponent script attach to this gameobject {gameObject.name}");
+            return;
+        }
+    }
 
     #region public functions
 
@@ -15,5 +23,11 @@ public abstract class ButtonDecorator : IGraphicComponent, IPointerEnterHandler,
     #endregion
 
     public override void PlayGraphicAnimation() => buttonInstance.PlayGraphicAnimation();
+    #endregion
+
+    #region  private functions
+
+    private void LogWarning(string msg) => Debug.LogWarning("[Button Decorator] : " + msg);
+
     #endregion
 }
