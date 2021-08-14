@@ -51,16 +51,17 @@ public static class CustomDotTween
         rect.anchoredPosition = new Vector2(ix, rect.anchoredPosition.y);
     }
 
-    public static IEnumerator StaircaseAnimation(RectTransform rect, RectTransform[] buttonsRect, float duration)
+    public static IEnumerator StaircaseAnimation(RectTransform rect, RectTransform[] buttonsRect, float duration, Action<RectTransform, float> next)
     {
         foreach (var item in buttonsRect)
         {
-            float time = 0.0f;
-            float ix = item.GetComponent<RectTransform>().rect.x;
-            while (time < duration)
-            {
+            next.Invoke(item, duration);
 
-                yield return new WaitForEndOfFrame();
+            float time = 0.0f;
+            while (time < duration / buttonsRect.Length)
+            {
+                time += Time.deltaTime;
+                yield return null;
             }
         }
     }

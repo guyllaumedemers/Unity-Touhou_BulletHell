@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ImgDecorator : IGraphicComponent, IPointerEnterHandler, IPointerClickHandler
+public abstract class ImgDecorator : IGraphicComponent, IPointerEnterHandler, IPointerClickHandler
 {
     public ImgComponent imgInstance { get; private set; }
 
