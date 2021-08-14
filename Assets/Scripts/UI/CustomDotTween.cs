@@ -72,13 +72,14 @@ public static class CustomDotTween
 
     public static ColorBlock UpdateColorBlock(ColorBlock cb, params Color[] colors)
     {
-        if (colors.Length < 2)
+        if (colors.Length < 3)
         {
             LogWarning("Color params is missing and cannot assign colors to the normal color and highlighted color, Default ColorBlock returned");
             return ColorBlock.defaultColorBlock;
         }
         cb.normalColor = colors[0];
         cb.highlightedColor = colors[1];
+        cb.selectedColor = colors[2];
         return cb;
     }
 
