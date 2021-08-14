@@ -10,7 +10,7 @@ public abstract class ButtonDecorator : IGraphicComponent, IPointerEnterHandler,
         buttonInstance = gameObject.GetComponent<ButtonComponent>();
         if (!buttonInstance)
         {
-            LogWarning($"There is no panelComponent script attach to this gameobject {gameObject.name}");
+            LogWarning($"There is no buttonComponent script attach to this gameobject {gameObject.name}");
             return;
         }
     }

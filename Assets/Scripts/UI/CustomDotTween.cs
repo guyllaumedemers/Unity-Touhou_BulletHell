@@ -8,40 +8,40 @@ public static class CustomDotTween
 {
     #region public functions
 
-    public static IEnumerator BlinkingTextUI(TextMeshProUGUI text, float animation, int blinkPerSecond)
+    public static IEnumerator BlinkingTextUI(TextMeshProUGUI text, float duration, int blinkPerSecond)
     {
         float time = 0.0f;
         bool next = true;
-        while (time < animation)
+        while (time < duration)
         {
             time += Time.deltaTime;
             text.color = UpdateColor(next ? Color.grey : Color.white);
-            yield return new WaitForSeconds(animation / blinkPerSecond);
+            yield return new WaitForSeconds(duration / blinkPerSecond);
             next = !next;
         }
         text.color = Color.white;
     }
 
-    public static IEnumerator BlinkingImgUI(Image img, float animation, int blinkPerSecond)
+    public static IEnumerator BlinkingImgUI(Image img, float duration, int blinkPerSecond)
     {
         float time = 0.0f;
         bool next = true;
-        while (time < animation)
+        while (time < duration)
         {
             time += Time.deltaTime;
             img.color = UpdateColor(next ? Color.grey : Color.white);
-            yield return new WaitForSeconds(animation / blinkPerSecond);
+            yield return new WaitForSeconds(duration / blinkPerSecond);
             next = !next;
         }
         img.color = Color.white;
     }
 
-    public static IEnumerator BuzzingUI(RectTransform rect, float animation)
+    public static IEnumerator BuzzingUI(RectTransform rect, float duration)
     {
         float ix = rect.anchoredPosition.x;
         float time = 0.0f;
         float dir = 1.0f;
-        while (time < animation)
+        while (time < duration)
         {
             time += Time.deltaTime;
             rect.anchoredPosition = new Vector2(ix + Mathf.PingPong(Time.time, 10.0f) * dir, 0.0f);
@@ -51,9 +51,33 @@ public static class CustomDotTween
         rect.anchoredPosition = new Vector2(ix, rect.anchoredPosition.y);
     }
 
-    public static IEnumerator StaircaseAnimation()
+    public static IEnumerator StaircaseAnimation(RectTransform rect, RectTransform[] buttonsRect, float duration)
     {
-        yield return null;
+        foreach (var item in buttonsRect)
+        {
+            float time = 0.0f;
+            float ix = item.GetComponent<RectTransform>().rect.x;
+            while (time < duration)
+            {
+
+                yield return new WaitForEndOfFrame();
+            }
+        }
+    }
+
+    public static IEnumerator SlideAnimation(RectTransform rect, float endAnchorpos, float duration)
+    {
+        Vector2 start = rect.anchoredPosition;
+        Vector2 end = new Vector2(endAnchorpos, rect.anchoredPosition.y);
+        float time = 0.0f;
+        while (time < duration)
+        {
+            float ease = EasingFunction.EaseInOutSine(0, 1, time / duration);
+            rect.anchoredPosition = Vector2.Lerp(start, end, ease);
+            time += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        rect.anchoredPosition = end;
     }
 
     #endregion

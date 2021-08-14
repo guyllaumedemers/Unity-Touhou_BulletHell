@@ -4,20 +4,20 @@ using UnityEngine.UI;
 public class ImgComponent : IGraphicComponent
 {
     public Image img { get; private set; }
-    public RectTransform descriptionRect { get; private set; }
+    public RectTransform rect { get; private set; }
     public float anchpos { get; private set; }
 
     private void Awake()
     {
         img = GetComponent<Image>();
-        descriptionRect = GameObject.FindGameObjectWithTag(Globals.slidingComponent).GetComponent<RectTransform>();
+        rect = GameObject.FindGameObjectWithTag(Globals.slidingComponent).GetComponent<RectTransform>();
 
-        if (!descriptionRect)
+        if (!rect)
         {
             LogWarning("There is no RectTransform attach to the script");
             return;
         }
-        anchpos = descriptionRect.anchoredPosition.x;
+        anchpos = rect.anchoredPosition.x;
     }
 
     public override void PlayGraphicAnimation()
