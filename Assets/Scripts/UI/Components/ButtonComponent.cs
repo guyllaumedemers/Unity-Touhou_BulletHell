@@ -12,19 +12,31 @@ public class ButtonComponent : IGraphicComponent
 
     private void Awake()
     {
-        text = GetComponentInChildren<TextMeshProUGUI>();
-        rect = GetComponent<RectTransform>();
         instance = GetComponent<Button>();
+        rect = GetComponent<RectTransform>();
+        text = GetComponentInChildren<TextMeshProUGUI>();
+
+        if (!instance || !text || !rect)
+        {
+            LogWarning($"There's a component missing : text {text} rect {rect} button {instance}");
+            return;
+        }
     }
 
     private void Start()
     {
-        if (!instance)
+        if (!instance.tag.Equals(Globals.onStartupDefault) && !instance.tag.Equals(Globals.on) && !instance.tag.Equals(Globals.off))
         {
-            LogWarning("There is no button attach to this component");
-            return;
+            instance.colors = CustomDotTween.UpdateColorBlock(instance.colors, Color.grey, Color.white);
         }
-        instance.colors = CustomDotTween.UpdateColorBlock(instance.colors, Color.grey, Color.white);
+        else
+        {
+            instance.colors = CustomDotTween.UpdateColorBlock(instance.colors, Color.white, Color.white);
+            if (instance.tag.Equals(Globals.off))
+            {
+                text.color = Color.grey;
+            }
+        }
     }
 
     #region public functions

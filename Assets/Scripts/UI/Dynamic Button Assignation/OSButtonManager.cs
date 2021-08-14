@@ -12,6 +12,7 @@ public class OSButtonManager : SingletonMono<OSButtonManager>
     {
         buttons = GetComponentsInChildren<Button>();
         texts = GameObject.FindGameObjectsWithTag(Globals.toggleMenuComponents).Select(x => x.GetComponent<TextMeshProUGUI>()).ToArray();
+
         if (buttons.Length < 1 || texts.Length < 4)
         {
             LogWarning($"There is no buttons in {gameObject.name} OR there is missing a toggled text components in the scene");
@@ -35,16 +36,32 @@ public class OSButtonManager : SingletonMono<OSButtonManager>
                     buttons[i].onClick.AddListener(AudioManager.Instance.IncrementSFXVolume);
                     break;
                 case (int)OptionSelectionEnum.Fullscreen:
-                    buttons[i].onClick.AddListener(() => { UIManager.Instance.FullScreen(texts[1]); });
+                    buttons[i].onClick.AddListener(() =>
+                    {
+                        UIManager.Instance.FullScreen();
+                        CustomDotTween.ToggleTextColor(texts[0], texts[1]);
+                    });
                     break;
                 case (int)OptionSelectionEnum.Windowed:
-                    buttons[i].onClick.AddListener(() => { UIManager.Instance.Windowed(texts[0]); });
+                    buttons[i].onClick.AddListener(() =>
+                    {
+                        UIManager.Instance.Windowed();
+                        CustomDotTween.ToggleTextColor(texts[0], texts[1]);
+                    });
                     break;
                 case (int)OptionSelectionEnum.Mute_OFF:
-                    buttons[i].onClick.AddListener(() => { AudioManager.Instance.EnableMixer(texts[3]); });
+                    buttons[i].onClick.AddListener(() =>
+                    {
+                        AudioManager.Instance.EnableMixer();
+                        CustomDotTween.ToggleTextColor(texts[2], texts[3]);
+                    });
                     break;
                 case (int)OptionSelectionEnum.Mute_ON:
-                    buttons[i].onClick.AddListener(() => { AudioManager.Instance.DisableMixer(texts[2]); });
+                    buttons[i].onClick.AddListener(() =>
+                    {
+                        AudioManager.Instance.DisableMixer();
+                        CustomDotTween.ToggleTextColor(texts[2], texts[3]);
+                    });
                     break;
                 case (int)OptionSelectionEnum.Reset:
                     buttons[i].onClick.AddListener(UIManager.Instance.ResetConfig);
