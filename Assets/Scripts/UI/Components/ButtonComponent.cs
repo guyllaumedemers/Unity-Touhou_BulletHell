@@ -8,7 +8,7 @@ public class ButtonComponent : IGraphicComponent
 
     public RectTransform rect { get; private set; }
 
-    private Button instance;
+    public Button instance { get; private set; }
 
     private void Awake()
     {
