@@ -34,6 +34,7 @@ public class ButtonComponent : IGraphicComponent
             instance.colors = CustomDotTween.UpdateColorBlock(instance.colors, Color.white, Color.white);
             if (instance.tag.Equals(Globals.off))
             {
+                // Toggle of color is set in the OSButtonManager as an event
                 text.color = Color.grey;
             }
         }
