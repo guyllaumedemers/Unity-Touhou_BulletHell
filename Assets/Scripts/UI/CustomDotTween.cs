@@ -73,7 +73,7 @@ public static class CustomDotTween
         float time = 0.0f;
         while (time < duration)
         {
-            float ease = EasingFunction.EaseInOutExpo(0, 1, time / duration);
+            float ease = EasingFunction.EaseInOutSine(0, 1, time / duration);
             rect.anchoredPosition = Vector2.Lerp(start, end, ease);
             time += Time.deltaTime;
             yield return new WaitForEndOfFrame();

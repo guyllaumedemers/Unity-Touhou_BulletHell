@@ -22,5 +22,13 @@ public class StaircaseDecorator : PanelDecorator
             ));
     }
 
+    private void OnEnable()
+    {
+        foreach (var item in panelInstance.rects)
+        {
+            item.anchoredPosition = new Vector2(panelInstance.anchpos, item.anchoredPosition.y);
+        }
+    }
+
     #endregion
 }

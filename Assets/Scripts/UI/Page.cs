@@ -38,7 +38,7 @@ public class Page : MonoBehaviour
             yield return null;
         }
         //Wait for the animator to finish his animation
-        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < Globals.animationWaitTime)
+        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < Globals.pageAnimationWaitTime)
         {
             yield return null;
         }
