@@ -40,27 +40,9 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>
         SetChanel(Globals.MenuSFX_Channel, PercentTo(se_volume));
     }
 
-    public void DisableMixer(TextMeshProUGUI text)
-    {
-        if (!text)
-        {
-            LogWarning("There is no text assigned to the Enable Mixer Event");
-            return;
-        }
-        SetChanel(Globals.Main_Channel, -Globals.channel_lowestvalue);
-        text.color = Color.grey;
-    }
+    public void DisableMixer() => SetChanel(Globals.Main_Channel, -Globals.channel_lowestvalue);
 
-    public void EnableMixer(TextMeshProUGUI text)
-    {
-        if (!text)
-        {
-            LogWarning("There is no text assigned to the Enable Mixer Event");
-            return;
-        }
-        SetChanel(Globals.Main_Channel, Globals.channel_default);
-        text.color = Color.grey;
-    }
+    public void EnableMixer() => SetChanel(Globals.Main_Channel, Globals.channel_default);
 
     public void SaveAudio() => PlayerConfig.SetPlayerPref(new float[] { main_volume, se_volume }, new string[] { Globals.Main_Channel, Globals.SE_Channel });
 

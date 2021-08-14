@@ -82,6 +82,13 @@ public static class CustomDotTween
         return cb;
     }
 
+    public static void ToggleTextColor(TextMeshProUGUI src, TextMeshProUGUI target)
+    {
+        Color temp = src.color;
+        src.color = target.color;
+        target.color = temp;
+    }
+
     #endregion
 
     #region private functions

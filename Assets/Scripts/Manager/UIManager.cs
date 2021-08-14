@@ -54,28 +54,9 @@ public class UIManager : SingletonMonoPersistent<UIManager>, IFlow
         //TODO
     }
 
-    //HINT Fullscreen function and Windowed get passed the opposite button Text component so that upon click the other button text gets grey out
-    public void FullScreen(TextMeshProUGUI text)
-    {
-        if (!text)
-        {
-            LogWarning("There is no text assigned to the Fullscreen Event");
-            return;
-        }
-        Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-        text.color = Color.grey;
-    }
+    public void FullScreen() => Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
 
-    public void Windowed(TextMeshProUGUI text)
-    {
-        if (!text)
-        {
-            LogWarning("There is no text assigned to the Fullscreen Event");
-            return;
-        }
-        Screen.fullScreenMode = FullScreenMode.Windowed;
-        text.color = Color.grey;
-    }
+    public void Windowed() => Screen.fullScreenMode = FullScreenMode.Windowed;
 
     public void GoBackMainMenu()
     {
@@ -87,26 +68,13 @@ public class UIManager : SingletonMonoPersistent<UIManager>, IFlow
 
     #region private functions
 
-    private void LoadUIElementsDefault()
-    {
-        TextMeshProUGUI[] textTodefault = GameObject.FindGameObjectsWithTag(Globals.onStartupDefault).Select(x => x.GetComponentInChildren<TextMeshProUGUI>()).ToArray();
-        for (int i = 0; i < textTodefault.Length; ++i)
-        {
-            textTodefault[i].color = Color.grey;
-        }
-    }
-
     private void LogWarning(string msg) => Debug.LogWarning("[UI Manager] " + msg);
 
     #endregion
 
     #region Unity Functions
 
-    public void PreIntilizationMethod()
-    {
-        PageController.Instance.PreIntilizationMethod();
-        LoadUIElementsDefault();
-    }
+    public void PreIntilizationMethod() => PageController.Instance.PreIntilizationMethod();
 
     public void InitializationMethod() => PageController.Instance.InitializationMethod();
 
