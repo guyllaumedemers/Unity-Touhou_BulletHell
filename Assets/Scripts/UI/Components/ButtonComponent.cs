@@ -19,6 +19,11 @@ public class ButtonComponent : IGraphicComponent
 
     private void Start()
     {
+        if (!instance)
+        {
+            LogWarning("There is no button attach to this component");
+            return;
+        }
         instance.colors = CustomDotTween.UpdateColorBlock(instance.colors, Color.grey, Color.white);
     }
 
