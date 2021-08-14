@@ -15,14 +15,14 @@ public class TitleScreenBehaviour : AbsSceneHandler
             return;
         }
         DontDestroyOnLoad(particule);
+        LoadCanvas(ref alphagroup);
         SetStartButton(ref startButton);
-        Load(ref alphagroup);
         AudioManager.Instance.PreInitializeTitleScreen();
     }
 
     private void Start()
     {
-        Play();
+        PlayFadeAnimation(startButton);
         AudioManager.Instance.InitializeTitleScreen();
     }
 
@@ -44,12 +44,11 @@ public class TitleScreenBehaviour : AbsSceneHandler
                 float ease = EasingFunction.EaseInOutExpo(0, 1, progress);
                 alphagroup.alpha = Mathf.Lerp(0, 1, ease);
             },
-            delegate { EntryPoint.Instance.TriggerNextScene(); }
-            );
+            delegate { EntryPoint.Instance.TriggerNextScene(); });
         });
     }
 
-    private void LogWarning(string msg) => Debug.Log("[Title Screen Behaviour] : " + msg);
+    private void LogWarning(string msg) => Debug.LogWarning("[Title Screen Behaviour] : " + msg);
 
     #endregion
 }

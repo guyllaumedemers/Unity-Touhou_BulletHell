@@ -74,6 +74,7 @@ public static class Globals
     public static string textcurtain = "TextCurtain";
     public static string uicurtain = "UICurtain";
     public static string toggleMenuComponents = "ToggleMenuComponent";
+    public static string slidingComponent = "SlidingComponent";
     #endregion
 
     #region Dynamic Loading
