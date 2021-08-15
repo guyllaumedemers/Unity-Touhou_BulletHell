@@ -36,6 +36,18 @@ public static class CustomDotTween
         img.color = Color.white;
     }
 
+    public static IEnumerator BlinkingAlphalayerUI(Image img, float duration, int blinkPerSecond)
+    {
+        float time = 0.0f;
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            img.enabled = !img.enabled;
+            yield return new WaitForSeconds(duration / blinkPerSecond);
+        }
+        img.color = Color.white;
+    }
+
     public static IEnumerator BuzzingUI(RectTransform rect, float duration)
     {
         float ix = rect.anchoredPosition.x;
@@ -150,12 +162,11 @@ public static class CustomDotTween
         src.color = target.color;
         target.color = temp;
     }
+    public static Color UpdateColor(Color target) => new Color(target.r, target.g, target.b, target.a);
 
     #endregion
 
     #region private functions
-
-    private static Color UpdateColor(Color target) => new Color(target.r, target.g, target.b, target.a);
 
     private static void LogWarning(string msg) => Debug.LogWarning("[CustomDotTween] : " + msg);
 

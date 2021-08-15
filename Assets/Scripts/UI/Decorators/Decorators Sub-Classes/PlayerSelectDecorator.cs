@@ -10,6 +10,9 @@ public class PlayerSelectDecorator : PanelDecorator, IPointerEnterHandler, IPoin
     private TextMeshProUGUI[] texts;
     private Coroutine routine;
 
+    /*  Images array index for the character display is equal to 1 - reordering the component hierarchy will result in value changes
+     */
+
     protected override void Awake()
     {
         base.Awake();
@@ -27,6 +30,8 @@ public class PlayerSelectDecorator : PanelDecorator, IPointerEnterHandler, IPoin
         }
         foreach (var item in images.Where(x => x.gameObject.name != "Raycaster")) item.raycastTarget = false;
         foreach (var item in texts) item.raycastTarget = false;
+
+        images[1].color = CustomDotTween.UpdateColor(Color.grey);
     }
 
     #region public functions
@@ -41,15 +46,13 @@ public class PlayerSelectDecorator : PanelDecorator, IPointerEnterHandler, IPoin
     public void OnPointerEnter(PointerEventData eventData)
     {
         AudioManager.Instance.TriggerMouseSFX();
-        if (images[0].enabled)
-        {
-            images[0].enabled = false;
-        }
+        images[1].color = CustomDotTween.UpdateColor(Color.white);
+
         this.EnsureRoutineStop(ref routine);
         this.CreateAnimationRoutine(Globals.buzzingTime, delegate (float progress)
         {
             Vector2 start = panelInstance.instance.anchoredPosition;
-            Vector2 end = new Vector2(panelInstance.instance.anchoredPosition.x, panelInstance.anchposY - panelInstance.instance.sizeDelta.y/2 + Globals.playerselectoffset);
+            Vector2 end = new Vector2(panelInstance.instance.anchoredPosition.x, panelInstance.anchposY - panelInstance.instance.sizeDelta.y / 2 + Globals.playerselectoffset);
             float ease = EasingFunction.EaseInOutSine(0, 1, progress);
             panelInstance.instance.anchoredPosition = Vector2.Lerp(start, end, ease);
         });
@@ -57,15 +60,13 @@ public class PlayerSelectDecorator : PanelDecorator, IPointerEnterHandler, IPoin
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (!images[0].enabled)
-        {
-            images[0].enabled = true;
-        }
+        images[1].color = CustomDotTween.UpdateColor(Color.grey);
+
         this.EnsureRoutineStop(ref routine);
         this.CreateAnimationRoutine(Globals.buzzingTime, delegate (float progress)
         {
             Vector2 start = panelInstance.instance.anchoredPosition;
-            Vector2 end = new Vector2(panelInstance.instance.anchoredPosition.x, panelInstance.anchposY - panelInstance.instance.sizeDelta.y/2);
+            Vector2 end = new Vector2(panelInstance.instance.anchoredPosition.x, panelInstance.anchposY - panelInstance.instance.sizeDelta.y / 2);
             float ease = EasingFunction.EaseInOutSine(0, 1, progress);
             panelInstance.instance.anchoredPosition = Vector2.Lerp(start, end, ease);
         });
