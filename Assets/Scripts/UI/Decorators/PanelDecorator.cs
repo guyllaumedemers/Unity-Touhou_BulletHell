@@ -4,7 +4,7 @@ public abstract class PanelDecorator : IGraphicComponent
 {
     public PanelComponent panelInstance { get; private set; }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         panelInstance = GetComponent<PanelComponent>();
         if (!panelInstance)

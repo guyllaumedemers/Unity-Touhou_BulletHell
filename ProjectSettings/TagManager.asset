@@ -18,6 +18,7 @@ TagManager:
   - SlidingComponent
   - On
   - Off
+  - PlayerSelect
   layers:
   - Default
   - TransparentFX
