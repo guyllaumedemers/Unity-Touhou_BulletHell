@@ -3,7 +3,6 @@ using UnityEngine.EventSystems;
 
 public class BlinkingImgDecorator : ImgDecorator
 {
-
     #region public functions
 
     #region events
