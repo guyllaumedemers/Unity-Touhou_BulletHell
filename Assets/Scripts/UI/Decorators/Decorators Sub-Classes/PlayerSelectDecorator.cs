@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/*  Might have to refactor this later as it doesnt quite feels like a decorator sub-class
+ *  
+ *  Have issues using the blinkingImgUI Decorator since it cannot retrieve the raycast information associated with his image component
+ *  Might have to remove the scripts and handle the behaviour here which isnt optiomal
+ */
+
 public class PlayerSelectDecorator : PanelDecorator, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     private Image[] images;
@@ -39,8 +45,10 @@ public class PlayerSelectDecorator : PanelDecorator, IPointerEnterHandler, IPoin
     public void OnPointerClick(PointerEventData eventData)
     {
         AudioManager.Instance.TriggerButtonClickSFX();
+        StopCoroutine(typeof(CustomDotTween).GetMethods().Where(x => x.Name == "BlinkingImgUI").FirstOrDefault().Name);     // should be done via the blinkingDecorator
+        StartCoroutine(CustomDotTween.BlinkingImgUI(images[1], Globals.blinkingTime, 5));
         this.EnsureRoutineStop(ref routine);
-        this.CreateAnimationRoutine(Globals.sceneDelay, delegate (float progress) { }, () => { EntryPoint.Instance.TriggerNextScene(); });
+        this.CreateAnimationRoutine(Globals.pageAnimationWaitTime, delegate (float progress) { }, () => { EntryPoint.Instance.TriggerNextScene(); });
     }
 
     public void OnPointerEnter(PointerEventData eventData)
