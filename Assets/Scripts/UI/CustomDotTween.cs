@@ -36,18 +36,6 @@ public static class CustomDotTween
         img.color = Color.white;
     }
 
-    public static IEnumerator BlinkingAlphalayerUI(Image img, float duration, int blinkPerSecond)
-    {
-        float time = 0.0f;
-        while (time < duration)
-        {
-            time += Time.deltaTime;
-            img.enabled = !img.enabled;
-            yield return new WaitForSeconds(duration / blinkPerSecond);
-        }
-        img.color = Color.white;
-    }
-
     public static IEnumerator BuzzingUI(RectTransform rect, float duration)
     {
         float ix = rect.anchoredPosition.x;
