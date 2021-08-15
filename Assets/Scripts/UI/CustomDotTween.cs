@@ -81,6 +81,37 @@ public static class CustomDotTween
         rect.anchoredPosition = end;
     }
 
+    // Y axis Slide Animation to focus on player select canvas
+    public static IEnumerator FocusAlt(RectTransform rect, float endAnchorpos, float duration)
+    {
+        Vector2 start = rect.anchoredPosition;
+        Vector2 end = new Vector2(rect.anchoredPosition.x, endAnchorpos);
+        float time = 0.0f;
+        while (time < duration)
+        {
+            float ease = EasingFunction.EaseInOutSine(0, 1, time / duration);
+            rect.anchoredPosition = Vector2.Lerp(start, end, ease);
+            time += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        rect.anchoredPosition = end;
+    }
+
+    public static IEnumerator Focus(RectTransform rect, float endsize, float duration)
+    {
+        Vector2 start = rect.localScale;
+        Vector2 end = new Vector2(endsize, endsize);
+        float time = 0.0f;
+        while (time < duration)
+        {
+            float ease = EasingFunction.EaseInOutExpo(0, 1, time / duration);
+            rect.localScale = Vector2.Lerp(start, end, ease);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        rect.localScale = end;
+    }
+
     #endregion
 
     #region Testing

@@ -14,7 +14,7 @@ public class BuzzingDecorator : ButtonDecorator
     private void BuzzAnimation()
     {
         StopCoroutine(typeof(CustomDotTween).GetMethods().Where(x => x.Name == "BuzzingUI").FirstOrDefault().Name);
-        StartCoroutine(CustomDotTween.BuzzingUI(buttonInstance.rect, Globals.widgetTime));
+        StartCoroutine(CustomDotTween.BuzzingUI(buttonInstance.rect, Globals.buzzingTime));
     }
 
     #endregion
