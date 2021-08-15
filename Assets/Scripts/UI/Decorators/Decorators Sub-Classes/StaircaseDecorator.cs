@@ -31,23 +31,23 @@ public class StaircaseDecorator : PanelDecorator
         StartCoroutine(CustomDotTween.StaircaseAnimation(rects, Globals.staircaseTime,
             delegate (RectTransform curr, float duration)
             {
-                StartCoroutine(CustomDotTween.SlideAnimation(curr, panelInstance.anchpos - Globals.sliding_offset, duration));
+                StartCoroutine(CustomDotTween.SlideAnimation(curr, panelInstance.anchposX - Globals.sliding_offset, duration));
             }
             ));
     }
 
-    //private void OnEnable()
-    //{
-    //    if (rects.Length < 1)
-    //    {
-    //        LogWarning("OnEnable function called on uninitialized rect transform array");
-    //        return;
-    //    }
-    //    foreach (var item in rects)
-    //    {
-    //        item.anchoredPosition = new Vector2(panelInstance.anchpos, item.anchoredPosition.y);
-    //    }
-    //}
+    private void OnEnable()
+    {
+        if (rects.Length < 1)
+        {
+            LogWarning("OnEnable function called on uninitialized rect transform array");
+            return;
+        }
+        foreach (var item in rects)
+        {
+            item.anchoredPosition = new Vector2(panelInstance.anchposX, item.anchoredPosition.y);
+        }
+    }
 
     private void LogWarning(string msg) => Debug.LogWarning("[Staircase Decorator] : " + msg);
 

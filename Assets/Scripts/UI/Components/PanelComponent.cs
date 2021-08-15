@@ -3,7 +3,8 @@ using UnityEngine;
 public class PanelComponent : IGraphicComponent
 {
     public RectTransform instance { get; private set; }
-    public float anchpos { get; private set; }
+    public float anchposX { get; private set; }
+    public float anchposY { get; private set; }
 
     private void Awake()
     {
@@ -14,7 +15,8 @@ public class PanelComponent : IGraphicComponent
             LogWarning($"The gameobject {gameObject.name} is not a UI element");
             return;
         }
-        anchpos = instance.anchoredPosition.x;
+        anchposX = instance.anchoredPosition.x;
+        anchposY = instance.anchoredPosition.y;
     }
 
     public override void PlayGraphicAnimation()

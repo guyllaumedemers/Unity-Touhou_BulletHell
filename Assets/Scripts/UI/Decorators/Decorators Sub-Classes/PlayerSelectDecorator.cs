@@ -13,7 +13,7 @@ public class PlayerSelectDecorator : PanelDecorator, IPointerEnterHandler, IPoin
     protected override void Awake()
     {
         base.Awake();
-        images = GetComponentsInChildren<Image>().Where(x => x.gameObject != gameObject).ToArray();
+        images = GetComponentsInChildren<Image>();
         texts = GetComponentsInChildren<TextMeshProUGUI>();
         if (images.Length < 1)
         {
@@ -25,7 +25,7 @@ public class PlayerSelectDecorator : PanelDecorator, IPointerEnterHandler, IPoin
             LogWarning($"There is no child text component attach to this gameobject {gameObject.name}");
             return;
         }
-        foreach (var item in images) item.raycastTarget = false;
+        foreach (var item in images.Where(x => x.gameObject.name != "Raycaster")) item.raycastTarget = false;
         foreach (var item in texts) item.raycastTarget = false;
     }
 
@@ -45,7 +45,14 @@ public class PlayerSelectDecorator : PanelDecorator, IPointerEnterHandler, IPoin
         {
             images[0].enabled = false;
         }
-        //OnHooverEnter();
+        this.EnsureRoutineStop(ref routine);
+        this.CreateAnimationRoutine(Globals.buzzingTime, delegate (float progress)
+        {
+            Vector2 start = panelInstance.instance.anchoredPosition;
+            Vector2 end = new Vector2(panelInstance.instance.anchoredPosition.x, panelInstance.anchposY - panelInstance.instance.sizeDelta.y/2 + Globals.playerselectoffset);
+            float ease = EasingFunction.EaseInOutSine(0, 1, progress);
+            panelInstance.instance.anchoredPosition = Vector2.Lerp(start, end, ease);
+        });
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -54,34 +61,19 @@ public class PlayerSelectDecorator : PanelDecorator, IPointerEnterHandler, IPoin
         {
             images[0].enabled = true;
         }
-        //OnHooverExit();
+        this.EnsureRoutineStop(ref routine);
+        this.CreateAnimationRoutine(Globals.buzzingTime, delegate (float progress)
+        {
+            Vector2 start = panelInstance.instance.anchoredPosition;
+            Vector2 end = new Vector2(panelInstance.instance.anchoredPosition.x, panelInstance.anchposY - panelInstance.instance.sizeDelta.y/2);
+            float ease = EasingFunction.EaseInOutSine(0, 1, progress);
+            panelInstance.instance.anchoredPosition = Vector2.Lerp(start, end, ease);
+        });
     }
 
     #endregion
 
     #region private function
-
-    private void OnHooverEnter()
-    {
-        FocusAnimationAlt(panelInstance.anchpos + 1000.0f);
-    }
-
-    private void OnHooverExit()
-    {
-        FocusAnimationAlt(panelInstance.anchpos);
-    }
-
-    private void FocusAnimation(float size)
-    {
-        StopCoroutine(typeof(CustomDotTween).GetMethods().Where(x => x.Name == "Focus").FirstOrDefault().Name);
-        StartCoroutine(CustomDotTween.Focus(panelInstance.instance, size, Globals.buzzingTime));
-    }
-
-    private void FocusAnimationAlt(float endpos)
-    {
-        StopCoroutine(typeof(CustomDotTween).GetMethods().Where(x => x.Name == "FocusAlt").FirstOrDefault().Name);
-        StartCoroutine(CustomDotTween.FocusAlt(panelInstance.instance, endpos, Globals.buzzingTime));
-    }
 
     private void LogWarning(string msg) => Debug.LogWarning("[Player Select Decorator] : " + msg);
 
