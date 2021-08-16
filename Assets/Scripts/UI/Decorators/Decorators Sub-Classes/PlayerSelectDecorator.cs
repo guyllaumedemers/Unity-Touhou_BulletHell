@@ -48,7 +48,7 @@ public class PlayerSelectDecorator : PanelDecorator, IPointerEnterHandler, IPoin
         StopCoroutine(typeof(CustomDotTween).GetMethods().Where(x => x.Name == "BlinkingImgUI").FirstOrDefault().Name);     // should be done via the blinkingDecorator
         StartCoroutine(CustomDotTween.BlinkingImgUI(images[1], Globals.blinkingTime, 5));
         this.EnsureRoutineStop(ref routine);
-        this.CreateAnimationRoutine(Globals.pageAnimationWaitTime, delegate (float progress) { }, () => { EntryPoint.Instance.TriggerNextScene(); });
+        this.CreateAnimationRoutine(0.0f, delegate (float progress) { }, () => { EntryPoint.Instance.TriggerNextScene(); });
     }
 
     public void OnPointerEnter(PointerEventData eventData)

@@ -12,9 +12,9 @@ public class ButtonComponent : IGraphicComponent
 
     private void Awake()
     {
-        button = GetComponent<Button>();
-        rect = GetComponent<RectTransform>();
         text = GetComponentInChildren<TextMeshProUGUI>();
+        rect = GetComponent<RectTransform>();
+        button = GetComponent<Button>();
 
 
         if (!rect)

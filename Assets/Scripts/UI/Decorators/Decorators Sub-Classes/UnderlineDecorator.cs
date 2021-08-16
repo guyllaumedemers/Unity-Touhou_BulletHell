@@ -6,15 +6,30 @@ public class UnderlineDecorator : ButtonDecorator, IPointerExitHandler
 {
     #region public functions
 
+    #region events
     public override void OnPointerEnter(PointerEventData eventData)
     {
         base.OnPointerEnter(eventData);
-        buttonInstance.text.fontStyle |= FontStyles.Underline;
+        PlayGraphicAnimation();
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnPointerExit(PointerEventData eventData) => PlayGraphicAnimation();
+    #endregion
+
+    public override void PlayGraphicAnimation()
     {
-        buttonInstance.text.fontStyle &= ~FontStyles.Underline;
+        base.PlayGraphicAnimation();
+        AddRemoveFontStyle();
+    }
+
+    #endregion
+
+    #region private functions
+
+    private void AddRemoveFontStyle()
+    {
+        if (!buttonInstance.text.fontStyle.HasFlag(FontStyles.Underline)) buttonInstance.text.fontStyle |= FontStyles.Underline;
+        else buttonInstance.text.fontStyle &= ~FontStyles.Underline;
     }
 
     #endregion
