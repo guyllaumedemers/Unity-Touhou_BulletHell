@@ -7,7 +7,7 @@ public abstract class ButtonDecorator : IGraphicComponent, IPointerEnterHandler,
 
     private void Awake()
     {
-        buttonInstance = gameObject.GetComponent<ButtonComponent>();
+        buttonInstance = GetComponent<ButtonComponent>();
         if (!buttonInstance)
         {
             LogWarning($"There is no buttonComponent script attach to this gameobject {gameObject.name}");
@@ -17,12 +17,14 @@ public abstract class ButtonDecorator : IGraphicComponent, IPointerEnterHandler,
 
     #region public functions
 
-    #region events
-    public virtual void OnPointerClick(PointerEventData eventData) => buttonInstance.OnPointerClickSFX();
     public virtual void OnPointerEnter(PointerEventData eventData) => buttonInstance.OnPointerEnterSFX();
-    #endregion
+    public virtual void OnPointerClick(PointerEventData eventData) => buttonInstance.OnPointerClickSFX();
 
-    public override void PlayGraphicAnimation() => buttonInstance.PlayGraphicAnimation();
+    public override void PlayGraphicAnimation()
+    {
+        buttonInstance.PlayGraphicAnimation();
+        // add decorator behaviour if any
+    }
     #endregion
 
     #region  private functions

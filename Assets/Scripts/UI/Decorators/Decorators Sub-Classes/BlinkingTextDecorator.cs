@@ -4,11 +4,7 @@ using UnityEngine.EventSystems;
 
 public class BlinkingTextDecorator : ButtonDecorator
 {
-    public override void PlayGraphicAnimation()
-    {
-        base.PlayGraphicAnimation();
-        Blinkingtext();
-    }
+    #region public functions
 
     public override void OnPointerClick(PointerEventData eventData)
     {
@@ -20,6 +16,14 @@ public class BlinkingTextDecorator : ButtonDecorator
         }
         PlayGraphicAnimation();
     }
+
+    public override void PlayGraphicAnimation()
+    {
+        base.PlayGraphicAnimation();
+        Blinkingtext();
+    }
+
+    #endregion
 
     #region private function
 
