@@ -10,20 +10,33 @@ public class SelectableImgPanelDecorator : PanelDecorator
      *  highlight, reset, blink
      * 
      */
-    public SelectableImgPanelDecorator(IGraphicComponent component) : base(component) { }
 
-    public override void OnPointerClick(PointerEventData eventData)
+    private Image alphaImg;
+
+    public SelectableImgPanelDecorator(IGraphicComponent component, Image alphaImg) : base(component)
     {
-        throw new System.NotImplementedException();
+        if (!alphaImg)
+        {
+            LogWarning("The image component is null");
+            return;
+        }
+
+        this.alphaImg = alphaImg;
     }
+
+    public override void OnPointerClick(PointerEventData eventData) { }
 
     public override void OnPointerEnter(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        alphaImg.color = CustomDotTween.UpdateColor(Color.white);
     }
 
     public override void OnPointerExit(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        alphaImg.color = CustomDotTween.UpdateColor(Color.grey);
     }
+
+    #region private functions
+    private void LogWarning(string msg) => Debug.LogWarning("[Selectable img Decorator] : " + msg);
+    #endregion
 }

@@ -8,10 +8,10 @@ public class FocusPanelDecorator : PanelDecorator
      * 
      */
 
-    MonoBehaviour mono;
-    RectTransform rect;
-    float anchorY;
-    float deltaY;
+    private MonoBehaviour mono;
+    private RectTransform rect;
+    private float anchorY;
+    private float deltaY;
 
     public FocusPanelDecorator(IGraphicComponent component, MonoBehaviour mono, RectTransform rect) : base(component)
     {
