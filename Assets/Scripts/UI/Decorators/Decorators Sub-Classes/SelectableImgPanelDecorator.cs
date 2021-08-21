@@ -3,9 +3,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class StaircaseDecorator : PanelDecorator
+public class SelectableImgPanelDecorator : PanelDecorator
 {
-    public StaircaseDecorator(IGraphicComponent component) : base(component) { }
+    /*  OnPointerEnter, OnPointerExit and OnPointerClick behaviours
+     *  
+     *  highlight, reset, blink
+     * 
+     */
+    public SelectableImgPanelDecorator(IGraphicComponent component) : base(component) { }
 
     public override void OnPointerClick(PointerEventData eventData)
     {
