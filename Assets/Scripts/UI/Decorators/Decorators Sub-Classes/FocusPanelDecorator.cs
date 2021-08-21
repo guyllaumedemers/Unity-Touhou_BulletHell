@@ -15,18 +15,19 @@ public class FocusPanelDecorator : PanelDecorator
 
     public FocusPanelDecorator(IGraphicComponent component, MonoBehaviour mono, RectTransform rect) : base(component)
     {
-        this.mono = mono;
-        this.rect = rect;
         if (!mono)
         {
-            LogWarning("Wait what how can it be attach to a gameobject if not monobehaviour, did you break Unity?");
+            LogWarning("The MonoBehaviour is null");
             return;
         }
         else if (!rect)
         {
-            LogWarning("Rect is null " + mono.gameObject.name);
+            LogWarning("The rect argument is null");
             return;
         }
+
+        this.mono = mono;
+        this.rect = rect;
         this.anchorY = rect.anchoredPosition.y;
         this.deltaY = rect.sizeDelta.y / 2;
     }
