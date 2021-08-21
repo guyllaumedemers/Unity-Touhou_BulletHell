@@ -11,7 +11,6 @@ public class FocusPanelDecorator : PanelDecorator
     private MonoBehaviour mono;
     private RectTransform rect;
     private float anchorY;
-    private float deltaY;
 
     public FocusPanelDecorator(IGraphicComponent component, MonoBehaviour mono, RectTransform rect) : base(component)
     {
@@ -29,7 +28,6 @@ public class FocusPanelDecorator : PanelDecorator
         this.mono = mono;
         this.rect = rect;
         this.anchorY = rect.anchoredPosition.y;
-        this.deltaY = rect.sizeDelta.y / 2;
     }
 
     #region interface
@@ -37,10 +35,14 @@ public class FocusPanelDecorator : PanelDecorator
 
     public override void OnPointerEnter(PointerEventData eventData)
     {
+        /*  rect.sizedelta cannot be set in the constructor as it needs to wait one frame before being able to retrieve the value
+         *  of the rectransform
+         * 
+         */
         if (!panelInstance.Equals(null))
         {
             mono.StopCoroutine(typeof(CustomDotTween).GetMethods().Where(x => x.Name.Equals("FocusAlt")).FirstOrDefault().Name);
-            mono.StartCoroutine(CustomDotTween.FocusAlt(rect, anchorY - deltaY + Globals.playerselectoffset, Globals.buzzingTime));
+            mono.StartCoroutine(CustomDotTween.FocusAlt(rect, anchorY - rect.sizeDelta.y / 2 + Globals.playerselectoffset, Globals.buzzingTime));
         }
     }
 
@@ -49,7 +51,7 @@ public class FocusPanelDecorator : PanelDecorator
         if (!panelInstance.Equals(null))
         {
             mono.StopCoroutine(typeof(CustomDotTween).GetMethods().Where(x => x.Name.Equals("FocusAlt")).FirstOrDefault().Name);
-            mono.StartCoroutine(CustomDotTween.FocusAlt(rect, anchorY - deltaY, Globals.buzzingTime));
+            mono.StartCoroutine(CustomDotTween.FocusAlt(rect, anchorY - rect.sizeDelta.y / 2, Globals.buzzingTime));
         }
     }
     #endregion
