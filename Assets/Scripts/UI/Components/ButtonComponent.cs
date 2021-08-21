@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ButtonComponent : MonoBehaviour, IGraphicComponent
 {
     public List<ButtonDecorator> buttonModifiers = new List<ButtonDecorator>();
+
     protected MonoBehaviour mono;
     protected Button button;
     protected TextMeshProUGUI text;
@@ -41,7 +42,7 @@ public class ButtonComponent : MonoBehaviour, IGraphicComponent
     public void OnPointerClick(PointerEventData eventData)
     {
         foreach (var item in buttonModifiers) item.OnPointerClick(eventData);
-        AudioManager.Instance.TriggerButtonClickSFX();
+        if (button.interactable) AudioManager.Instance.TriggerButtonClickSFX();
     }
 
     public void OnPointerEnter(PointerEventData eventData)

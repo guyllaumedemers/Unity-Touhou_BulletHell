@@ -20665,18 +20665,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1402308856455446343}
   m_CullTransparentMesh: 1
---- !u!114 &1402308856455445692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402308856455446343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aefc3284a91c7b40b1a613bf7040752, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1402308856455446342
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20709,7 +20697,6 @@ GameObject:
   - component: {fileID: 1402308856455445691}
   - component: {fileID: 1402308856455445688}
   - component: {fileID: 1402308856455445689}
-  - component: {fileID: 1402308856455445692}
   m_Layer: 5
   m_Name: Reset Button
   m_TagString: OnStartupDefault
@@ -23927,18 +23914,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1402308857194674987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402308857194674994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aefc3284a91c7b40b1a613bf7040752, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1402308857194674994
 GameObject:
   m_ObjectHideFlags: 0
@@ -23951,7 +23926,6 @@ GameObject:
   - component: {fileID: 1402308857194674998}
   - component: {fileID: 1402308857194674999}
   - component: {fileID: 1402308857194674996}
-  - component: {fileID: 1402308857194674987}
   m_Layer: 5
   m_Name: Quit_ Button
   m_TagString: OnStartupDefault
@@ -25112,18 +25086,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1402308857429277967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402308857429277974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aefc3284a91c7b40b1a613bf7040752, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1402308857429277974
 GameObject:
   m_ObjectHideFlags: 0
@@ -25136,7 +25098,6 @@ GameObject:
   - component: {fileID: 1402308857429277962}
   - component: {fileID: 1402308857429277963}
   - component: {fileID: 1402308857429277960}
-  - component: {fileID: 1402308857429277967}
   m_Layer: 5
   m_Name: KeyConfig Button
   m_TagString: OnStartupDefault
