@@ -39,13 +39,13 @@ public class ButtonComponent : MonoBehaviour, IGraphicComponent
     }
 
     #region interface
-    public void OnPointerClick(PointerEventData eventData)
+    public virtual void OnPointerClick(PointerEventData eventData)
     {
         foreach (var item in buttonModifiers) item.OnPointerClick(eventData);
         if (button.interactable) AudioManager.Instance.TriggerButtonClickSFX();
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public virtual void OnPointerEnter(PointerEventData eventData)
     {
         foreach (var item in buttonModifiers) item.OnPointerEnter(eventData);
         if (button.interactable)
@@ -55,7 +55,7 @@ public class ButtonComponent : MonoBehaviour, IGraphicComponent
         }
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public virtual void OnPointerExit(PointerEventData eventData)
     {
         foreach (var item in buttonModifiers) item.OnPointerExit(eventData);
         if (button.interactable) text.color = CustomDotTween.UpdateColor(Color.grey);
