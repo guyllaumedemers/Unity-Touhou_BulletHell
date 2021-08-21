@@ -1,5 +1,3 @@
-using TMPro;
-using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class UnderlineDecorator : ButtonDecorator
@@ -9,4 +7,19 @@ public class UnderlineDecorator : ButtonDecorator
      */
 
     public UnderlineDecorator(IGraphicComponent component) : base(component) { }
+
+    public override void OnPointerClick(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void OnPointerEnter(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void OnPointerExit(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
 }
