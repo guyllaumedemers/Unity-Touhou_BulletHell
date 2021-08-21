@@ -22,6 +22,7 @@ public class SelectableImgPanelDecorator : PanelDecorator
         }
 
         this.alphaImg = alphaImg;
+        this.alphaImg.color = CustomDotTween.UpdateColor(Color.grey);
     }
 
     public override void OnPointerClick(PointerEventData eventData) { }

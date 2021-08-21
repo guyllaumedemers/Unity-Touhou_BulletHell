@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MenuButtonComponent : ButtonComponent
+public class MainMenuButtonComponent : ButtonComponent
 {
     RectTransform rect;
 

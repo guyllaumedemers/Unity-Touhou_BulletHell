@@ -1,3 +1,5 @@
+using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class UnderlineDecorator : ButtonDecorator
@@ -6,20 +8,32 @@ public class UnderlineDecorator : ButtonDecorator
      * 
      */
 
-    public UnderlineDecorator(IGraphicComponent component) : base(component) { }
+    TextMeshProUGUI text;
 
-    public override void OnPointerClick(PointerEventData eventData)
+    public UnderlineDecorator(IGraphicComponent component, TextMeshProUGUI text) : base(component)
     {
-        throw new System.NotImplementedException();
+        if (!text)
+        {
+            LogWarning("The text argument is null");
+            return;
+        }
+
+        this.text = text;
     }
+
+    public override void OnPointerClick(PointerEventData eventData) { }
 
     public override void OnPointerEnter(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        text.fontStyle |= FontStyles.Underline;
     }
 
     public override void OnPointerExit(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        text.fontStyle &= ~FontStyles.Underline;
     }
+
+    #region private functions
+    private void LogWarning(string msg) => Debug.LogWarning("[Underline Decorator] : " + msg);
+    #endregion
 }
