@@ -1,31 +1,26 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public abstract class PanelDecorator : IGraphicComponent
 {
-    public PanelComponent panelInstance { get; private set; }
+    /*  The decorator class is an abstract class that behaviours will implement 
+     * 
+     */
 
-    protected virtual void Awake()
+    protected IGraphicComponent panelInstance;
+
+    #region constructor
+    public PanelDecorator(IGraphicComponent component)
     {
-        panelInstance = GetComponent<PanelComponent>();
-        if (!panelInstance)
-        {
-            LogWarning($"There is no panelComponent script attach to this gameobject {gameObject.name}");
-            return;
-        }
+        this.panelInstance = component;
     }
-
-    #region public functions
-
-    public override void PlayGraphicAnimation()
-    {
-        panelInstance.PlayGraphicAnimation();
-    }
-
     #endregion
 
-    #region  private functions
+    #region interface
+    public abstract void OnPointerClick(PointerEventData eventData);
 
-    private void LogWarning(string msg) => Debug.LogWarning("[Panel Decorator] : " + msg);
+    public abstract void OnPointerEnter(PointerEventData eventData);
 
+    public abstract void OnPointerExit(PointerEventData eventData);
     #endregion
 }

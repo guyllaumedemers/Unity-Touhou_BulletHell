@@ -1,32 +1,43 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class PanelComponent : IGraphicComponent
+public class PanelComponent : MonoBehaviour, IGraphicComponent
 {
-    public RectTransform instance { get; private set; }
-    public float anchposX { get; private set; }
-    public float anchposY { get; private set; }
+    /*  The component base class implement the base interface for the decorator pattern
+     *  
+     *  In the component class is defined a set of behaviours that compose the class. These behaviours extend the component class
+     *  which alter its base behaviour
+     *  
+     *  This is the script that will be attach to the gameobject
+     *  
+     *  It also imply that a new script needs to be created if we want a different behaviour for the gameobject. In our case the base class PanelComponent
+     *  doesnt implement any behaviours.
+     *  
+     *  The derived class will be in charge of setting his own set of behaviours
+     * 
+     */
 
-    private void Awake()
+    private List<PanelDecorator> panelmodifiers = new List<PanelDecorator>();
+
+    #region interface
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        instance = GetComponent<RectTransform>();
-
-        if (!instance)
-        {
-            LogWarning($"The gameobject {gameObject.name} is not a UI element");
-            return;
-        }
-        anchposX = instance.anchoredPosition.x;
-        anchposY = instance.anchoredPosition.y;
+        foreach (var item in panelmodifiers) item.OnPointerEnter(eventData);
     }
 
-    public override void PlayGraphicAnimation()
+    public void OnPointerExit(PointerEventData eventData)
     {
-        // do PanelComponent behaviours
+        foreach (var item in panelmodifiers) item.OnPointerExit(eventData);
     }
 
-    #region private functions
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        foreach (var item in panelmodifiers) item.OnPointerClick(eventData);
+    }
+    #endregion
 
-    private void LogWarning(string msg) => Debug.LogWarning("[Panel Component] : " + msg);
-
+    #region public functions
+    public void RegisterOperation(PanelDecorator operation) => panelmodifiers.Add(operation);
     #endregion
 }
