@@ -15,6 +15,7 @@ public class PlayerSelectComponent : PanelComponent
     TextMeshProUGUI[] textComponents;
     Image[] imgComponents;
     RectTransform myRect;
+    Image playerImg;
 
     MonoBehaviour mono;
 
@@ -23,6 +24,7 @@ public class PlayerSelectComponent : PanelComponent
         this.textComponents = GetComponentsInChildren<TextMeshProUGUI>();
         this.imgComponents = GetComponentsInChildren<Image>();
         this.myRect = GetComponent<RectTransform>();
+        this.playerImg = transform.GetChild(0).GetComponentsInChildren<Image>().Last();
 
         this.mono = this;
 
@@ -34,6 +36,11 @@ public class PlayerSelectComponent : PanelComponent
         else if (!myRect)
         {
             LogWarning("This is not a UI component " + gameObject.name);
+            return;
+        }
+        else if (!playerImg)
+        {
+            LogWarning("There is no image component in first child " + gameObject.name);
             return;
         }
         else if (textComponents.Length < 1)
@@ -51,7 +58,7 @@ public class PlayerSelectComponent : PanelComponent
         foreach (var item in imgComponents.Where(x => x.gameObject.name != "Raycaster")) item.raycastTarget = false;
 
         RegisterOperation(new FocusPanelDecorator(this, mono, myRect));
-        RegisterOperation(new SelectableImgPanelDecorator(this));
+        RegisterOperation(new SelectableImgPanelDecorator(this, playerImg));
     }
 
     private void LogWarning(string msg) => Debug.LogWarning("[PlayerSelect Component] : " + msg);

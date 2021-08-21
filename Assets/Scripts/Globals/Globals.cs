@@ -41,7 +41,7 @@ public static class Globals
     #region Global values
     public static float fps = 1 / 60;
     public static float blinkingTime = 0.05f;
-    public static int blinkPerSecond = 7;
+    public static int blinkPerSecond = 5;
     public static float buzzingTime = 0.1f;
     public static float slidingTime = 0.5f;
     public static float staircaseTime = 0.4f;

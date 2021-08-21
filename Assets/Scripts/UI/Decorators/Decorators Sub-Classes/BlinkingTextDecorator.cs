@@ -9,8 +9,8 @@ public class BlinkingTextDecorator : ButtonDecorator
      * 
      */
 
-    MonoBehaviour mono;
-    TextMeshProUGUI text;
+    private MonoBehaviour mono;
+    private TextMeshProUGUI text;
 
     public BlinkingTextDecorator(IGraphicComponent component, MonoBehaviour mono, TextMeshProUGUI text) : base(component)
     {

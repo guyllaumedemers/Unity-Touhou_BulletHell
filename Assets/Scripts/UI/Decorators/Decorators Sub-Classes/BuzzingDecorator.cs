@@ -8,8 +8,8 @@ public class BuzzingDecorator : ButtonDecorator
      * 
      */
 
-    MonoBehaviour mono;
-    RectTransform rect;
+    private MonoBehaviour mono;
+    private RectTransform rect;
 
     public BuzzingDecorator(IGraphicComponent component, MonoBehaviour mono, RectTransform rect) : base(component)
     {
