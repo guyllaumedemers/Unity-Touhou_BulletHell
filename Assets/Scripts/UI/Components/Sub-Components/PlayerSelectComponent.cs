@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -22,11 +20,11 @@ public class PlayerSelectComponent : PanelComponent
 
     private void Awake()
     {
-        textComponents = GetComponentsInChildren<TextMeshProUGUI>();
-        imgComponents = GetComponentsInChildren<Image>();
-        myRect = GetComponent<RectTransform>();
+        this.textComponents = GetComponentsInChildren<TextMeshProUGUI>();
+        this.imgComponents = GetComponentsInChildren<Image>();
+        this.myRect = GetComponent<RectTransform>();
 
-        mono = this;
+        this.mono = this;
 
         if (!mono)
         {

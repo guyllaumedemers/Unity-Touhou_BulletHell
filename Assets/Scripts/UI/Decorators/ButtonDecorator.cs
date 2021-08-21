@@ -12,18 +12,9 @@ public abstract class ButtonDecorator : IGraphicComponent
     }
     #endregion
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (!buttonInstance.Equals(null)) buttonInstance.OnPointerClick(eventData);
-    }
+    public abstract void OnPointerClick(PointerEventData eventData);
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (!buttonInstance.Equals(null)) buttonInstance.OnPointerEnter(eventData);
-    }
+    public abstract void OnPointerEnter(PointerEventData eventData);
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (!buttonInstance.Equals(null)) buttonInstance.OnPointerExit(eventData);
-    }
+    public abstract void OnPointerExit(PointerEventData eventData);
 }
