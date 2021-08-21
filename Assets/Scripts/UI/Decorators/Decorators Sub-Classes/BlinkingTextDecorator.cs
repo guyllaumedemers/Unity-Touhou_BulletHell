@@ -5,24 +5,28 @@ using UnityEngine.EventSystems;
 
 public class BlinkingTextDecorator : ButtonDecorator
 {
+    /* Add blinking animation
+     * 
+     */
+
     MonoBehaviour mono;
     TextMeshProUGUI text;
 
     public BlinkingTextDecorator(IGraphicComponent component, MonoBehaviour mono, TextMeshProUGUI text) : base(component)
     {
-        this.mono = mono;
-        this.text = text;
-
         if (!mono)
         {
-            LogWarning("Wait what how can it be attach to a gameobject if not monobehaviour, did you break Unity?");
+            LogWarning("The MonoBehaviour is null");
             return;
         }
         else if (!text)
         {
-            LogWarning("There is no text component attach to this gameobject " + mono.gameObject.name);
+            LogWarning("The text argument is null");
             return;
         }
+
+        this.mono = mono;
+        this.text = text;
     }
 
     public override void OnPointerClick(PointerEventData eventData)
