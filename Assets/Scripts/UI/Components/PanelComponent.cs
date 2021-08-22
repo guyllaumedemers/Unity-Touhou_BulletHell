@@ -23,8 +23,8 @@ public class PanelComponent : MonoBehaviour, IGraphicComponent
     #region interface
     public void OnPointerEnter(PointerEventData eventData)
     {
-        foreach (var item in panelmodifiers) item.OnPointerEnter(eventData);
         AudioManager.Instance.TriggerMouseSFX();
+        foreach (var item in panelmodifiers) item.OnPointerEnter(eventData);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -32,10 +32,10 @@ public class PanelComponent : MonoBehaviour, IGraphicComponent
         foreach (var item in panelmodifiers) item.OnPointerExit(eventData);
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public virtual void OnPointerClick(PointerEventData eventData)
     {
-        foreach (var item in panelmodifiers) item.OnPointerClick(eventData);
         AudioManager.Instance.TriggerButtonClickSFX();
+        foreach (var item in panelmodifiers) item.OnPointerClick(eventData);
     }
     #endregion
 
