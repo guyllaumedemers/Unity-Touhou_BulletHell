@@ -80,6 +80,16 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
         }
     }
 
+    private void OnEnable()
+    {
+        if (buttons.Length < 1)
+        {
+            return;
+        }
+        foreach (var item in rects) item.anchoredPosition = new Vector2(0.0f, item.anchoredPosition.y);
+        foreach (var item in buttons) item.interactable = true;
+    }
+
     private void StaircaseAnimation()
     {
         StopCoroutine(typeof(CustomDotTween).GetMethods().Where(x => x.Name.Equals("StaircaseAnimation")).FirstOrDefault().Name);

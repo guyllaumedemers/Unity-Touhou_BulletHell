@@ -1,6 +1,7 @@
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class PlayerSelectComponent : PanelComponent
@@ -58,7 +59,13 @@ public class PlayerSelectComponent : PanelComponent
         foreach (var item in imgComponents.Where(x => x.gameObject.name != "Raycaster")) item.raycastTarget = false;
 
         RegisterOperation(new FocusPanelDecorator(this, mono, myRect));
+        RegisterOperation(new BlinkingImgDecorator(this, mono, playerImg));
         RegisterOperation(new SelectableImgPanelDecorator(this, playerImg));
+    }
+
+    public override void OnPointerClick(PointerEventData eventData)
+    {
+        base.OnPointerClick(eventData);
     }
 
     private void LogWarning(string msg) => Debug.LogWarning("[PlayerSelect Component] : " + msg);
