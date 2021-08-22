@@ -2,6 +2,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerSelectComponent : PanelComponent
@@ -66,6 +67,8 @@ public class PlayerSelectComponent : PanelComponent
     public override void OnPointerClick(PointerEventData eventData)
     {
         base.OnPointerClick(eventData);
+        EntryPoint.Instance.TriggerNextScene(); // temp
+        // Trigger a loading screen with progress bar to initialize unit pool for levels
     }
 
     private void LogWarning(string msg) => Debug.LogWarning("[PlayerSelect Component] : " + msg);

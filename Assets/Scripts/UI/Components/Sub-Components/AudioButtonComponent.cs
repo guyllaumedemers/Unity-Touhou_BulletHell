@@ -18,11 +18,14 @@ public class AudioButtonComponent : ButtonComponent
     }
     public override void OnPointerEnter(PointerEventData eventData)
     {
-        foreach (var item in buttonModifiers) item.OnPointerEnter(eventData);
+        /*  The override is to avoid button color change
+         *  
+         */
         if (button.interactable)
         {
             AudioManager.Instance.TriggerMouseSFX();
         }
+        foreach (var item in buttonModifiers) item.OnPointerEnter(eventData);
     }
 
     public override void OnPointerExit(PointerEventData eventData)

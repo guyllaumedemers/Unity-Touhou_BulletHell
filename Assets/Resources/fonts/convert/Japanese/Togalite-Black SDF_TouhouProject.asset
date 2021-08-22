@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Togalite-Black SDF_TouhouProject
   m_EditorClassIdentifier: 
-  hashCode: 1077575634
+  hashCode: 1974583844
   material: {fileID: 3157918186420954855}
-  materialHashCode: -1724570702
+  materialHashCode: 88141956
   m_Version: 1.1.0
   m_SourceFontFileGUID: ed0d9152e95c3384aa85e531097d8e79
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: ed0d9152e95c3384aa85e531097d8e79, type: 3}
@@ -397,7 +397,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Togalite-Black SDF Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: UNDERLAY_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -458,7 +458,7 @@ Material:
     - _Reflectivity: 6
     - _ScaleRatioA: 0.8333333
     - _ScaleRatioB: 0.6770833
-    - _ScaleRatioC: 0.6770833
+    - _ScaleRatioC: 0.37202382
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -471,9 +471,9 @@ Material:
     - _StencilWriteMask: 255
     - _TextureHeight: 512
     - _TextureWidth: 512
-    - _UnderlayDilate: 0
-    - _UnderlayOffsetX: 0
-    - _UnderlayOffsetY: 0
+    - _UnderlayDilate: 0.82
+    - _UnderlayOffsetX: -1
+    - _UnderlayOffsetY: -1
     - _UnderlaySoftness: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
