@@ -42,23 +42,25 @@ public class ButtonComponent : MonoBehaviour, IGraphicComponent
     public virtual void OnPointerClick(PointerEventData eventData)
     {
         foreach (var item in buttonModifiers) item.OnPointerClick(eventData);
-        if (button.interactable) AudioManager.Instance.TriggerButtonClickSFX();
     }
 
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
-        foreach (var item in buttonModifiers) item.OnPointerEnter(eventData);
         if (button.interactable)
         {
-            text.color = CustomDotTween.UpdateColor(Color.white);
             AudioManager.Instance.TriggerMouseSFX();
+            text.color = CustomDotTween.UpdateColor(Color.white);
         }
+        foreach (var item in buttonModifiers) item.OnPointerEnter(eventData);
     }
 
     public virtual void OnPointerExit(PointerEventData eventData)
     {
+        if (button.interactable)
+        {
+            text.color = CustomDotTween.UpdateColor(Color.grey);
+        }
         foreach (var item in buttonModifiers) item.OnPointerExit(eventData);
-        if (button.interactable) text.color = CustomDotTween.UpdateColor(Color.grey);
     }
     #endregion
 

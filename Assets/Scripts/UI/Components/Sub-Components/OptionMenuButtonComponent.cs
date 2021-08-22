@@ -36,25 +36,18 @@ public class OptionMenuButtonComponent : ButtonComponent
         if (mono.gameObject.tag != Globals.off) text.color = CustomDotTween.UpdateColor(Color.white);
         else text.color = CustomDotTween.UpdateColor(Color.grey);
 
-        RegisterOperation(new BlinkingTextDecorator(this, mono, text));
         RegisterOperation(new UnderlineDecorator(this, text));
     }
 
     #region interface
-    public override void OnPointerClick(PointerEventData eventData)
-    {
-        foreach (var item in buttonModifiers) item.OnPointerClick(eventData);
-        if (button.interactable)
-        {
-            AudioManager.Instance.TriggerButtonClickSFX();
-            UpdateTextComponentsColor(text, alternateText);
-        }
-    }
 
     public override void OnPointerEnter(PointerEventData eventData)
     {
+        if (button.interactable)
+        {
+            AudioManager.Instance.TriggerMouseSFX();
+        }
         foreach (var item in buttonModifiers) item.OnPointerEnter(eventData);
-        if (button.interactable) AudioManager.Instance.TriggerMouseSFX();
     }
 
     public override void OnPointerExit(PointerEventData eventData)
@@ -64,17 +57,6 @@ public class OptionMenuButtonComponent : ButtonComponent
     #endregion
 
     #region private functions
-    private void UpdateTextComponentsColor(TextMeshProUGUI src, TextMeshProUGUI target)
-    {
-        if (!src || !target)
-        {
-            return;
-        }
-
-        Color temp = src.color;
-        src.color = target.color;
-        target.color = temp;
-    }
     private void LogWarning(string msg) => Debug.LogWarning("[Option Menu Button Component] : " + msg);
     #endregion
 }

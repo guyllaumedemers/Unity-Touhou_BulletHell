@@ -10,6 +10,7 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
     private void Awake()
     {
         buttons = GetComponentsInChildren<Button>();
+
         if (buttons.Length < 1)
         {
             LogWarning($"There is no child buttons in {gameObject.name}");
@@ -27,11 +28,12 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
             switch (i)
             {
                 case (int)MenuSelectionEnum.Start:
-                    buttons[i].onClick.AddListener(UIManager.Instance.Startgame);
                     buttons[i].onClick.AddListener(() =>
                     {
+                        UIManager.Instance.Startgame();
                         StaircaseAnimation();
                         DisableAllbuttons();
+                        AudioManager.Instance.TriggerButtonClickSFX();
                     });
                     break;
                 case (int)MenuSelectionEnum.Practice:
@@ -40,6 +42,7 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
                     {
                         StaircaseAnimation();
                         DisableAllbuttons();
+                        AudioManager.Instance.TriggerButtonClickSFX();
                     });
                     break;
                 case (int)MenuSelectionEnum.Replay:
@@ -48,30 +51,34 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
                     {
                         StaircaseAnimation();
                         DisableAllbuttons();
+                        AudioManager.Instance.TriggerButtonClickSFX();
                     });
                     break;
                 case (int)MenuSelectionEnum.Score:
-                    buttons[i].onClick.AddListener(UIManager.Instance.ShowScores);
                     buttons[i].onClick.AddListener(() =>
                     {
+                        UIManager.Instance.ShowScores();
                         StaircaseAnimation();
                         DisableAllbuttons();
+                        AudioManager.Instance.TriggerButtonClickSFX();
                     });
                     break;
                 case (int)MenuSelectionEnum.Options:
-                    buttons[i].onClick.AddListener(UIManager.Instance.ShowOptionsMenu);
                     buttons[i].onClick.AddListener(() =>
                     {
+                        UIManager.Instance.ShowOptionsMenu();
                         StaircaseAnimation();
                         DisableAllbuttons();
+                        AudioManager.Instance.TriggerButtonClickSFX();
                     });
                     break;
                 case (int)MenuSelectionEnum.Quit:
-                    buttons[i].onClick.AddListener(UIManager.Instance.ExitGame);
                     buttons[i].onClick.AddListener(() =>
                     {
+                        UIManager.Instance.ExitGame();
                         StaircaseAnimation();
                         DisableAllbuttons();
+                        AudioManager.Instance.TriggerButtonClickSFX();
                     });
                     break;
                 default:

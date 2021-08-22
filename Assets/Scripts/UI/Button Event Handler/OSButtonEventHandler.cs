@@ -24,22 +24,39 @@ public class OSButtonEventHandler : SingletonMono<OSButtonEventHandler>
             switch (i)
             {
                 case (int)OptionSelectionEnum.ST_DOWN:
-                    buttons[i].onClick.AddListener(AudioManager.Instance.DecrementMainVolume);
+                    buttons[i].onClick.AddListener(() =>
+                    {
+                        AudioManager.Instance.DecrementMainVolume();
+                        AudioManager.Instance.TriggerButtonClickSFX();
+                    });
                     break;
                 case (int)OptionSelectionEnum.ST_UP:
-                    buttons[i].onClick.AddListener(AudioManager.Instance.IncrementMainVolume);
+                    buttons[i].onClick.AddListener(() =>
+                    {
+                        AudioManager.Instance.IncrementMainVolume();
+                        AudioManager.Instance.TriggerButtonClickSFX();
+                    });
                     break;
                 case (int)OptionSelectionEnum.SE_DOWN:
-                    buttons[i].onClick.AddListener(AudioManager.Instance.DecrementSFXVolume);
+                    buttons[i].onClick.AddListener(() =>
+                    {
+                        AudioManager.Instance.DecrementSFXVolume();
+                        AudioManager.Instance.TriggerButtonClickSFX();
+                    });
                     break;
                 case (int)OptionSelectionEnum.SE_UP:
-                    buttons[i].onClick.AddListener(AudioManager.Instance.IncrementSFXVolume);
+                    buttons[i].onClick.AddListener(() =>
+                    {
+                        AudioManager.Instance.IncrementSFXVolume();
+                        AudioManager.Instance.TriggerButtonClickSFX();
+                    });
                     break;
                 case (int)OptionSelectionEnum.Fullscreen:
                     buttons[i].onClick.AddListener(() =>
                     {
                         UIManager.Instance.FullScreen();
                         CustomDotTween.ToggleTextColor(texts[0], texts[1]);
+                        AudioManager.Instance.TriggerButtonClickSFX();
                     });
                     break;
                 case (int)OptionSelectionEnum.Windowed:
@@ -47,6 +64,7 @@ public class OSButtonEventHandler : SingletonMono<OSButtonEventHandler>
                     {
                         UIManager.Instance.Windowed();
                         CustomDotTween.ToggleTextColor(texts[0], texts[1]);
+                        AudioManager.Instance.TriggerButtonClickSFX();
                     });
                     break;
                 case (int)OptionSelectionEnum.Mute_OFF:
@@ -54,6 +72,7 @@ public class OSButtonEventHandler : SingletonMono<OSButtonEventHandler>
                     {
                         AudioManager.Instance.EnableMixer();
                         CustomDotTween.ToggleTextColor(texts[2], texts[3]);
+                        AudioManager.Instance.TriggerButtonClickSFX();
                     });
                     break;
                 case (int)OptionSelectionEnum.Mute_ON:
@@ -61,16 +80,29 @@ public class OSButtonEventHandler : SingletonMono<OSButtonEventHandler>
                     {
                         AudioManager.Instance.DisableMixer();
                         CustomDotTween.ToggleTextColor(texts[2], texts[3]);
+                        AudioManager.Instance.TriggerButtonClickSFX();
                     });
                     break;
                 case (int)OptionSelectionEnum.Reset:
-                    buttons[i].onClick.AddListener(UIManager.Instance.ResetConfig);
+                    buttons[i].onClick.AddListener(() =>
+                    {
+                        UIManager.Instance.ResetConfig();
+                        AudioManager.Instance.TriggerButtonClickSFX();
+                    });
                     break;
                 case (int)OptionSelectionEnum.KeyConfig:
-                    buttons[i].onClick.AddListener(UIManager.Instance.ShowKeyConfig);
+                    buttons[i].onClick.AddListener(() =>
+                    {
+                        UIManager.Instance.ShowKeyConfig();
+                        AudioManager.Instance.TriggerButtonClickSFX();
+                    });
                     break;
                 case (int)OptionSelectionEnum.Quit:
-                    buttons[i].onClick.AddListener(UIManager.Instance.HideOptionsMenu);
+                    buttons[i].onClick.AddListener(() =>
+                    {
+                        UIManager.Instance.HideOptionsMenu();
+                        AudioManager.Instance.TriggerButtonClickSFX();
+                    });
                     break;
                 default:
                     throw new System.InvalidOperationException();
