@@ -18,10 +18,6 @@ public class PlayerSelectComponent : PanelComponent
     Image[] imgComponents;
     RectTransform myRect;
     Image playerImg;
-
-    // Handle the fade in animation after player selection
-    // Maybe not the best place for it... need to evaluate
-    Coroutine routine;
     CanvasGroup alphagroup;
 
     MonoBehaviour mono;
@@ -73,20 +69,13 @@ public class PlayerSelectComponent : PanelComponent
         RegisterOperation(new FocusPanelDecorator(this, mono, myRect));
         RegisterOperation(new BlinkingImgDecorator(this, mono, playerImg));
         RegisterOperation(new SelectableImgPanelDecorator(this, playerImg));
+        RegisterOperation(new CanvasFadeDecorator(this, mono, alphagroup));
     }
 
     public override void OnPointerClick(PointerEventData eventData)
     {
         base.OnPointerClick(eventData);
-        this.EnsureRoutineStop(ref routine);
-        this.CreateAnimationRoutine(Globals.curtainfade / 2, delegate (float progress)
-        {
-            float ease = EasingFunction.EaseInOutExpo(0, 1, progress);
-            alphagroup.alpha = Mathf.Lerp(0, 1, ease);
-        }, delegate
-        {
-            SceneController.Instance.TriggerNextScene();
-        });
+        SceneController.Instance.TriggerNextScene(Globals.curtainfade / 2);
     }
 
     private void LogWarning(string msg) => Debug.LogWarning("[PlayerSelect Component] : " + msg);

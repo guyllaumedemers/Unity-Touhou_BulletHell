@@ -13,23 +13,23 @@ public class SceneController : SingletonMonoPersistent<SceneController>
     {
         base.Awake();
         this.EnsureRoutineStop(ref routine);
-        this.CreateAnimationRoutine(Globals.sceneDelay, delegate (float progress) { }, delegate { TriggerNextScene(); });
+        this.CreateAnimationRoutine(0f, delegate (float progress) { }, delegate { TriggerNextScene(); });
     }
 
     #region public functions
-    public void TriggerNextScene()
+    public void TriggerNextScene(float delay = 0f)
     {
         this.EnsureRoutineStop(ref routine);
-        this.CreateAnimationRoutine(Globals.sceneDelay, delegate (float progress) { }, delegate
+        this.CreateAnimationRoutine(delay, delegate (float progress) { }, delegate
         {
             StartCoroutine(LoadScene(++curr_scene));
         });
     }
 
-    public void TriggerPreviousScene()
+    public void TriggerPreviousScene(float delay = 0f)
     {
         this.EnsureRoutineStop(ref routine);
-        this.CreateAnimationRoutine(Globals.sceneDelay, delegate (float progress) { }, delegate
+        this.CreateAnimationRoutine(delay, delegate (float progress) { }, delegate
         {
             StartCoroutine(LoadScene(--curr_scene));
         });
