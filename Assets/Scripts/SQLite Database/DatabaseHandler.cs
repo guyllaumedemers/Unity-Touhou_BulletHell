@@ -38,11 +38,11 @@ public static class DatabaseHandler
                                 myOBJ.Add(tuple as T);
                                 break;
                             case SQLTableEnum.Waypoint:
-                                Tool.Vector3Wrapper vwrapper = new Tool.Vector3Wrapper(reader.GetFloat(2), reader.GetFloat(3), 0.0f);
+                                WrappingTool.CustomVectorThree vwrapper = new WrappingTool.CustomVectorThree(reader.GetFloat(2), reader.GetFloat(3), 0.0f);
                                 myOBJ.Add(vwrapper as T);
                                 break;
                             case SQLTableEnum.Spline:
-                                Tool.Vector3Wrapper spline = new Tool.Vector3Wrapper(reader.GetFloat(1), reader.GetFloat(2), 0.0f);
+                                WrappingTool.CustomVectorThree spline = new WrappingTool.CustomVectorThree(reader.GetFloat(1), reader.GetFloat(2), 0.0f);
                                 myOBJ.Add(spline as T);
                                 break;
                             default:
