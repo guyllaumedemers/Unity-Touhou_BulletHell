@@ -19,6 +19,11 @@ public class PlayerSelectComponent : PanelComponent
     RectTransform myRect;
     Image playerImg;
 
+    // Handle the fade in animation after player selection
+    // Maybe not the best place for it... need to evaluate
+    Coroutine routine;
+    CanvasGroup alphagroup;
+
     MonoBehaviour mono;
 
     private void Awake()
@@ -27,6 +32,7 @@ public class PlayerSelectComponent : PanelComponent
         this.imgComponents = GetComponentsInChildren<Image>();
         this.myRect = GetComponent<RectTransform>();
         this.playerImg = transform.GetChild(0).GetComponentsInChildren<Image>().Last();
+        this.alphagroup = FindObjectOfType<CanvasGroup>(true);
 
         this.mono = this;
 
@@ -55,6 +61,11 @@ public class PlayerSelectComponent : PanelComponent
             LogWarning("There is no Image Component on this gameobject " + gameObject.name);
             return;
         }
+        else if (!alphagroup)
+        {
+            LogWarning("There is no Canvas Group Component in this scene " + SceneManager.GetActiveScene().name);
+            return;
+        }
 
         foreach (var item in textComponents) item.raycastTarget = false;
         foreach (var item in imgComponents.Where(x => x.gameObject.name != "Raycaster")) item.raycastTarget = false;
@@ -67,8 +78,15 @@ public class PlayerSelectComponent : PanelComponent
     public override void OnPointerClick(PointerEventData eventData)
     {
         base.OnPointerClick(eventData);
-        SceneController.Instance.TriggerNextScene(); // temp
-        // Trigger a loading screen with progress bar to initialize unit pool for levels
+        this.EnsureRoutineStop(ref routine);
+        this.CreateAnimationRoutine(Globals.curtainfade / 2, delegate (float progress)
+        {
+            float ease = EasingFunction.EaseInOutExpo(0, 1, progress);
+            alphagroup.alpha = Mathf.Lerp(0, 1, ease);
+        }, delegate
+        {
+            SceneController.Instance.TriggerNextScene();
+        });
     }
 
     private void LogWarning(string msg) => Debug.LogWarning("[PlayerSelect Component] : " + msg);
