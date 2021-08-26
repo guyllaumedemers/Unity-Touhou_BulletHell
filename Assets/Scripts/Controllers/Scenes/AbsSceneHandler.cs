@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public abstract class AbsSceneHandler : SingletonMono<AbsSceneHandler>
+public abstract class AbsSceneHandler : MonoBehaviour
 {
     protected CanvasGroup alphagroup;
     protected Coroutine routine;
