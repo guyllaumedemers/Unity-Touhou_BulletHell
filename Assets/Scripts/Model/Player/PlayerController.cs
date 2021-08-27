@@ -91,8 +91,6 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
 
     #region Unity functions
 
-    private void OnEnable() => inputs?.Enable();
-
     private void OnDisable() => inputs?.Disable();
 
     public void PreIntilizationMethod()
@@ -105,6 +103,7 @@ public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamagea
         sprRen = GetComponent<SpriteRenderer>();
         orbParent = transform.GetChild(0).GetComponent<Transform>();
         OrbRotation.Instance.PreIntilizationMethod();
+        inputs.Enable();                                        // Enable cannot be called in the OnEnable function because of unity order of execution
     }
 
     public void InitializationMethod()

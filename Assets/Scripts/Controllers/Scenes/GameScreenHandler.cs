@@ -12,7 +12,7 @@ public class GameScreenHandler : AbsSceneHandler
 
     private void Awake() => PreIntilizationMethod();
 
-    private void Start() => InitializationMethod();
+    private void Start() => InitializationMethod(Globals.shortFadingTime, null);
 
     private void Update()
     {
@@ -41,20 +41,20 @@ public class GameScreenHandler : AbsSceneHandler
         last = Time.time;
     }
 
-    protected override void InitializationMethod(params Button[] buttons)
+    protected override void InitializationMethod(float curtainFadeTime, params Button[] buttons)
     {
         if (!alphagroup)
         {
             LogWarning("The canvas group was not loaded : " + SceneManager.GetActiveScene().name);
             return;
         }
-        else if (buttons.Length > 0)
+        else if (buttons != null && buttons.Length > 0)
         {
             foreach (var b in buttons) b.interactable = false;
         }
 
         this.EnsureRoutineStop(ref routine);
-        this.CreateAnimationRoutine(Globals.curtainfade / 2, delegate (float progress)
+        this.CreateAnimationRoutine(curtainFadeTime, delegate (float progress)
         {
             float ease = EasingFunction.EaseInOutExpo(0, 1, progress);
             alphagroup.alpha = Mathf.Lerp(1, 0, ease);
@@ -79,6 +79,7 @@ public class GameScreenHandler : AbsSceneHandler
     private void GameLogicInitialization()
     {
         PlayerController.Instance.InitializationMethod();
+        // Scene should be loaded in memory and the wave should start after a period of time once the scene is ready
         StartCoroutine(WaveController.Instance.StartWave(0, (int)DirectionEnum.None, (int)DirectionEnum.Pivot, 4));
     }
     private void UpdateGameLogic()

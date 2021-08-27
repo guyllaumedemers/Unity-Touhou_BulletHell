@@ -9,7 +9,7 @@ public abstract class AbsSceneHandler : MonoBehaviour
 
     protected virtual void PreIntilizationMethod() => LoadCanvas();
 
-    protected virtual void InitializationMethod(params Button[] buttons) => PlayFadeAnimation(buttons);
+    protected virtual void InitializationMethod(float fadeTime, params Button[] buttons) => PlayFadeAnimation(fadeTime, buttons);
 
     #region private functions
     private void InitializeCanvasToDefaultValues()
@@ -28,7 +28,7 @@ public abstract class AbsSceneHandler : MonoBehaviour
         }
         InitializeCanvasToDefaultValues();
     }
-    private void PlayFadeAnimation(params Button[] buttons)
+    private void PlayFadeAnimation(float fadeTime, params Button[] buttons)
     {
         if (!alphagroup)
         {
@@ -41,7 +41,7 @@ public abstract class AbsSceneHandler : MonoBehaviour
         }
 
         this.EnsureRoutineStop(ref routine);
-        this.CreateAnimationRoutine(Globals.curtainfade / 2, delegate (float progress)
+        this.CreateAnimationRoutine(fadeTime, delegate (float progress)
         {
             float ease = EasingFunction.EaseInOutExpo(0, 1, progress);
             alphagroup.alpha = Mathf.Lerp(1, 0, ease);

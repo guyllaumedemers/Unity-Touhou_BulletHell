@@ -3,40 +3,39 @@ using UnityEngine.UI;
 
 public class TitleScreenHandler : AbsSceneHandler
 {
-    private Button startButton;
     private ParticleSystem particule;
 
     private void Awake()
     {
-        particule = FindObjectOfType<ParticleSystem>();
+        particule = FindObjectOfType<ParticleSystem>(true);
         if (!particule)
         {
             LogWarning("There is no particule system in the scene");
             return;
         }
+
         DontDestroyOnLoad(particule);
         PreIntilizationMethod();
     }
 
-    private void Start() => InitializationMethod(startButton);
+    private void Start() => InitializationMethod(Globals.longFadingTime, SetStartButton());
 
     protected override void PreIntilizationMethod()
     {
         base.PreIntilizationMethod();
-        startButton = SetStartButton(startButton);
         AudioManager.Instance.PreInitializeTitleScreen();
     }
 
-    protected override void InitializationMethod(params Button[] buttons)
+    protected override void InitializationMethod(float fadeTime, params Button[] buttons)
     {
-        base.InitializationMethod(buttons);
+        base.InitializationMethod(fadeTime, buttons);
         AudioManager.Instance.InitializeTitleScreen();
     }
 
     #region private functions
-    private Button SetStartButton(Button button)
+    private Button SetStartButton()
     {
-        button = FindObjectOfType<Button>();
+        Button button = FindObjectOfType<Button>(true);
         if (!button)
         {
             LogWarning("There is no button in the scene");
@@ -46,12 +45,13 @@ public class TitleScreenHandler : AbsSceneHandler
         {
             AudioManager.Instance.TriggerButtonClickSFX();
             this.EnsureRoutineStop(ref routine);
-            this.CreateAnimationRoutine(Globals.fadingTime, delegate (float progress)
+            this.CreateAnimationRoutine(Globals.shortFadingTime, delegate (float progress)
             {
                 float ease = EasingFunction.EaseInOutExpo(0, 1, progress);
                 alphagroup.alpha = Mathf.Lerp(0, 1, ease);
             },
             delegate { SceneController.Instance.TriggerNextScene(Globals.sceneDelay); });
+            button.interactable = false;
         });
         return button;
     }

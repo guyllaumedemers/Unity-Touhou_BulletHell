@@ -27,7 +27,7 @@ public class CanvasFadeDecorator : PanelDecorator
     public override void OnPointerClick(PointerEventData eventData)
     {
         mono.EnsureRoutineStop(ref routine);
-        mono.CreateAnimationRoutine(Globals.curtainfade / 2, delegate (float progress)
+        mono.CreateAnimationRoutine(Globals.shortFadingTime, delegate (float progress)
         {
             float ease = EasingFunction.EaseInOutExpo(0, 1, progress);
             alphagroup.alpha = Mathf.Lerp(0, 1, ease);

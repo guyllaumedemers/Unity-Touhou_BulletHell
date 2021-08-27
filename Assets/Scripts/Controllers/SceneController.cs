@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class SceneController : SingletonMonoPersistent<SceneController>
 {
     private SceneController() { }
-    private AbsSceneHandler sceneHandler;
     private Coroutine routine;
     private int curr_scene = (int)SceneEnum.None;
 
@@ -50,24 +49,26 @@ public class SceneController : SingletonMonoPersistent<SceneController>
         {
             yield return null;
         }
-        sceneHandler = UpdateSceneHandlingScript(curr_scene);
+        UpdateSceneHandlingScript(curr_scene);
     }
 
-    private AbsSceneHandler UpdateSceneHandlingScript(int index)
+    private void UpdateSceneHandlingScript(int index)
     {
         switch ((SceneEnum)index)
         {
             case SceneEnum.None:
-                return null;
+                break;
             case SceneEnum.Title:
-                // no script to delete
-                return gameObject.AddComponent<TitleScreenHandler>();
+                gameObject.AddComponent<TitleScreenHandler>();
+                break;
             case SceneEnum.Menu:
                 Destroy(gameObject.GetComponent<TitleScreenHandler>());
-                return gameObject.AddComponent<MenuScreenHandler>();
+                gameObject.AddComponent<MenuScreenHandler>();
+                break;
             case SceneEnum.Game:
                 Destroy(gameObject.GetComponent<MenuScreenHandler>());
-                return gameObject.AddComponent<GameScreenHandler>();
+                gameObject.AddComponent<GameScreenHandler>();
+                break;
             default:
                 throw new System.InvalidOperationException();
         }

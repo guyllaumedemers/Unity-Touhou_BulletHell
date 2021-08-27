@@ -58,8 +58,8 @@ public static class Globals
     public static float hitbox = 0.5f;
     public static float u_speed = 1.0f;
     public static float orbRotationSpeed = 120.0f;
-    public static float fadingTime = 2.0f;
-    public static float curtainfade = 8.0f;
+    public static float shortFadingTime = 1.0f;
+    public static float longFadingTime = 6.0f;
     public static float playerselectoffset = 20.0f;
     public static float spinningUnitRotationSpeed = -240.0f;
     public static Vector3 unit_offset = new Vector3(0.0f, 1.4f, 0.0f);
