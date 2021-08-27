@@ -33,7 +33,6 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
                         UIManager.Instance.Startgame();
                         StaircaseAnimation();
                         DisableAllbuttons();
-                        AudioManager.Instance.TriggerButtonClickSFX();
                     });
                     break;
                 case (int)MenuSelectionEnum.Practice:
@@ -42,7 +41,6 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
                     {
                         StaircaseAnimation();
                         DisableAllbuttons();
-                        AudioManager.Instance.TriggerButtonClickSFX();
                     });
                     break;
                 case (int)MenuSelectionEnum.Replay:
@@ -51,7 +49,6 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
                     {
                         StaircaseAnimation();
                         DisableAllbuttons();
-                        AudioManager.Instance.TriggerButtonClickSFX();
                     });
                     break;
                 case (int)MenuSelectionEnum.Score:
@@ -60,7 +57,6 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
                         UIManager.Instance.ShowScores();
                         StaircaseAnimation();
                         DisableAllbuttons();
-                        AudioManager.Instance.TriggerButtonClickSFX();
                     });
                     break;
                 case (int)MenuSelectionEnum.Options:
@@ -69,7 +65,6 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
                         UIManager.Instance.ShowOptionsMenu();
                         StaircaseAnimation();
                         DisableAllbuttons();
-                        AudioManager.Instance.TriggerButtonClickSFX();
                     });
                     break;
                 case (int)MenuSelectionEnum.Quit:
@@ -78,7 +73,6 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
                         UIManager.Instance.ExitGame();
                         StaircaseAnimation();
                         DisableAllbuttons();
-                        AudioManager.Instance.TriggerButtonClickSFX();
                     });
                     break;
                 default:
@@ -87,14 +81,14 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
         }
     }
 
-    private void OnEnable()
-    {
+    private void OnEnable()         // this is my problem
+    {   
         if (buttons.Length < 1)
         {
             return;
         }
         foreach (var item in rects) item.anchoredPosition = new Vector2(0.0f, item.anchoredPosition.y);
-        foreach (var item in buttons) item.interactable = true;
+        //foreach (var item in buttons) item.interactable = true;
     }
 
     private void StaircaseAnimation()

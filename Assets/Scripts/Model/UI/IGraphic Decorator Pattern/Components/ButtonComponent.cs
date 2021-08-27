@@ -41,7 +41,11 @@ public class ButtonComponent : MonoBehaviour, IGraphicComponent
     #region interface
     public virtual void OnPointerClick(PointerEventData eventData)
     {
-        foreach (var item in buttonModifiers) item.OnPointerClick(eventData);
+        if (button.interactable)
+        {
+            AudioManager.Instance.TriggerButtonClickSFX();
+            foreach (var item in buttonModifiers) item.OnPointerClick(eventData);
+        }
     }
 
     public virtual void OnPointerEnter(PointerEventData eventData)
@@ -50,8 +54,8 @@ public class ButtonComponent : MonoBehaviour, IGraphicComponent
         {
             AudioManager.Instance.TriggerMouseSFX();
             text.color = CustomDotTween.UpdateColor(Color.white);
+            foreach (var item in buttonModifiers) item.OnPointerEnter(eventData);
         }
-        foreach (var item in buttonModifiers) item.OnPointerEnter(eventData);
     }
 
     public virtual void OnPointerExit(PointerEventData eventData)
@@ -59,8 +63,8 @@ public class ButtonComponent : MonoBehaviour, IGraphicComponent
         if (button.interactable)
         {
             text.color = CustomDotTween.UpdateColor(Color.grey);
+            foreach (var item in buttonModifiers) item.OnPointerExit(eventData);
         }
-        foreach (var item in buttonModifiers) item.OnPointerExit(eventData);
     }
     #endregion
 

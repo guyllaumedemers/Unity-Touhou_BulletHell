@@ -75,7 +75,7 @@ public class PlayerSelectComponent : PanelComponent
     public override void OnPointerClick(PointerEventData eventData)
     {
         base.OnPointerClick(eventData);
-        SceneController.Instance.TriggerNextScene(Globals.curtainfade / 2);
+        SceneController.Instance.TriggerNextScene(Globals.longFadingTime);
     }
 
     private void LogWarning(string msg) => Debug.LogWarning("[PlayerSelect Component] : " + msg);

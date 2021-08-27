@@ -61,7 +61,7 @@ public static class Utilities
         int dir = activeBulletType != Globals.missile ? -1 : 1;
         while (activeBulletType != Globals.missile ? sprRen.color.a >= 0 : sprRen.color.a <= 1)
         {
-            sprRen.color = new Color(sprRen.color.r, sprRen.color.g, sprRen.color.b, sprRen.color.a + dir * Globals.fadingTime * Time.deltaTime);
+            sprRen.color = new Color(sprRen.color.r, sprRen.color.g, sprRen.color.b, sprRen.color.a + dir * Globals.shortFadingTime * Time.deltaTime);
             yield return null;
         }
     }
