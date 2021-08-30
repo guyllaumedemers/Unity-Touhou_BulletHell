@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayerSelectComponent : PanelComponent
+public class CharacterSelectPanelComponent : PanelComponent
 {
     /*  PlayerSelect needs to disable all Text Components AND Image Components in the UI gameobject in order to avoid raycast blocking
      *  that was not set false on the gameobject
@@ -26,8 +26,7 @@ public class PlayerSelectComponent : PanelComponent
     {
         base.Awake();
         this.textComponents = GetComponentsInChildren<TextMeshProUGUI>();
-        this.imgComponents = FindObjectsOfType<Image>();                                    // what is wrong right now is that each script does that
-                                                                                            // when it should actually only be done once
+        this.imgComponents = GetComponentsInChildren<Image>();
         this.myRect = GetComponent<RectTransform>();
         this.playerImg = transform.GetChild(0).GetComponentsInChildren<Image>().Last();
         this.alphagroup = FindObjectOfType<CanvasGroup>(true);
@@ -79,7 +78,7 @@ public class PlayerSelectComponent : PanelComponent
         base.OnPointerClick(eventData);
         if (raycaster.raycastTarget)
         {
-            foreach (var item in imgComponents.Where(x => x.gameObject.name.Equals("Raycaster"))) item.raycastTarget = false;
+            imgComponents.Where(x => x.gameObject.name.Equals("Raycaster")).FirstOrDefault().raycastTarget = false;
             SceneController.Instance.TriggerNextScene(Globals.longFadingTime);
         }
     }

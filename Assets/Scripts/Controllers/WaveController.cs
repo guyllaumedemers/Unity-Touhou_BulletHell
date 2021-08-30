@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class WaveController : SingletonMono<WaveController>
 {
-    private WaveController() { }
     private Queue<Tuple<string, int>> waveQueue;
     private int curr_dir;
     private int pivot_point;

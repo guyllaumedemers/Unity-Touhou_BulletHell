@@ -43,7 +43,6 @@ public class TitleScreenHandler : AbsSceneHandler
         }
         button.onClick.AddListener(() =>
         {
-            AudioManager.Instance.TriggerButtonClickSFX();
             this.EnsureRoutineStop(ref routine);
             this.CreateAnimationRoutine(Globals.shortFadingTime, delegate (float progress)
             {

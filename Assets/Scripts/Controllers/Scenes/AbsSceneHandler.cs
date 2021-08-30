@@ -17,6 +17,7 @@ public abstract class AbsSceneHandler : MonoBehaviour
         alphagroup.gameObject.SetActive(true);
         alphagroup.alpha = 1.0f;
         alphagroup.blocksRaycasts = false;
+        alphagroup.interactable = false;
     }
     private void LoadCanvas()
     {

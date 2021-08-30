@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MainMenuButtonComponent : ButtonComponent
+public class BuzzingButtonComponent : ButtonComponent
 {
     private RectTransform rect;
     private Button[] buttons;
@@ -12,7 +12,7 @@ public class MainMenuButtonComponent : ButtonComponent
     {
         base.Awake();
         this.rect = GetComponent<RectTransform>();
-        this.buttons = FindObjectsOfType<Button>().Where(x => x.GetComponent<MainMenuButtonComponent>()).ToArray();
+        this.buttons = FindObjectsOfType<Button>().Where(x => x.GetComponent<BuzzingButtonComponent>()).ToArray();
 
         if (!rect)
         {
@@ -34,6 +34,9 @@ public class MainMenuButtonComponent : ButtonComponent
         {
             foreach (var item in buttons) item.interactable = false;
         }
+        /*  Find a way to re-enable buttons after OnPointerClick without onEnable since it would set active before the end of fade out animation
+         * 
+         */
     }
 
     #region private functions

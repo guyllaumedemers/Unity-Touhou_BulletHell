@@ -10,7 +10,7 @@ public class OSButtonEventHandler : SingletonMono<OSButtonEventHandler>
 
     private void Awake()
     {
-        buttons = GetComponentsInChildren<Button>();
+        buttons = GetComponentsInChildren<Button>(true);
         texts = GameObject.FindGameObjectsWithTag(Globals.toggleMenuComponents).Select(x => x.GetComponent<TextMeshProUGUI>()).ToArray();
 
         if (buttons.Length < 1 || texts.Length < 4)
@@ -18,7 +18,12 @@ public class OSButtonEventHandler : SingletonMono<OSButtonEventHandler>
             LogWarning($"There is no buttons in {gameObject.name} OR there is missing a toggled text components in the scene");
             return;
         }
+    }
 
+    private void Start() => RegisterButtonEvents();
+
+    private void RegisterButtonEvents()
+    {
         for (int i = 0; i < buttons.Length; ++i)
         {
             switch (i)

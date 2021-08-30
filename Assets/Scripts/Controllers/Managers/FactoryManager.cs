@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class FactoryManager : SingletonMono<FactoryManager>, IFactoryAbs, IFlow
 {
-    private FactoryManager() { }
     public GameObject[] FactoryBullets { get; private set; }
 
     #region Facotry Manager Functions

@@ -35,6 +35,7 @@ public class ButtonComponent : MonoBehaviour, IGraphicComponent
         }
 
         text.color = CustomDotTween.UpdateColor(Color.grey);
+        button.interactable = true;
         RegisterOperation(new BlinkingTextDecorator(this, mono, text));
     }
 

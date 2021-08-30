@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class OrbRotation : SingletonMono<OrbRotation>, IFlow
 {
-    private OrbRotation() { }
     private Vector3[] positions = new Vector3[]{
         // Collapse
         new Vector3((float)-0.5,0,0),

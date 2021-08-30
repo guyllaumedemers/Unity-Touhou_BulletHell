@@ -22,7 +22,31 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
             LogWarning($"There is no rect in {gameObject.name}");
             return;
         }
+    }
 
+    private void Start() => RegisterButtonEvents();
+
+    private void OnEnable()
+    {
+        if (buttons.Length < 1)
+        {
+            LogWarning("MSButton Event Handler cannot reset Buttons : " + buttons.Length);
+            return;
+        }
+        foreach (var item in rects) item.anchoredPosition = new Vector2(0.0f, item.anchoredPosition.y);
+    }
+
+    private void StaircaseAnimation()
+    {
+        StopCoroutine(typeof(CustomDotTween).GetMethods().Where(x => x.Name.Equals("StaircaseAnimation")).FirstOrDefault().Name);
+        StartCoroutine(CustomDotTween.StaircaseAnimation(rects, Globals.staircaseTime, delegate (RectTransform r, float time)
+        {
+            StartCoroutine(CustomDotTween.SlideAnimation(r, r.anchoredPosition.x - Globals.sliding_offset, time));
+        }));
+    }
+
+    private void RegisterButtonEvents()
+    {
         for (int i = 0; i < buttons.Length; ++i)
         {
             switch (i)
@@ -73,24 +97,6 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
                     throw new System.InvalidOperationException();
             }
         }
-    }
-
-    private void OnEnable()
-    {
-        if (buttons.Length < 1)
-        {
-            return;
-        }
-        foreach (var item in rects) item.anchoredPosition = new Vector2(0.0f, item.anchoredPosition.y);
-    }
-
-    private void StaircaseAnimation()
-    {
-        StopCoroutine(typeof(CustomDotTween).GetMethods().Where(x => x.Name.Equals("StaircaseAnimation")).FirstOrDefault().Name);
-        StartCoroutine(CustomDotTween.StaircaseAnimation(rects, Globals.staircaseTime, delegate (RectTransform r, float time)
-        {
-            StartCoroutine(CustomDotTween.SlideAnimation(r, r.anchoredPosition.x - Globals.sliding_offset, time));
-        }));
     }
 
     private void LogWarning(string msg) => Debug.LogWarning("[Menu Selection Button Manager] : " + msg);

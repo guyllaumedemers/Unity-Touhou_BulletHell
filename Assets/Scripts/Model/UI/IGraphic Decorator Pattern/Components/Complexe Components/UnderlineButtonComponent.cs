@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class OptionMenuButtonComponent : ButtonComponent
+public class UnderlineButtonComponent : ButtonComponent
 {
     public TextMeshProUGUI alternateText;
 

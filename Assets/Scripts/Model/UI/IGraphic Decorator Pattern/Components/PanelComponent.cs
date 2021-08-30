@@ -34,7 +34,7 @@ public class PanelComponent : MonoBehaviour, IGraphicComponent
     }
 
     #region interface
-    public void OnPointerEnter(PointerEventData eventData)
+    public virtual void OnPointerEnter(PointerEventData eventData)
     {
         if (raycaster.raycastTarget)
         {
@@ -43,7 +43,7 @@ public class PanelComponent : MonoBehaviour, IGraphicComponent
         }
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public virtual void OnPointerExit(PointerEventData eventData)
     {
         if (raycaster.raycastTarget)
         {
