@@ -22,10 +22,12 @@ public class PlayerSelectComponent : PanelComponent
 
     MonoBehaviour mono;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         this.textComponents = GetComponentsInChildren<TextMeshProUGUI>();
-        this.imgComponents = GetComponentsInChildren<Image>();
+        this.imgComponents = FindObjectsOfType<Image>();                                    // what is wrong right now is that each script does that
+                                                                                            // when it should actually only be done once
         this.myRect = GetComponent<RectTransform>();
         this.playerImg = transform.GetChild(0).GetComponentsInChildren<Image>().Last();
         this.alphagroup = FindObjectOfType<CanvasGroup>(true);
@@ -54,7 +56,7 @@ public class PlayerSelectComponent : PanelComponent
         }
         else if (imgComponents.Length < 1)
         {
-            LogWarning("There is no Image Component on this gameobject " + gameObject.name);
+            LogWarning("There is no Image Component in the scene " + SceneManager.GetActiveScene().name);
             return;
         }
         else if (!alphagroup)
@@ -75,7 +77,11 @@ public class PlayerSelectComponent : PanelComponent
     public override void OnPointerClick(PointerEventData eventData)
     {
         base.OnPointerClick(eventData);
-        SceneController.Instance.TriggerNextScene(Globals.longFadingTime);
+        if (raycaster.raycastTarget)
+        {
+            foreach (var item in imgComponents.Where(x => x.gameObject.name.Equals("Raycaster"))) item.raycastTarget = false;
+            SceneController.Instance.TriggerNextScene(Globals.longFadingTime);
+        }
     }
 
     private void LogWarning(string msg) => Debug.LogWarning("[PlayerSelect Component] : " + msg);

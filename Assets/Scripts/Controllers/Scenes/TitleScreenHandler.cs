@@ -50,7 +50,10 @@ public class TitleScreenHandler : AbsSceneHandler
                 float ease = EasingFunction.EaseInOutExpo(0, 1, progress);
                 alphagroup.alpha = Mathf.Lerp(0, 1, ease);
             },
-            delegate { SceneController.Instance.TriggerNextScene(Globals.sceneDelay); });
+            delegate
+            {
+                SceneController.Instance.TriggerNextScene(Globals.sceneDelay);
+            });
         });
         return button;
     }
