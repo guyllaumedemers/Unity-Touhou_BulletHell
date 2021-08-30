@@ -96,6 +96,7 @@ public class OSButtonEventHandler : SingletonMono<OSButtonEventHandler>
                     buttons[i].onClick.AddListener(() =>
                     {
                         UIManager.Instance.HideOptionsMenu();
+                        foreach (var item in FindObjectsOfType<Button>(true).Where(x => x.GetComponent<BuzzingButtonComponent>()).ToArray()) item.interactable = true;
                     });
                     break;
                 default:
