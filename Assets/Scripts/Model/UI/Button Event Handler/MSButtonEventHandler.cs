@@ -32,7 +32,6 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
                     {
                         UIManager.Instance.Startgame();
                         StaircaseAnimation();
-                        DisableAllbuttons();
                     });
                     break;
                 case (int)MenuSelectionEnum.Practice:
@@ -40,7 +39,6 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
                     buttons[i].onClick.AddListener(() =>
                     {
                         StaircaseAnimation();
-                        DisableAllbuttons();
                     });
                     break;
                 case (int)MenuSelectionEnum.Replay:
@@ -48,7 +46,6 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
                     buttons[i].onClick.AddListener(() =>
                     {
                         StaircaseAnimation();
-                        DisableAllbuttons();
                     });
                     break;
                 case (int)MenuSelectionEnum.Score:
@@ -56,7 +53,6 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
                     {
                         UIManager.Instance.ShowScores();
                         StaircaseAnimation();
-                        DisableAllbuttons();
                     });
                     break;
                 case (int)MenuSelectionEnum.Options:
@@ -64,7 +60,6 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
                     {
                         UIManager.Instance.ShowOptionsMenu();
                         StaircaseAnimation();
-                        DisableAllbuttons();
                     });
                     break;
                 case (int)MenuSelectionEnum.Quit:
@@ -72,7 +67,6 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
                     {
                         UIManager.Instance.ExitGame();
                         StaircaseAnimation();
-                        DisableAllbuttons();
                     });
                     break;
                 default:
@@ -81,14 +75,13 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
         }
     }
 
-    private void OnEnable()         // this is my problem
-    {   
+    private void OnEnable()
+    {
         if (buttons.Length < 1)
         {
             return;
         }
         foreach (var item in rects) item.anchoredPosition = new Vector2(0.0f, item.anchoredPosition.y);
-        //foreach (var item in buttons) item.interactable = true;
     }
 
     private void StaircaseAnimation()
@@ -98,16 +91,6 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
         {
             StartCoroutine(CustomDotTween.SlideAnimation(r, r.anchoredPosition.x - Globals.sliding_offset, time));
         }));
-    }
-
-    private void DisableAllbuttons()
-    {
-        if (buttons.Length < 1)
-        {
-            LogWarning("There is no button component here " + gameObject.name);
-            return;
-        }
-        foreach (var item in buttons) item.interactable = false;
     }
 
     private void LogWarning(string msg) => Debug.LogWarning("[Menu Selection Button Manager] : " + msg);

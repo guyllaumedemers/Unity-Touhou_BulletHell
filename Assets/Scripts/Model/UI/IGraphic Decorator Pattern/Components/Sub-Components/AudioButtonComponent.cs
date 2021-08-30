@@ -30,7 +30,13 @@ public class AudioButtonComponent : ButtonComponent
 
     public override void OnPointerExit(PointerEventData eventData)
     {
-        foreach (var item in buttonModifiers) item.OnPointerExit(eventData);
+        /*  The override is to avoid button color change
+         *  
+         */
+        if (button.interactable)
+        {
+            foreach (var item in buttonModifiers) item.OnPointerExit(eventData);
+        }
     }
 
     #region private functions

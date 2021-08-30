@@ -51,7 +51,6 @@ public class TitleScreenHandler : AbsSceneHandler
                 alphagroup.alpha = Mathf.Lerp(0, 1, ease);
             },
             delegate { SceneController.Instance.TriggerNextScene(Globals.sceneDelay); });
-            button.interactable = false;
         });
         return button;
     }

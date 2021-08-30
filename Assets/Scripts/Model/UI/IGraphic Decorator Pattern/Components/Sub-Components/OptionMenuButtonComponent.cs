@@ -46,13 +46,16 @@ public class OptionMenuButtonComponent : ButtonComponent
         if (button.interactable)
         {
             AudioManager.Instance.TriggerMouseSFX();
+            foreach (var item in buttonModifiers) item.OnPointerEnter(eventData);
         }
-        foreach (var item in buttonModifiers) item.OnPointerEnter(eventData);
     }
 
     public override void OnPointerExit(PointerEventData eventData)
     {
-        foreach (var item in buttonModifiers) item.OnPointerExit(eventData);
+        if (button.interactable)
+        {
+            foreach (var item in buttonModifiers) item.OnPointerExit(eventData);
+        }
     }
     #endregion
 
