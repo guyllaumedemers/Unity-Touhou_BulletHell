@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayerSelectComponent : PanelComponent
+public class CharacterSelectPanelComponent : PanelComponent
 {
     /*  PlayerSelect needs to disable all Text Components AND Image Components in the UI gameobject in order to avoid raycast blocking
      *  that was not set false on the gameobject
@@ -22,8 +22,9 @@ public class PlayerSelectComponent : PanelComponent
 
     MonoBehaviour mono;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         this.textComponents = GetComponentsInChildren<TextMeshProUGUI>();
         this.imgComponents = GetComponentsInChildren<Image>();
         this.myRect = GetComponent<RectTransform>();
@@ -54,7 +55,7 @@ public class PlayerSelectComponent : PanelComponent
         }
         else if (imgComponents.Length < 1)
         {
-            LogWarning("There is no Image Component on this gameobject " + gameObject.name);
+            LogWarning("There is no Image Component in the scene " + SceneManager.GetActiveScene().name);
             return;
         }
         else if (!alphagroup)
@@ -75,7 +76,11 @@ public class PlayerSelectComponent : PanelComponent
     public override void OnPointerClick(PointerEventData eventData)
     {
         base.OnPointerClick(eventData);
-        SceneController.Instance.TriggerNextScene(Globals.longFadingTime);
+        if (raycaster.raycastTarget)
+        {
+            imgComponents.Where(x => x.gameObject.name.Equals("Raycaster")).FirstOrDefault().raycastTarget = false;
+            SceneController.Instance.TriggerNextScene(Globals.longFadingTime);
+        }
     }
 
     private void LogWarning(string msg) => Debug.LogWarning("[PlayerSelect Component] : " + msg);

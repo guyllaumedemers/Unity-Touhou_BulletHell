@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PageController : SingletonMono<PageController>, IFlow
 {
-    private PageController() { }
     private Page[] pages;
     private Hashtable hashPages;
     private Coroutine co_WaitAnimation;

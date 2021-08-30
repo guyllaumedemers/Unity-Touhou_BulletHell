@@ -7,7 +7,7 @@ public class UnitManager : SingletonMono<UnitManager>, IFlow
 {
     public Dictionary<string, HashSet<Unit>> UnitsDict { get; private set; }
     public GameObject[] Units { get; private set; }
-    private UnitManager() { }
+
     private Queue<Unit> UnitPool;
 
     #region Unit Manager Functions

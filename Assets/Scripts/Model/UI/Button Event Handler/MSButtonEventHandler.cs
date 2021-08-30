@@ -22,73 +22,18 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
             LogWarning($"There is no rect in {gameObject.name}");
             return;
         }
-
-        for (int i = 0; i < buttons.Length; ++i)
-        {
-            switch (i)
-            {
-                case (int)MenuSelectionEnum.Start:
-                    buttons[i].onClick.AddListener(() =>
-                    {
-                        UIManager.Instance.Startgame();
-                        StaircaseAnimation();
-                        DisableAllbuttons();
-                    });
-                    break;
-                case (int)MenuSelectionEnum.Practice:
-                    //TODO
-                    buttons[i].onClick.AddListener(() =>
-                    {
-                        StaircaseAnimation();
-                        DisableAllbuttons();
-                    });
-                    break;
-                case (int)MenuSelectionEnum.Replay:
-                    //TODO
-                    buttons[i].onClick.AddListener(() =>
-                    {
-                        StaircaseAnimation();
-                        DisableAllbuttons();
-                    });
-                    break;
-                case (int)MenuSelectionEnum.Score:
-                    buttons[i].onClick.AddListener(() =>
-                    {
-                        UIManager.Instance.ShowScores();
-                        StaircaseAnimation();
-                        DisableAllbuttons();
-                    });
-                    break;
-                case (int)MenuSelectionEnum.Options:
-                    buttons[i].onClick.AddListener(() =>
-                    {
-                        UIManager.Instance.ShowOptionsMenu();
-                        StaircaseAnimation();
-                        DisableAllbuttons();
-                    });
-                    break;
-                case (int)MenuSelectionEnum.Quit:
-                    buttons[i].onClick.AddListener(() =>
-                    {
-                        UIManager.Instance.ExitGame();
-                        StaircaseAnimation();
-                        DisableAllbuttons();
-                    });
-                    break;
-                default:
-                    throw new System.InvalidOperationException();
-            }
-        }
     }
 
-    private void OnEnable()         // this is my problem
-    {   
+    private void Start() => RegisterButtonEvents();
+
+    private void OnEnable()
+    {
         if (buttons.Length < 1)
         {
+            LogWarning("MSButton Event Handler cannot reset Buttons : " + buttons.Length);
             return;
         }
         foreach (var item in rects) item.anchoredPosition = new Vector2(0.0f, item.anchoredPosition.y);
-        //foreach (var item in buttons) item.interactable = true;
     }
 
     private void StaircaseAnimation()
@@ -100,14 +45,58 @@ public class MSButtonEventHandler : SingletonMono<MSButtonEventHandler>
         }));
     }
 
-    private void DisableAllbuttons()
+    private void RegisterButtonEvents()
     {
-        if (buttons.Length < 1)
+        for (int i = 0; i < buttons.Length; ++i)
         {
-            LogWarning("There is no button component here " + gameObject.name);
-            return;
+            switch (i)
+            {
+                case (int)MenuSelectionEnum.Start:
+                    buttons[i].onClick.AddListener(() =>
+                    {
+                        UIManager.Instance.Startgame();
+                        StaircaseAnimation();
+                    });
+                    break;
+                case (int)MenuSelectionEnum.Practice:
+                    //TODO
+                    buttons[i].onClick.AddListener(() =>
+                    {
+                        StaircaseAnimation();
+                    });
+                    break;
+                case (int)MenuSelectionEnum.Replay:
+                    //TODO
+                    buttons[i].onClick.AddListener(() =>
+                    {
+                        StaircaseAnimation();
+                    });
+                    break;
+                case (int)MenuSelectionEnum.Score:
+                    buttons[i].onClick.AddListener(() =>
+                    {
+                        UIManager.Instance.ShowScores();
+                        StaircaseAnimation();
+                    });
+                    break;
+                case (int)MenuSelectionEnum.Options:
+                    buttons[i].onClick.AddListener(() =>
+                    {
+                        UIManager.Instance.ShowOptionsMenu();
+                        StaircaseAnimation();
+                    });
+                    break;
+                case (int)MenuSelectionEnum.Quit:
+                    buttons[i].onClick.AddListener(() =>
+                    {
+                        UIManager.Instance.ExitGame();
+                        StaircaseAnimation();
+                    });
+                    break;
+                default:
+                    throw new System.InvalidOperationException();
+            }
         }
-        foreach (var item in buttons) item.interactable = false;
     }
 
     private void LogWarning(string msg) => Debug.LogWarning("[Menu Selection Button Manager] : " + msg);

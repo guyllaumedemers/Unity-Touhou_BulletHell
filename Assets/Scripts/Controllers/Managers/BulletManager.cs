@@ -5,7 +5,6 @@ using UnityEngine;
 public class BulletManager : SingletonMono<BulletManager>, IFlow
 {
     public Dictionary<string, HashSet<Bullet>> BulletsDict { get; private set; }
-    private BulletManager() { }
     public GameObject bulletParent { get; private set; }
     // handle the removal of bullets that are out of bounds
     private Queue<IProduct> oob_bullets;

@@ -5,7 +5,6 @@ using System;
 
 public class AudioController : SingletonMono<AudioController>, IFlow
 {
-    private AudioController() { }
     private Hashtable hashJob;          // relationship between audio type and jobs (coroutine or actions)
     private Hashtable hashAudio;        // relationship between audio types (key) and audio tracks (value)
     public AudioTrack[] audioTracks;

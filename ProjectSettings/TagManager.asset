@@ -19,6 +19,7 @@ TagManager:
   - On
   - Off
   - PlayerSelect
+  - OptionComponent
   layers:
   - Default
   - TransparentFX

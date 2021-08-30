@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PanelComponent : MonoBehaviour, IGraphicComponent
 {
@@ -19,27 +21,49 @@ public class PanelComponent : MonoBehaviour, IGraphicComponent
      */
 
     private List<PanelDecorator> panelmodifiers = new List<PanelDecorator>();
+    protected Image raycaster;
 
-    #region interface
-    public void OnPointerEnter(PointerEventData eventData)
+    protected virtual void Awake()
     {
-        AudioManager.Instance.TriggerMouseSFX();
-        foreach (var item in panelmodifiers) item.OnPointerEnter(eventData);
+        raycaster = GetComponentsInChildren<Image>().Where(x => x.gameObject.name.Equals("Raycaster")).FirstOrDefault();
+        if (!raycaster)
+        {
+            LogWarning("There is no raycaster image on this gameobject : " + gameObject.name);
+            return;
+        }
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    #region interface
+    public virtual void OnPointerEnter(PointerEventData eventData)
     {
-        foreach (var item in panelmodifiers) item.OnPointerExit(eventData);
+        if (raycaster.raycastTarget)
+        {
+            AudioManager.Instance.TriggerMouseSFX();
+            foreach (var item in panelmodifiers) item.OnPointerEnter(eventData);
+        }
+    }
+
+    public virtual void OnPointerExit(PointerEventData eventData)
+    {
+        if (raycaster.raycastTarget)
+        {
+            foreach (var item in panelmodifiers) item.OnPointerExit(eventData);
+        }
     }
 
     public virtual void OnPointerClick(PointerEventData eventData)
     {
-        AudioManager.Instance.TriggerButtonClickSFX();
-        foreach (var item in panelmodifiers) item.OnPointerClick(eventData);
+        if (raycaster.raycastTarget)
+        {
+            AudioManager.Instance.TriggerButtonClickSFX();
+            foreach (var item in panelmodifiers) item.OnPointerClick(eventData);
+        }
     }
     #endregion
 
     #region public functions
     public void RegisterOperation(PanelDecorator operation) => panelmodifiers.Add(operation);
     #endregion
+
+    private void LogWarning(string msg) => Debug.LogWarning("[Panel Component] : " + msg);
 }

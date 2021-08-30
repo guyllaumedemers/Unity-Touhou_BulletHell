@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : SingletonMono<PlayerController>, IFlow, IDamageable
 {
-    private PlayerController() { }
     private Coroutine fireCoroutine;
     private Animator animator;
     private SpriteRenderer sprRen;
