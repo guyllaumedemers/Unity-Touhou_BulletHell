@@ -20,8 +20,7 @@ TagManager:
   - Off
   - PlayerSelect
   - OptionComponent
-  - GameCamera
-  - AltCamera
+  - GameView
   layers:
   - Default
   - TransparentFX
@@ -29,7 +28,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - GameView
   - 
   - 
   - 
@@ -58,4 +57,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 219387845
+    locked: 0
+  - name: Game
+    uniqueID: 3915814355
+    locked: 0
+  - name: Loading
+    uniqueID: 4063380975
     locked: 0

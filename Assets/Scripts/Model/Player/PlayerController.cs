@@ -5,11 +5,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : AbsUnit
 {
-    private Coroutine firecoroutine;
+    private Coroutine firecoroutine = null;
     private Animator animator;
     private SpriteRenderer sprRen;
     private readonly BulletTypeEnum patternFilter = BulletTypeEnum.Missile | BulletTypeEnum.Card;
-    public UnitDataContainer unitData;
+    public UnitDataContainer unitData { get; private set; }
     PlayerInputActions inputs;
     Camera gamecamera;
 
@@ -62,12 +62,12 @@ public class PlayerController : AbsUnit
             yield return null;
         }
     }
-    private Vector2 Wrap(Camera cam, Vector2 pos)
+    private Vector3 Wrap(Camera cam, Vector2 pos)
     {
         var viewport = cam.WorldToViewportPoint(transform.position);
         if (viewport.x < 0 || viewport.x > 1) pos.x = -pos.x;
         if (viewport.y < 0 || viewport.y > 1) pos.y = -pos.y;
-        return pos;
+        return new Vector3(pos.x, pos.y, 10);
     }
     private void SwapBulletType()
     {
@@ -77,6 +77,7 @@ public class PlayerController : AbsUnit
             unitData.pattern = unitData.bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), unitData.activeBullet));
         }
     }
+    //private void OnEnable() => inputs?.Enable();
     private void OnDisable() => inputs?.Disable();
     #endregion
 
