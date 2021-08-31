@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,7 +22,7 @@ public abstract class AbsSceneHandler : MonoBehaviour
     }
     private void LoadCanvas()
     {
-        alphagroup = FindObjectOfType<CanvasGroup>(true);
+        alphagroup = FindObjectsOfType<CanvasGroup>(true).Where(x => x.gameObject.tag != Globals.gamecamera).FirstOrDefault();
         if (!alphagroup)
         {
             LogWarning("There is no canvas group in the scene : " + SceneManager.GetActiveScene().name);

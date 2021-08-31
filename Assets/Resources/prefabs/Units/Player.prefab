@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5192492037329525696}
   - component: {fileID: 1065601209178055794}
   - component: {fileID: 6728043748022899053}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864779780585347242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8316796, y: -2.9818873, z: 0}
+  m_LocalPosition: {x: 0, y: -0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3758752878888473473}
@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -379152941
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 6920209119401886799, guid: 110e8df06b390594d95065501ad9729a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -126,7 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3758752878830663992}
   - component: {fileID: 3758752878830663943}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: r-orb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3758752878888473473}
   - component: {fileID: 8105600254529655328}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: YingYang Orb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3758752879165038765}
   - component: {fileID: 3758752879165038764}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: fl-orb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,7 +337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3758752879704119038}
   - component: {fileID: 3758752879704119037}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: l-orb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3758752880446635546}
   - component: {fileID: 3758752880446635545}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: fr-orb
   m_TagString: Untagged
   m_Icon: {fileID: 0}

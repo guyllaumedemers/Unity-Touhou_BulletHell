@@ -92,9 +92,8 @@ public class SceneController : SingletonMonoPersistent<SceneController>
             LogWarning("There is no canvas in this scene : " + SceneManager.GetActiveScene().name);
             return;
         }
-        foreach (var item in arr.Where(x => x.gameObject.tag != Globals.gamecamera && x.gameObject.tag != Globals.altcamera)) item.worldCamera = Camera.main;
+        foreach (var item in arr.Where(x => x.gameObject.tag != Globals.gamecamera)) item.worldCamera = Camera.main;
         foreach (var item in arr.Where(x => x.gameObject.tag.Equals(Globals.gamecamera))) item.worldCamera = FindObjectsOfType<Camera>().Where(x => x.gameObject.tag.Equals(Globals.gamecamera)).FirstOrDefault();
-        foreach (var item in arr.Where(x => x.gameObject.tag.Equals(Globals.altcamera))) item.worldCamera = FindObjectsOfType<Camera>().Where(x => x.gameObject.tag.Equals(Globals.altcamera)).FirstOrDefault();
     }
 
     private void OnAwakeManagerPersistent()

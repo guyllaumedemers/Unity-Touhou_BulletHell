@@ -35,7 +35,7 @@ public class GameScreenHandler : AbsSceneHandler
             LogWarning("There is no particule system in the scene");
             return;
         }
-        Destroy(particule);
+        Destroy(particule.gameObject);
         PreGameLogicInitialization();
         last = Time.time;
     }
@@ -72,7 +72,7 @@ public class GameScreenHandler : AbsSceneHandler
         if (!player)
         {
             player = Resources.LoadAll<PlayerController>(Globals.unitsPrefabs).FirstOrDefault();
-            Instantiate<GameObject>(player.gameObject, null);
+            Instantiate<GameObject>(player.gameObject, FindObjectsOfType<Canvas>().Where(x => x.tag.Equals(Globals.gamecamera)).FirstOrDefault().transform);
         }
 
         FactoryManager.Instance.PreInitializeFactoryPrefabs();
