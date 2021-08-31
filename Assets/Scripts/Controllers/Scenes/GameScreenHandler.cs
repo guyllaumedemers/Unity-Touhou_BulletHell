@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameScreenHandler : AbsSceneHandler
 {
-    private ParticleSystem particule;
+    private PlayerController player = null;
     private float last;
     private bool canRunUpdate = false;
 
@@ -30,7 +29,7 @@ public class GameScreenHandler : AbsSceneHandler
     protected override void PreIntilizationMethod()
     {
         base.PreIntilizationMethod();
-        particule = FindObjectOfType<ParticleSystem>();
+        ParticleSystem particule = FindObjectOfType<ParticleSystem>();
         if (!particule)
         {
             LogWarning("There is no particule system in the scene");
@@ -69,25 +68,31 @@ public class GameScreenHandler : AbsSceneHandler
     #region private functions
     private void PreGameLogicInitialization()
     {
-        FactoryManager.Instance.PreIntilizationMethod();
-        ObjectPoolController.PreInitializeMethod();
-        CollisionController.Instance.PreIntilizationMethod();
-        PlayerController.Instance.PreIntilizationMethod();
-        BulletManager.Instance.PreIntilizationMethod();
-        UnitManager.Instance.PreIntilizationMethod();
+        player = FindObjectOfType<PlayerController>();
+        if (!player)
+        {
+            player = Resources.LoadAll<PlayerController>(Globals.unitsPrefabs).FirstOrDefault();
+            Instantiate<GameObject>(player.gameObject, null);
+        }
+
+        FactoryManager.Instance.PreInitializeFactoryPrefabs();
+        player.PreIntilizationPlayerController();
+        ObjectPoolController.Instance.PreInitializeObjectPollController();
+        CollisionController.Instance.PreInitializeCollisionController();
+        BulletManager.Instance.PreInitializeBulletManager();
+        UnitManager.Instance.PreInitializeUnitManager();
     }
     private void GameLogicInitialization()
     {
-        PlayerController.Instance.InitializationMethod();
-        // Scene should be loaded in memory and the wave should start after a period of time once the scene is ready
-        StartCoroutine(WaveController.Instance.StartWave(0, (int)DirectionEnum.None, (int)DirectionEnum.Pivot, 4));
+        FactoryManager.Instance.PreInitializeFactoryPrefabs();
+        player.InitializationPlayerController();
     }
     private void UpdateGameLogic()
     {
-        PlayerController.Instance.UpdateMethod();
-        CollisionController.Instance.UpdateMethod();
-        BulletManager.Instance.UpdateMethod();
-        UnitManager.Instance.UpdateMethod();
+        player.UpdatePlayerController();
+        CollisionController.Instance.UpdateCollisionController(player);
+        BulletManager.Instance.UpdateBulletManager();
+        UnitManager.Instance.UpdateUnitManager();
     }
     private void LogWarning(string msg) => Debug.LogWarning("[Game Screen Behaviour] : " + msg);
     #endregion

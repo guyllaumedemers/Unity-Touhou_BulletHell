@@ -3,20 +3,7 @@ using UnityEngine.UI;
 
 public class TitleScreenHandler : AbsSceneHandler
 {
-    private ParticleSystem particule;
-
-    private void Awake()
-    {
-        particule = FindObjectOfType<ParticleSystem>(true);
-        if (!particule)
-        {
-            LogWarning("There is no particule system in the scene");
-            return;
-        }
-
-        DontDestroyOnLoad(particule);
-        PreIntilizationMethod();
-    }
+    private void Awake() => PreIntilizationMethod();
 
     private void Start() => InitializationMethod(Globals.longFadingTime, SetStartButton());
 
@@ -32,7 +19,6 @@ public class TitleScreenHandler : AbsSceneHandler
         AudioManager.Instance.InitializeTitleScreen();
     }
 
-    #region private functions
     private Button SetStartButton()
     {
         Button button = FindObjectOfType<Button>(true);
@@ -56,6 +42,6 @@ public class TitleScreenHandler : AbsSceneHandler
         });
         return button;
     }
+
     private void LogWarning(string msg) => Debug.LogWarning("[Title Screen Behaviour] : " + msg);
-    #endregion
 }

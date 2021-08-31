@@ -5,6 +5,8 @@ public static class Globals
     #region Resources Loading
     public const string bulletsPrefabs = "prefabs/Bullets";
     public const string unitsPrefabs = "prefabs/Units/";
+    public const string uiPrefabs = "prefabs/UI";
+    public const string managerPrefabs = "prefabs/Managers";
     public const string shader = "shaders/";
     public const string blurMat = "BlurMat";
     #endregion
@@ -80,6 +82,8 @@ public static class Globals
     public static string slidingComponent = "SlidingComponent";
     public static string on = "On";
     public static string off = "Off";
+    public static string altcamera = "AltCamera";
+    public static string gamecamera = "GameCamera";
     #endregion
 
     #region Dynamic Loading
@@ -93,5 +97,6 @@ public static class Globals
 
     #region string comparison
     public static string missile = "Missile";
+    public static string raycaster = "Raycaster";
     #endregion
 }

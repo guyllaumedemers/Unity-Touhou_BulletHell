@@ -2,55 +2,89 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BulletManager : SingletonMono<BulletManager>, IFlow
+public class BulletManager
 {
+    private static BulletManager instance;
+    private BulletManager() { }
+    public static BulletManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new BulletManager();
+            }
+            return instance;
+        }
+    }
+
     public Dictionary<string, HashSet<Bullet>> BulletsDict { get; private set; }
     public GameObject bulletParent { get; private set; }
     // handle the removal of bullets that are out of bounds
-    private Queue<IProduct> oob_bullets;
+    private Queue<Bullet> oob_bullets;
 
-    #region  Bullet Manager Functions
-
-    private void UpdateBullets(Dictionary<string, HashSet<Bullet>> dict, Queue<IProduct> pool)
+    public void Add(string type, Bullet bullet)
     {
-        foreach (var bullet in dict.Keys.SelectMany(key => dict[key]))
+        if (type.Equals(null))
         {
-            if (!Utilities.InsideCameraBounds(Camera.main, bullet.transform.position)) pool.Enqueue(bullet);
-            else bullet.UpdateBulletPosition();
+            LogWarning("Add - Argument string is null");
+            return;
         }
-        while (pool.Count > 0) (pool.Dequeue() as Bullet).Pool();
-    }
-
-    public void Add(string type, IProduct bullet)
-    {
-        if (BulletsDict.ContainsKey(type)) BulletsDict[type].Add(bullet as Bullet);
+        else if (!bullet)
+        {
+            LogWarning("Add - Argument Bullet is null");
+            return;
+        }
+        else if (BulletsDict.ContainsKey(type))
+        {
+            BulletsDict[type].Add(bullet);
+        }
         else
         {
             BulletsDict.Add(type, new HashSet<Bullet>());
-            BulletsDict[type].Add(bullet as Bullet);
+            BulletsDict[type].Add(bullet);
         }
     }
 
-    public IProduct RemoveFind(string type, IProduct find)
+    public Bullet RemoveFind(string type, Bullet bullet)
     {
-        BulletsDict[type].Remove(find as Bullet);
-        return find;
+        if (type.Equals(null))
+        {
+            LogWarning("Remove and Find - Argument string is null");
+            return null;
+        }
+        else if (!bullet)
+        {
+            LogWarning("Remove and Find - Argument Bullet is null");
+            return null;
+        }
+        else if (BulletsDict.ContainsKey(type))
+        {
+            BulletsDict[type].Remove(bullet);
+            return bullet;
+        }
+        LogWarning("Remove and Find - Type cannot be found inside the dictionnary " + bullet.bulletData.bulletType);
+        return null;
     }
 
-    #endregion
+    private void UpdateBullets(Dictionary<string, HashSet<Bullet>> dict, Queue<Bullet> pool)
+    {
+        foreach (var bullet in dict.Keys.SelectMany(key => dict[key]))
+        {
+            if (!Utilities.InsideCameraBounds(Camera.main, bullet.transform.position)) pool.Enqueue(bullet);        // camera.main is an issue
+            else bullet.UpdateBulletPosition();
+        }
+        while (pool.Count > 0) (pool.Dequeue()).Pool();
+    }
 
-    #region Unity Functions
-
-    public void PreIntilizationMethod()
+    public void PreInitializeBulletManager()
     {
         BulletsDict = new Dictionary<string, HashSet<Bullet>>();
-        oob_bullets = new Queue<IProduct>();
+        oob_bullets = new Queue<Bullet>();
         bulletParent = Utilities.InstanciateObjectParent(Globals.bulletParent, true);
     }
 
-    public void InitializationMethod() { }
+    public void UpdateBulletManager() => UpdateBullets(BulletsDict, oob_bullets);
 
-    public void UpdateMethod() => UpdateBullets(BulletsDict, oob_bullets);
-
-    #endregion
+    private void LogWarning(string msg) => Debug.LogWarning("[Bullet Manager] : " + msg);
 }

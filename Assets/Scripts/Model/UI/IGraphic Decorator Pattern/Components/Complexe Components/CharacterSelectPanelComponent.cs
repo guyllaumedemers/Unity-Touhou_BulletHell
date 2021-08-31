@@ -65,7 +65,7 @@ public class CharacterSelectPanelComponent : PanelComponent
         }
 
         foreach (var item in textComponents) item.raycastTarget = false;
-        foreach (var item in imgComponents.Where(x => x.gameObject.name != "Raycaster")) item.raycastTarget = false;
+        foreach (var item in imgComponents.Where(x => x.gameObject.name != Globals.raycaster)) item.raycastTarget = false;
 
         RegisterOperation(new FocusPanelDecorator(this, mono, myRect));
         RegisterOperation(new BlinkingImgDecorator(this, mono, playerImg));
@@ -78,7 +78,7 @@ public class CharacterSelectPanelComponent : PanelComponent
         base.OnPointerClick(eventData);
         if (raycaster.raycastTarget)
         {
-            imgComponents.Where(x => x.gameObject.name.Equals("Raycaster")).FirstOrDefault().raycastTarget = false;
+            foreach (var item in FindObjectsOfType<Image>().Where(x => x.gameObject.name.Equals(Globals.raycaster))) item.raycastTarget = false;
             SceneController.Instance.TriggerNextScene(Globals.longFadingTime);
         }
     }

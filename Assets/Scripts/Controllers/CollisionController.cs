@@ -3,16 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class CollisionController : SingletonMono<CollisionController>, IFlow
+public class CollisionController
 {
-    private Queue<IProduct> pool;
+    private static CollisionController instance;
+    private CollisionController() { }
+    public static CollisionController Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new CollisionController();
+            }
+            return instance;
+        }
+    }
 
-    #region Collision System Functions
+    private Queue<Bullet> pool;
 
     public bool DistanceCheck(Vector2 pos, Vector2 target, float rad) => Vector2.Distance(pos, target) <= rad;
 
     //// O(N^2) => R-tree might be the better solution for the lookup
-    private void UpdateCollisionSystem(Dictionary<string, HashSet<Bullet>> bulletsDict, Dictionary<string, HashSet<Unit>> unitsDict, Queue<IProduct> pool, PlayerController player)
+    private void UpdateCollisionSystem(Dictionary<string, HashSet<Bullet>> bulletsDict, Dictionary<string, HashSet<Unit>> unitsDict, Queue<Bullet> pool, PlayerController player)
     {
         foreach (var bullet in bulletsDict.Keys.SelectMany(key => bulletsDict[key]))
         {
@@ -36,18 +48,20 @@ public class CollisionController : SingletonMono<CollisionController>, IFlow
                 }
             }
         }
-        while (pool.Count > 0) (pool.Dequeue() as Bullet).Pool();
+        while (pool.Count > 0) pool.Dequeue().Pool();
     }
 
-    #endregion
+    public void PreInitializeCollisionController() => pool = new Queue<Bullet>();
 
-    #region Unity Functions
+    public void UpdateCollisionController(PlayerController playerController)
+    {
+        if (!playerController)
+        {
+            LogWarning("Player controller is null");
+            return;
+        }
+        UpdateCollisionSystem(BulletManager.Instance.BulletsDict, UnitManager.Instance.UnitsDict, pool, playerController);
+    }
 
-    public void PreIntilizationMethod() => pool = new Queue<IProduct>();
-
-    public void InitializationMethod() { }
-
-    public void UpdateMethod() => UpdateCollisionSystem(BulletManager.Instance.BulletsDict, UnitManager.Instance.UnitsDict, pool, PlayerController.Instance);
-
-    #endregion
+    private void LogWarning(string msg) => Debug.Log("[Collision Controller] : " + msg);
 }

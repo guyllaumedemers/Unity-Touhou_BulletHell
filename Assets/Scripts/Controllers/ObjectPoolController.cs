@@ -3,15 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public static class ObjectPoolController
+public class ObjectPoolController
 {
-    public static Dictionary<string, Queue<Bullet>> Bullets { get; private set; }
+    private static ObjectPoolController instance;
+    private ObjectPoolController() { }
+    public static ObjectPoolController Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new ObjectPoolController();
+            }
+            return instance;
+        }
+    }
 
-    public static Dictionary<string, float> LastUpdate { get; set; }
+    public Dictionary<string, Queue<Bullet>> Bullets { get; private set; }
 
-    public static GameObject pool;
+    public Dictionary<string, float> LastUpdate { get; set; }
 
-    public static void PreInitializeMethod()
+    public GameObject pool;
+
+    public void PreInitializeObjectPollController()
     {
         Bullets = new Dictionary<string, Queue<Bullet>>();
         LastUpdate = new Dictionary<string, float>();
@@ -19,13 +33,13 @@ public static class ObjectPoolController
         Fill();
     }
 
-    private static void Fill()
+    private void Fill()
     {
         foreach (var go in FactoryManager.Instance.FactoryBullets) Bullets.Add(go.name, new Queue<Bullet>());
         foreach (var go in FactoryManager.Instance.FactoryBullets) LastUpdate.Add(go.name, Time.time);
     }
 
-    public static IEnumerator Trim()
+    public IEnumerator Trim()
     {
         while (true)
         {

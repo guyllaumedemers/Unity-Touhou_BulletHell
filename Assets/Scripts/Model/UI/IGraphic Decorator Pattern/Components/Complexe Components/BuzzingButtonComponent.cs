@@ -38,8 +38,5 @@ public class BuzzingButtonComponent : ButtonComponent
          * 
          */
     }
-
-    #region private functions
     private void LogWarning(string msg) => Debug.LogWarning("[Menu Button Component] : " + msg);
-    #endregion
 }

@@ -18,7 +18,7 @@ public static class WrappingTool
         }
     }
 
-    public static Vector3 UnityVec3(CustomVectorThree wrapper)
+    public static Vector3 CustomToUnityVectorThree(CustomVectorThree wrapper)
     {
         return new Vector3(wrapper.X, wrapper.Y, wrapper.Z);
     }
@@ -28,7 +28,7 @@ public static class WrappingTool
         List<Vector3> wrapper = new List<Vector3>();
         for (int i = 0; i < arr.Length; ++i)
         {
-            wrapper.Add(WrappingTool.UnityVec3(arr[i]));
+            wrapper.Add(WrappingTool.CustomToUnityVectorThree(arr[i]));
         }
         return wrapper.ToArray();
     }
