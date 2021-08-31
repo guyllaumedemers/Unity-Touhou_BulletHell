@@ -18,13 +18,13 @@ public abstract class AbsPattern : IPatternGenerator
     public bool invertSpin;             // Invert Spin is technically a boolean, 1 = The spin rate will invert once the spin rate hits the Max Spin Rate. 0 = Nothing happens.
     public float rof;                   // This parameter sets the rate at which bullets are fired.
 
-    public IProduct[,] bullets { get; set; }
+    public Bullet[,] bullets { get; set; }
 
-    public IProduct Create(string type, Transform parent, Vector2 pos) => FactoryManager.Instance.FactoryMethod<Bullet>(type, parent, pos);
+    public Bullet Create(string type, Transform parent, Vector2 pos) => FactoryManager.Instance.FactoryMethod(type, parent, pos);
 
     // Fill the Bullet array with the same position for all instances 
     // so the bullets all start at the center of the transform position
-    public virtual IProduct[,] Fill(string type, Transform parent, Vector2 pos, int indexI, int indexJ)
+    public virtual Bullet[,] Fill(string type, Transform parent, Vector2 pos, int indexI, int indexJ)
     {
         if (indexI >= nbArr - 1) return bullets;
         if (indexJ > nbPerArr - 1)

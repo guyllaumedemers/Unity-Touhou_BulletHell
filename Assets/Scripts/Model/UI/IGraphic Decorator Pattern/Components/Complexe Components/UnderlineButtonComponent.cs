@@ -58,8 +58,5 @@ public class UnderlineButtonComponent : ButtonComponent
         }
     }
     #endregion
-
-    #region private functions
     private void LogWarning(string msg) => Debug.LogWarning("[Option Menu Button Component] : " + msg);
-    #endregion
 }

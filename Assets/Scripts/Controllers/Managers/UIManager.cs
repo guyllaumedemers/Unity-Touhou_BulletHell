@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIManager : SingletonMonoPersistent<UIManager>, IFlow
+public class UIManager : SingletonMonoPersistent<UIManager>
 {
-    private UIManager() { }
-
     #region public functions
 
     public void Startgame() => PageController.Instance.TurnPageOff(PageTypeEnum.Menu, PageTypeEnum.PlayerSelection, true);
@@ -64,19 +62,10 @@ public class UIManager : SingletonMonoPersistent<UIManager>, IFlow
 
     #endregion
 
+    public void PreInitializeUIManager() => PageController.Instance.PreInitializePageController();
+    public void InitializeUIManager() => PageController.Instance.InitializePageController();
+
     #region private functions
-
     private void LogWarning(string msg) => Debug.LogWarning("[UI Manager] " + msg);
-
-    #endregion
-
-    #region Unity Functions
-
-    public void PreIntilizationMethod() => PageController.Instance.PreIntilizationMethod();
-
-    public void InitializationMethod() => PageController.Instance.InitializationMethod();
-
-    public void UpdateMethod() { }
-
     #endregion
 }

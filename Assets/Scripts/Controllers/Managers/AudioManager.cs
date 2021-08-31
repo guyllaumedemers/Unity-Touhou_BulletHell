@@ -7,7 +7,6 @@ using System.Linq;
 public class AudioManager : SingletonMonoPersistent<AudioManager>
 {
     public AudioMixer mixer;
-    private AudioManager() { }
     private TextMeshProUGUI main_volumeTxt;
     private TextMeshProUGUI se_volumeTxt;
     private float main_volume;
@@ -141,7 +140,7 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>
 
     public void PreInitializeTitleScreen()
     {
-        AudioController.Instance.PreIntilizationMethod();
+        AudioController.Instance.PreInitializeAudioController();
         lastTime = Time.time;
     }
 
@@ -149,7 +148,7 @@ public class AudioManager : SingletonMonoPersistent<AudioManager>
     {
         LoadPlayerPref();
         SetAudioComponentsValues(new float[] { PercentTo(main_volume), PercentTo(se_volume) }, new string[] { Globals.ST_Channel, Globals.MenuSFX_Channel });
-        AudioController.Instance.InitializationMethod();
+        AudioController.Instance.InitializeAudioController();
     }
 
     public void PreInitializeMenuScreen()

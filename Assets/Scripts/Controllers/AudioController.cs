@@ -3,31 +3,25 @@ using UnityEngine;
 using System.Linq;
 using System;
 
-public class AudioController : SingletonMono<AudioController>, IFlow
+public class AudioController : SingletonMono<AudioController>
 {
     private Hashtable hashJob;          // relationship between audio type and jobs (coroutine or actions)
     private Hashtable hashAudio;        // relationship between audio types (key) and audio tracks (value)
     public AudioTrack[] audioTracks;
 
     #region public functions
-
     public void Play(AudioTypeEnum type) => AddJob(new AudioJob(AudioJobActionEnum.START, type));
-
     public void Stop(AudioTypeEnum type) => AddJob(new AudioJob(AudioJobActionEnum.STOP, type));
-
     public void Restart(AudioTypeEnum type) => AddJob(new AudioJob(AudioJobActionEnum.RESTART, type));
-
     #endregion
 
     #region private functions
-
     private void Configure()
     {
         hashAudio = new Hashtable();
         hashJob = new Hashtable();
         PopulateAudioTable();
     }
-
     private void Dispose()
     {
         foreach (DictionaryEntry entry in hashJob)
@@ -39,7 +33,6 @@ public class AudioController : SingletonMono<AudioController>, IFlow
             }
         }
     }
-
     private void PopulateAudioTable()
     {
         foreach (var (track, audioOBJ) in audioTracks.SelectMany(track => track.audio_objects.Select(audioOBJ => (track, audioOBJ))))
@@ -52,7 +45,6 @@ public class AudioController : SingletonMono<AudioController>, IFlow
             hashAudio.Add(audioOBJ.audio_type, track);
         }
     }
-
     private void AddJob(AudioJob job)
     {
         RemoveConflictingJobs(job.audio_type);
@@ -61,7 +53,6 @@ public class AudioController : SingletonMono<AudioController>, IFlow
         StartCoroutine(jobRunner);
         hashJob.Add(job.audio_type, jobRunner);
     }
-
     private void RemoveJob(AudioTypeEnum type)
     {
         if (!JobExist(type))
@@ -77,7 +68,6 @@ public class AudioController : SingletonMono<AudioController>, IFlow
         }
         hashJob.Remove(type);
     }
-
     //HINT Remove conflict is use to compare if the new job to create already exist so -> Is there a Job registered inside the hashJob
     //     that uses the same AudioTrack (which means using the same AudioSource since an Audiotrack aggregate an AudioSource)
     //     SO, We need to loop over every KVP entry inside the HashTable and access the value at Key so we can compare the AudioTrack retrieve
@@ -102,7 +92,6 @@ public class AudioController : SingletonMono<AudioController>, IFlow
         }
         if (conflictAudio != AudioTypeEnum.NONE) RemoveJob(conflictAudio);
     }
-
     private IEnumerator RunAudioJob(AudioJob job)
     {
         AudioTrack track = (AudioTrack)hashAudio[job.audio_type];
@@ -128,32 +117,16 @@ public class AudioController : SingletonMono<AudioController>, IFlow
         RemoveJob(job.audio_type);
         yield return null;
     }
-
     private AudioClip GetAudioClipFromTrack(AudioTypeEnum audio_type, AudioTrack track)
     {
         return track.audio_objects.Where(audioOBJ => audioOBJ.audio_type.Equals(audio_type)).FirstOrDefault().audio_clip;
     }
-
     private bool AudioExist(AudioTypeEnum type) => hashAudio.ContainsKey(type);
-
     private bool JobExist(AudioTypeEnum type) => hashAudio.ContainsKey(type);
-
     private void LogWarning(string msg) => Debug.LogWarning("[Audio Controller] : " + msg);
-
-    #endregion
-
-    #region Unity functions
-
-    public void PreIntilizationMethod() => Configure();
-
-    public void InitializationMethod()
-    {
-        Play(AudioTypeEnum.ST_01);
-    }
-
-    public void UpdateMethod() { }
-
-    #endregion
-
     private void OnDisable() => Dispose();
+    #endregion
+
+    public void PreInitializeAudioController() => Configure();
+    public void InitializeAudioController() => Play(AudioTypeEnum.ST_01);
 }

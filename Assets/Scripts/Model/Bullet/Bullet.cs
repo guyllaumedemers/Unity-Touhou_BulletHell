@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class Bullet : MonoBehaviour, IProduct, IPoolable
+public class Bullet : MonoBehaviour
 {
     public BulletDataContainer bulletData;
 
@@ -23,18 +23,23 @@ public class Bullet : MonoBehaviour, IProduct, IPoolable
 
     public void SetAngle(float angle) => bulletData.angle = angle;
 
-    public void ResetBullet(Vector2 newPos)
+    public void ResetBullet(Transform parent, Vector2 newPos)
     {
-        transform.SetParent(BulletManager.Instance.bulletParent.transform);
+        if (!parent)
+        {
+            LogWarning("There is no parent for this bullet : " + gameObject.name);
+            return;
+        }
+        transform.SetParent(parent);
         transform.position = newPos;
     }
 
     public void Pool()
     {
         string[] keys = gameObject.name.Split('(');
-        ObjectPoolController.LastUpdate[keys[0]] = Time.time;
-        ObjectPoolController.Bullets[keys[0]].Enqueue(BulletManager.Instance.RemoveFind(keys[0], this) as Bullet);
-        gameObject.transform.SetParent(ObjectPoolController.pool.transform);
+        ObjectPoolController.Instance.LastUpdate[keys[0]] = Time.time;
+        ObjectPoolController.Instance.Bullets[keys[0]].Enqueue(BulletManager.Instance.RemoveFind(keys[0], this));
+        gameObject.transform.SetParent(ObjectPoolController.Instance.pool.transform);
     }
 
     public void Depool() { }

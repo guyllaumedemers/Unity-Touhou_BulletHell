@@ -10,17 +10,15 @@ public class MenuScreenHandler : AbsSceneHandler
         InitializationMethod(Globals.shortFadingTime, FindObjectsOfType<Button>(true));
     }
 
-    #region override functions
     protected override void PreIntilizationMethod()
     {
         base.PreIntilizationMethod();
-        UIManager.Instance.PreIntilizationMethod();
+        UIManager.Instance.PreInitializeUIManager();
         AudioManager.Instance.PreInitializeMenuScreen();
     }
     protected override void InitializationMethod(float fadeTime, params Button[] buttons)
     {
         base.InitializationMethod(fadeTime, buttons);
-        UIManager.Instance.InitializationMethod();
+        UIManager.Instance.InitializeUIManager();
     }
-    #endregion
 }

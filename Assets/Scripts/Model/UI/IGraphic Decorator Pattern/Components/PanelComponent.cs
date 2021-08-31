@@ -25,7 +25,7 @@ public class PanelComponent : MonoBehaviour, IGraphicComponent
 
     protected virtual void Awake()
     {
-        raycaster = GetComponentsInChildren<Image>().Where(x => x.gameObject.name.Equals("Raycaster")).FirstOrDefault();
+        raycaster = GetComponentsInChildren<Image>().Where(x => x.gameObject.name.Equals(Globals.raycaster)).FirstOrDefault();
         if (!raycaster)
         {
             LogWarning("There is no raycaster image on this gameobject : " + gameObject.name);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-public class PageController : SingletonMono<PageController>, IFlow
+public class PageController : SingletonMono<PageController>
 {
     private Page[] pages;
     private Hashtable hashPages;
@@ -10,7 +10,6 @@ public class PageController : SingletonMono<PageController>, IFlow
     private PageTypeEnum entryPage;
 
     #region public functions
-
     public void TurnPageOn(PageTypeEnum type)
     {
         if (type.Equals(PageTypeEnum.None)) return;
@@ -26,7 +25,6 @@ public class PageController : SingletonMono<PageController>, IFlow
             page.Animate(true);
         }
     }
-
     public void TurnPageOff(PageTypeEnum off, PageTypeEnum on = PageTypeEnum.None, bool waitForExit = false)
     {
         if (off.Equals(PageTypeEnum.None)) return;
@@ -55,11 +53,9 @@ public class PageController : SingletonMono<PageController>, IFlow
             }
         }
     }
-
     #endregion
 
     #region private functions
-
     private IEnumerator WaitForPageExit(Page on, Page off)
     {
         while (off.state != PageFlag.FLAG_NONE)
@@ -68,12 +64,10 @@ public class PageController : SingletonMono<PageController>, IFlow
         }
         TurnPageOn(on.type);
     }
-
     private void RegisterAllPages()
     {
         foreach (var page in pages) RegisterPage(page);
     }
-
     private void RegisterPage(Page page)
     {
         if (PageExist(page.type))
@@ -83,7 +77,6 @@ public class PageController : SingletonMono<PageController>, IFlow
         }
         hashPages.Add(page.type, page);
     }
-
     private Page GetPage(PageTypeEnum type)
     {
         if (!PageExist(type))
@@ -93,9 +86,7 @@ public class PageController : SingletonMono<PageController>, IFlow
         }
         return hashPages[type] as Page;
     }
-
     private bool PageExist(PageTypeEnum type) => hashPages.ContainsKey(type);
-
     private void RegisterCoroutine(params Page[] pages)
     {
         if (pages.Length < 2 || pages.Length > 2)
@@ -105,26 +96,21 @@ public class PageController : SingletonMono<PageController>, IFlow
         }
         co_WaitAnimation = StartCoroutine(WaitForPageExit(pages[0], pages[1]));
     }
-
     private void UnRegisterCoroutine()
     {
         if (co_WaitAnimation != null) StopCoroutine(co_WaitAnimation);
     }
-
     private void LogWarning(string msg) => Debug.LogWarning("[Page Controller] : " + msg);
-
     #endregion
 
-    #region Unity Functions
-
-    public void PreIntilizationMethod()
+    public void PreInitializePageController()
     {
         hashPages = new Hashtable();
         pages = GameObject.FindGameObjectsWithTag(Globals.page).Select(page => page.GetComponent<Page>()).ToArray();
         entryPage = PageTypeEnum.Menu;
     }
 
-    public void InitializationMethod()
+    public void InitializePageController()
     {
         RegisterAllPages();
         foreach (var page in pages)
@@ -136,8 +122,4 @@ public class PageController : SingletonMono<PageController>, IFlow
         }
         if (entryPage != PageTypeEnum.None) TurnPageOn(entryPage);
     }
-
-    public void UpdateMethod() { }
-
-    #endregion
 }

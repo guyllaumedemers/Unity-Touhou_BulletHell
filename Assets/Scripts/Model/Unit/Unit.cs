@@ -4,59 +4,34 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator), typeof(SpriteRenderer))]
-public class Unit : MonoBehaviour, IDamageable
+public class Unit : AbsUnit
 {
     private Coroutine fireCoroutine;
     private SpriteRenderer spriteRen;
     private Animator animator;
     private float bezierCurveT;
-    public UnitDataContainer unitData;
+    public UnitDataContainer unitData { get; private set; }
 
-    #region public functions
-
-    public Unit PreInitializeUnit(string type, IMoveable move_behaviour, Vector3[] waypoints, BulletTypeEnum bulletT)
+    #region interface
+    public override void StartFiring(ref Coroutine routine)
     {
-        StaticInitialization(type, move_behaviour, waypoints);
-        foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => EnumFiltering.EnumToString(bulletT).Any(w => w.Equals(x.name))))
+        if (routine != null)
         {
-            unitData.bulletTypeList.Enqueue(obj.name);
+            StopFiring(ref routine);
         }
-        unitData.activeBullet = unitData.bullets.SwapBulletType(unitData.bulletTypeList);                                                       // initialize the active bullet type string    
-        unitData.pattern = unitData.bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), unitData.activeBullet));      // initialize the pattern with the active bullet type
-        return this;
+        routine = StartCoroutine(Play());
     }
-
-    public void UpdateUnit()
+    public override void StopFiring(ref Coroutine routine)
     {
-        if (!unitData.idle) Move();
-        unitData.animation.Animate(animator, spriteRen, (unitData.controlPoints[unitData.curr_wp + 1 > unitData.controlPoints.Length - 1 ? 0 : unitData.curr_wp + 1] - unitData.controlPoints[unitData.curr_wp]).normalized);
+        if (routine != null) StopCoroutine(routine);
     }
-
-    public IEnumerator Play()
+    public override void Shoot(Transform parent, Transform pos)
     {
-        while (true)
-        {
-            unitData.pattern.Fill(unitData.activeBullet, null, transform.position, default, default);
-            yield return new WaitForSeconds(1 / (unitData.pattern as AbsPattern).rof);
-        }
+        unitData.pattern.Fill(unitData.activeBullet, parent, pos.position, 0, 0);
+        unitData.pattern.UpdateBulletPattern(default, default);
+        foreach (Bullet b in (unitData.pattern as AbsPattern).bullets) b.SetIgnoredLayer(IgnoreLayerEnum.Unit);
     }
-
-    public void StartFiring() => fireCoroutine = StartCoroutine(Play());
-
-    public void StopFiring()
-    {
-        if (fireCoroutine != null) StopCoroutine(fireCoroutine);
-    }
-
-    public void TakeDamage(float dmg) => unitData.health -= dmg;
-
-    public UnitDataContainer GetUnitData() => unitData;
-
-    #endregion
-
-    #region private functions
-
-    private void Move()
+    public override void Move()
     {
         if (Vector3.Distance(transform.position, unitData.controlPoints[unitData.controlPoints.Length - 1]) < Globals.minWPDist)
         {
@@ -76,6 +51,21 @@ public class Unit : MonoBehaviour, IDamageable
         transform.position = UpdateUnitPosition(unitData.moveable, unitData.curr_wp, unitData.controlPoints);
     }
 
+    public override void TakeDamage(float dmg)
+    {
+        throw new System.NotImplementedException();
+    }
+    #endregion
+
+    #region private functions
+    private IEnumerator Play()
+    {
+        while (true)
+        {
+            unitData.pattern.Fill(unitData.activeBullet, null, transform.position, default, default);
+            yield return new WaitForSeconds(1 / (unitData.pattern as AbsPattern).rof);
+        }
+    }
     private Vector3 UpdateUnitPosition(IMoveable move_beahaviour, int curr_wp, Vector3[] waypoints)
     {
         if (Utilities.CheckInterfaceType(move_beahaviour, typeof(MoveableUnitLinearBezierB)))
@@ -84,7 +74,6 @@ public class Unit : MonoBehaviour, IDamageable
         }
         return unitData.moveable.Move(default, default, bezierCurveT, waypoints[0], waypoints[1], waypoints[2], waypoints[3]);
     }
-
     private void StaticInitialization(string type, IMoveable move_behaviour, Vector3[] waypoints)
     {
         spriteRen = GetComponent<SpriteRenderer>();
@@ -94,8 +83,25 @@ public class Unit : MonoBehaviour, IDamageable
         unitData.SetWaypoints(waypoints);
         bezierCurveT = default;
     }
-
     #endregion
+
+
+    public Unit PreInitializeUnit(string type, IMoveable move_behaviour, Vector3[] waypoints, BulletTypeEnum bulletT)
+    {
+        StaticInitialization(type, move_behaviour, waypoints);
+        foreach (var obj in FactoryManager.Instance.FactoryBullets.Where(x => EnumFiltering.EnumToString(bulletT).Any(w => w.Equals(x.name))))
+        {
+            unitData.bulletTypeList.Enqueue(obj.name);
+        }
+        unitData.activeBullet = unitData.bullets.SwapBulletType(unitData.bulletTypeList);                                                       // initialize the active bullet type string    
+        unitData.pattern = unitData.bullets.SwapPattern((BulletTypeEnum)System.Enum.Parse(typeof(BulletTypeEnum), unitData.activeBullet));      // initialize the pattern with the active bullet type
+        return this;
+    }
+    public void UpdateUnit()
+    {
+        if (!unitData.idle) Move();
+        unitData.animation.Animate(animator, spriteRen, (unitData.controlPoints[unitData.curr_wp + 1 > unitData.controlPoints.Length - 1 ? 0 : unitData.curr_wp + 1] - unitData.controlPoints[unitData.curr_wp]).normalized);
+    }
 }
 
 public class UnitDataContainer

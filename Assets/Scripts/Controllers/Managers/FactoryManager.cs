@@ -1,37 +1,39 @@
 using System.Linq;
 using UnityEngine;
 
-public class FactoryManager : SingletonMono<FactoryManager>, IFactoryAbs, IFlow
+public class FactoryManager : IFactoryAbs
 {
+    private static FactoryManager instance = null;
+    private FactoryManager() { }
+    public static FactoryManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new FactoryManager();
+            }
+            return instance;
+        }
+    }
+
     public GameObject[] FactoryBullets { get; private set; }
 
-    #region Facotry Manager Functions
-
-    public IProduct FactoryMethod<T>(string type, Transform parent, Vector2 pos) where T : class
+    public Bullet FactoryMethod(string type, Transform parent, Vector2 pos)
     {
-        IProduct bullet;
-        if (ObjectPoolController.Bullets.ContainsKey(type) && ObjectPoolController.Bullets[type].Count > 0)
+        Bullet bullet;
+        if (ObjectPoolController.Instance.Bullets.ContainsKey(type) && ObjectPoolController.Instance.Bullets[type].Count > 0)
         {
-            bullet = ObjectPoolController.Bullets[type].Dequeue();
-            (bullet as Bullet).ResetBullet(pos);
+            bullet = ObjectPoolController.Instance.Bullets[type].Dequeue();
+            bullet.ResetBullet(parent, pos);
             goto SKIP;
         }
-        bullet = Utilities.InstanciateType<T>(ResourcesLoader.GetPrefab(FactoryBullets, type), parent, pos) as IProduct;
-        (bullet as Bullet).FillData(DatabaseHandler.RetrieveTableEntries<BulletDataContainer>(SQLTableEnum.Bullet.ToString()).Where(x => x.bulletType.ToString().Equals(type)).FirstOrDefault());
+        bullet = Utilities.InstanciateType<Bullet>(ResourcesLoader.GetPrefab(FactoryBullets, type), parent, pos);
+        bullet.FillData(DatabaseHandler.RetrieveTableEntries<BulletDataContainer>(SQLTableEnum.Bullet.ToString()).Where(x => x.bulletType.ToString().Equals(type)).FirstOrDefault());
     SKIP:
         BulletManager.Instance.Add(type, bullet);
         return bullet;
     }
 
-    #endregion
-
-    #region Unity Functions
-
-    public void PreIntilizationMethod() => FactoryBullets = ResourcesLoader.ResourcesLoading(Globals.bulletsPrefabs);
-
-    public void InitializationMethod() { }
-
-    public void UpdateMethod() { }
-
-    #endregion
+    public void PreInitializeFactoryPrefabs() => FactoryBullets = ResourcesLoader.ResourcesLoading(Globals.bulletsPrefabs);
 }

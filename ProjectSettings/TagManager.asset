@@ -20,6 +20,8 @@ TagManager:
   - Off
   - PlayerSelect
   - OptionComponent
+  - GameCamera
+  - AltCamera
   layers:
   - Default
   - TransparentFX
