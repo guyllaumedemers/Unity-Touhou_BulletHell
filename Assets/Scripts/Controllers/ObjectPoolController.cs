@@ -25,7 +25,7 @@ public class ObjectPoolController
 
     public GameObject pool;
 
-    public void PreInitializeObjectPollController()
+    public void PreInitializeObjectPoolController()
     {
         Bullets = new Dictionary<string, Queue<Bullet>>();
         LastUpdate = new Dictionary<string, float>();

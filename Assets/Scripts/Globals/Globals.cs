@@ -82,7 +82,7 @@ public static class Globals
     public static string slidingComponent = "SlidingComponent";
     public static string on = "On";
     public static string off = "Off";
-    public static string gamecamera = "GameView";
+    public static string gameview = "GameView";
     #endregion
 
     #region Dynamic Loading
