@@ -82,7 +82,7 @@ public class BulletManager
     {
         BulletsDict = new Dictionary<string, HashSet<Bullet>>();
         oob_bullets = new Queue<Bullet>();
-        bulletParent = Utilities.InstanciateObjectParent(Globals.bulletParent, true, LayerMask.NameToLayer(Globals.gameview));
+        bulletParent = Utilities.InstanciateObjectParent(Globals.bulletParent, true);
         gameview = GameObject.FindObjectsOfType<Camera>().Where(x => x.gameObject.tag.Equals(Globals.gameview)).FirstOrDefault();
     }
 

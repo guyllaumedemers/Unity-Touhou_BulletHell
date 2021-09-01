@@ -29,7 +29,7 @@ public class ObjectPoolController
     {
         Bullets = new Dictionary<string, Queue<Bullet>>();
         LastUpdate = new Dictionary<string, float>();
-        pool = Utilities.InstanciateObjectParent(Globals.poolParent, false, LayerMask.NameToLayer(Globals.gameview));
+        pool = Utilities.InstanciateObjectParent(Globals.poolParent, false);
         Fill();
     }
 
