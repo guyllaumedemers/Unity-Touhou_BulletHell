@@ -90,7 +90,7 @@ public class PlayerController : AbsUnit
         unitData = DatabaseHandler.RetrieveTableEntries<UnitDataContainer>(SQLTableEnum.UnitData.ToString()).Where(x => x.unitType.ToString().Equals(UnitTypeEnum.Player.ToString())).FirstOrDefault();
         animator = GetComponent<Animator>();
         sprRen = GetComponent<SpriteRenderer>();
-        gamecamera = FindObjectsOfType<Camera>().Where(x => x.gameObject.tag.Equals(Globals.gamecamera)).FirstOrDefault();
+        gamecamera = FindObjectsOfType<Camera>().Where(x => x.gameObject.tag.Equals(Globals.gameview)).FirstOrDefault();
         inputs.Enable();                                                            // Enable cannot be called in the OnEnable function because of unity order of execution
     }
 
