@@ -24,8 +24,5 @@ public class ZRotationComponent : MonoBehaviour
     {
         image.transform.Rotate(Vector3.forward * speed * Time.deltaTime, Space.Self);
     }
-
-    #region private functions
     private void LogWarning(string msg) => Debug.LogWarning("[ZRotation Component] : " + msg);
-    #endregion
 }

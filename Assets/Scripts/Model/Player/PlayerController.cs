@@ -56,7 +56,7 @@ public class PlayerController : AbsUnit
         {
             if (Time.time - last > 1 / (unitData.pattern as AbsPattern).rof)
             {
-                Shoot(BulletManager.Instance.bulletParent.transform, transform);        // coupling
+                Shoot(BulletManager.Instance.bulletParent.transform, transform);
                 last = Time.time;
             }
             yield return null;
@@ -69,6 +69,7 @@ public class PlayerController : AbsUnit
         if (viewport.y < 0 || viewport.y > 1) pos.y = -pos.y;
         return new Vector3(pos.x, pos.y, 10);
     }
+
     private void SwapBulletType()
     {
         if (Keyboard.current.tabKey.wasPressedThisFrame)

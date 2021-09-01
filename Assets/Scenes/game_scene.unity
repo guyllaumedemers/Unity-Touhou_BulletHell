@@ -130,10 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4740929, guid: 8a399741f54d0944a866450c0a0b57f0, type: 3}
-      propertyPath: m_Alpha
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4797795738905402241, guid: 8a399741f54d0944a866450c0a0b57f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -237,10 +233,6 @@ PrefabInstance:
     - target: {fileID: 4797795740421248932, guid: 8a399741f54d0944a866450c0a0b57f0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4797795740596250386, guid: 8a399741f54d0944a866450c0a0b57f0, type: 3}
-      propertyPath: m_Value
-      value: 0.404
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a399741f54d0944a866450c0a0b57f0, type: 3}
@@ -438,10 +430,6 @@ PrefabInstance:
     - target: {fileID: 6270296143772749404, guid: 683b629f14edd55459b65cb51a7b384d, type: 3}
       propertyPath: m_Name
       value: Scene_3_Background-UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 6270296143772749407, guid: 683b629f14edd55459b65cb51a7b384d, type: 3}
-      propertyPath: m_BlockingMask.m_Bits
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6270296143781953036, guid: 683b629f14edd55459b65cb51a7b384d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1094,7 +1082,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -1119,7 +1107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212529940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1136,14 +1124,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5192492037329525696, guid: 947d00fabbb758d4cb4adc51b1f79956, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5192492037329525696, guid: 947d00fabbb758d4cb4adc51b1f79956, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -379152941
-      objectReference: {fileID: 0}
     - target: {fileID: 7451500850834610225, guid: 947d00fabbb758d4cb4adc51b1f79956, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1158,7 +1138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7451500850834610225, guid: 947d00fabbb758d4cb4adc51b1f79956, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7451500850834610225, guid: 947d00fabbb758d4cb4adc51b1f79956, type: 3}
       propertyPath: m_LocalRotation.w

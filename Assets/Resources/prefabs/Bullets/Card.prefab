@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 281650568902389474}
   - component: {fileID: 6558157393947367047}
   - component: {fileID: 2444516165108760208}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Card
-  m_TagString: Untagged
+  m_TagString: GameView
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,9 +69,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -379152941
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
