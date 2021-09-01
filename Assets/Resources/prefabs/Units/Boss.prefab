@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5015927019971479686}
   m_Layer: 6
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: GameView
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5473896752661037763}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -379152941
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -683979294808957223, guid: 60fed53004cf76742b2ad831ac59d653, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

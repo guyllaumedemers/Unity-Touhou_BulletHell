@@ -105,7 +105,7 @@ public static class Utilities
         return myArr;
     }
 
-    public static  Vector3[] WorldSpaceAnchors(RectTransform rectTransform)
+    public static Vector3[] WorldSpaceAnchors(RectTransform rectTransform)
     {
         Vector3[] corners = new Vector3[4];
         rectTransform.GetWorldCorners(corners);

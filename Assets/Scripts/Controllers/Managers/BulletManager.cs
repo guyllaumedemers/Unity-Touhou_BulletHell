@@ -22,6 +22,7 @@ public class BulletManager
     public GameObject bulletParent { get; private set; }
     // handle the removal of bullets that are out of bounds
     private Queue<Bullet> oob_bullets;
+    private Camera gameview;
 
     public void Add(string type, Bullet bullet)
     {
@@ -71,7 +72,7 @@ public class BulletManager
     {
         foreach (var bullet in dict.Keys.SelectMany(key => dict[key]))
         {
-            if (!Utilities.InsideCameraBounds(Camera.main, bullet.transform.position)) pool.Enqueue(bullet);        // camera.main is an issue
+            if (!Utilities.InsideCameraBounds(gameview, bullet.transform.position)) pool.Enqueue(bullet);
             else bullet.UpdateBulletPosition();
         }
         while (pool.Count > 0) (pool.Dequeue()).Pool();
@@ -82,6 +83,7 @@ public class BulletManager
         BulletsDict = new Dictionary<string, HashSet<Bullet>>();
         oob_bullets = new Queue<Bullet>();
         bulletParent = Utilities.InstanciateObjectParent(Globals.bulletParent, true);
+        gameview = GameObject.FindObjectsOfType<Camera>().Where(x => x.gameObject.tag.Equals(Globals.gameview)).FirstOrDefault();
     }
 
     public void UpdateBulletManager() => UpdateBullets(BulletsDict, oob_bullets);
